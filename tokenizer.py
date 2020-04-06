@@ -2,49 +2,52 @@ import os
 import sys
 from collections import defaultdict
 
-debug = True
+class tokenizer():
 
-lxc = dict()
-lxc_fn = sys.path[0] + "/lexicon.tsv"
-lxc_maxlen = 0
+    def __init__(self, lexicon):
+        self.lexicon = dict()
+        self.lexicon_maxlen = 0
+        self.debug = True
+        self.load_lexicon(lexicon)
 
-def init():
-    load_dict(lxc_fn)
+    def load_lexicon(self, filename):
+        fo = open(filename)
+        for x in fo:
+            x = x.strip()
+            self.lexicon[x] = True
+            if len(x) > self.lexicon_maxlen:
+                self.lexicon_maxlen = len(x)
+        fo.close()
 
-def load_dict(fn):
-    global lxc_maxlen
-    fo = open(fn)
-    for x in fo:
-        x = x.strip()
-        lxc[x] = True
-        if len(x) > lxc_maxlen:
-            lxc_maxlen = len(x)
-    fo.close()
-
-def tokenize(txt):
-    idx = [i for i, c in enumerate(txt) if c != " "]
-    txt = txt.replace(" ", "")
-    tbl = [[] for _ in txt]
-    for i in range(len(txt)):
-        k = min(len(txt), i + lxc_maxlen)
-        for j in range(i + 1, k):
-            w = txt[i:j]
-            if w in lxc:
-                tbl[i].append(w)
-    return txt, idx, tbl
-
-def analyze(raw):
-    txt, idx, tbl = tokenize(raw)
-    print("sent =", raw)
-    print("norm =", txt)
-    for i, x in enumerate(tbl):
-        print("table[%d] =" % i, x)
-    input()
+    def index(self, sent):
+        idx = [x for x in enumerate(sent) if x[1] != " "]
+        return idx
+    
+    def lexicalize(self, idx):
+        table = [[] for _ in idx]
+        for i in range(len(idx)):
+            k = min(len(idx), i + self.lexicon_maxlen)
+            for j in range(i + 1, k):
+                w = "".join(c for _, c in idx[i:j])
+                if w in self.lexicon:
+                    table[i].append(w)
+        return table
+    
+    def analyze(self, sent):
+        idx = self.index(sent)
+        table = self.lexicalize(idx)
+        print("sent =", sent)
+        print("norm =", "".join(c for _, c in idx))
+        for i, x in enumerate(table):
+            print("table[%d] =" % i, x)
+        input()
 
 if __name__ == "__main__":
-    init()
+    tokenizer = tokenizer(
+        lexicon = sys.path[0] + "/lexicon.tsv"
+    )
     fo = open(sys.argv[1])
     for line in fo:
         line = line.strip()
-        analyze(line)
+        tokenizer.analyze(line)
     fo.close()
