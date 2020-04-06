@@ -43,7 +43,7 @@ def analyze(raw):
 
 if __name__ == "__main__":
     init()
-    fo = open(sys.path[0] + "/jisikman.len50.a")
+    fo = open(sys.argv[1])
     for line in fo:
         line = line.strip()
         analyze(line)
