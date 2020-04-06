@@ -1,17 +1,17 @@
 import sys
-import csv
 import xlsxwriter
 
-def xlsx2tsv(filename):
-    workbook = xlsxwriter.Workbook(filename + ".xlsx")
-    worksheet = workbook.add_worksheet()
-    tsv = csv.reader(open(filename), delimiter = "\t")
-    for row_idx, row_text in enumerate(tsv):
-        row_text = row_text.replace('"', '""')
-        worksheet.write_row(row_idx, 0, row_text)
-    workbook.close()
+def tsv2xlsx(filename):
+    fi = open(filename)
+    fo = xlsxwriter.Workbook(filename + ".xlsx")
+    worksheet = fo.add_worksheet()
+    for idx, text in enumerate(fi):
+        text = (x.replace('"', '""') for x in text.split("\t"))
+        worksheet.write_row(idx, 0, text)
+    fo.close()
+    fi.close()
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:
         sys.exit("Usage: %s filename" % sys.argv[0])
-    xlsx2tsv(sys.argv[1])
+    tsv2xlsx(sys.argv[1])
