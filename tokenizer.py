@@ -13,8 +13,8 @@ class tokenizer():
     def load_lexicon(self, filename):
         fo = open(filename)
         for x in fo:
-            x = x.strip().split("\t")[0]
-            self.lexicon[x] = True
+            word, tag, *_ = x.strip().split("\t")
+            self.lexicon[word] = tag
             if len(x) > self.lexicon_maxlen:
                 self.lexicon_maxlen = len(x)
         fo.close()
@@ -30,7 +30,7 @@ class tokenizer():
             for j in range(i + 1, k):
                 w = "".join(c for _, c in idx[i:j])
                 if w in self.lexicon:
-                    table[i].append(w)
+                    table[i].append((w, self.lexicon[w]))
         return table
     
     def analyze(self, sent):
