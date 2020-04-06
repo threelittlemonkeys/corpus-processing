@@ -13,7 +13,7 @@ class tokenizer():
     def load_lexicon(self, filename):
         fo = open(filename)
         for x in fo:
-            x = x.strip()
+            x = x.strip().split("\t")[0]
             self.lexicon[x] = True
             if len(x) > self.lexicon_maxlen:
                 self.lexicon_maxlen = len(x)
