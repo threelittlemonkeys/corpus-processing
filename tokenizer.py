@@ -4,11 +4,23 @@ from collections import defaultdict
 
 class tokenizer():
 
-    def __init__(self, lexicon):
+    def __init__(self, graph, lexicon):
+
+        self.debug = True
+
+        self.graph = dict()
         self.lexicon = dict()
         self.lexicon_maxlen = 0
-        self.debug = True
+
+        self.load_graph(graph)
         self.load_lexicon(lexicon)
+
+    def load_graph(self, filename):
+        fo = open(filename)
+        for x in fo:
+            a, b = x.strip().split(" ")
+            self.graph[a] = b
+        fo.close()
 
     def load_lexicon(self, filename):
         fo = open(filename)
@@ -22,17 +34,19 @@ class tokenizer():
     def index(self, sent):
         idx = [x for x in enumerate(sent) if x[1] != " "]
         return idx
-    
+
     def lexicalize(self, idx):
         table = [[] for _ in idx]
         for i in range(len(idx)):
             k = min(len(idx), i + self.lexicon_maxlen)
             for j in range(i + 1, k):
                 w = "".join(c for _, c in idx[i:j])
+                if w in self.graph:
+                    table[i].append((w, None))
                 if w in self.lexicon:
                     table[i].append((w, self.lexicon[w]))
         return table
-    
+
     def analyze(self, sent):
         idx = self.index(sent)
         table = self.lexicalize(idx)
@@ -44,7 +58,8 @@ class tokenizer():
 
 if __name__ == "__main__":
     tokenizer = tokenizer(
-        lexicon = sys.path[0] + "/lexicon.tsv"
+        lexicon = sys.path[0] + "/lexicon.csv",
+        graph = sys.path[0] + "/graph.csv"
     )
     fo = open(sys.argv[1])
     for line in fo:
