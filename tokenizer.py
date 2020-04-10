@@ -17,9 +17,11 @@ class tokenizer():
 
     def load_graph(self, filename):
         fo = open(filename)
-        for x in fo:
-            a, b = x.strip().split(" ")
-            self.graph[a] = b
+        for line in fo:
+            line = line.strip()
+            words = line.split(" ")
+            for word in words:
+                self.graph[word] = True
         fo.close()
 
     def load_lexicon(self, filename):
@@ -27,8 +29,8 @@ class tokenizer():
         for x in fo:
             word, tag, *_ = x.strip().split("\t")
             self.lexicon[word] = tag
-            if len(x) > self.lexicon_maxlen:
-                self.lexicon_maxlen = len(x)
+            if len(word) > self.lexicon_maxlen:
+                self.lexicon_maxlen = len(word)
         fo.close()
 
     def index(self, sent):
