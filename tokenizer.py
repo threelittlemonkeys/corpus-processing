@@ -5,12 +5,11 @@ from collections import defaultdict
 class tokenizer():
 
     def __init__(self, graph, lexicon):
-
         self.debug = True
 
         self.graph = dict()
         self.lexicon = dict()
-        self.lexicon_maxlen = 0
+        self.window_size = 0
 
         self.load_graph(graph)
         self.load_lexicon(lexicon)
@@ -26,11 +25,11 @@ class tokenizer():
 
     def load_lexicon(self, filename):
         fo = open(filename)
-        for x in fo:
-            word, tag, *_ = x.strip().split("\t")
+        for line in fo:
+            word, tag, *_ = line.strip().split("\t")
             self.lexicon[word] = tag
-            if len(word) > self.lexicon_maxlen:
-                self.lexicon_maxlen = len(word)
+            if len(word) > self.window_size:
+                self.window_size = len(word)
         fo.close()
 
     def index(self, sent):
@@ -40,7 +39,7 @@ class tokenizer():
     def lexicalize(self, idx):
         table = [[] for _ in idx]
         for i in range(len(idx)):
-            k = min(len(idx), i + self.lexicon_maxlen)
+            k = min(len(idx), i + self.window_size)
             for j in range(i + 1, k):
                 w = "".join(c for _, c in idx[i:j])
                 if w in self.graph:
