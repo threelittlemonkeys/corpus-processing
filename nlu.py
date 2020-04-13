@@ -5,11 +5,10 @@ from collections import defaultdict
 class tokenizer():
 
     def __init__(self, graph, lexicon):
-        self.debug = True
-
         self.graph = dict()
         self.lexicon = dict()
         self.window_size = 0
+        self.debug = True
 
         self.load_graph(graph)
         self.load_lexicon(lexicon)
@@ -36,7 +35,7 @@ class tokenizer():
         idx = [x for x in enumerate(sent) if x[1] != " "]
         return idx
 
-    def lexicalize(self, idx):
+    def tokenize(self, idx):
         table = [[] for _ in idx]
         for i in range(len(idx)):
             k = min(len(idx), i + self.window_size)
@@ -50,7 +49,7 @@ class tokenizer():
 
     def analyze(self, sent):
         idx = self.index(sent)
-        table = self.lexicalize(idx)
+        table = self.tokenize(idx)
         print("sent =", sent)
         print("norm =", "".join(c for _, c in idx))
         for i, x in enumerate(table):
