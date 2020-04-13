@@ -1,6 +1,6 @@
 import os
 import sys
-from collections import defaultdict
+from utils import *
 
 class nlu():
 
@@ -8,6 +8,7 @@ class nlu():
         self.graph = dict()
         self.lexicon = dict()
         self.char_window_size = 0
+        self.word_window_size = 0
         self.debug = True
 
         self.load_graph(graph)
@@ -42,26 +43,44 @@ class nlu():
         fo.close()
 
     def normalize(self, sent):
-        sent_idx = [x for x in enumerate(sent) if x[1] != " "]
-        return sent_idx
+        buf = ""
+        sent_idx = list()
+        for c in sent + "\n":
+            if c <= "\u0020":
+                c = ""
+            if c and not len(buf) \
+            or isnumeric(c) and isnumeric(buf[-1]) \
+            or isalpha_latin(c) and isalpha_latin(buf[-1]):
+                buf += c
+                continue
+            if buf:
+                sent_idx.append(("".join(buf), c == ""))
+            buf = c
+        sent = "".join(w + " " * i for w, i in sent_idx)
+        return sent, sent_idx
 
     def tokenize(self, sent_idx):
         table = [[] for _ in sent_idx]
         for i in range(len(sent_idx)):
             k = min(len(sent_idx), i + self.char_window_size)
             for j in range(i + 1, k + 1):
-                w = "".join(c for _, c in sent_idx[i:j])
+                w = "".join(w for w, _ in sent_idx[i:j])
                 if w in self.graph:
                     table[i].append((w, None))
                 if w in self.lexicon:
                     table[i].append((w, self.lexicon[w]))
+            if not len(table[i]):
+                w = sent_idx[i][0]
+                table[i].append((w, "UNK"))
         return table
 
+    def generate_sequence():
+        pass
+
     def analyze(self, sent):
-        sent_idx = self.normalize(sent)
+        sent, sent_idx = self.normalize(sent)
         table = self.tokenize(sent_idx)
         self.log("sent =", sent)
-        self.log("norm =", "".join(c for _, c in sent_idx))
         for i, x in enumerate(table):
             self.log("table[%d] =" % i, x)
         input()
