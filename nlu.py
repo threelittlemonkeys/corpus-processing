@@ -71,7 +71,10 @@ class nlu():
                     table[i].append((w, self.lexicon[w]))
             if not len(table[i]):
                 w = sent_idx[i][0]
-                table[i].append((w, "UNK"))
+                if isnumeric(w):
+                    table[i].append((w, "NUM"))
+                else:
+                    table[i].append((w, "UNK"))
         return table
 
     def generate_sequence():
