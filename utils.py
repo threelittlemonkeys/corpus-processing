@@ -11,15 +11,15 @@ def trim(x):
     return y
 
 def isnumeric(x):
-    if x == "":
+    if not x:
         return False
     for c in x:
         if not "0" <= c <= "9":
             return False
     return True
 
-def isalpha_latin(x):
-    if x == "":
+def isalpha(x):
+    if not x:
         return False
     for c in x:
         if not ("A" <= c <= "Z" or "a" <= c <= "z"):

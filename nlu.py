@@ -27,9 +27,7 @@ class nlu():
         fo = open(filename)
         for line in fo:
             line = line.strip()
-            words = line.split(" ")
-            for word in words:
-                self.graph[word] = True
+            tokens = line.split(" ")
         fo.close()
 
     def load_lexicon(self, filename):
@@ -42,35 +40,38 @@ class nlu():
                 self.char_window_size = len(word)
         fo.close()
 
-    def normalize(self, sent):
+    def tokenize(self, sent):
         buf = ""
-        sent_idx = list()
+        words = list()
         for c in sent + "\n":
             if c <= "\u0020":
                 c = ""
             if c and not len(buf) \
-            or isnumeric(c) and isnumeric(buf[-1]) \
-            or isalpha_latin(c) and isalpha_latin(buf[-1]):
+            or isalpha(c) and isalpha(buf[-1]) \
+            or isnumeric(c) and isnumeric(buf[-1]):
                 buf += c
                 continue
             if buf:
-                sent_idx.append(("".join(buf), c == ""))
+                w0 = "".join(buf) # surface form
+                w1 = w0.lower() # normalized form
+                end = (c == "")
+                words.append((w0, w1, end))
             buf = c
-        sent = "".join(w + " " * i for w, i in sent_idx)
-        return sent, sent_idx
+        sent = "".join(nf + " " * end for sf, nf, end in words)
+        return sent, words
 
-    def tokenize(self, sent_idx):
-        table = [[] for _ in sent_idx]
-        for i in range(len(sent_idx)):
-            k = min(len(sent_idx), i + self.char_window_size)
+    def lexicalize(self, words):
+        table = [[] for _ in words]
+        for i in range(len(words)):
+            k = min(len(words), i + self.char_window_size)
             for j in range(i + 1, k + 1):
-                w = "".join(w for w, _ in sent_idx[i:j])
+                w = "".join(w1 for _, w1, _ in words[i:j])
                 if w in self.graph:
                     table[i].append((w, None))
                 if w in self.lexicon:
                     table[i].append((w, self.lexicon[w]))
             if not len(table[i]):
-                w = sent_idx[i][0]
+                w = words[i][0]
                 if isnumeric(w):
                     table[i].append((w, "NUM"))
                 else:
@@ -81,9 +82,10 @@ class nlu():
         pass
 
     def analyze(self, sent):
-        sent, sent_idx = self.normalize(sent)
-        table = self.tokenize(sent_idx)
+        sent, words = self.tokenize(sent)
+        table = self.lexicalize(words)
         self.log("sent =", sent)
+        self.log("words =", [w1 for _, w1, _ in words])
         for i, x in enumerate(table):
             self.log("table[%d] =" % i, x)
         input()
@@ -97,6 +99,5 @@ if __name__ == "__main__":
     )
     fo = open(sys.argv[1])
     for line in fo:
-        line = line.strip()
         nlu.analyze(line)
     fo.close()
