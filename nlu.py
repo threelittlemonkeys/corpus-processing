@@ -85,7 +85,7 @@ class nlu():
         sent, words = self.tokenize(sent)
         table = self.lexicalize(words)
         self.log("sent =", sent)
-        self.log("words =", [w1 for _, w1, _ in words])
+        self.log("words =", [w for w in words])
         for i, x in enumerate(table):
             self.log("table[%d] =" % i, x)
         input()
