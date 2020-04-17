@@ -14,14 +14,29 @@ def isnumeric(x):
     if not x:
         return False
     for c in x:
-        if not "0" <= c <= "9":
-            return False
+        if "0" <= c <= "9":
+            continue
+        return False
     return True
 
-def isalpha(x):
+def isalpha_latin(x):
     if not x:
         return False
     for c in x:
-        if not ("A" <= c <= "Z" or "a" <= c <= "z"):
-            return False
+        if "A" <= c <= "Z":
+            continue
+        if "a" <= c <= "z":
+            continue
+        return False
+    return True
+
+def isalpha_cjk(x):
+    if not x:
+        return False
+    for c in x:
+        if "ㄱ" <= c <= "ㅎ":
+            continue
+        if "가" <= c <= "힣":
+            continue
+        return False
     return True

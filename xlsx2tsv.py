@@ -20,6 +20,7 @@ def xls2tsv(filename, option = None, sheet_idx = 0):
         print_sheet(sheet, sys.stdout)
 
 def print_sheet(sheet, stream):
+    print(sheet.name)
     # stream.write(sheet.name + "\n")
     for i in range(sheet.nrows):
         row = [str(sheet.cell_value(i, j)).strip() for j in range(sheet.ncols)]

@@ -35,59 +35,69 @@ class nlu():
         fo = open(filename)
         for line in fo:
             word, tag, *_ = line.strip().split("\t")
-            self.lexicon[word] = tag
+            if word not in self.lexicon:
+                self.lexicon[word] = list()
+            self.lexicon[word].append(tag)
             if len(word) > self.char_window_size:
                 self.char_window_size = len(word)
         fo.close()
 
     def tokenize(self, sent):
         buf = ""
-        words = list()
-        for c in sent + "\n":
+        sent += "\n"
+        tokens = list()
+        for c in sent:
             if c <= "\u0020":
                 c = ""
             if c and not len(buf) \
-            or isalpha(c) and isalpha(buf[-1]) \
+            or isalpha_latin(c) and isalpha_latin(buf[-1]) \
             or isnumeric(c) and isnumeric(buf[-1]):
                 buf += c
                 continue
             if buf:
                 w0 = "".join(buf) # surface form
                 w1 = w0.lower() # normalized form
-                end = (c == "")
-                words.append((w0, w1, end))
+                end = 1 if c == "" else 0
+                tokens.append((w0, w1, end))
             buf = c
-        sent = "".join(nf + " " * end for sf, nf, end in words)
-        return sent, words
+        sent = "".join(nf + " " * end for sf, nf, end in tokens)
+        return sent, tokens
 
-    def lexicalize(self, words):
-        table = [[] for _ in words]
-        for i in range(len(words)):
-            k = min(len(words), i + self.char_window_size)
+    def lexicalize(self, tokens):
+        table = [[] for _ in tokens]
+        for i in range(len(tokens)):
+            k = min(len(tokens), i + self.char_window_size)
             for j in range(i + 1, k + 1):
-                w = "".join(w1 for _, w1, _ in words[i:j])
-                if w in self.graph:
-                    table[i].append((w, None))
-                if w in self.lexicon:
-                    table[i].append((w, self.lexicon[w]))
+                word = [w1 for _, w1, _ in tokens[i:j]]
+                if not isalpha_cjk(word):
+                    continue
+                word = "".join(word)
+                if word in self.lexicon:
+                    for tag in self.lexicon[word]:
+                        table[i].append((word, j - i, tag))
+            word = tokens[i][0]
+            if isnumeric(word):
+                table[i].append((word, 1, "NUM"))
             if not len(table[i]):
-                w = words[i][0]
-                if isnumeric(w):
-                    table[i].append((w, "NUM"))
-                else:
-                    table[i].append((w, "UNK"))
+                table[i].append((word, 1, "UNK"))
         return table
 
     def generate_sequence():
         pass
 
     def analyze(self, sent):
-        sent, words = self.tokenize(sent)
-        table = self.lexicalize(words)
+        sent = sent.strip()
         self.log("sent =", sent)
-        self.log("words =", [w for w in words])
+
+        sent, tokens = self.tokenize(sent)
+        self.log("norm =", sent)
+
+        table = self.lexicalize(tokens)
+        self.log("tokens =", tokens)
+
         for i, x in enumerate(table):
             self.log("table[%d] =" % i, x)
+
         input()
 
 if __name__ == "__main__":
