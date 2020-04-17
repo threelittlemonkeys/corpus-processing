@@ -26,8 +26,19 @@ class nlu():
         self.log("loading graph")
         fo = open(filename)
         for line in fo:
+            _graph = list()
             line = line.strip()
-            tokens = line.split(" ")
+            tag, *tokens = line.split(" ")
+            print(line)
+            for token in tokens:
+                if token.isupper(): # tag
+                    _graph.append((2, token))
+                    continue
+                # TODO surface form
+                # TODO regular expression
+                _graph.append((1, token)) # normalized form
+            self.graph[_graph[0]] = (tag, _graph)
+            print(self.graph)
         fo.close()
 
     def load_lexicon(self, filename):
@@ -44,9 +55,8 @@ class nlu():
 
     def tokenize(self, sent):
         buf = ""
-        sent += "\n"
         tokens = list()
-        for c in sent:
+        for i, c in enumerate(sent + "\n"):
             if c <= "\u0020":
                 c = ""
             if c and not len(buf) \
@@ -57,29 +67,30 @@ class nlu():
             if buf:
                 w0 = "".join(buf) # surface form
                 w1 = w0.lower() # normalized form
-                end = 1 if c == "" else 0
+                end = not c and i < len(sent) - 1
                 tokens.append((w0, w1, end))
             buf = c
-        sent = "".join(nf + " " * end for sf, nf, end in tokens)
+        sent = "".join(w1 + " " * end for _, w1, end in tokens)
         return sent, tokens
 
     def lexicalize(self, tokens):
-        table = [[] for _ in tokens]
+        table = [dict() for _ in tokens]
         for i in range(len(tokens)):
             k = min(len(tokens), i + self.char_window_size)
             for j in range(i + 1, k + 1):
-                word = [w1 for _, w1, _ in tokens[i:j]]
-                if not isalpha_cjk(word):
-                    continue
-                word = "".join(word)
+                word = "".join(w1 for _, w1, _ in tokens[i:j])
                 if word in self.lexicon:
+                    if word not in table[i]:
+                        table[i][word] = set()
                     for tag in self.lexicon[word]:
-                        table[i].append((word, j - i, tag))
+                        table[i][word].add(tag)
             word = tokens[i][0]
+            if word not in table[i]:
+                table[i][word] = set()
             if isnumeric(word):
-                table[i].append((word, 1, "NUM"))
-            if not len(table[i]):
-                table[i].append((word, 1, "UNK"))
+                table[i][word].add("NUM")
+            if not len(table[i][word]):
+                table[i][word].add("UNK")
         return table
 
     def generate_sequence():
@@ -90,7 +101,7 @@ class nlu():
         self.log("sent =", sent)
 
         sent, tokens = self.tokenize(sent)
-        self.log("norm =", sent)
+        self.log("sent =", sent)
 
         table = self.lexicalize(tokens)
         self.log("tokens =", tokens)

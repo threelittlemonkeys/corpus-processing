@@ -40,3 +40,13 @@ def isalpha_cjk(x):
             continue
         return False
     return True
+
+def ngram_iter(x, maxlen):
+    for j in range(maxlen):
+        for i in range(len(x) - j):
+            yield x[i:i + j]
+
+class tree():
+    def __init__():
+        self.children = list()
+    
