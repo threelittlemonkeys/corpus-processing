@@ -46,7 +46,31 @@ def ngram_iter(x, maxlen):
         for i in range(len(x) - j):
             yield x[i:i + j]
 
-class tree():
-    def __init__():
-        self.children = list()
-    
+class lexicon_node():
+    def __init__(self):
+        self.children = dict()
+        self.features = list()
+
+class lexicon():
+    def __init__(self):
+        self.node = lexicon_node()
+        self.size = 0
+
+    def add(self, entry, feature):
+        node = self.node
+        for word in entry:
+            if word not in node.children:
+                node.children[word] = lexicon_node()
+            node = node.children[word]
+        if not node.features:
+            self.size += 1
+        node.features.append(feature)
+        return node
+
+    def find(self, entry):
+        _node = self.node
+        for word in entry:
+            if word not in _node.children:
+                return None
+            _node = _node.children[word]
+        return _node 

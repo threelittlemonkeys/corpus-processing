@@ -4,15 +4,15 @@ from utils import *
 
 class nlu():
 
-    def __init__(self, graph, lexicon):
+    def __init__(self, graph_filename, lexicon_filename):
         self.graph = dict()
-        self.lexicon = dict()
+        self.lexicon = lexicon()
         self.char_window_size = 0
         self.word_window_size = 0
         self.debug = True
 
-        self.load_graph(graph)
-        self.load_lexicon(lexicon)
+        self.load_graph(graph_filename)
+        self.load_lexicon(lexicon_filename)
 
         self.log("char_window_size = %d" % self.char_window_size)
         self.log()
@@ -45,12 +45,12 @@ class nlu():
         self.log("loading lexicon")
         fo = open(filename)
         for line in fo:
-            word, tag, *_ = line.strip().split("\t")
-            if word not in self.lexicon:
-                self.lexicon[word] = list()
-            self.lexicon[word].append(tag)
-            if len(word) > self.char_window_size:
-                self.char_window_size = len(word)
+            entry, feature, *_ = line.strip().split("\t")
+            entry = entry.split(" ")
+            entry_len = sum(len(w) for w in entry)
+            self.lexicon.add(entry, feature)
+            if entry_len > self.char_window_size:
+                self.char_window_size = entry_len
         fo.close()
 
     def tokenize(self, sent):
@@ -78,13 +78,14 @@ class nlu():
         for i in range(len(tokens)):
             k = min(len(tokens), i + self.char_window_size)
             for j in range(i + 1, k + 1):
-                word = "".join(w1 for _, w1, _ in tokens[i:j])
-                if word in self.lexicon:
+                word = ("".join(w1 for _, w1, _ in tokens[i:j]),)
+                lexicon_node = self.lexicon.find(word)
+                if lexicon_node:
                     if word not in table[i]:
                         table[i][word] = set()
-                    for tag in self.lexicon[word]:
+                    for tag in lexicon_node.features:
                         table[i][word].add(tag)
-            word = tokens[i][0]
+            word = (tokens[i][0],)
             if word not in table[i]:
                 table[i][word] = set()
             if isnumeric(word):
@@ -115,8 +116,8 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         sys.exit("Usage: %s text" % sys.argv[0])
     nlu = nlu(
-        lexicon = "lexicon.csv",
-        graph = "graph.csv"
+        lexicon_filename = "lexicon.csv",
+        graph_filename = "graph.csv"
     )
     fo = open(sys.argv[1])
     for line in fo:
