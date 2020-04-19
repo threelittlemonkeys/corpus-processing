@@ -41,8 +41,8 @@ def isalpha_cjk(x):
         return False
     return True
 
-def ngram_iter(x, maxlen):
-    for j in range(maxlen):
+def ngram_iter(x, sizes):
+    for j in sizes:
         for i in range(len(x) - j):
             yield x[i:i + j]
 
@@ -68,9 +68,9 @@ class lexicon():
         return node
 
     def find(self, entry):
-        _node = self.node
+        node = self.node
         for word in entry:
-            if word not in _node.children:
+            if word not in node.children:
                 return None
-            _node = _node.children[word]
-        return _node 
+            node = node.children[word]
+        return node

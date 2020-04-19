@@ -52,6 +52,7 @@ class nlu():
             if entry_len > self.char_window_size:
                 self.char_window_size = entry_len
         fo.close()
+        self.log("loaded %d lexicon entries" % self.lexicon.size)
 
     def tokenize(self, sent):
         buf = ""
