@@ -1,18 +1,18 @@
 import sys
 
-def sizeof(x, xids = set()):
+def sizeof(x, xs = set()):
     z = sys.getsizeof(x)
     xid = id(x)
-    if xid in xids:
+    if xid in xs:
         return 0
-    xids.add(xid)
+    xs.add(xid)
     if isinstance(x, dict):
-        z += sum([sizeof(k, xids) for k in x.keys()])
-        z += sum([sizeof(v, xids) for v in x.values()])
+        z += sum(sizeof(k, xs) for k in x.keys())
+        z += sum(sizeof(v, xs) for v in x.values())
     elif hasattr(x, '__dict__'):
-        z += sizeof(x.__dict__, xids)
+        z += sizeof(x.__dict__, xs)
     elif hasattr(x, '__iter__') and not isinstance(x, (str, bytes, bytearray)):
-        z += sum([sizeof(i, xids) for i in x])
+        z += sum(sizeof(i, xs) for i in x)
     return z
 
 def trim(s):
