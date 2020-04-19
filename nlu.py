@@ -17,10 +17,10 @@ class nlu():
         self.log("char_window_size = %d" % self.char_window_size)
         self.log()
 
-    def log(self, *obj):
+    def log(self, *args):
         if not self.debug:
             return
-        print(*obj)
+        print(*args)
 
     def load_graph(self, filename):
         self.log("loading graph")
@@ -53,6 +53,7 @@ class nlu():
                 self.char_window_size = entry_len
         fo.close()
         self.log("loaded %d lexicon entries" % self.lexicon.size)
+        print(sizeof(self.lexicon))
 
     def tokenize(self, sent):
         buf = ""

@@ -1,6 +1,23 @@
-def trim(x):
+import sys
+
+def sizeof(x, xids = set()):
+    z = sys.getsizeof(x)
+    xid = id(x)
+    if xid in xids:
+        return 0
+    xids.add(xid)
+    if isinstance(x, dict):
+        z += sum([sizeof(k, xids) for k in x.keys()])
+        z += sum([sizeof(v, xids) for v in x.values()])
+    elif hasattr(x, '__dict__'):
+        z += sizeof(x.__dict__, xids)
+    elif hasattr(x, '__iter__') and not isinstance(x, (str, bytes, bytearray)):
+        z += sum([sizeof(i, xids) for i in x])
+    return z
+
+def trim(s):
     y = ""
-    for c in x:
+    for c in s:
         if c <= "\u0020":
             if len(y) and y[-1] != " ":
                 y += " "
@@ -10,19 +27,19 @@ def trim(x):
         y = y[:-1]
     return y
 
-def isnumeric(x):
-    if not x:
+def isnumeric(s):
+    if not s:
         return False
-    for c in x:
+    for c in s:
         if "0" <= c <= "9":
             continue
         return False
     return True
 
-def isalpha_latin(x):
-    if not x:
+def isalpha_latin(s):
+    if not s:
         return False
-    for c in x:
+    for c in s:
         if "A" <= c <= "Z":
             continue
         if "a" <= c <= "z":
@@ -30,10 +47,10 @@ def isalpha_latin(x):
         return False
     return True
 
-def isalpha_cjk(x):
-    if not x:
+def isalpha_cjk(s):
+    if not s:
         return False
-    for c in x:
+    for c in s:
         if "ㄱ" <= c <= "ㅎ":
             continue
         if "가" <= c <= "힣":
@@ -41,10 +58,10 @@ def isalpha_cjk(x):
         return False
     return True
 
-def ngram_iter(x, sizes):
+def ngram_iter(s, sizes):
     for j in sizes:
-        for i in range(len(x) - j):
-            yield x[i:i + j]
+        for i in range(len(s) - j):
+            yield s[i:i + j]
 
 class lexicon_node():
     def __init__(self):
