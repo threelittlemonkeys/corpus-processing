@@ -53,7 +53,6 @@ class nlu():
                 self.char_window_size = entry_len
         fo.close()
         self.log("loaded %d lexicon entries" % self.lexicon.size)
-        print(sizeof(self.lexicon))
 
     def tokenize(self, sent):
         buf = ""
@@ -81,12 +80,12 @@ class nlu():
             k = min(len(tokens), i + self.char_window_size)
             for j in range(i + 1, k + 1):
                 word = ("".join(w1 for _, w1, _ in tokens[i:j]),)
-                lexicon_node = self.lexicon.find(word)
-                if lexicon_node:
+                features = self.lexicon.find(word)
+                if features:
                     if word not in table[i]:
                         table[i][word] = set()
-                    for tag in lexicon_node.features:
-                        table[i][word].add(tag)
+                    for feature in features:
+                        table[i][word].add(feature)
             word = (tokens[i][0],)
             if word not in table[i]:
                 table[i][word] = set()
