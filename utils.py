@@ -85,7 +85,7 @@ class lexicon():
     def find(self, entry):
         node = self.node
         for word in entry:
-            if word not in node[0]:
+            if not (node[0] and word in node[0]):
                 return None
             node = node[0][word]
         return node[1]

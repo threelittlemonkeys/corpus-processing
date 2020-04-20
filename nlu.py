@@ -57,31 +57,34 @@ class nlu():
         fo.close()
 
     def tokenize(self, sent):
-        buf = ""
+        sf = "" # surface form
+        bound = False
         tokens = list()
         for i, c in enumerate(sent + "\n"):
             if c <= "\u0020":
                 c = ""
-            if c and not len(buf) \
-            or isalpha_latin(c) and isalpha_latin(buf[-1]) \
-            or isnumeric(c) and isnumeric(buf[-1]):
-                buf += c
+            elif not len(sf) \
+            or isalpha_latin(c) and isalpha_latin(sf[-1]) \
+            or isnumeric(c) and isnumeric(sf[-1]):
+                sf += c
                 continue
-            if buf:
-                w0 = "".join(buf) # surface form
-                w1 = w0.lower() # normalized form
-                end = not c and i < len(sent) - 1
-                tokens.append((w0, w1, end))
-            buf = c
-        sent = "".join(w1 + " " * end for _, w1, end in tokens)
-        return sent, tokens
+            if sf:
+                nf = sf.lower() # normalized form
+                bound = len(sf) == 1 and isalpha_cjk(sf)
+                space = not c and i < len(sent) - 1 # trailing space
+                tokens.append((nf, sf, bound, space))
+            sf = c
+        return tokens
+
+    def detokenize(tokens):
+        pass
 
     def lexicalize(self, tokens):
         table = [dict() for _ in tokens]
         for i in range(len(tokens)):
             k = min(len(tokens), i + self.char_window_size)
             for j in range(i + 1, k + 1):
-                word = ("".join(w1 for _, w1, _ in tokens[i:j]),)
+                word = ("".join(nf for nf, *_ in tokens[i:j]),)
                 if word in self.lexicon:
                     if word not in table[i]:
                         table[i][word] = set()
@@ -103,8 +106,8 @@ class nlu():
         sent = sent.strip()
         self.log("sent =", sent)
 
-        sent, tokens = self.tokenize(sent)
-        self.log("sent =", sent)
+        tokens = self.tokenize(sent)
+        self.log("norm =", " ".join(nf for nf, *_, space in tokens))
 
         table = self.lexicalize(tokens)
         self.log("tokens =", tokens)
