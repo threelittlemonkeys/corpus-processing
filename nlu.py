@@ -5,14 +5,14 @@ from utils import *
 class nlu():
 
     def __init__(self, graph_filename, lexicon_filename):
+        self.lexicon = dict()
         self.graph = dict()
-        self.lexicon = lexicon()
         self.char_window_size = 0
         self.word_window_size = 0
         self.debug = True
 
-        self.load_graph(graph_filename)
         self.load_lexicon(lexicon_filename)
+        self.load_graph(graph_filename)
 
         self.log("char_window_size = %d" % self.char_window_size)
         self.log()
@@ -21,6 +21,21 @@ class nlu():
         if not self.debug:
             return
         print(*args)
+
+    def load_lexicon(self, filename):
+        self.log("loading lexicon")
+        fo = open(filename)
+        for line in fo:
+            entry, feature, *_ = line.strip().split("\t")
+            entry = tuple(entry.split(" "))
+            entry_len = sum(len(w) for w in entry)
+            if entry not in self.lexicon:
+                self.lexicon[entry] = list()
+            self.lexicon[entry].append(feature)
+            if entry_len > self.char_window_size:
+                self.char_window_size = entry_len
+        fo.close()
+        self.log("loaded %d lexicon entries" % len(self.lexicon))
 
     def load_graph(self, filename):
         self.log("loading graph")
@@ -40,19 +55,6 @@ class nlu():
             self.graph[_graph[0]] = (tag, _graph)
             print(self.graph)
         fo.close()
-
-    def load_lexicon(self, filename):
-        self.log("loading lexicon")
-        fo = open(filename)
-        for line in fo:
-            entry, feature, *_ = line.strip().split("\t")
-            entry = entry.split(" ")
-            entry_len = sum(len(w) for w in entry)
-            self.lexicon.add(entry, feature)
-            if entry_len > self.char_window_size:
-                self.char_window_size = entry_len
-        fo.close()
-        self.log("loaded %d lexicon entries" % self.lexicon.size)
 
     def tokenize(self, sent):
         buf = ""
@@ -80,11 +82,10 @@ class nlu():
             k = min(len(tokens), i + self.char_window_size)
             for j in range(i + 1, k + 1):
                 word = ("".join(w1 for _, w1, _ in tokens[i:j]),)
-                features = self.lexicon.find(word)
-                if features:
+                if word in self.lexicon:
                     if word not in table[i]:
                         table[i][word] = set()
-                    for feature in features:
+                    for feature in self.lexicon[word]:
                         table[i][word].add(feature)
             word = (tokens[i][0],)
             if word not in table[i]:
