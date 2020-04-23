@@ -89,3 +89,30 @@ class lexicon():
                 return None
             node = node[0][word]
         return node[1]
+
+class tree():
+    def __init__(self):
+        self.node = [None, None]
+        self.size = 0
+
+    def add(self, tokens, feature):
+        node = self.node
+        for token in tokens:
+            if not node[0]:
+                node[0] = dict()
+            if token not in node[0]:
+                node[0][token] = [None, None]
+            node = node[0][token]
+        if not node[1]:
+            node[1] = list()
+            self.size += 1
+        node[1].append(feature)
+        return node
+
+    def find(self, tokens):
+        node = self.node
+        for token in tokens:
+            if not (node[0] and token in node[0]):
+                return None
+            node = node[0][token]
+        return node[1]

@@ -6,7 +6,7 @@ class nlu():
 
     def __init__(self, graph_filename, lexicon_filename):
         self.lexicon = dict()
-        self.graph = dict()
+        self.graph = tree()
         self.char_window_size = 0
         self.word_window_size = 0
         self.debug = True
@@ -41,19 +41,18 @@ class nlu():
         self.log("loading graph")
         fo = open(filename)
         for line in fo:
-            _graph = list()
-            line = line.strip()
-            tag, *tokens = line.split(" ")
-            print(line)
+            _tokens = list()
+            feature, *tokens = line.strip().split(" ")
             for token in tokens:
-                if token.isupper(): # tag
-                    _graph.append((2, token))
+                if token.isupper(): # feature
+                    _tokens.append((2, token))
                     continue
                 # TODO surface form
                 # TODO regular expression
-                _graph.append((1, token)) # normalized form
-            self.graph[_graph[0]] = (tag, _graph)
-            print(self.graph)
+                _tokens.append((1, token)) # normalized form
+            self.graph.add(tokens, feature)
+        print(self.graph.node)
+        print(sizeof(self.graph))
         fo.close()
 
     @staticmethod
@@ -111,9 +110,6 @@ class nlu():
             if not len(table[i][word]):
                 table[i][word].add("UNK")
         return table
-
-    def generate_sequence():
-        pass
 
     def analyze(self, sent):
         sent = sent.strip()
