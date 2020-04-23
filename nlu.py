@@ -56,7 +56,8 @@ class nlu():
             print(self.graph)
         fo.close()
 
-    def tokenize(self, sent):
+    @staticmethod
+    def tokenize(sent):
         sf = "" # surface form
         bound = False
         tokens = list()
@@ -76,24 +77,36 @@ class nlu():
             sf = c
         return tokens
 
+    @staticmethod
     def detokenize(tokens):
-        pass
+        _bound = False
+        phr_sf = list()
+        phr_nf = list()
+        for nf, sf, bound, _ in tokens:
+            if not (bound and _bound):
+                phr_sf.append("")
+                phr_nf.append("")
+            phr_sf[-1] += nf
+            phr_nf[-1] += nf
+            _bound = bound
+        return (tuple(phr_sf), tuple(phr_nf), len(tokens))
 
     def lexicalize(self, tokens):
-        table = [dict() for _ in tokens]
+        table = list(dict() for _ in tokens)
         for i in range(len(tokens)):
             k = min(len(tokens), i + self.char_window_size)
             for j in range(i + 1, k + 1):
-                word = ("".join(nf for nf, *_ in tokens[i:j]),)
-                if word in self.lexicon:
-                    if word not in table[i]:
-                        table[i][word] = set()
-                    for feature in self.lexicon[word]:
-                        table[i][word].add(feature)
-            word = (tokens[i][0],)
+                _, phr_nf, phr_len = self.detokenize(tokens[i:j])
+                if phr_nf in self.lexicon:
+                    phr = (phr_nf, phr_len)
+                    if phr not in table[i]:
+                        table[i][phr] = set()
+                    for feature in self.lexicon[phr[0]]:
+                        table[i][phr].add(feature)
+            word = ((tokens[i][0],), 1)
             if word not in table[i]:
                 table[i][word] = set()
-            if isnumeric(word):
+            if isnumeric(word[0]):
                 table[i][word].add("NUM")
             if not len(table[i][word]):
                 table[i][word].add("UNK")
@@ -107,10 +120,9 @@ class nlu():
         self.log("sent =", sent)
 
         tokens = self.tokenize(sent)
-        self.log("norm =", " ".join(nf for nf, *_, space in tokens))
+        self.log("tokens =", [nf for nf, *_, space in tokens])
 
         table = self.lexicalize(tokens)
-        self.log("tokens =", tokens)
 
         for i, x in enumerate(table):
             self.log("table[%d] =" % i, x)
