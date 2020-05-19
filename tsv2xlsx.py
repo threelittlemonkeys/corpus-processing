@@ -1,4 +1,5 @@
 import sys
+import re
 import xlsxwriter
 
 def tsv2xlsx(filename):
@@ -6,7 +7,7 @@ def tsv2xlsx(filename):
     fo = xlsxwriter.Workbook(filename + ".xlsx")
     worksheet = fo.add_worksheet()
     for idx, text in enumerate(fi):
-        text = (x.replace('"', '""') for x in text.split("\t"))
+        text = [re.sub('"(?!("|$))', '""', x.strip()) for x in text.split("\t")]
         worksheet.write_row(idx, 0, text)
     fo.close()
     fi.close()
