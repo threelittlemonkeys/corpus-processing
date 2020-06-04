@@ -2,6 +2,10 @@ import sys
 import re
 from collections import defaultdict
 
+HW_KATAKANA = "｡ ｢ ｣ ､ ･ ｳﾞ ｶﾞ ｷﾞ ｸﾞ ｹﾞ ｺﾞ ｻﾞ ｼﾞ ｽﾞ ｾﾞ ｿﾞ ﾀﾞ ﾁﾞ ﾂﾞ ﾃﾞ ﾄﾞ ﾊﾞ ﾋﾞ ﾌﾞ ﾍﾞ ﾎﾞ ﾊﾟ ﾋﾟ ﾌﾟ ﾍﾟ ﾎﾟ ｦ ｧ ｨ ｩ ｪ ｫ ｬ ｭ ｮ ｯ ｰ ｱ ｲ ｳ ｴ ｵ ｶ ｷ ｸ ｹ ｺ ｻ ｼ ｽ ｾ ｿ ﾀ ﾁ ﾂ ﾃ ﾄ ﾅ ﾆ ﾇ ﾈ ﾉ ﾊ ﾋ ﾌ ﾍ ﾎ ﾏ ﾐ ﾑ ﾒ ﾓ ﾔ ﾕ ﾖ ﾗ ﾘ ﾙ ﾚ ﾛ ﾜ ﾝ ﾞ ﾟ".split(" ")
+FW_KATAKANA = "。 「 」 、 ・ ヴ ガ ギ グ ゲ ゴ ザ ジ ズ ゼ ゾ ダ ヂ ヅ デ ド バ ビ ブ ベ ボ パ ピ プ ペ ポ ヲ ァ ィ ゥ ェ ォ ャ ュ ョ ッ ー ア イ ウ エ オ カ キ ク ケ コ サ シ ス セ ソ タ チ ツ テ ト ナ >ニ ヌ ネ ノ ハ ヒ フ ヘ ホ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ン ゛ ゜".split(" ")
+HW_TO_FW_KATAKANA = {h: f for h, f in zip(HW_KATAKANA, FW_KATAKANA)}
+
 def clean_corpus(filename, options):
     fo = open(filename)
     verbose = "v" in options
@@ -23,6 +27,21 @@ def clean_corpus(filename, options):
 
         # full width characters
         line = "".join(chr(ord(c) - 0xFEE0) if "\uFF01" <= c <= "\uFF5E" else c for c in line)
+
+        # half width characters
+        i, _line = 0, ""
+        while i < len(line):
+            k = True
+            for j in (2, 1):
+                if line[i:i + j] in HW_KATAKANA:
+                    _line += HW_TO_FW_KATAKANA[line[i:i + j]]
+                    k = False
+                    i += j
+                    break
+            if k:
+                _line += line[i]
+                i += 1
+        line = _line
 
         line = re.sub(" {2,}", " ", line)
         line = line.strip()
