@@ -3,25 +3,26 @@ import xlrd
 
 def xls2tsv(filename, option = None, sheet_idx = 0):
     workbook = xlrd.open_workbook(filename)
+    sheet_idx = int(sheet_idx)
 
     if not option:
         print("\n".join(workbook.sheet_names()))
         return
 
     if option == "dump":
-        for i in range(workbook.nsheets):
-            fo = open("%s.tsv.sheet.%d" % (filename, i), "w")
-            sheet = workbook.sheet_by_index(i)
+        for sheet_idx in range(workbook.nsheets):
+            sheet = workbook.sheet_by_index(sheet_idx)
+            fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.name), "w")
             print_sheet(sheet, fo)
             fo.close()
 
     if option == "sheet":
-        sheet = workbook.sheet_by_index(int(sheet_idx))
-        print_sheet(sheet, sys.stdout)
+        sheet = workbook.sheet_by_index(sheet_idx)
+        fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.name), "w")
+        print_sheet(sheet, do)
+        fo.close()
 
 def print_sheet(sheet, stream):
-    print(sheet.name)
-    # stream.write(sheet.name + "\n")
     for i in range(sheet.nrows):
         row = [str(sheet.cell_value(i, j)).strip() for j in range(sheet.ncols)]
         stream.write("%s\n" % "\t".join(row))
