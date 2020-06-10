@@ -14,10 +14,10 @@ def clean_corpus(filename, options):
         raw = line.strip()
 
         # control characters
-        line = re.sub("[\u0000-\u001F\u007F\u0080-\u009F]", " ", line)
+        line = re.sub("[\u0000-\u001F\u007F\u0080-\u009F]+", " ", line)
 
         # whitespace characters
-        line = re.sub("[\u0020\u00A0\u2000-\u200B\u202F\u205F\u3000]", " ", line)
+        line = re.sub("[\u0020\u00A0\u2000-\u200B\u202F\u205F\u3000]+", " ", line)
 
         # private use area
         line = re.sub("[\uE000-\uF8FF]", " ", line)
