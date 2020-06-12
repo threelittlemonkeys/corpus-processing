@@ -19,7 +19,7 @@ def xls2tsv(filename, option = None, sheet_idx = 0):
     if option == "sheet":
         sheet = workbook.sheet_by_index(sheet_idx)
         fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.name), "w")
-        print_sheet(sheet, do)
+        print_sheet(sheet, fo)
         fo.close()
 
 def print_sheet(sheet, stream):
