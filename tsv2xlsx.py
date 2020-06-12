@@ -7,8 +7,12 @@ def tsv2xlsx(filename):
     fo = xlsxwriter.Workbook(filename + ".xlsx")
     worksheet = fo.add_worksheet()
     for idx, text in enumerate(fi):
-        text = [re.sub('"(?!("|$))', '""', x.strip()) for x in text.split("\t")]
-        worksheet.write_row(idx, 0, text)
+        _text = list()
+        for x in text.split("\t"):
+            x = x.strip()
+            x = re.sub('^(?=["=])', "'", x)
+            _text.append(x)
+        worksheet.write_row(idx, 0, _text)
     fo.close()
     fi.close()
 
