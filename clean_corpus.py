@@ -4,7 +4,7 @@ from collections import defaultdict
 
 HWK = "｡｢｣､･ｳﾞｶﾞｷﾞｸﾞｹﾞｺﾞｻﾞｼﾞｽﾞｾﾞｿﾞﾀﾞﾁﾞﾂﾞﾃﾞﾄﾞﾊﾞﾋﾞﾌﾞﾍﾞﾎﾞﾊﾟﾋﾟﾌﾟﾍﾟﾎﾟｦｧｨｩｪｫｬｭｮｯｰｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈﾉﾊﾋﾌﾍﾎﾏﾐﾑﾒﾓﾔﾕﾖﾗﾘﾙﾚﾛﾜﾝﾞﾟ" # half width Katakana
 FWK = "。「」、・ヴガギグゲゴザジズゼゾダヂヅデドバビブベボパピプペポヲァィゥェォャュョッーアイウエオカキクケコサシスセソタチツテトナ>ニヌネノハヒフヘホマミムメモヤユヨラリルレロワン゛゜" # full width Katakana
-H2FK = {h: f for h, f in zip(HWK, FWK)}
+H2FWK = {h: f for h, f in zip(HW, FW)}
 
 def clean_corpus(filename, options):
     fo = open(filename)
@@ -34,7 +34,7 @@ def clean_corpus(filename, options):
             k = True
             for j in (2, 1):
                 if line[i:i + j] in HWK:
-                    _line += H2FK[line[i:i + j]]
+                    _line += H2FWK[line[i:i + j]]
                     k = False
                     i += j
                     break
