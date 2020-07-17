@@ -1,0 +1,4814 @@
+SYNONYM 日常器用 刀具 刀具/刃具
+SYNONYM 日常器用 大頭照 大头照/标准照/标准像
+SYNONYM 日常器用 子母畫面電視 双画面电视
+SYNONYM 日常器用 不沾鍋 不沾锅/不粘锅
+SYNONYM 日常器用 不倒翁 不倒翁/扳不倒儿
+SYNONYM 日常器用 公事包 公文包
+SYNONYM 日常器用 分度規/分度器/半圓規/量角器 分度规/分度器/半圆规/量角器/半圆仪
+SYNONYM 日常器用 分離式 分体式
+SYNONYM 日常器用 手扶梯/電扶梯/自動扶梯/電動扶梯 手扶梯/电扶梯/自动扶梯/电动扶梯/滚梯/步行电梯
+SYNONYM 日常器用 文件夾/檔案夾/資料夾 文件夹/档案夹
+SYNONYM 日常器用 日光燈/螢光燈 日光灯/荧光灯
+SYNONYM 日常器用 日程表/行事曆 日程表
+SYNONYM 日常器用 水銀燈 水银灯/汞灯
+SYNONYM 日常器用 去光水 洗甲水
+SYNONYM 日常器用 打卡機/打卡鐘 打卡机
+SYNONYM 日常器用 瓦斯桶/瓦斯鋼瓶 煤气罐/液化气罐
+SYNONYM 日常器用 冰箱/電冰箱 冰箱/电冰箱/雪柜
+SYNONYM 日常器用 安定器 镇流器
+SYNONYM 日常器用 行動電源 充电宝/随身充/移动电源
+SYNONYM 日常器用 免治馬桶 智能座便器
+SYNONYM 日常器用 免洗杯 一次性杯子
+SYNONYM 日常器用 吹風機 吹风机/电吹风/风筒
+SYNONYM 日常器用 尿片/尿布 尿片/尿布/褯子
+SYNONYM 日常器用 折疊桌 折叠桌/折台
+SYNONYM 日常器用 延長線 排插/插排/线板/接线板
+SYNONYM 日常器用 拖把 拖把/墩布
+SYNONYM 日常器用 易開罐 易拉罐
+SYNONYM 日常器用 油壓剪 液压剪
+SYNONYM 日常器用 臥具/寢具 卧具/寝具/床品
+SYNONYM 日常器用 花園鞋/洞洞鞋/布希鞋 花园鞋/洞洞鞋
+SYNONYM 日常器用 雨刷 雨刷/雨刮子/雨刮器
+SYNONYM 日常器用 雨棚 雨棚/雨搭
+SYNONYM 日常器用 雨靴 雨靴/水靴
+SYNONYM 日常器用 保溫杯 保温杯/保暖杯
+SYNONYM 日常器用 保麗龍 保丽龙/泡沫塑料
+SYNONYM 日常器用 削鉛筆機 削铅笔机/卷笔刀/转笔刀
+SYNONYM 日常器用 屏幕/螢幕/螢光幕 屏幕/荧屏/视屏/荧光屏
+SYNONYM 日常器用 柔軟精 柔软剂/柔顺剂
+SYNONYM 日常器用 洗面乳 洗面乳/洗面奶
+SYNONYM 日常器用 相冊/相簿 相冊/相簿/影集
+SYNONYM 日常器用 修正液/塗改液/立可白 修正液/涂改液
+SYNONYM 日常器用 原子筆 圆珠笔
+SYNONYM 日常器用 梳妝臺 梳妆台/梳理台
+SYNONYM 日常器用 海碗/碗公 海碗
+SYNONYM 日常器用 消音器 消音器/消声器
+SYNONYM 日常器用 紙尿褲 纸尿裤/尿不湿
+SYNONYM 日常器用 起子/螺絲刀/螺絲起子 起子/螺丝刀/螺丝起子/改锥
+SYNONYM 日常器用 迴紋針 回形针/曲别针
+SYNONYM 日常器用 酒測器 吹波机/测酒器
+SYNONYM 日常器用 乾燥花 干花
+SYNONYM 日常器用 啟動器/點燈器 启动器/启辉器
+SYNONYM 日常器用 強化玻璃 钢化玻璃
+SYNONYM 日常器用 悠悠球/溜溜球 悠悠球
+SYNONYM 日常器用 探海燈/探照燈 探海灯/探照灯/探射灯
+SYNONYM 日常器用 接線/連接線 接线/连接线/连线
+SYNONYM 日常器用 涼傘/陽傘 凉伞/阳伞/旱伞
+SYNONYM 日常器用 被套 被套/被罩
+SYNONYM 日常器用 晶片卡/智慧卡 智能卡/芯片卡/集成电路卡
+SYNONYM 日常器用 減震鞋/避震鞋 减震鞋
+SYNONYM 日常器用 無灰粉筆 无尘粉笔
+SYNONYM 日常器用 郵冊/郵集/集郵冊 邮册/邮集/集邮册/插册
+SYNONYM 日常器用 塑料/塑膠 塑料
+SYNONYM 日常器用 塑膠袋 塑料袋
+SYNONYM 日常器用 感熱紙 热敏纸
+SYNONYM 日常器用 感應門/電子防盜門 防盗仪
+SYNONYM 日常器用 暖氣機 暖风机
+SYNONYM 日常器用 滅火器/消火器 灭火器
+SYNONYM 日常器用 節水墊片 节水环
+SYNONYM 日常器用 銃子 铳子/冲子
+SYNONYM 日常器用 電筒/手電筒 电筒/手电筒/手电/电棒儿
+SYNONYM 日常器用 電磁感應燈 电磁感应灯/无极灯
+SYNONYM 日常器用 電磁爐 电磁炉/电磁灶
+SYNONYM 日常器用 電漿電視 等离子电视
+SYNONYM 日常器用 電熱壺/電熱水壺/快煮壺 电热壶/电热水壶
+SYNONYM 日常器用 電鍋 电饭锅/电饭煲
+SYNONYM 日常器用 電鬍刀/電動刮鬍刀 电胡刀/电动剃须刀
+SYNONYM 日常器用 圖釘 图钉/摁钉儿
+SYNONYM 日常器用 監視器 监视器/电眼/电子眼
+SYNONYM 日常器用 墨鏡/太陽眼鏡 墨镜/太阳镜
+SYNONYM 日常器用 慕丝/慕斯 慕丝/摩丝
+SYNONYM 日常器用 數位相機/數位照相機 数字相机/数码相机/数码照相机
+SYNONYM 日常器用 數位電視 数字电视/数码电视
+SYNONYM 日常器用 標示牌 标示牌/标牌
+SYNONYM 日常器用 熨衣板/燙衣板/燙馬/熨馬 熨衣板/烫衣板
+SYNONYM 日常器用 膠膜 塑封
+SYNONYM 日常器用 衛生筷/免洗筷 卫生筷/一次性筷子
+SYNONYM 日常器用 複印機/影印機 复印机
+SYNONYM 日常器用 髮夾 发夹/发卡
+SYNONYM 日常器用 橡皮/橡皮擦/擦子/擦布 橡皮/橡皮擦
+SYNONYM 日常器用 橡皮圈/橡皮筋 橡皮圈/橡皮筋/皮筋/皮筋儿/猴筋儿/猴皮筋儿
+SYNONYM 日常器用 壓力鍋/快鍋 压力锅/高压锅
+SYNONYM 日常器用 壓克力/亞克力 压克力/有机玻璃
+SYNONYM 日常器用 避難包/救難包 避难包/应急包
+SYNONYM 日常器用 黏扣帶/魔鬼沾/魔鬼粘/魔鬼氈 黏扣带/魔鬼沾/魔鬼粘/魔鬼毡/魔术贴
+SYNONYM 日常器用 雙槽洗衣機 双缸洗衣机/双桶洗衣机
+SYNONYM 日常器用 類比電視 模拟电视
+SYNONYM 日常器用 爐條/爐橋 炉条
+SYNONYM 日常器用 護貝 过塑/塑封
+SYNONYM 日常器用 魔術方塊 魔方
+SYNONYM 日常器用 顯像管/映像管 显像管
+HOMONYM 日常器用 安心卡 安心卡
+HOMONYM 日常器用 延長線 延长线
+HOMONYM 日常器用 電子眼 电子眼
+HOMONYM 日常器用 影集 影集
+ZH-TW 日常器用 大碗公 
+ZH-TW 日常器用 大聲公 
+ZH-TW 日常器用 免治 
+ZH-TW 日常器用 版模 
+ZH-TW 日常器用 童玩 
+ZH-TW 日常器用 零組件 
+ZH-TW 日常器用 電碗 
+ZH-TW 日常器用 霹靂包 
+ZH-CN 日常器用  一头儿沉
+ZH-CN 日常器用  一米线
+ZH-CN 日常器用  一体式
+ZH-CN 日常器用  一键式
+ZH-CN 日常器用  马桶包
+ZH-CN 日常器用  不干胶
+ZH-CN 日常器用  牙具
+ZH-CN 日常器用  风挡
+ZH-CN 日常器用  电珠
+ZH-CN 日常器用  白色垃圾
+ZH-CN 日常器用  交电
+ZH-CN 日常器用  尖劈
+ZH-CN 日常器用  米尺
+ZH-CN 日常器用  米袋子
+ZH-CN 日常器用  老虎灶
+ZH-CN 日常器用  冷柜
+ZH-CN 日常器用  听子
+ZH-CN 日常器用  沐浴机
+ZH-CN 日常器用  乳状液/乳浊液
+ZH-CN 日常器用  单放机
+ZH-CN 日常器用  坤包
+ZH-CN 日常器用  坤表
+ZH-CN 日常器用  泡子
+ZH-CN 日常器用  芭蕾灯
+ZH-CN 日常器用  表笔
+ZH-CN 日常器用  雨披
+ZH-CN 日常器用  画镜线/挂镜线
+ZH-CN 日常器用  柜机
+ZH-CN 日常器用  洁具
+ZH-CN 日常器用  钢包
+ZH-CN 日常器用  钢种/钢精
+ZH-CN 日常器用  展橱
+ZH-CN 日常器用  浴液
+ZH-CN 日常器用  粉连纸
+ZH-CN 日常器用  起墙
+ZH-CN 日常器用  彩卷
+ZH-CN 日常器用  彩管
+ZH-CN 日常器用  移动电视
+ZH-CN 日常器用  麻经/麻经儿
+ZH-CN 日常器用  药械
+ZH-CN 日常器用  黑超
+ZH-CN 日常器用  塑料磁/塑胶磁
+ZH-CN 日常器用  滚屏
+ZH-CN 日常器用  蜂窝煤
+ZH-CN 日常器用  炉盘/燃气灶
+ZH-CN 日常器用  燃具
+ZH-CN 日常器用  蹲坑
+ZH-CN 日常器用  组灯
+ZH-CN 日常器用  绷簧
+ZH-CN 日常器用  脑包
+ZH-CN 日常器用  电脑枕/计算机枕
+ZH-CN 日常器用  软椅
+ZH-CN 日常器用  软装/软装修
+ZH-CN 日常器用  手撕袋/连卷袋/点断袋/撕拉袋
+ZH-CN 日常器用  闪粉
+ZH-CN 日常器用  饸饹床子
+ZH-CN 日常器用  线手套
+ZH-CN 日常器用  日杂
+ZH-CN 日常器用  钢口
+ZH-CN 日常器用  零部件
+SYNONYM 小吃＆點心 口香糖 口香糖/口胶/香口胶
+SYNONYM 小吃＆點心 牛奶糖 牛奶糖/奶糖
+SYNONYM 小吃＆點心 奶酪/芝士/乳酪/起士/起司 奶酪/芝士/乳酪/起士/起司/吉士
+SYNONYM 小吃＆點心 米香/米香餅 米香/米香饼/米通
+SYNONYM 小吃＆點心 豆花/豆腐腦 豆花/豆腐脑/豆腐花
+SYNONYM 小吃＆點心 貝果 贝果/百吉饼
+SYNONYM 小吃＆點心 梳打餅/蘇打餅/蘇打餅乾 梳打饼/苏打饼/苏打饼干/克力架
+SYNONYM 小吃＆點心 茶葉蛋 茶叶蛋/茶鸡蛋
+SYNONYM 小吃＆點心 零食/零嘴/零嘴兒 零食/零嘴/零嘴儿/零吃
+SYNONYM 小吃＆點心 慕絲/慕斯 慕丝/摩丝
+SYNONYM 小吃＆點心 優格 酸奶酪
+SYNONYM 小吃＆點心 優酪乳 优酪乳/酸奶/酸牛奶/酸凝酪
+SYNONYM 小吃＆點心 薯片/洋芋片 薯片/土豆片
+SYNONYM 小吃＆點心 鬆餅 松饼/窝夫/华夫饼/格子饼/压花蛋饼
+SYNONYM 小吃＆點心 冰品 冰品/冷食
+SYNONYM 小吃＆點心 冰淇淋 冰淇淋/冰激凌
+ZH-TW 小吃＆點心 黑輪 
+ZH-TW 小吃＆點心 霜淇淋 
+ZH-CN 小吃＆點心  曲奇
+ZH-CN 小吃＆點心  麻团
+ZH-CN 小吃＆點心  糖食
+ZH-CN 小吃＆點心  饹馇
+SYNONYM 佐料 人造奶油 人造奶油/珠酯/人造黄油
+SYNONYM 佐料 低鈉鹽 低钠盐/代用盐
+SYNONYM 佐料 沙拉油 色拉油
+SYNONYM 佐料 咖哩 咖喱
+SYNONYM 佐料 雞粉/雞精粉 鸡粉/鸡精粉/鸡精
+ZH-TW 佐料 太白粉 
+ZH-CN 佐料  水生粉/水淀粉
+ZH-CN 佐料  生粉
+ZH-CN 佐料  糖稀
+ZH-CN 佐料  辅料
+SYNONYM 食材 土雞蛋 土鸡蛋/笨鸡蛋
+SYNONYM 食材 五花肉/三層肉 五花肉
+SYNONYM 食材 可可 可可/蔻蔻
+SYNONYM 食材 甘薯/白薯/地瓜/紅薯/番薯/蕃薯 甘薯/白薯/地瓜/红薯/番薯/蕃薯/红苕
+SYNONYM 食材 甘藍/甘藍菜/包心菜/捲心菜/洋白菜/結球甘藍/高麗菜 甘蓝/甘蓝菜/包心菜/卷心菜/洋白菜/结球甘蓝/圆白菜/莲花白
+SYNONYM 食材 米粉 米粉/米面
+SYNONYM 食材 肉禽 肉禽/菜禽
+SYNONYM 食材 冷凍蔬菜 冷冻蔬菜/速冻蔬菜
+SYNONYM 食材 芒果/檬果 芒果/檬果/杧果
+SYNONYM 食材 花生/落花生/長生果/土豆 花生/落花生/长生果
+SYNONYM 食材 花豆/大紅豆 花豆/红腰豆
+SYNONYM 食材 虱目魚/麻虱目 虱目鱼/遮目鱼/白鳞鲻
+SYNONYM 食材 青花菜/綠菜花/綠花菜/綠花椰菜 青花菜/绿菜花/西兰花
+SYNONYM 食材 非鯽/非洲鯽魚/吳郭魚 非鲫/非洲鲫鱼/罗非鱼
+SYNONYM 食材 洋芋/山藥蛋/馬鈴薯 洋芋/山药蛋/马铃薯/土豆
+SYNONYM 食材 苡仁/薏仁/薏米/薏仁米/薏苡仁 苡仁/薏仁/薏米/薏仁米/薏苡仁/药玉米
+SYNONYM 食材 虹鱒/虹鱒魚/麥奇鉤吻鱒 虹鳟/虹鳟鱼/麦奇大麻哈鱼
+SYNONYM 食材 馬駮/馬鮫魚/土托魚/土魠魚/塗托魚 马鲛/马鲛鱼
+SYNONYM 食材 甜橙 甜橙/广柑
+SYNONYM 食材 魚翅 鱼翅/翅子
+SYNONYM 食材 番石榴/芭樂 番石榴/鸡矢果
+SYNONYM 食材 番茄/蕃茄 番茄/蕃茄/西红柿
+SYNONYM 食材 童子雞 童子鸡/笋鸡
+SYNONYM 食材 菜豆/四季豆 菜豆/四季豆/芸豆
+SYNONYM 食材 聖女番茄 圣女果
+SYNONYM 食材 葡萄柚 葡萄柚/西柚
+SYNONYM 食材 裡脊/裡脊肉/里肌/里肌肉 里脊/里脊肉
+SYNONYM 食材 酪梨 鳄梨
+SYNONYM 食材 蒟蒻 蒟蒻/魔芋
+SYNONYM 食材 蓮霧 莲雾/洋蒲桃
+SYNONYM 食材 醃肉/鹹肉 腌肉/咸肉/盐肉/渍肉
+SYNONYM 食材 鮪魚/金槍魚 鲔鱼/金枪鱼/吞拿鱼
+SYNONYM 食材 鮭魚 鲑鱼/三文鱼/大马哈鱼/大麻哈鱼
+SYNONYM 食材 雞子/雞蛋/雞卵 鸡子/鸡蛋/鸡卵/鸡子儿/白果儿
+SYNONYM 食材 鯧/鯧魚 鲳/鲳鱼/平鱼
+SYNONYM 食材 鯷/苦蚵仔 鳀/日本鳀
+SYNONYM 食材 蘿蔔/萊菔/蘆菔/菜頭 萝卜/莱菔/芦菔
+HOMONYM 食材 土豆 土豆
+ZH-TW 食材 大陸妹 
+ZH-TW 食材 放山雞 
+ZH-TW 食材 棒棒腿 
+ZH-CN 食材  粗菜/大路菜
+ZH-CN 食材  无公害蔬菜
+ZH-CN 食材  老玉米
+ZH-CN 食材  豆面
+ZH-CN 食材  返销粮
+ZH-CN 食材  青红丝
+ZH-CN 食材  俏头
+ZH-CN 食材  原粮
+ZH-CN 食材  特菜
+ZH-CN 食材  商品粮
+ZH-CN 食材  排酸肉/冷却排酸肉
+ZH-CN 食材  棒渣/棒渣子
+ZH-CN 食材  净菜/新鲜消毒蔬菜
+ZH-CN 食材  囊膪/囊揣
+ZH-CN 食材  红果
+ZH-CN 食材  细菜
+ZH-CN 食材  放心肉
+SYNONYM 飲料 三合一咖啡 一加二咖啡
+SYNONYM 飲料 奶精 奶精/咖啡伴侣
+SYNONYM 飲料 生啤/鮮啤/生啤酒/鮮啤酒 生啤/鲜啤/生啤酒/鲜啤酒/扎啤
+SYNONYM 飲料 利樂包/鋁箔包 利乐包/软包装
+SYNONYM 飲料 汽泡酒 汽酒
+SYNONYM 飲料 烏龍茶 乌龙茶/青茶
+SYNONYM 飲料 純水 纯净水
+SYNONYM 飲料 茶包/袋茶 茶包/袋泡茶
+SYNONYM 飲料 涼開水 凉开水/凉白开
+SYNONYM 飲料 橙汁/柳橙汁 橙汁/柳橙汁/橙子汁
+SYNONYM 飲料 還原乳 还原乳/还原奶/复原乳
+SYNONYM 飲料 罐裝啤酒 罐装啤酒/听啤/听装啤酒
+ZH-TW 飲料 奶球/奶油球 
+ZH-TW 飲料 米酒頭 
+ZH-TW 飲料 柳丁汁 
+ZH-TW 飲料 隨身包 
+ZH-CN 飲料  干白
+ZH-CN 飲料  干啤
+ZH-CN 飲料  达标水
+ZH-CN 飲料  麦乳精
+ZH-CN 飲料  固体饮料
+ZH-CN 飲料  果茶
+ZH-CN 飲料  直饮水
+ZH-CN 飲料  补液
+ZH-CN 飲料  液态奶
+ZH-CN 飲料  袋装水
+SYNONYM 餐飲店 速食店 快餐店
+SYNONYM 餐飲店 燒烤店 烧烤店/串吧/烧烤吧
+ZH-TW 餐飲店 冰店 
+ZH-TW 餐飲店 居酒屋 
+ZH-CN 餐飲店  茶吧
+ZH-CN 餐飲店  饭庄
+SYNONYM 餐點＆菜餚 比薩/披薩 比萨/比萨饼
+SYNONYM 餐點＆菜餚 沙拉 沙拉/色拉/沙律
+SYNONYM 餐點＆菜餚 法國麵包/法式長棍麵包 法国面包/法式长棍面包/长法棍
+SYNONYM 餐點＆菜餚 泡麵/速食麵 泡面/方便面/即食面/快速面/快熟面/快餐面
+SYNONYM 餐點＆菜餚 料理包/調理包/食物調理包 料理包/调理包
+SYNONYM 餐點＆菜餚 盒飯/便當/飯盒 盒饭
+SYNONYM 餐點＆菜餚 速食 快餐
+SYNONYM 餐點＆菜餚 漢堡 汉堡/汉堡包
+SYNONYM 餐點＆菜餚 蓋飯 盖饭/盖浇饭
+SYNONYM 餐點＆菜餚 德國豬腳 德国猪脚/德国咸猪手
+HOMONYM 餐點＆菜餚 燴飯 烩饭
+ZH-TW 餐點＆菜餚 大麥克 
+ZH-TW 餐點＆菜餚 合菜 
+ZH-TW 餐點＆菜餚 肉燥 
+ZH-TW 餐點＆菜餚 商業午餐 
+ZH-TW 餐點＆菜餚 鹹蛋苦瓜 
+ZH-CN 餐點＆菜餚  工作餐
+ZH-CN 餐點＆菜餚  全家福
+ZH-CN 餐點＆菜餚  特菜
+ZH-CN 餐點＆菜餚  蛋羹/鸡蛋羹
+ZH-CN 餐點＆菜餚  菜点
+ZH-CN 餐點＆菜餚  菜码/面码
+ZH-CN 餐點＆菜餚  饸饹
+ZH-CN 餐點＆菜餚  冷盆
+ZH-CN 餐點＆菜餚  麻豆
+SYNONYM 其他 冷凍食品 冷冻食品/速冻食品
+SYNONYM 其他 食品添加物 食品添加剂
+SYNONYM 其他 食譜 食谱/菜谱
+SYNONYM 其他 酒會 酒会/冷餐会
+SYNONYM 其他 基因改造食品 基因改造食品/转基因食品
+SYNONYM 其他 菜單 菜单/菜谱
+SYNONYM 其他 糯米紙 糯米纸/江米纸
+SYNONYM 其他 罐裝 罐装/听装
+HOMONYM 其他 西餐秀 西餐秀
+HOMONYM 其他 雙拼 双拼
+HOMONYM 其他 雞精 鸡精
+ZH-TW 其他 內用 
+ZH-TW 其他 好料 
+ZH-TW 其他 副食品 
+ZH-TW 其他 梅花餐 
+ZH-TW 其他 黑白切 
+ZH-TW 其他 彈牙 
+ZH-CN 其他  包席/包桌
+ZH-CN 其他  有机食品
+ZH-CN 其他  入伙
+ZH-CN 其他  三绿工程
+ZH-CN 其他  大油
+ZH-CN 其他  小饭桌
+ZH-CN 其他  开小灶
+ZH-CN 其他  无公害食品
+ZH-CN 其他  欠火
+ZH-CN 其他  代宰制
+ZH-CN 其他  布菜
+ZH-CN 其他  生物食品
+ZH-CN 其他  白案/面案
+ZH-CN 其他  吃大灶
+ZH-CN 其他  吃小灶/吃偏饭
+ZH-CN 其他  吃派饭
+ZH-CN 其他  团粉
+ZH-CN 其他  串味/串味儿
+ZH-CN 其他  派饭
+ZH-CN 其他  就餐
+ZH-CN 其他  菜金
+ZH-CN 其他  菜窖
+ZH-CN 其他  酵子
+ZH-CN 其他  餐位
+ZH-CN 其他  剂子
+ZH-CN 其他  红案/菜案
+ZH-CN 其他  强化食品/营养强化食品
+ZH-CN 其他  绿色食品
+ZH-CN 其他  生态食品
+ZH-CN 其他  起伙
+SYNONYM 服飾 工作服 工作服/职业装
+SYNONYM 服飾 不織布 不织布/无纺织布/非织造布
+SYNONYM 服飾 內搭褲 打底裤
+SYNONYM 服飾 太空衣/太空服 太空衣/太空服/宇宙服/宇航服/航天服
+SYNONYM 服飾 卡其/卡其布 卡其/卡其布/咔叽
+SYNONYM 服飾 奶罩/乳罩/胸罩 奶罩/乳罩/胸罩/文胸
+SYNONYM 服飾 成衣 成衣/成服
+SYNONYM 服飾 羽絨衣/羽絨服/羽毛衣 羽绒衣/羽绒服
+SYNONYM 服飾 亞克力纖維/壓克力纖維 亞克力纖維/腈纶
+SYNONYM 服飾 拉拉隊服/啦啦隊服/加油服 拉拉队服/啦啦队服/助威服
+SYNONYM 服飾 風衣 风衣/风雨衣
+SYNONYM 服飾 套裝 套装/套服
+SYNONYM 服飾 套褲 套裤/袜裤
+SYNONYM 服飾 迷你裙 迷你裙/超短裙
+SYNONYM 服飾 馬海/馬海毛/毛海 马海/马海毛
+SYNONYM 服飾 袖章/臂章 袖章/臂章/袖标
+SYNONYM 服飾 連衣裙/連身裙 连衣裙
+SYNONYM 服飾 帽徽 帽徽/帽花
+SYNONYM 服飾 衛生衣 卫生衣/棉毛衫
+SYNONYM 服飾 衛生褲 卫生裤/秋裤/棉毛裤
+SYNONYM 服飾 褲襪 裤袜/袜裤/连裤袜
+SYNONYM 服飾 縮水 缩水/抽水
+SYNONYM 服飾 鯊魚衣/鯊魚服 鲨鱼衣/鲨鱼服/快皮
+SYNONYM 服飾 露臍裝 露脐装/脐装
+SYNONYM 服飾 襯衫 衬衫/衬衣
+ZH-TW 服飾 內在美 
+ZH-TW 服飾 內裡 
+ZH-TW 服飾 西裝裙 
+ZH-CN 服飾  下装
+ZH-CN 服飾  凡尔丁
+ZH-CN 服飾  文化衫
+ZH-CN 服飾  毛活
+ZH-CN 服飾  毛涤/涤毛
+ZH-CN 服飾  正装
+ZH-CN 服飾  皮猴儿
+ZH-CN 服飾  皮筒子
+ZH-CN 服飾  华达呢
+ZH-CN 服飾  汗背心
+ZH-CN 服飾  劳动布
+ZH-CN 服飾  的确良/的确凉
+ZH-CN 服飾  恤衫
+ZH-CN 服飾  派力司
+ZH-CN 服飾  海魂衫
+ZH-CN 服飾  高腰/高靿
+ZH-CN 服飾  袖箍
+ZH-CN 服飾  涤棉/棉涤/棉的确良/棉的确凉
+ZH-CN 服飾  街坊装
+ZH-CN 服飾  滑雪衫
+ZH-CN 服飾  路服
+ZH-CN 服飾  聪明布
+ZH-CN 服飾  翻行头
+ZH-CN 服飾  围嘴儿
+ZH-CN 服飾  绒衣
+ZH-CN 服飾  裤兜
+ZH-CN 服飾  镏子
+ZH-CN 服飾  闪电装
+ZH-CN 服飾  外贸服装
+ZH-CN 服飾  一步裙
+SYNONYM 居住＆建築 二手房/二手屋/中古屋 二手房/二手楼
+SYNONYM 居住＆建築 三合板/三夾板 三合板
+SYNONYM 居住＆建築 土地所有權狀 土地所有权证
+SYNONYM 居住＆建築 戶口名簿 户口本/户口簿/户口本儿
+SYNONYM 居住＆建築 地下室 地下室/地库
+SYNONYM 居住＆建築 地磚 地砖/地板砖
+SYNONYM 居住＆建築 成屋 现房
+SYNONYM 居住＆建築 池堂/池湯/浴池 池堂/池汤/浴池/池塘
+SYNONYM 居住＆建築 住家 住家/住家儿
+SYNONYM 居住＆建築 夾層屋 夹层屋/复式楼/复式住宅
+SYNONYM 居住＆建築 汽車旅館/摩鐵 汽车旅馆
+SYNONYM 居住＆建築 身分證/國民身分證 身份证
+SYNONYM 居住＆建築 房屋所有權狀 房本/房产证
+SYNONYM 居住＆建築 炒房 炒房/炒楼
+SYNONYM 居住＆建築 便所/廁所/洗手間 便所/厕所/洗手间/卫生间
+SYNONYM 居住＆建築 城市化程度/都市化程度 城市化程度/都市化程度/城市化率/城市化水平
+SYNONYM 居住＆建築 城市更新/都市更新/都更 城市更新/都市更新/旧城改造
+SYNONYM 居住＆建築 建築物/建物 建筑物
+SYNONYM 居住＆建築 建築執照/建照 建筑执照
+SYNONYM 居住＆建築 洞房/新房 洞房/新房/婚房
+SYNONYM 居住＆建築 國宅/國民住宅 经适房/经济适用房
+SYNONYM 居住＆建築 掩埋場 填埋场/堆填场/填埋区
+SYNONYM 居住＆建築 組合屋 活动板房
+SYNONYM 居住＆建築 設籍 落户
+SYNONYM 居住＆建築 跨度/跨距 跨度/跨径
+SYNONYM 居住＆建築 違建/違章建築 违建/违章建筑/违规建筑
+SYNONYM 居住＆建築 預售屋 期房
+SYNONYM 居住＆建築 樣品屋 样板间/样板房
+SYNONYM 居住＆建築 壁紙 壁纸/墙纸
+SYNONYM 居住＆建築 壁櫥 壁橱/壁柜
+SYNONYM 居住＆建築 辦公大樓 写字楼
+SYNONYM 居住＆建築 環境品質 环境品质/环境质量
+SYNONYM 居住＆建築 雙人房 双人房/标间/双人间/标准间
+SYNONYM 居住＆建築 鷹架 脚手架
+HOMONYM 居住＆建築 違規房 违规房
+ZH-TW 居住＆建築 十二項建設 
+ZH-TW 居住＆建築 十大建設/十項建設 
+ZH-TW 居住＆建築 戶籍謄本 
+ZH-TW 居住＆建築 永續城市 
+ZH-TW 居住＆建築 地目 
+ZH-TW 居住＆建築 成屋市場 
+ZH-TW 居住＆建築 老人公寓 
+ZH-TW 居住＆建築 自走屋 
+ZH-TW 居住＆建築 房仲業 
+ZH-TW 居住＆建築 幽靈人口 
+ZH-TW 居住＆建築 建地 
+ZH-TW 居住＆建築 建坪 
+ZH-TW 居住＆建築 建案 
+ZH-TW 居住＆建築 建商 
+ZH-TW 居住＆建築 建蔽率 
+ZH-TW 居住＆建築 原鄉 
+ZH-TW 居住＆建築 蚊子館 
+ZH-TW 居住＆建築 國定古蹟 
+ZH-TW 居住＆建築 眷村 
+ZH-TW 居住＆建築 透天厝 
+ZH-TW 居住＆建築 番界 
+ZH-TW 居住＆建築 雅房 
+ZH-TW 居住＆建築 督工 
+ZH-TW 居住＆建築 境界線 
+ZH-TW 居住＆建築 衛生下水道 
+ZH-TW 居住＆建築 養生村 
+ZH-TW 居住＆建築 環境力 
+ZH-TW 居住＆建築 廳舍 
+ZH-CN 居住＆建築  一户一验/一房一验/分户验收
+ZH-CN 居住＆建築  一轴四馆
+ZH-CN 居住＆建築  三包
+ZH-CN 居住＆建築  上马
+ZH-CN 居住＆建築  上料架
+ZH-CN 居住＆建築  小产权房
+ZH-CN 居住＆建築  干打垒
+ZH-CN 居住＆建築  公房
+ZH-CN 居住＆建築  勾地
+ZH-CN 居住＆建築  双限双竞
+ZH-CN 居住＆建築  毛坯房
+ZH-CN 居住＆建築  水房
+ZH-CN 居住＆建築  写字间
+ZH-CN 居住＆建築  北漂
+ZH-CN 居住＆建築  半拉子工程
+ZH-CN 居住＆建築  生活垃圾
+ZH-CN 居住＆建築  动迁
+ZH-CN 居住＆建築  动窝
+ZH-CN 居住＆建築  危改区
+ZH-CN 居住＆建築  吊顶
+ZH-CN 居住＆建築  回迁户
+ZH-CN 居住＆建築  地板革
+ZH-CN 居住＆建築  地暖/地板辐射采暖
+ZH-CN 居住＆建築  地漏
+ZH-CN 居住＆建築  地标建筑
+ZH-CN 居住＆建築  宅基地
+ZH-CN 居住＆建築  安居工程
+ZH-CN 居住＆建築  安置房
+ZH-CN 居住＆建築  庄稼院
+ZH-CN 居住＆建築  托管库
+ZH-CN 居住＆建築  两限房
+ZH-CN 居住＆建築  低层住宅
+ZH-CN 居住＆建築  小区/住宅小区
+ZH-CN 居住＆建築  尾巴工程
+ZH-CN 居住＆建築  沉井
+ZH-CN 居住＆建築  供暖
+ZH-CN 居住＆建築  单元房
+ZH-CN 居住＆建築  单元楼
+ZH-CN 居住＆建築  周转房
+ZH-CN 居住＆建築  居委会/居民委员会
+ZH-CN 居住＆建築  居民点
+ZH-CN 居住＆建築  居改非
+ZH-CN 居住＆建築  房改
+ZH-CN 居住＆建築  房改房
+ZH-CN 居住＆建築  房基
+ZH-CN 居住＆建築  披绿装
+ZH-CN 居住＆建築  花池子
+ZH-CN 居住＆建築  采暖
+ZH-CN 居住＆建築  保洁
+ZH-CN 居住＆建築  保障房
+ZH-CN 居住＆建築  城中村
+ZH-CN 居住＆建築  城市圈
+ZH-CN 居住＆建築  城建
+ZH-CN 居住＆建築  城镇化
+ZH-CN 居住＆建築  封顶
+ZH-CN 居住＆建築  穿靴戴帽
+ZH-CN 居住＆建築  统规统建
+ZH-CN 居住＆建築  胡子工程
+ZH-CN 居住＆建築  限价房
+ZH-CN 居住＆建築  形象工程/面子工程
+ZH-CN 居住＆建築  套均
+ZH-CN 居住＆建築  家装
+ZH-CN 居住＆建築  家裝污染
+ZH-CN 居住＆建築  捂盘惜售
+ZH-CN 居住＆建築  起墙
+ZH-CN 居住＆建築  高档房
+ZH-CN 居住＆建築  商务楼
+ZH-CN 居住＆建築  商住楼
+ZH-CN 居住＆建築  商品房
+ZH-CN 居住＆建築  宿办楼
+ZH-CN 居住＆建築  盘炕
+ZH-CN 居住＆建築  移动屋
+ZH-CN 居住＆建築  跃层
+ZH-CN 居住＆建築  城市带/城市圈/都市圈
+ZH-CN 居住＆建築  掌子/掌子面
+ZH-CN 居住＆建築  散水
+ZH-CN 居住＆建築  散水坡
+ZH-CN 居住＆建築  硬环境
+ZH-CN 居住＆建築  筒子楼
+ZH-CN 居住＆建築  集体户
+ZH-CN 居住＆建築  集体户口
+ZH-CN 居住＆建築  黑地
+ZH-CN 居住＆建築  廉租房
+ZH-CN 居住＆建築  新盘
+ZH-CN 居住＆建築  楼花
+ZH-CN 居住＆建築  楼盘
+ZH-CN 居住＆建築  楼道
+ZH-CN 居住＆建築  群租
+ZH-CN 居住＆建築  护壁/墙裙
+ZH-CN 居住＆建築  墙围
+ZH-CN 居住＆建築  腐败房
+ZH-CN 居住＆建築  警营
+ZH-CN 居住＆建築  创卫
+ZH-CN 居住＆建築  暂住证
+ZH-CN 居住＆建築  标志性建筑
+ZH-CN 居住＆建築  热土
+ZH-CN 居住＆建築  软环境
+ZH-CN 居住＆建築  错层/错层式住宅
+ZH-CN 居住＆建築  飘窗
+ZH-CN 居住＆建築  低飘窗
+ZH-CN 居住＆建築  鸳鸯房
+ZH-CN 居住＆建築  鸳鸯楼
+ZH-CN 居住＆建築  地库
+ZH-CN 居住＆建築  危改
+ZH-CN 居住＆建築  危改区
+ZH-CN 居住＆建築  尾工
+ZH-CN 居住＆建築  应急建筑
+ZH-CN 居住＆建築  房托
+ZH-CN 居住＆建築  房展
+ZH-CN 居住＆建築  房补/房贴
+ZH-CN 居住＆建築  模纹花坛/镶嵌花坛
+ZH-CN 居住＆建築  还迁
+ZH-CN 居住＆建築  钓鱼工程
+ZH-CN 居住＆建築  门前三包
+ZH-CN 居住＆建築  开荒保洁/装修后保洁
+ZH-CN 居住＆建築  拱北
+ZH-CN 居住＆建築  统建
+ZH-CN 居住＆建築  晾台
+ZH-CN 居住＆建築  搞卫生
+ZH-CN 居住＆建築  镇子
+SYNONYM 水運 氣墊船 气垫船/腾空船
+ZH-CN 水運  公路港
+ZH-CN 水運  客滚船
+ZH-CN 水運  断航期
+ZH-CN 水運  舾装
+SYNONYM 空運 空巴/空中巴士 空巴/空中巴士/空客/空中客车
+SYNONYM 空運 空橋/登機橋 空桥/登机桥/廊桥/登机廊桥
+SYNONYM 空運 候機室/登機室 候机室
+SYNONYM 空運 航廈/航站楼/候机楼
+SYNONYM 空運 報到櫃檯 值机岛
+SYNONYM 空運 登機門 登机口
+SYNONYM 空運 登機證 登机证/登机牌/登机卡
+SYNONYM 空運 黑盒子 黑匣子
+SYNONYM 空運 儀降 盲降
+SYNONYM 空運 噴射機 喷气式飞机
+ZH-CN 空運  对空台
+ZH-CN 空運  空乘
+ZH-CN 空運  商飞
+ZH-CN 空運  银燕
+SYNONYM 陸運 油電車/油電混合車 油电车/油电混合动力车
+SYNONYM 陸運 入檔/打檔 挂挡
+SYNONYM 陸運 小貨車 小货车/微型车
+SYNONYM 陸運 小綿羊/輕型機車 轻便摩托车
+SYNONYM 陸運 小轎車 小轿车/小卧车
+SYNONYM 陸運 內胎 内胎/内带/里带
+SYNONYM 陸運 公共交通/大眾運輸 公共交通/公交
+SYNONYM 陸運 公共汽車/公車 公共汽车/公交/公汽/公交车
+SYNONYM 陸運 公車站 公交站
+SYNONYM 陸運 公車站牌 公交車站牌
+SYNONYM 陸運 公車專用道 公交车道/公交车专用道
+SYNONYM 陸運 升擋/升檔 升挡
+SYNONYM 陸運 手排/手排擋/手排檔 手排/手排挡/手动挡
+SYNONYM 陸運 月臺門 屏蔽门
+SYNONYM 陸運 加班車 加班车/加车
+SYNONYM 陸運 外胎 外胎/外带
+SYNONYM 陸運 打空檔 挂空挡
+SYNONYM 陸運 末班車 末班车/末车
+SYNONYM 陸運 瓦斯車 天然气汽车
+SYNONYM 陸運 交流道 匝道
+SYNONYM 陸運 交通車 交通车/班车
+SYNONYM 陸運 共乘 拼车
+SYNONYM 陸運 自排/自動擋/自動檔 自排/自动挡
+SYNONYM 陸運 助力車 助力车/电动车
+SYNONYM 陸運 快速道/快速道路 快速路
+SYNONYM 陸運 車斗 车斗/跨斗
+SYNONYM 陸運 車胎/輪胎 车胎/轮胎/车带/轮带
+SYNONYM 陸運 拖斗 拖斗/挂斗
+SYNONYM 陸運 拖車 拖车/挂车
+SYNONYM 陸運 朋馳/賓士 大奔/奔驰
+SYNONYM 陸運 空擋/空檔 空挡
+SYNONYM 陸運 便道 便道/辅道
+SYNONYM 陸運 後車廂 后车厢/后备厢
+SYNONYM 陸運 後視鏡/後照鏡 后视镜
+SYNONYM 陸運 砂石車 砂石车/泥头车/渣土车
+SYNONYM 陸運 計程車/出租車/出租汽車/小黃 计程车/出租车/出租汽车/的士
+SYNONYM 陸運 計費表 计价器
+SYNONYM 陸運 起點站 始发站
+SYNONYM 陸運 追撞 追尾
+SYNONYM 陸運 排擋/排檔 排挡
+SYNONYM 陸運 速可達/速克達 速可达/速克达/踏板摩托车
+SYNONYM 陸運 博愛座 老弱病残孕专座
+SYNONYM 陸運 單車/自行車/腳踏車/鐵馬 单车/自行车/脚踏车
+SYNONYM 陸運 換擋/換檔 换挡
+SYNONYM 陸運 登山車 登山车/山地车
+SYNONYM 陸運 搭計程車 搭计程车/搭出租车/打车/打的
+SYNONYM 陸運 路肩 路肩/应急车道
+SYNONYM 陸運 磁浮列車 磁浮列车/磁悬浮列车
+SYNONYM 陸運 輕軌/輕軌鐵路 轻轨/轻轨铁路/城铁/城市铁路
+SYNONYM 陸運 摩托車/機車 摩托车/摩托
+SYNONYM 陸運 調撥車道 可变车道/潮汐车道
+SYNONYM 陸運 髮夾彎 发夹弯/发卡弯/掉头弯
+SYNONYM 陸運 環道 环路
+SYNONYM 陸運 聯結車 拖挂车
+SYNONYM 陸運 轉運站 转运站/换乘站
+SYNONYM 陸運 雙層公車 双层公交车
+SYNONYM 陸運 獸力車 兽力车/畜力车
+SYNONYM 陸運 轎車/房車 轿车
+SYNONYM 陸運 避車道/避車彎 避车道
+HOMONYM 陸運 上行 上行
+HOMONYM 陸運 下行 下行
+HOMONYM 陸運 公車 公车
+HOMONYM 陸運 自駕車 自驾车
+HOMONYM 陸運 房車 房车
+HOMONYM 陸運 重車 重车
+HOMONYM 陸運 普快車 普快车
+HOMONYM 陸運 黑頭車 黑头车
+HOMONYM 陸運 壓車 压车
+HOMONYM 陸運 座車 座车
+ZH-TW 陸運 尬車 
+ZH-TW 陸運 軋車 
+ZH-TW 陸運 重車/重機 
+ZH-TW 陸運 三貼 
+ZH-TW 陸運 三鐵共構 
+ZH-TW 陸運 小發財/發財車 
+ZH-TW 陸運 中古車 
+ZH-TW 陸運 平快車 
+ZH-TW 陸運 白牌車 
+ZH-TW 陸運 休息站 
+ZH-TW 陸運 托拉庫/拖拉庫 
+ZH-TW 陸運 自小客車 
+ZH-TW 陸運 自用車 
+ZH-TW 陸運 泡水車 
+ZH-TW 陸運 胖卡 
+ZH-TW 陸運 重機車 
+ZH-TW 陸運 捷運/大眾捷運系統 
+ZH-TW 陸運 捷運工程 
+ZH-TW 陸運 貨卡 
+ZH-TW 陸運 電聯車 
+ZH-TW 陸運 鐵牛車 
+ZH-CN 陸運  七人车
+ZH-CN 陸運  大篷车
+ZH-CN 陸運  公交卡/公交一卡通
+ZH-CN 陸運  气车
+ZH-CN 陸運  车皮/火车皮
+ZH-CN 陸運  车帮
+ZH-CN 陸運  加快
+ZH-CN 陸運  包乘制
+ZH-CN 陸運  半挂车
+ZH-CN 陸運  平板车/平板三轮车
+ZH-CN 陸運  打表
+ZH-CN 陸運  甩站
+ZH-CN 陸運  立交桥
+ZH-CN 陸運  车份儿/份儿钱
+ZH-CN 陸運  动车
+ZH-CN 陸運  动车组
+ZH-CN 陸運  低挡
+ZH-CN 陸運  快客
+ZH-CN 陸運  汽配
+ZH-CN 陸運  汽摩
+ZH-CN 陸運  和谐号
+ZH-CN 陸運  油路
+ZH-CN 陸運  直流车
+ZH-CN 陸運  城市轨道交通
+ZH-CN 陸運  城际铁路
+ZH-CN 陸運  重型汽车
+ZH-CN 陸運  面的
+ZH-CN 陸運  家庭车
+ZH-CN 陸運  特快/特别快车
+ZH-CN 陸運  高挡
+ZH-CN 陸運  停车区
+ZH-CN 陸運  通联卡
+ZH-CN 陸運  硬卧
+ZH-CN 陸運  硬席
+ZH-CN 陸運  硬座
+ZH-CN 陸運  黑车
+ZH-CN 陸運  摆渡车
+ZH-CN 陸運  路肩
+ZH-CN 陸運  道牙/马路牙子
+ZH-CN 陸運  摩的
+ZH-CN 陸運  整装车
+ZH-CN 陸運  蹭车
+ZH-CN 陸運  专列
+ZH-CN 陸運  临客
+ZH-CN 陸運  蓝牌
+ZH-CN 陸運  软卧
+ZH-CN 陸運  软席
+ZH-CN 陸運  软座
+ZH-CN 陸運  载重汽车
+ZH-CN 陸運  辅路/辅道
+ZH-CN 陸運  闷子车/闷罐车
+ZH-CN 陸運  驼峰
+ZH-CN 陸運  微型车
+ZH-CN 陸運  加车
+ZH-CN 陸運  助力车
+ZH-CN 陸運  应急停车带/紧急停车道
+ZH-CN 陸運  八纵八横
+ZH-CN 陸運  电单车
+ZH-CN 陸運  轻骑
+ZH-CN 陸運  车改
+ZH-CN 陸運  车补
+ZH-CN 陸運  铁老大
+ZH-CN 陸運  车居
+ZH-CN 陸運  车容
+ZH-CN 陸運  管段
+SYNONYM 交通管理 平交道 道口
+SYNONYM 交通管理 交通法規 交通法规/交规
+SYNONYM 交通管理 交警/交通警察 交警/交通警察/交通警
+SYNONYM 交通管理 尖峰時間 交通高峰/高峰时间
+SYNONYM 交通管理 行照/行車執照 行驶证
+SYNONYM 交通管理 快車道 快车道/快行线
+SYNONYM 交通管理 紐澤西護欄 新泽西护栏/新泽西式护栏
+SYNONYM 交通管理 高乘載車道/高乘載專用道 多成员车辆专用道/多成员车辆专用车道
+SYNONYM 交通管理 高峰時間/尖峰時間 高峰时间
+SYNONYM 交通管理 高峰期/尖峰期 高峰期
+SYNONYM 交通管理 假牌 假牌/套牌
+SYNONYM 交通管理 通關機/驗票閘門 闸机
+SYNONYM 交通管理 斑馬線 斑马线/人行横道
+SYNONYM 交通管理 慢車道 慢车道/慢行道
+SYNONYM 交通管理 駕訓班/汽車駕駛訓練班 驾校
+SYNONYM 交通管理 雙黃線 双黄线/中心双实线
+ZH-TW 交通管理 交通義警 
+ZH-TW 交通管理 回堵 
+ZH-TW 交通管理 紅單 
+ZH-TW 交通管理 飛安 
+ZH-TW 交通管理 義交/交通義警/義勇交通警察 
+ZH-TW 交通管理 劃座位 
+ZH-TW 交通管理 機車停等區 
+ZH-TW 交通管理 離峰期 
+ZH-CN 交通管理  一地两检
+ZH-CN 交通管理  劝睡区
+ZH-CN 交通管理  车本
+ZH-CN 交通管理  车管所/车辆管理所
+ZH-CN 交通管理  电子警察
+ZH-CN 交通管理  交通协管员
+ZH-CN 交通管理  里手
+ZH-CN 交通管理  咪表
+ZH-CN 交通管理  赶点
+ZH-CN 交通管理  排堵保畅
+ZH-CN 交通管理  添堵
+ZH-CN 交通管理  提速圈
+ZH-CN 交通管理  联检
+ZH-CN 交通管理  集疏运
+ZH-CN 交通管理  路卡
+ZH-CN 交通管理  路条
+ZH-CN 交通管理  路规
+ZH-CN 交通管理  隔离墩
+ZH-CN 交通管理  绿色通道
+ZH-CN 交通管理  轨道站/空轨站/轻轨站
+ZH-CN 交通管理  违规记分
+SYNONYM 其他 天橋/陸橋 天桥/过街桥/过街天桥
+SYNONYM 其他 月臺票 月台票/站台票
+SYNONYM 其他 快遞 快递/特快专递
+SYNONYM 其他 來回票/去回票 来回票/往返票
+SYNONYM 其他 飛行汽車/飛行車 飞行汽车
+SYNONYM 其他 徒步區/行人徒步區 步行街
+SYNONYM 其他 貨櫃 货柜/集装箱
+SYNONYM 其他 運能 运能/运力
+SYNONYM 其他 複合運輸 复合运输/多式联运
+SYNONYM 其他 導盲道 导盲道/盲道
+SYNONYM 其他 導盲磚 盲道砖
+SYNONYM 其他 排檔/排擋 排挡
+HOMONYM 其他 延長線 延长线
+HOMONYM 其他 脫線 脱线
+HOMONYM 其他 監理所 监理所
+ZH-TW 其他 早鳥票 
+ZH-CN 其他  一票式
+ZH-CN 其他  中转
+ZH-CN 其他  冬运
+ZH-CN 其他  正桥
+ZH-CN 其他  回空
+ZH-CN 其他  宅急送
+ZH-CN 其他  西气东输
+ZH-CN 其他  西电东送/西电东输
+ZH-CN 其他  免票
+ZH-CN 其他  封航
+ZH-CN 其他  春运
+ZH-CN 其他  乘务
+ZH-CN 其他  值乘
+ZH-CN 其他  航模
+ZH-CN 其他  暑运
+ZH-CN 其他  联调
+ZH-CN 其他  集运
+ZH-CN 其他  路风
+ZH-CN 其他  路难
+ZH-CN 其他  零担
+ZH-CN 其他  慢件
+ZH-CN 其他  管网
+ZH-CN 其他  驾龄
+ZH-CN 其他  封航令
+ZH-CN 其他  工交
+ZH-CN 其他  左行右立
+SYNONYM 消費購物 保存期限 保存期限/保质期
+SYNONYM 消費購物 保固 保修
+SYNONYM 消費購物 保固期 保修期
+SYNONYM 消費購物 展銷/展售 展销
+SYNONYM 消費購物 展櫃/展示櫃 展柜/展示柜/展橱
+SYNONYM 消費購物 破盤價 破盘价/破冰价
+SYNONYM 消費購物 售報機/販報機 售报机
+SYNONYM 消費購物 商業街/商店街 商业街
+SYNONYM 消費購物 推車/手推車 推车/手推车/手车
+SYNONYM 消費購物 販賣部 小卖部
+SYNONYM 消費購物 販賣機/自動販賣機 贩卖机/自动贩卖机/自动售货机
+SYNONYM 消費購物 散票 散票/零票
+SYNONYM 消費購物 超市/超級市場 超市/超级市场/自选市场/自选商场
+SYNONYM 消費購物 瑕疵品 残品/残次品
+SYNONYM 消費購物 置入式廣告 隐性广告/嵌入式广告/植入式广告
+SYNONYM 消費購物 零首期/零頭款 零首期/零首付
+SYNONYM 消費購物 綠色標誌/環境標誌/綠色標章 绿色标志/环境标志
+SYNONYM 消費購物 網購/網上購物/網路購物 网购/网上购物/网络购物
+SYNONYM 消費購物 熱門商品 热门商品/紧俏商品
+SYNONYM 消費購物 髮廊 发廊/发屋
+SYNONYM 消費購物 頭期款 头期款/首付
+SYNONYM 消費購物 擺攤/擺攤子/擺地攤 摆摊/摆摊子/摆地摊/练摊儿
+SYNONYM 消費購物 禮券 礼券/代币券/代金券
+HOMONYM 消費購物 定金 定金
+HOMONYM 消費購物 定錢 定钱
+HOMONYM 消費購物 消協 消协
+HOMONYM 消費購物 聯保 联保
+ZH-TW 消費購物 打書 
+ZH-TW 消費購物 正字標記 
+ZH-TW 消費購物 早鳥優惠 
+ZH-TW 消費購物 型錄式廣告 
+ZH-TW 消費購物 消基會/消費者文教基金會 
+ZH-TW 消費購物 理容院 
+ZH-TW 消費購物 超商 
+ZH-TW 消費購物 業配文 
+ZH-TW 消費購物 滿額禮 
+ZH-TW 消費購物 環保標章 
+ZH-TW 消費購物 藥妝店 
+ZH-CN 消費購物  找赎
+ZH-CN 消費購物  二路货
+ZH-CN 消費購物  人情消费
+ZH-CN 消費購物  三无产品
+ZH-CN 消費購物  三包
+ZH-CN 消費購物  夕阳市场
+ZH-CN 消費購物  大路货
+ZH-CN 消費購物  小票/购物小票
+ZH-CN 消費購物  马路市场
+ZH-CN 消費購物  友谊商店
+ZH-CN 消費購物  双信
+ZH-CN 消費購物  币市
+ZH-CN 消費購物  气站
+ZH-CN 消費購物  水吧
+ZH-CN 消費購物  车马店
+ZH-CN 消費購物  出票
+ZH-CN 消費購物  出摊儿
+ZH-CN 消費購物  生活资料/消费资料
+ZH-CN 消費購物  农批
+ZH-CN 消費購物  农贸市场
+ZH-CN 消費購物  名优产品
+ZH-CN 消費購物  名特优新
+ZH-CN 消費購物  两不找
+ZH-CN 消費購物  估堆儿
+ZH-CN 消費購物  报亭/报刊亭
+ZH-CN 消費購物  国优
+ZH-CN 消費購物  国烟
+ZH-CN 消費購物  外烟
+ZH-CN 消費購物  拆零
+ZH-CN 消費購物  明码标价
+ZH-CN 消費購物  返修
+ZH-CN 消費購物  俏卖/俏销
+ZH-CN 消費購物  星评
+ZH-CN 消費購物  音乐茶座
+ZH-CN 消費購物  倒挂
+ZH-CN 消費購物  哭吧
+ZH-CN 消費購物  残次
+ZH-CN 消費購物  氧吧
+ZH-CN 消費購物  起步价
+ZH-CN 消費購物  适销
+ZH-CN 消費購物  逆价
+ZH-CN 消費購物  副品
+ZH-CN 消費購物  唱付
+ZH-CN 消費購物  唱收
+ZH-CN 消費購物  商亭
+ZH-CN 消費購物  商品城
+ZH-CN 消費購物  商厦
+ZH-CN 消費購物  彩扩
+ZH-CN 消費購物  彩扩店
+ZH-CN 消費購物  推展礼
+ZH-CN 消費購物  断市
+ZH-CN 消費購物  断档
+ZH-CN 消費購物  足沐店/足浴店/浴足店/脚沐店
+ZH-CN 消費購物  虚高
+ZH-CN 消費購物  虚假广告
+ZH-CN 消費購物  部优
+ZH-CN 消費購物  野广告
+ZH-CN 消費購物  割价
+ZH-CN 消費購物  游商
+ZH-CN 消費購物  等内
+ZH-CN 消費購物  等外
+ZH-CN 消費購物  菜店
+ZH-CN 消費購物  菜点
+ZH-CN 消費購物  菜篮子
+ZH-CN 消費購物  粮票
+ZH-CN 消費購物  随行就市
+ZH-CN 消費購物  零利肉
+ZH-CN 消費購物  零利药
+ZH-CN 消費購物  影楼
+ZH-CN 消費購物  霸级市场
+ZH-CN 消費購物  导购
+ZH-CN 消費購物  扩印
+ZH-CN 消費購物  摊点
+ZH-CN 消費購物  摊档
+ZH-CN 消費購物  斩客
+ZH-CN 消費購物  热价
+ZH-CN 消費購物  码洋
+ZH-CN 消費購物  诚信店
+ZH-CN 消費購物  话吧
+ZH-CN 消費購物  购车证
+ZH-CN 消費購物  软广告
+ZH-CN 消費購物  摩尔/销品茂
+ZH-CN 消費購物  顶价
+ZH-CN 消費購物  首付
+ZH-CN 消費購物  拳头产品/拳头商品
+ZH-CN 消費購物  支柱产品
+ZH-CN 消費購物  有奖发票
+ZH-CN 消費購物  杀熟
+ZH-CN 消費購物  显性广告
+ZH-CN 消費購物  放单
+ZH-CN 消費購物  哄抢
+ZH-CN 消費購物  耍秤杆子
+ZH-CN 消費購物  书托
+ZH-CN 消費購物  创牌子
+SYNONYM 稱謂 小開 小开/富二代
+SYNONYM 稱謂 太保 阿飞
+SYNONYM 稱謂 引港/領港/引水人 引港/领港
+SYNONYM 稱謂 月嫂/月姨 月嫂
+SYNONYM 稱謂 主夫/家庭主夫/家庭煮夫 主夫/家庭主夫/家庭煮夫/家庭妇男
+SYNONYM 稱謂 代班 代班/替班
+SYNONYM 稱謂 光棍/光棍兒/單身漢 光棍/光棍儿/单身汉/光棍儿汉
+SYNONYM 稱謂 空少/空中少爺 空少/空中少爷/空哥/空中先生
+SYNONYM 稱謂 保全/保全員 保安/保安员
+SYNONYM 稱謂 保育員/保姆 保育员
+SYNONYM 稱謂 啃老族 啃老族/傍老族
+SYNONYM 稱謂 執行長 首席执行官
+SYNONYM 稱謂 接班人/接棒人 接班人
+SYNONYM 稱謂 深喉嚨 深喉
+SYNONYM 稱謂 頂客族 丁克族/丁客族
+SYNONYM 稱謂 單親媽媽 单亲妈妈/单身妈妈/独身妈妈
+SYNONYM 稱謂 智能障礙兒童 低常儿童
+SYNONYM 稱謂 殘障者/殘障人士/殘疾人士 残疾人
+SYNONYM 稱謂 郵差/投遞員/郵務士 邮差/投递员/邮递员
+SYNONYM 稱謂 黃牛 黄牛/票贩子
+SYNONYM 稱謂 義工/志工 义工/志愿者
+SYNONYM 稱謂 網友 网友/网民
+SYNONYM 稱謂 網路美女 网络美女
+SYNONYM 稱謂 環境難民 环境难民/生态难民
+SYNONYM 稱謂 證人 证人/证明人
+SYNONYM 稱謂 警衛 警卫/警卫员
+SYNONYM 稱謂 鐘點工 钟点工/小时工
+SYNONYM 稱謂 攝影 摄影/摄像
+SYNONYM 稱謂 飆車族/暴走族 飙车族
+HOMONYM 稱謂 人頭 人头
+HOMONYM 稱謂 女同志 女同志
+HOMONYM 稱謂 代理人 代理人
+HOMONYM 稱謂 社會青年 社会青年
+HOMONYM 稱謂 高工 高工
+HOMONYM 稱謂 高妹 高妹
+HOMONYM 稱謂 高級工程師 高级工程师
+HOMONYM 稱謂 會計師 会计师
+HOMONYM 稱謂 路霸 路霸
+HOMONYM 稱謂 暴走族 暴走族
+HOMONYM 稱謂 職稱 职称
+HOMONYM 稱謂 證婚人 证婚人
+ZH-TW 稱謂 一軍 
+ZH-TW 稱謂 七年級 
+ZH-TW 稱謂 二度梅 
+ZH-TW 稱謂 二軍 
+ZH-TW 稱謂 千面人 
+ZH-TW 稱謂 大姊頭/大姐頭 
+ZH-TW 稱謂 大陸妹 
+ZH-TW 稱謂 小王 
+ZH-TW 稱謂 山老鼠 
+ZH-TW 稱謂 山胞 
+ZH-TW 稱謂 公道伯 
+ZH-TW 稱謂 天龍人 
+ZH-TW 稱謂 太座 
+ZH-TW 稱謂 外省人 
+ZH-TW 稱謂 外勞 
+ZH-TW 稱謂 幼齒 
+ZH-TW 稱謂 打火兄弟 
+ZH-TW 稱謂 本勞 
+ZH-TW 稱謂 正妹 
+ZH-TW 稱謂 全銜 
+ZH-TW 稱謂 宅男女神 
+ZH-TW 稱謂 血牛 
+ZH-TW 稱謂 技士 
+ZH-TW 稱謂 更生族 
+ZH-TW 稱謂 角頭 
+ZH-TW 稱謂 車掌 
+ZH-TW 稱謂 里民 
+ZH-TW 稱謂 里幹事 
+ZH-TW 稱謂 姊妹淘/姐妹淘 
+ZH-TW 稱謂 怪咖 
+ZH-TW 稱謂 盲胞 
+ZH-TW 稱謂 長青樹 
+ZH-TW 稱謂 阿巴桑/歐巴桑 
+ZH-TW 稱謂 阿嬤 
+ZH-TW 稱謂 玻璃圈 
+ZH-TW 稱謂 軍公教 
+ZH-TW 稱謂 剝皮妹 
+ZH-TW 稱謂 屘 
+ZH-TW 稱謂 師丈 
+ZH-TW 稱謂 恐龍妹 
+ZH-TW 稱謂 草根大使 
+ZH-TW 稱謂 草莓族 
+ZH-TW 稱謂 討海人 
+ZH-TW 稱謂 迷姐 
+ZH-TW 稱謂 送報生 
+ZH-TW 稱謂 訪賓 
+ZH-TW 稱謂 陸勞/大陸勞工 
+ZH-TW 稱謂 備胎 
+ZH-TW 稱謂 喜憨兒 
+ZH-TW 稱謂 報馬仔 
+ZH-TW 稱謂 無殼蝸牛 
+ZH-TW 稱謂 街友 
+ZH-TW 稱謂 黃牛 
+ZH-TW 稱謂 圓仔花 
+ZH-TW 稱謂 奧客 
+ZH-TW 稱謂 幹員 
+ZH-TW 稱謂 新人類 
+ZH-TW 稱謂 新血 
+ZH-TW 稱謂 新住民 
+ZH-TW 稱謂 董座 
+ZH-TW 稱謂 運匠/運將 
+ZH-TW 稱謂 榮民/榮譽國民 
+ZH-TW 稱謂 榮眷 
+ZH-TW 稱謂 臺客 
+ZH-TW 稱謂 蓋仙 
+ZH-TW 稱謂 劈腿男 
+ZH-TW 稱謂 劈腿族 
+ZH-TW 稱謂 數位人 
+ZH-TW 稱謂 歐吉桑 
+ZH-TW 稱謂 髮姐 
+ZH-TW 稱謂 噹噹兒 
+ZH-TW 稱謂 導覽員 
+ZH-TW 稱謂 撿尾刀 
+ZH-TW 稱謂 整備士 
+ZH-TW 稱謂 檳榔西施 
+ZH-TW 稱謂 職場液態族 
+ZH-TW 稱謂 藏鏡人 
+ZH-TW 稱謂 聾胞 
+ZH-TW 稱謂 七年級生 
+ZH-CN 稱謂  二五眼
+ZH-CN 稱謂  二奶专家
+ZH-CN 稱謂  二把刀
+ZH-CN 稱謂  二流子
+ZH-CN 稱謂  二传手
+ZH-CN 稱謂  二货
+ZH-CN 稱謂  人梯
+ZH-CN 稱謂  三孤
+ZH-CN 稱謂  个体户
+ZH-CN 稱謂  义务工
+ZH-CN 稱謂  土老帽
+ZH-CN 稱謂  大男大女
+ZH-CN 稱謂  大款
+ZH-CN 稱謂  大腕/大腕儿
+ZH-CN 稱謂  大龄青年
+ZH-CN 稱謂  小业主
+ZH-CN 稱謂  小字辈
+ZH-CN 稱謂  小青年
+ZH-CN 稱謂  小蜜
+ZH-CN 稱謂  马大哈
+ZH-CN 稱謂  马大嫂
+ZH-CN 稱謂  五香嘴
+ZH-CN 稱謂  公爹
+ZH-CN 稱謂  双职工
+ZH-CN 稱謂  反斗星
+ZH-CN 稱謂  文明标兵
+ZH-CN 稱謂  无产者
+ZH-CN 稱謂  毛脚女婿
+ZH-CN 稱謂  水暖工
+ZH-CN 稱謂  火箭干部
+ZH-CN 稱謂  风派
+ZH-CN 稱謂  北漂
+ZH-CN 稱謂  半文盲
+ZH-CN 稱謂  台属
+ZH-CN 稱謂  司售人员
+ZH-CN 稱謂  外来工
+ZH-CN 稱謂  外来妹
+ZH-CN 稱謂  外来娃
+ZH-CN 稱謂  失足青年
+ZH-CN 稱謂  失足妇女
+ZH-CN 稱謂  本本族
+ZH-CN 稱謂  民工
+ZH-CN 稱謂  民间大使
+ZH-CN 稱謂  甩手掌柜
+ZH-CN 稱謂  电耗子
+ZH-CN 稱謂  电霸/电老虎
+ZH-CN 稱謂  交通员
+ZH-CN 稱謂  光杆司令
+ZH-CN 稱謂  农奴主
+ZH-CN 稱謂  农民工
+ZH-CN 稱謂  农艺师
+ZH-CN 稱謂  华姐/中华小姐
+ZH-CN 稱謂  协警/协警员
+ZH-CN 稱謂  合食族
+ZH-CN 稱謂  壮工
+ZH-CN 稱謂  多面手
+ZH-CN 稱謂  好角
+ZH-CN 稱謂  尖脑壳
+ZH-CN 稱謂  灰领/银领
+ZH-CN 稱謂  礼仪小姐
+ZH-CN 稱謂  老姑
+ZH-CN 稱謂  老黄牛
+ZH-CN 稱謂  考碗族
+ZH-CN 稱謂  两孤一残
+ZH-CN 稱謂  伸手派
+ZH-CN 稱謂  劳模/劳动模范
+ZH-CN 稱謂  劳金
+ZH-CN 稱謂  医托/医托儿
+ZH-CN 稱謂  医闹
+ZH-CN 稱謂  吧托
+ZH-CN 稱謂  园托
+ZH-CN 稱謂  床模
+ZH-CN 稱謂  抛抛族
+ZH-CN 稱謂  村官
+ZH-CN 稱謂  里手
+ZH-CN 稱謂  麦客
+ZH-CN 稱謂  侃爷
+ZH-CN 稱謂  学科带头人
+ZH-CN 稱謂  官二代
+ZH-CN 稱謂  官迷
+ZH-CN 稱謂  房虫/房虫子/房虫儿
+ZH-CN 稱謂  拥趸
+ZH-CN 稱謂  油耗子
+ZH-CN 稱謂  法盲
+ZH-CN 稱謂  泥腿子
+ZH-CN 稱謂  炊事员
+ZH-CN 稱謂  的姐
+ZH-CN 稱謂  的哥
+ZH-CN 稱謂  知青/知识青年
+ZH-CN 稱謂  空嫂
+ZH-CN 稱謂  经济师
+ZH-CN 稱謂  花把式
+ZH-CN 稱謂  金领
+ZH-CN 稱謂  保姆
+ZH-CN 稱謂  复转军人
+ZH-CN 稱謂  老爷/姥爷
+ZH-CN 稱謂  屏奴
+ZH-CN 稱謂  拼克
+ZH-CN 稱謂  指路员
+ZH-CN 稱謂  星二代
+ZH-CN 稱謂  架子工
+ZH-CN 稱謂  洋北漂/洋京漂
+ZH-CN 稱謂  独二代
+ZH-CN 稱謂  独苗
+ZH-CN 稱謂  科盲
+ZH-CN 稱謂  胞波
+ZH-CN 稱謂  乘务员
+ZH-CN 稱謂  倒爷
+ZH-CN 稱謂  娱记
+ZH-CN 稱謂  拿笔杆儿的
+ZH-CN 稱謂  拿枪杆子的
+ZH-CN 稱謂  捆绑夫妻
+ZH-CN 稱謂  海外兵团
+ZH-CN 稱謂  海归/海归派
+ZH-CN 稱謂  海待
+ZH-CN 稱謂  烈属
+ZH-CN 稱謂  烈军属
+ZH-CN 稱謂  特嫌
+ZH-CN 稱謂  病秧子
+ZH-CN 稱謂  铁哥们儿
+ZH-CN 稱謂  铁脚板
+ZH-CN 稱謂  高干
+ZH-CN 稱謂  高参
+ZH-CN 稱謂  高管
+ZH-CN 稱謂  假小子
+ZH-CN 稱謂  副职
+ZH-CN 稱謂  基民
+ZH-CN 稱謂  婆婆嘴
+ZH-CN 稱謂  婚托/婚托儿
+ZH-CN 稱謂  彩号
+ZH-CN 稱謂  彩民
+ZH-CN 稱謂  第三梯队
+ZH-CN 稱謂  银龄
+ZH-CN 稱謂  陪跑分子
+ZH-CN 稱謂  麻辣妈妈
+ZH-CN 稱謂  强巴头/犟巴头
+ZH-CN 稱謂  愣头儿青
+ZH-CN 稱謂  款女
+ZH-CN 稱謂  款爷
+ZH-CN 稱謂  菜霸
+ZH-CN 稱謂  催巴儿
+ZH-CN 稱謂  傻帽/傻帽儿
+ZH-CN 稱謂  勤务员
+ZH-CN 稱謂  勤杂人员
+ZH-CN 稱謂  廉内助
+ZH-CN 稱謂  碎嘴子
+ZH-CN 稱謂  嘎子
+ZH-CN 稱謂  熊包
+ZH-CN 稱謂  熊孩子
+ZH-CN 稱謂  管培生/管理培训生
+ZH-CN 稱謂  膀爷
+ZH-CN 稱謂  裸官
+ZH-CN 稱謂  辣妹子
+ZH-CN 稱謂  撞车帮/撞车党
+ZH-CN 稱謂  蹭停族
+ZH-CN 稱謂  书篓子
+ZH-CN 稱謂  军嫂
+ZH-CN 稱謂  卫监
+ZH-CN 稱謂  妇男
+ZH-CN 稱謂  愤青
+ZH-CN 稱謂  蚁族
+ZH-CN 稱謂  铺路石
+ZH-CN 稱謂  闪客
+ZH-CN 稱謂  闪闪族
+ZH-CN 稱謂  半边户
+ZH-CN 稱謂  榜主
+ZH-CN 稱謂  知本家
+ZH-CN 稱謂  善长仁翁
+ZH-CN 稱謂  血头
+ZH-CN 稱謂  血霸
+ZH-CN 稱謂  咨客
+ZH-CN 稱謂  马路天使
+ZH-CN 稱謂  内宾
+ZH-CN 稱謂  过江龙
+ZH-CN 稱謂  金手指
+ZH-CN 稱謂  面瓜
+ZH-CN 稱謂  黑五类
+ZH-CN 稱謂  司勤
+ZH-CN 稱謂  青工
+ZH-CN 稱謂  活八仙
+SYNONYM 電腦資訊 二進制數字/位元/二進位元/二進制位元 二进制数字/比特
+SYNONYM 電腦資訊 二維條碼 二维条码/二维码/二维条形码
+SYNONYM 電腦資訊 人工智慧 人工智能
+SYNONYM 電腦資訊 入口網站 门户网站
+SYNONYM 電腦資訊 下線/離線 下线/离线/下网/脱机
+SYNONYM 電腦資訊 千位元組 千字节
+SYNONYM 電腦資訊 小筆電 上网本
+SYNONYM 電腦資訊 工作列 任务栏
+SYNONYM 電腦資訊 中文化 汉化
+SYNONYM 電腦資訊 互動式媒體 交互式媒体
+SYNONYM 電腦資訊 互動式電視 交互式电视
+SYNONYM 電腦資訊 內部網路 内联网
+SYNONYM 電腦資訊 分散式網路 分散式网络
+SYNONYM 電腦資訊 手提電腦/筆電/筆記型電腦 手提电脑/笔记本/笔记本电脑
+SYNONYM 電腦資訊 文書處理 文字处理
+SYNONYM 電腦資訊 主記憶體 内存/内存储器/主存储器
+SYNONYM 電腦資訊 代理伺服器 代理服务器
+SYNONYM 電腦資訊 以太網/乙太網路 以太网
+SYNONYM 電腦資訊 半形 半角
+SYNONYM 電腦資訊 用戶界面/用戶介面/使用者介面 用户界面
+SYNONYM 電腦資訊 用戶親和介面 友好用户界面
+SYNONYM 電腦資訊 光碟機 光驱/光盘机/光盘驱动器
+SYNONYM 電腦資訊 全形 全角
+SYNONYM 電腦資訊 全球資訊網 万维网
+SYNONYM 電腦資訊 共用軟體/共享軟體 共享软件
+SYNONYM 電腦資訊 列印 打印
+SYNONYM 電腦資訊 印表機/列印機/列表機 打印机
+SYNONYM 電腦資訊 多媒體/混合媒體 多媒体/混合媒体/多介质
+SYNONYM 電腦資訊 字元 字符
+SYNONYM 電腦資訊 有線網路 有线网络
+SYNONYM 電腦資訊 色情網站 色情网站/黄网
+SYNONYM 電腦資訊 行動設備作業系統 移动操作系统
+SYNONYM 電腦資訊 行動裝置 行动装置/移动设备
+SYNONYM 電腦資訊 行動碟/隨身碟 行动碟/闪盘/优盘/快闪碟/闪存盘/大拇哥/霹雳碟/快闪记忆体盘
+SYNONYM 電腦資訊 串流媒體 串流媒体/流媒体
+SYNONYM 電腦資訊 伺服器 服务器
+SYNONYM 電腦資訊 位元每秒/每秒位元數/每秒傳輸的位元數 比特秒/比特每秒/每秒传送位数
+SYNONYM 電腦資訊 位元組 字节
+SYNONYM 電腦資訊 低階語言 低级语言
+SYNONYM 電腦資訊 免費軟體 免费软件
+SYNONYM 電腦資訊 快取/快取記憶體 快取/快取记忆体/高速缓存/高速存储器/高速缓冲存储器
+SYNONYM 電腦資訊 快閃記憶體 闪存/闪速存储器
+SYNONYM 電腦資訊 投影機/投影器 投影机/投影器/投影仪
+SYNONYM 電腦資訊 每秒千位元數/每秒傳輸千位元數 每秒千字节/每秒千比特
+SYNONYM 電腦資訊 系統軟體 系统软件
+SYNONYM 電腦資訊 卸載/解除安裝 卸载
+SYNONYM 電腦資訊 周邊設備 周边设备/外围设备
+SYNONYM 電腦資訊 抽取式磁碟 移动存储器
+SYNONYM 電腦資訊 版主/板主/版大 版主/板主
+SYNONYM 電腦資訊 社群網站 社交网站
+SYNONYM 電腦資訊 封包交換/分封交換 封包交换/包交换/分组交换
+SYNONYM 電腦資訊 洗版/洗板 刷屏/洗屏
+SYNONYM 電腦資訊 界面/介面 界面
+SYNONYM 電腦資訊 計算器/計算機/電算機/電子計算機 计算器
+SYNONYM 電腦資訊 音效卡 声卡/声效卡
+SYNONYM 電腦資訊 首頁 首页/主页
+SYNONYM 電腦資訊 個人電腦 个人电脑/个人计算器
+SYNONYM 電腦資訊 原始碼 源代码
+SYNONYM 電腦資訊 套裝軟體 套装软件
+SYNONYM 電腦資訊 桌機/桌面電腦/桌上型電腦 桌机/桌面电脑/桌上型电脑/台式机/台式电脑
+SYNONYM 電腦資訊 特洛伊木馬程式 特洛伊木马程序
+SYNONYM 電腦資訊 記憶卡 记忆卡/存储卡
+SYNONYM 電腦資訊 記憶體 存储器
+SYNONYM 電腦資訊 高畫質 高清/高解像
+SYNONYM 電腦資訊 高階語言/高階程式語言 高级语言
+SYNONYM 電腦資訊 副檔名 扩展名
+SYNONYM 電腦資訊 區域網路 局域网/局域网络
+SYNONYM 電腦資訊 唯讀記憶體/唯讀儲存器 只读存储器
+SYNONYM 電腦資訊 埠 端口
+SYNONYM 電腦資訊 掃描機/掃描器 扫描机/扫描器/扫描仪
+SYNONYM 電腦資訊 條碼/條紋密碼 条码/条形码/信息码
+SYNONYM 電腦資訊 條碼掃描器/讀碼機/條碼閱讀機 条码扫描器/条形码扫描器
+SYNONYM 電腦資訊 液晶投影機/液晶投影器 液晶投影机/液晶投影器/液晶投影仪
+SYNONYM 電腦資訊 移動硬碟/行動硬碟/隨身硬碟 移动硬盘
+SYNONYM 電腦資訊 組合語言 汇编语言
+SYNONYM 電腦資訊 統一資源定位器/統一資源定位符/全球資源定位器/全球資源定址器 统一资源定位器/统一资源定位符/统一资源定位地址
+SYNONYM 電腦資訊 軟碟 软盘/软磁盘
+SYNONYM 電腦資訊 軟碟機/軟式磁碟機 软式磁盘机
+SYNONYM 電腦資訊 軟體 软件
+SYNONYM 電腦資訊 軟體工程 软件工程
+SYNONYM 電腦資訊 軟體包 软件包
+SYNONYM 電腦資訊 連線 联机
+SYNONYM 電腦資訊 部落客 博客
+SYNONYM 電腦資訊 部落格 博客
+SYNONYM 電腦資訊 掌上型電腦/個人數位助理 掌上型电脑/掌上电脑/个人数字助理
+SYNONYM 電腦資訊 智慧型 智能型
+SYNONYM 電腦資訊 游標 游标/光标
+SYNONYM 電腦資訊 無線滑鼠 无线鼠标
+SYNONYM 電腦資訊 無線網路 无线网络
+SYNONYM 電腦資訊 硬碟 硬盘/硬磁盘
+SYNONYM 電腦資訊 硬體 硬件/硬设备
+SYNONYM 電腦資訊 程式員 程序员
+SYNONYM 電腦資訊 程式設計 程序设计
+SYNONYM 電腦資訊 程式語言 程序语言/编程语言/程序设计语言
+SYNONYM 電腦資訊 程控/程式控制 程控/程序控制
+SYNONYM 電腦資訊 虛擬記憶體 虚拟内存/虚拟存储器
+SYNONYM 電腦資訊 虛擬實境 虚拟现实
+SYNONYM 電腦資訊 超大型積體電路 超大规模集成电路
+SYNONYM 電腦資訊 超文本標記語言/超文件標示語言 超文本置标语言
+SYNONYM 電腦資訊 超級電腦 超级电脑/超级计算器
+SYNONYM 電腦資訊 超極致筆電 超极本
+SYNONYM 電腦資訊 超鏈結/超連結 超链结/超链接/超级链结/超级链接
+SYNONYM 電腦資訊 集中式網路 集中式网络
+SYNONYM 電腦資訊 集成塊/積體電路 集成块/集成电路
+SYNONYM 電腦資訊 雲端運算 云计算
+SYNONYM 電腦資訊 韌體 固件
+SYNONYM 電腦資訊 黑客/駭客 黑客
+SYNONYM 電腦資訊 傳輸控制協定 传输控制协议
+SYNONYM 電腦資訊 匯流排 汇流排/总线
+SYNONYM 電腦資訊 微電腦/微算機/微型計算機/微型電子計算機 微电脑/微算机/微型计算机/微型电子计算机/微机
+SYNONYM 電腦資訊 感光鼓 感光鼓/硒鼓
+SYNONYM 電腦資訊 感測網路 感测网络
+SYNONYM 電腦資訊 搜索引擎/搜尋引擎 搜索引擎
+SYNONYM 電腦資訊 滑鼠 鼠标/鼠标器
+SYNONYM 電腦資訊 當機 死机
+SYNONYM 電腦資訊 解析度 分辨率
+SYNONYM 電腦資訊 資料夾 文件夹
+SYNONYM 電腦資訊 資料探勘 数据采掘/数据挖掘
+SYNONYM 電腦資訊 資料匯流排 数据总线
+SYNONYM 電腦資訊 資訊 信息
+SYNONYM 電腦資訊 資訊工業/資訊產業 信息产业
+SYNONYM 電腦資訊 資訊化 信息化
+SYNONYM 電腦資訊 資訊安全/資安 资讯安全/网御/信息安全/互联网安全防御
+SYNONYM 電腦資訊 資訊技術 信息技术
+SYNONYM 電腦資訊 資訊系統 信息系統
+SYNONYM 電腦資訊 資訊服務網 信息服务网
+SYNONYM 電腦資訊 資訊流 信息流
+SYNONYM 電腦資訊 資訊科技 信息科技
+SYNONYM 電腦資訊 資訊庫 信息库
+SYNONYM 電腦資訊 資訊高速公路 信息高速公路
+SYNONYM 電腦資訊 資訊理論 信息理论
+SYNONYM 電腦資訊 閘道/閘道器 网关/网间连接器
+SYNONYM 電腦資訊 雷射印表機 激光打印机
+SYNONYM 電腦資訊 電子出版物/電子出版品 电子出版物
+SYNONYM 電腦資訊 電子資訊 电子信息
+SYNONYM 電腦資訊 電子遊戲 电子游戏/电游
+SYNONYM 電腦資訊 電子檔 电子檔/电子文檔
+SYNONYM 電腦資訊 電玩軟體 电玩软件
+SYNONYM 電腦資訊 電郵/伊妹兒/電子郵件/伊眉兒/伊媚兒 电邮/伊妹儿/电子邮件/电子函件
+SYNONYM 電腦資訊 電腦病毒 电脑病毒/计算机病毒
+SYNONYM 電腦資訊 電腦程式 软件程序/计算机程序
+SYNONYM 電腦資訊 電腦網路 计算机网络
+SYNONYM 電腦資訊 電腦語音處理 电脑语音处理/计算机语音处理
+SYNONYM 電腦資訊 電腦輔助教學 电脑辅助教学/计算机辅助教学
+SYNONYM 電腦資訊 圖形化使用者介面 图形用户界面
+SYNONYM 電腦資訊 截圖/螢幕截圖 截图/截屏/屏幕截图
+SYNONYM 電腦資訊 碟片/光碟 碟片/光盘
+SYNONYM 電腦資訊 磁碟 磁盘
+SYNONYM 電腦資訊 磁碟作業系統 磁盘操作系统
+SYNONYM 電腦資訊 綠色軟體/可攜式軟體 绿色软件/可携式软件
+SYNONYM 電腦資訊 網卡/網路卡 网卡/网络卡
+SYNONYM 電腦資訊 網咖 网吧
+SYNONYM 電腦資訊 網站 网站/站点
+SYNONYM 電腦資訊 網間網路作業系統 网间网络操作系统
+SYNONYM 電腦資訊 網路 网络
+SYNONYM 電腦資訊 網路化 网络化
+SYNONYM 電腦資訊 網路版 网络版
+SYNONYM 電腦資訊 網路電腦 网络计算机
+SYNONYM 電腦資訊 網路電話/寬頻電話/網際網路電話 网络电话/网上电话/互联网电话
+SYNONYM 電腦資訊 網路語言 网语/网络语言
+SYNONYM 電腦資訊 網路蟑螂 玉米虫/网络蟑螂
+SYNONYM 電腦資訊 網路攝影機 网络摄影机/网络摄像头
+SYNONYM 電腦資訊 網遊/線上遊戲/網路遊戲 网游/线上游戏/网络游戏/在线游戏
+SYNONYM 電腦資訊 網誌/網路日誌 网志/网络日志/网络日记
+SYNONYM 電腦資訊 網際網路 互联网
+SYNONYM 電腦資訊 網際網路 因特网
+SYNONYM 電腦資訊 網際網路協定 网络通讯协议/因特网互联协议
+SYNONYM 電腦資訊 網編/網路編輯 网编/网络编辑
+SYNONYM 電腦資訊 網調/線上調查 网调/在线调查
+SYNONYM 電腦資訊 輔助記憶體 外存储器/辅助存储器
+SYNONYM 電腦資訊 噴墨式印表機/噴墨式列印機/噴射式油墨印表機 喷墨打印机/喷墨式打印机
+SYNONYM 電腦資訊 寬頻 宽带
+SYNONYM 電腦資訊 寬頻網路 宽带网络
+SYNONYM 電腦資訊 廣域網路 广域网
+SYNONYM 電腦資訊 影碟機 影碟机/碟机/视盘机
+SYNONYM 電腦資訊 數位化 数字化
+SYNONYM 電腦資訊 數位圖書館 数字图书馆
+SYNONYM 電腦資訊 數據機 调制解调器
+SYNONYM 電腦資訊 確認鍵 回车/回车键
+SYNONYM 電腦資訊 編譯器/編譯程式 编译器/编译程序
+SYNONYM 電腦資訊 燒錄 烧录/刻录
+SYNONYM 電腦資訊 燒錄機/光碟燒錄機 刻录机/光盘刻录机
+SYNONYM 電腦資訊 螢幕保護程式 屏保/屏幕保护
+SYNONYM 電腦資訊 選單/功能表/目錄 选单/功能表/菜单
+SYNONYM 電腦資訊 應用程式 应用程序
+SYNONYM 電腦資訊 擬真視訊 网真
+SYNONYM 電腦資訊 檔案傳輸協定 文件传输协议
+SYNONYM 電腦資訊 藍白當機畫面 蓝屏/蓝屏死机
+SYNONYM 電腦資訊 轉帖/轉貼/轉文 转帖/转贴
+SYNONYM 電腦資訊 觸控式螢幕 触屏/触摸屏/触控式屏幕
+SYNONYM 電腦資訊 驅動程式 驱动程序
+SYNONYM 電腦資訊 讀卡機 读卡机/阅卡机
+SYNONYM 電腦資訊 顯卡/顯示卡/顯示器配接卡 显卡/显示卡/显示器适配卡
+SYNONYM 電腦資訊 纜線數據機 电缆调制解调器/线缆调制解调器/线缆调变解调器
+HOMONYM 電腦資訊 連線 连线
+HOMONYM 電腦資訊 雙拼 双拼
+HOMONYM 電腦資訊 離線作業 离线作业
+ZH-TW 電腦資訊 事務機/複合機 
+ZH-TW 電腦資訊 掛網 
+ZH-TW 電腦資訊 當掉 
+ZH-TW 電腦資訊 噗友 
+ZH-TW 電腦資訊 線上問卷 
+ZH-CN 電腦資訊  一点通
+ZH-CN 電腦資訊  分屏
+ZH-CN 電腦資訊  文语转换
+ZH-CN 電腦資訊  加密棒
+ZH-CN 電腦資訊  汉显
+ZH-CN 電腦資訊  名称库
+ZH-CN 電腦資訊  存盘
+ZH-CN 電腦資訊  网医
+ZH-CN 電腦資訊  网毒
+ZH-CN 電腦資訊  网选
+ZH-CN 電腦資訊  考机
+ZH-CN 電腦資訊  行频
+ZH-CN 電腦資訊  投影屏
+ZH-CN 電腦資訊  单页
+ZH-CN 電腦資訊  录入
+ZH-CN 電腦資訊  信息点
+ZH-CN 電腦資訊  视频
+ZH-CN 電腦資訊  视频流
+ZH-CN 電腦資訊  彩芒
+ZH-CN 電腦資訊  彩屏
+ZH-CN 電腦資訊  彩显
+ZH-CN 電腦資訊  博主
+ZH-CN 電腦資訊  硬屏
+ZH-CN 電腦資訊  程控机/程控电话
+ZH-CN 電腦資訊  微机群
+ZH-CN 電腦資訊  微盘
+ZH-CN 電腦資訊  数字人
+ZH-CN 電腦資訊  数据源
+ZH-CN 電腦資訊  楼主
+ZH-CN 電腦資訊  概念版
+ZH-CN 電腦資訊  截屏
+ZH-CN 電腦資訊  播客
+ZH-CN 電腦資訊  激光照排
+ZH-CN 電腦資訊  导游仪
+ZH-CN 電腦資訊  显示屏
+ZH-CN 電腦資訊  监管码/电子监管码
+ZH-CN 電腦資訊  编程
+ZH-CN 電腦資訊  试验网
+ZH-CN 電腦資訊  帖吧/贴吧
+ZH-CN 電腦資訊  软屏
+ZH-CN 電腦資訊  网言网语
+ZH-CN 電腦資訊  软驱
+ZH-CN 電腦資訊  信息港/数字港/数位港/数码港
+ZH-CN 電腦資訊  网企
+ZH-CN 電腦資訊  网祭
+ZH-CN 電腦資訊  网德
+ZH-CN 電腦資訊  硬驱
+ZH-CN 電腦資訊  开博
+ZH-CN 電腦資訊  攒机
+SYNONYM 郵政 郵遞區號 邮编/邮码/邮政编码
+SYNONYM 郵政 集郵日戳/癸字戳 集邮日戳
+ZH-TW 郵政 限時專送 
+ZH-TW 郵政 報值掛號 
+ZH-TW 郵政 報值掛號信 
+ZH-CN 郵政  收寄机
+ZH-CN 郵政  信皮
+ZH-CN 郵政  速递
+ZH-CN 郵政  乡邮
+SYNONYM 電信 手機/大哥大/無線電話/行動電話 手机/大哥大/无线电话/移动电话
+SYNONYM 電信 卡式電話 磁卡电话
+SYNONYM 電信 多媒體簡訊 彩信
+SYNONYM 電信 忙線訊號 忙音信号
+SYNONYM 電信 行動通信 移动通信
+SYNONYM 電信 免持 免提
+SYNONYM 電信 來電答鈴 彩铃
+SYNONYM 電信 窄頻帶 窄带
+SYNONYM 電信 基地臺 基地台/基站
+SYNONYM 電信 接線員/話務員/接線生 接线员/话务员
+SYNONYM 電信 智慧型手機 智能手机
+SYNONYM 電信 無線電話 无绳电话
+SYNONYM 電信 短訊息/簡訊 短讯息/短信/短信息/短消息
+SYNONYM 電信 視訊電話 视频电话
+SYNONYM 電信 傳呼機/呼叫器 传呼机/呼机/考机/拷机/寻呼机/无线寻呼机
+SYNONYM 電信 解碼盒/機上盒 解码盒/机顶盒
+SYNONYM 電信 解碼器 解码器/破码器
+SYNONYM 電信 雷射通信 雷射通信/激光通信
+SYNONYM 電信 電子遮蔽器 屏蔽仪
+SYNONYM 電信 電傳打字機 电传机
+SYNONYM 電信 電話答錄機 录音电话
+SYNONYM 電信 數位傳輸 数字通信/数码通信
+SYNONYM 電信 頻寬/頻帶寬度 频宽/频带宽度/带宽
+SYNONYM 電信 聽筒 听筒/耳机
+ZH-TW 電信 八號分機 
+ZH-TW 電信 國際電話預付卡 
+ZH-TW 電信 掛線 
+ZH-TW 電信 電傳視訊 
+ZH-CN 電信  友好用户
+ZH-CN 電信  双待
+ZH-CN 電信  无线寻呼
+ZH-CN 電信  主叫
+ZH-CN 電信  主被叫
+ZH-CN 電信  电视差转台
+ZH-CN 電信  长途台
+ZH-CN 電信  并网
+ZH-CN 電信  忙音
+ZH-CN 電信  网聊
+ZH-CN 電信  声讯台
+ZH-CN 電信  折机
+ZH-CN 電信  来电宝
+ZH-CN 電信  受端
+ZH-CN 電信  固话/座机/固定电话
+ZH-CN 電信  特服号
+ZH-CN 電信  送端
+ZH-CN 電信  掉线
+ZH-CN 電信  移动通网
+ZH-CN 電信  通联卡
+ZH-CN 電信  割接
+ZH-CN 電信  联网
+ZH-CN 電信  群发
+ZH-CN 電信  跨网
+ZH-CN 電信  乡情卡/如意通乡情卡
+ZH-CN 電信  传呼
+ZH-CN 電信  呼台/寻呼台
+ZH-CN 電信  声讯
+ZH-CN 電信  升位
+ZH-CN 電信  被叫
+ZH-CN 電信  挂机
+ZH-CN 電信  小灵通
+ZH-CN 其他  上星
+ZH-CN 其他  师兄球/谈判球
+ZH-CN 其他  求助机
+ZH-CN 其他  邮电局
+ZH-CN 其他  通稿
+SYNONYM 醫療保健 SARS/嚴重急性呼吸症候群/嚴重急性呼吸道症候群 沙士/非典/薩斯/非典型肺炎/严重急性呼吸综合征
+SYNONYM 醫療保健 二形人/兩性人/陰陽人 二形人/两性人/阴阳人/二性子
+SYNONYM 醫療保健 二拇指/二拇指頭 二拇指/二拇指头/示指
+SYNONYM 醫療保健 人類基因體計畫 人类基因组计划
+SYNONYM 醫療保健 三唑侖/酣樂欣 三唑仑/酣乐欣/海乐神
+SYNONYM 醫療保健 口水/口沫/口涎/唾沫/唾液 口水/口沫/口涎/唾沫/唾液/哈喇子
+SYNONYM 醫療保健 大牙/臼齒/槽牙 大牙/臼齿/槽牙/磨牙
+SYNONYM 醫療保健 大便/大解/上大號 大便/大解/解大手
+SYNONYM 醫療保健 小便/小解/小遺/上一號/上小號 小便/小解/小遗/解小手
+SYNONYM 醫療保健 公醫 公费医疗
+SYNONYM 醫療保健 心口 心口/心口窝
+SYNONYM 醫療保健 心肌梗塞 心肌梗塞/心梗/心肌梗死
+SYNONYM 醫療保健 心律不整 心律不整/心律不齐/心律失常
+SYNONYM 醫療保健 心率/心速/心跳率/心跳速率 心率
+SYNONYM 醫療保健 心理諮商 心理咨询
+SYNONYM 醫療保健 日本腦炎 日本脑炎/乙脑/流行性乙型脑炎
+SYNONYM 醫療保健 日光浴 日光浴/太阳浴
+SYNONYM 醫療保健 代理孕母 代母/代孕母亲
+SYNONYM 醫療保健 加護病房 监护病房/特护病房/重症监护室/加强治疗病房/重症监护病房
+SYNONYM 醫療保健 打胎/墮胎/人工流產 打胎/堕胎/人工流产/人流
+SYNONYM 醫療保健 打點滴/吊點滴 打点滴/挂水/输液/打吊针/吊盐水
+SYNONYM 醫療保健 生理食鹽水 生理盐水
+SYNONYM 醫療保健 白化症/白化病/白子 白化症/白化病/羊白头
+SYNONYM 醫療保健 白袍 白大褂
+SYNONYM 醫療保健 皮膚炎 皮炎
+SYNONYM 醫療保健 冰毒/大力丸/甲基苯丙胺/甲基安非他命 冰毒/大力丸/甲基苯丙胺/甲基安非他命/甲基安非他明
+SYNONYM 醫療保健 多巴胺 多巴胺/羟酪胺
+SYNONYM 醫療保健 安公子/安非他命 安非他明
+SYNONYM 醫療保健 安樂死 安乐死/慈悲杀人
+SYNONYM 醫療保健 羊水 羊水/胞浆水
+SYNONYM 醫療保健 老花眼 老花眼/老光/老视
+SYNONYM 醫療保健 耳洞 耳洞/耳朵眼儿
+SYNONYM 醫療保健 耳道/外耳道/外聽道 耳道/外耳道/外听道/耳朵眼儿
+SYNONYM 醫療保健 自體免疫疾病 自身免疫疾病/自身免疫病
+SYNONYM 醫療保健 吸二手菸/抽二手烟 吸二手烟/抽二手烟/被动吸烟
+SYNONYM 醫療保健 戒毒所/戒毒中心/勒戒所/菸毒勒戒所/煙毒勒戒所 戒毒所/戒毒中心
+SYNONYM 醫療保健 批價 划价
+SYNONYM 醫療保健 狂牛症/牛腦海綿狀病變 疯牛病
+SYNONYM 醫療保健 肝功能 肝功能/肝功
+SYNONYM 醫療保健 乳突狀瘤病毒 乳头状瘤病毒
+SYNONYM 醫療保健 帕金森病/柏金遜症/巴金森氏症/帕金森氏症/帕金森綜合症/震顫麻痺綜合症/柏金森氏病 帕金森病/柏金逊症/巴金森氏症/帕金森氏症/帕金森综合症/震颤麻痹综合症/帕金森综合征
+SYNONYM 醫療保健 抹片 涂片
+SYNONYM 醫療保健 疝氣/串氣 疝气/小肠串气
+SYNONYM 醫療保健 矽肺 硅肺
+SYNONYM 醫療保健 芬蘭浴/三溫暖 芬兰浴/桑拿/桑拿浴/萨乌拉浴
+SYNONYM 醫療保健 長期記憶 长期记忆/长久记忆/长时记忆
+SYNONYM 醫療保健 阿司匹靈/阿斯匹靈 阿司匹林
+SYNONYM 醫療保健 阿茲海默症/阿滋海默症/阿茨海默症 阿兹海默症/阿尔茨海默病
+SYNONYM 醫療保健 前列腺/攝護腺 前列腺
+SYNONYM 醫療保健 叛逆/叛逆心理 叛逆/叛逆心理/逆反/逆反心理
+SYNONYM 醫療保健 威而鋼 伟哥/万艾可
+SYNONYM 醫療保健 扁桃腺 扁桃腺/扁桃体
+SYNONYM 醫療保健 疫病 疫病/病疫
+SYNONYM 醫療保健 看護/看護工 护工
+SYNONYM 醫療保健 紅血球 红血球/红细胞
+SYNONYM 醫療保健 紅血球生成素 红细胞生成素
+SYNONYM 醫療保健 剖腹產/剖腹生產 剖腹产/剖宫产
+SYNONYM 醫療保健 家庭醫生/家醫 家庭医生
+SYNONYM 醫療保健 家庭醫學/家醫 家庭医学
+SYNONYM 醫療保健 挽面 挽面/绞脸
+SYNONYM 醫療保健 捐血 捐血/献血/无偿献血
+SYNONYM 醫療保健 症候群 症候群/综合征
+SYNONYM 醫療保健 胸腔科 胸科
+SYNONYM 醫療保健 迷幻藥 迷幻药/致幻剂
+SYNONYM 醫療保健 排斥反應 排异反应
+SYNONYM 醫療保健 探溫機/探溫器/探熱機/測溫機 探温机/探温器/探热机/测温机/热像仪
+SYNONYM 醫療保健 救護車 救护车/急救车
+SYNONYM 醫療保健 梗塞 梗塞/梗死
+SYNONYM 醫療保健 淋病/菜花 淋病
+SYNONYM 醫療保健 理療師/物理治療師 理疗师/物理治疗师/康复师
+SYNONYM 醫療保健 異戊巴比妥/青發 异戊巴比妥
+SYNONYM 醫療保健 第六感 第六感/第六感官/第六感觉
+SYNONYM 醫療保健 速賜康/潘他唑新 镇痛新/喷他佐辛
+SYNONYM 醫療保健 散光/亂視 散光
+SYNONYM 醫療保健 湯劑/湯藥/煎劑 汤剂/汤药/煎剂/水剂
+SYNONYM 醫療保健 琺瑯質/牙釉質 珐琅质/釉质
+SYNONYM 醫療保健 診療室 诊疗室/诊室
+SYNONYM 醫療保健 陽痿/陽萎 阳痿
+SYNONYM 醫療保健 微血管 微血管/毛细管/毛细血管
+SYNONYM 醫療保健 愛滋病/後天免疫不全症候群/後天免疫缺乏症候群/獲得性免疫缺陷症候群 爱滋病/后天免疫不全症候群/后天免疫缺乏症候群/获得性免疫缺陷综合征
+SYNONYM 醫療保健 愛滋病毒/人類免疫不全病毒/人類免疫缺乏病毒/人類免疫不全症病毒/人類免疫缺失症病毒 艾滋病毒/人类免疫缺陷病毒
+SYNONYM 醫療保健 滑鼠手 鼠标手
+SYNONYM 醫療保健 腦死 脑死亡
+SYNONYM 醫療保健 腦梗塞/缺血性腦中風 脑梗塞/缺血性脑中风/脑梗死
+SYNONYM 醫療保健 腦電圖/腦波圖 脑电图
+SYNONYM 醫療保健 腳脖子 脚脖子/脚颈子
+SYNONYM 醫療保健 過動兒 多动儿
+SYNONYM 醫療保健 過動症/注意力缺陷過動症 多动症
+SYNONYM 醫療保健 過敏/過敏反應/過敏性反應 过敏/过敏反应/过敏性反应/变态反应
+SYNONYM 醫療保健 雷射刀 激光刀
+SYNONYM 醫療保健 睡眠窒息症/睡眠呼吸中止症/睡眠呼吸暫停症候群/睡眠呼吸中止症候群 睡眠窒息症/睡眠呼吸中止症/睡眠呼吸暂停综合征
+SYNONYM 醫療保健 精神官能症/精神症 精神官能症/神经症/神经官能症
+SYNONYM 醫療保健 網路症候群/網路沉溺症/網路綜合症 网络综合征
+SYNONYM 醫療保健 蒙汗藥 蒙汗药/蒙药
+SYNONYM 醫療保健 鼻胃管 胃管/鼻饲管
+SYNONYM 醫療保健 衛生棉 卫生巾
+SYNONYM 醫療保健 豬流感/A型H1N1流感 猪流感/甲型H1N1
+SYNONYM 醫療保健 頜骨/顎骨 颌骨
+SYNONYM 醫療保健 篩檢 筛检/筛查
+SYNONYM 醫療保健 檢疫/驗疫 检疫
+SYNONYM 醫療保健 避孕器 避孕器/节育器
+SYNONYM 醫療保健 點滴 点滴/吊瓶
+SYNONYM 醫療保健 斷層掃描/電腦斷層攝影 断层扫描/计算机断层扫描/计算机层析成像
+SYNONYM 醫療保健 顏面神經 面神经
+SYNONYM 醫療保健 藥用棉 药用棉/卫生棉
+SYNONYM 醫療保健 懼高 恐高
+SYNONYM 醫療保健 懼高症 恐高症
+SYNONYM 醫療保健 體檢 体检/查体
+HOMONYM 醫療保健 安心卡 安心卡
+HOMONYM 醫療保健 電子眼 电子眼
+HOMONYM 醫療保健 衛生院 卫生院
+HOMONYM 醫療保健 衛生棉 卫生棉
+HOMONYM 醫療保健 臨檢 临检
+HOMONYM 醫療保健 醫改 医改
+HOMONYM 醫療保健 醫療保險 医疗保险
+HOMONYM 醫療保健 體位 体位
+ZH-TW 醫療保健 公醫 
+ZH-TW 醫療保健 公醫制度 
+ZH-TW 醫療保健 行動值 
+ZH-TW 醫療保健 杜鵑窩 
+ZH-TW 醫療保健 赤腳仙 
+ZH-TW 醫療保健 油切 
+ZH-TW 醫療保健 咬手 
+ZH-TW 醫療保健 面皰 
+ZH-TW 醫療保健 捐輸 
+ZH-TW 醫療保健 烏腳病 
+ZH-TW 醫療保健 特別護士 
+ZH-TW 醫療保健 健保/健康保險/全民健保/全民健康保險 
+ZH-TW 醫療保健 健保卡 
+ZH-TW 醫療保健 密醫 
+ZH-TW 醫療保健 榮民醫院 
+ZH-TW 醫療保健 機轉 
+ZH-TW 醫療保健 翻腳刀 
+ZH-CN 醫療保健  下药捻子
+ZH-CN 醫療保健  个体医
+ZH-CN 醫療保健  无手机焦虑
+ZH-CN 醫療保健  平安钟/平安铃
+ZH-CN 醫療保健  生物导弹
+ZH-CN 醫療保健  生活方式病
+ZH-CN 醫療保健  白衣战士
+ZH-CN 醫療保健  亚健康/第三状态
+ZH-CN 醫療保健  光刀
+ZH-CN 醫療保健  多发病
+ZH-CN 醫療保健  早老性痴呆
+ZH-CN 醫療保健  纤体
+ZH-CN 醫療保健  网医
+ZH-CN 醫療保健  耳音
+ZH-CN 醫療保健  血防
+ZH-CN 醫療保健  血象
+ZH-CN 醫療保健  串皮
+ZH-CN 醫療保健  医保
+ZH-CN 醫療保健  医疗券
+ZH-CN 醫療保健  赤脚医生
+ZH-CN 醫療保健  防非
+ZH-CN 醫療保健  定点药
+ZH-CN 醫療保健  补液
+ZH-CN 醫療保健  流调
+ZH-CN 醫療保健  荣军医院
+ZH-CN 醫療保健  原发
+ZH-CN 醫療保健  家庭病床
+ZH-CN 醫療保健  家庭病房
+ZH-CN 醫療保健  恐购症
+ZH-CN 醫療保健  氧疗/氧气疗法
+ZH-CN 醫療保健  特护
+ZH-CN 醫療保健  病号饭
+ZH-CN 醫療保健  病损
+ZH-CN 醫療保健  胸片
+ZH-CN 醫療保健  彩超
+ZH-CN 醫療保健  游戏脑
+ZH-CN 醫療保健  落汗
+ZH-CN 醫療保健  零差率
+ZH-CN 醫療保健  鼻饲
+ZH-CN 醫療保健  瞎奶
+ZH-CN 醫療保健  导医
+ZH-CN 醫療保健  晕场
+ZH-CN 醫療保健  积极休息/活动性休息
+ZH-CN 醫療保健  计划免疫
+ZH-CN 醫療保健  试表
+ZH-CN 醫療保健  闹心
+ZH-CN 醫療保健  免疫排异反应
+ZH-CN 醫療保健  专家号
+ZH-CN 醫療保健  普通号
+ZH-CN 醫療保健  导诊/导医
+ZH-CN 醫療保健  脱瘾
+ZH-CN 醫療保健  药醋
+ZH-CN 醫療保健  医药代表
+ZH-CN 醫療保健  大处方
+ZH-CN 醫療保健  恶变
+SYNONYM 機械 泵/唧筒/泵浦/幫浦 泵/唧筒
+SYNONYM 機械 三角皮帶 三角带
+SYNONYM 機械 天車 天车/行车
+SYNONYM 機械 拖拉機 拖拉机/铁牛
+SYNONYM 機械 挖土機/挖掘機/怪手 挖土机/挖掘机/掘土机
+SYNONYM 機械 耕耘機/鐵牛 耕耘机
+SYNONYM 機械 堆高機 叉车/铲车
+SYNONYM 機械 牽引機/曳引機 牵引机
+SYNONYM 機械 剷土機 铲土机/铲运机
+SYNONYM 機械 潛盾機 盾构机
+SYNONYM 機械 機制 机制/机理
+SYNONYM 機械 聯合收割機 联合收割机/康拜因
+ZH-TW 機械 一貫作業 
+ZH-TW 機械 小山貓 
+ZH-TW 機械 跳機 
+ZH-CN 機械  满负荷
+ZH-CN 機械  工作面
+ZH-CN 機械  电铲/绳铲/钢缆铲
+ZH-CN 機械  农机站/农业机械工作站
+SYNONYM 教育＆文化 小小班/幼幼班 小小班
+SYNONYM 教育＆文化 小學/國小/國民小學 小学
+SYNONYM 教育＆文化 公立學校 公立学校/公办学校
+SYNONYM 教育＆文化 幼教/幼兒教育/學前教育/幼稚教育 幼教/幼儿教育/学前教育
+SYNONYM 教育＆文化 生涯規劃 生涯规划/生涯设计
+SYNONYM 教育＆文化 休學 休学/停学
+SYNONYM 教育＆文化 同步口譯 同传/同声传译/同声翻译
+SYNONYM 教育＆文化 多益 托业
+SYNONYM 教育＆文化 安親班 托班/托管班
+SYNONYM 教育＆文化 早期教育 早期教育/早教
+SYNONYM 教育＆文化 考古題 真题
+SYNONYM 教育＆文化 住校生 住校生/住读生
+SYNONYM 教育＆文化 克漏字 完型填空
+SYNONYM 教育＆文化 助學貸款/就學貸款 助学贷款/贷学金
+SYNONYM 教育＆文化 坎城影展 戛纳影展
+SYNONYM 教育＆文化 私校 民校
+SYNONYM 教育＆文化 走讀生/通學生/通勤生 走读生/通学生
+SYNONYM 教育＆文化 夜大 夜大/夜大学
+SYNONYM 教育＆文化 姊妹市/姐妹市 姊妹市/姐妹市/兄弟市/姊妹城/姐妹城/友好城市
+SYNONYM 教育＆文化 孤兒院/保育院/育幼院 孤儿院/保育院
+SYNONYM 教育＆文化 盲人學校/啟明學校 盲人学校
+SYNONYM 教育＆文化 空大/空中大學 电大/电视大学
+SYNONYM 教育＆文化 肢體語言 肢体语言/体态语
+SYNONYM 教育＆文化 金氏世界紀錄 吉尼斯世界纪录
+SYNONYM 教育＆文化 前段班 快班
+SYNONYM 教育＆文化 封底 封底/封四
+SYNONYM 教育＆文化 封底裡 封三
+SYNONYM 教育＆文化 封面 封面/封一
+SYNONYM 教育＆文化 封面裡 封二
+SYNONYM 教育＆文化 建教合作 厂校挂钩
+SYNONYM 教育＆文化 後段班 慢班
+SYNONYM 教育＆文化 指導教授 导师
+SYNONYM 教育＆文化 校園民歌 台湾校园歌曲
+SYNONYM 教育＆文化 校園網路 校园网络
+SYNONYM 教育＆文化 校運會/校運 校运会
+SYNONYM 教育＆文化 留級 留级/留班/蹲班
+SYNONYM 教育＆文化 破音字/歧音異義字 破读字
+SYNONYM 教育＆文化 級任/班導/導師/班導師/級任導師 级任/班主任
+SYNONYM 教育＆文化 高職/高級職業學校 职高/职业高中
+SYNONYM 教育＆文化 國際音標/萬國音標/國際語音學字母/萬國語音學字母 国际音标
+SYNONYM 教育＆文化 基礎教育/基本教育 基础教育
+SYNONYM 教育＆文化 基礎學科/基本科目/基本學科 基础学科
+SYNONYM 教育＆文化 專科/專科學校/專校 专科/专科学校/大专
+SYNONYM 教育＆文化 教學軟體 课件
+SYNONYM 教育＆文化 梗漫 暴漫/暴走漫画
+SYNONYM 教育＆文化 猜題 猜题/压题/押题
+SYNONYM 教育＆文化 軟實力 软实力/软力量
+SYNONYM 教育＆文化 通才教育/通識教育 通才教育
+SYNONYM 教育＆文化 勞作 劳作/劳技
+SYNONYM 教育＆文化 扉頁 扉页/內封
+SYNONYM 教育＆文化 期考/期末考 期考/期末考/大考/期终考
+SYNONYM 教育＆文化 答案卷 答卷
+SYNONYM 教育＆文化 開學典禮/始業式 开学典礼
+SYNONYM 教育＆文化 意大利語/義大利語 意大利语
+SYNONYM 教育＆文化 腦力激盪 脑力激荡/头脑风暴
+SYNONYM 教育＆文化 電子字典/電腦字典 电子字典/计算机字典
+SYNONYM 教育＆文化 電腦辭典 电脑辞典/计算机辞典
+SYNONYM 教育＆文化 槍替 枪替/打枪
+SYNONYM 教育＆文化 網路教育 网络教育
+SYNONYM 教育＆文化 遠距教學 远距离教学
+SYNONYM 教育＆文化 罷教/罷課 罢教
+SYNONYM 教育＆文化 複印本/影印本 复印件/影印件
+SYNONYM 教育＆文化 閱卷 阅卷/评卷
+SYNONYM 教育＆文化 壁報 壁报/墙报
+SYNONYM 教育＆文化 學科/學門 学科
+SYNONYM 教育＆文化 螢光筆 荧光笔
+SYNONYM 教育＆文化 諾貝爾獎 诺贝尔奖/诺奖
+SYNONYM 教育＆文化 輻合思考/聚斂性思考 辐合思维/聚合思维
+SYNONYM 教育＆文化 聯絡簿 联系本
+SYNONYM 教育＆文化 欄位 字段
+SYNONYM 教育＆文化 聾啞學校/啟聰學校 聋哑学校
+HOMONYM 教育＆文化 大字報 大字报
+HOMONYM 教育＆文化 中學 中学
+HOMONYM 教育＆文化 五育 五育
+HOMONYM 教育＆文化 以人為本 以人为本
+HOMONYM 教育＆文化 包班制 包班制
+HOMONYM 教育＆文化 剃光頭 剃光头
+HOMONYM 教育＆文化 家長會 家长会
+HOMONYM 教育＆文化 校安 校安
+HOMONYM 教育＆文化 特招 特招
+HOMONYM 教育＆文化 班主任 班主任
+HOMONYM 教育＆文化 高工 高工
+HOMONYM 教育＆文化 高考 高考
+HOMONYM 教育＆文化 高級中學 高级中学
+HOMONYM 教育＆文化 高級知識分子 高级知识分子
+HOMONYM 教育＆文化 高職 高职
+HOMONYM 教育＆文化 普通教育 普通教育
+HOMONYM 教育＆文化 補習班 补习班
+HOMONYM 教育＆文化 僑生 侨生
+ZH-TW 教育＆文化 一綱多本 
+ZH-TW 教育＆文化 九年一貫課程 
+ZH-TW 教育＆文化 二一/二一退學 
+ZH-TW 教育＆文化 二技 
+ZH-TW 教育＆文化 二專/二年制專科學校 
+ZH-TW 教育＆文化 三明治教學 
+ZH-TW 教育＆文化 下修 
+ZH-TW 教育＆文化 大專聯考 
+ZH-TW 教育＆文化 大學入學考試 
+ZH-TW 教育＆文化 大學評鑒 
+ZH-TW 教育＆文化 大學聯考 
+ZH-TW 教育＆文化 小功 
+ZH-TW 教育＆文化 中二病 
+ZH-TW 教育＆文化 介聘 
+ZH-TW 教育＆文化 分流 
+ZH-TW 教育＆文化 文化財 
+ZH-TW 教育＆文化 方帽/方帽子 
+ZH-TW 教育＆文化 牛稠子文化 
+ZH-TW 教育＆文化 牛罵頭文化 
+ZH-TW 教育＆文化 牛頭班/放牛班 
+ZH-TW 教育＆文化 代用教員 
+ZH-TW 教育＆文化 母姊會 
+ZH-TW 教育＆文化 母姐會 
+ZH-TW 教育＆文化 光碟書 
+ZH-TW 教育＆文化 光碟雜誌 
+ZH-TW 教育＆文化 吊車尾 
+ZH-TW 教育＆文化 同人志 
+ZH-TW 教育＆文化 低空 
+ZH-TW 教育＆文化 技能檢定 
+ZH-TW 教育＆文化 育樂 
+ZH-TW 教育＆文化 谷標 
+ZH-TW 教育＆文化 典試長 
+ZH-TW 教育＆文化 夜間部 
+ZH-TW 教育＆文化 空中學校 
+ZH-TW 教育＆文化 指考/大學入學指定科目考試 
+ZH-TW 教育＆文化 流浪教師 
+ZH-TW 教育＆文化 美勞 
+ZH-TW 教育＆文化 家商/家事商業職業學校 
+ZH-TW 教育＆文化 班聯會 
+ZH-TW 教育＆文化 級任制 
+ZH-TW 教育＆文化 能力分班 
+ZH-TW 教育＆文化 訓導處 
+ZH-TW 教育＆文化 迷你小學 
+ZH-TW 教育＆文化 配分 
+ZH-TW 教育＆文化 高考/高等考試 
+ZH-TW 教育＆文化 國中/國民中學 
+ZH-TW 教育＆文化 國中小 
+ZH-TW 教育＆文化 國中生 
+ZH-TW 教育＆文化 國四班 
+ZH-TW 教育＆文化 國音字母 
+ZH-TW 教育＆文化 國教/國民教育 
+ZH-TW 教育＆文化 國語文 
+ZH-TW 教育＆文化 推甄/推薦甄選 
+ZH-TW 教育＆文化 推廣教育 
+ZH-TW 教育＆文化 教界 
+ZH-TW 教育＆文化 清寒生 
+ZH-TW 教育＆文化 通識科目 
+ZH-TW 教育＆文化 陸生 
+ZH-TW 教育＆文化 博士候選人 
+ZH-TW 教育＆文化 惡性補習 
+ZH-TW 教育＆文化 評量 
+ZH-TW 教育＆文化 當掉 
+ZH-TW 教育＆文化 資優班 
+ZH-TW 教育＆文化 僑教 
+ZH-TW 教育＆文化 甄試 
+ZH-TW 教育＆文化 管訓 
+ZH-TW 教育＆文化 精神面 
+ZH-TW 教育＆文化 獎助金 
+ZH-TW 教育＆文化 課程評鑑 
+ZH-TW 教育＆文化 課綱 
+ZH-TW 教育＆文化 學用品 
+ZH-TW 教育＆文化 學店 
+ZH-TW 教育＆文化 學務處/學生事務處 
+ZH-TW 教育＆文化 學測/大學學科能力測驗 
+ZH-TW 教育＆文化 學群 
+ZH-TW 教育＆文化 擋修 
+ZH-TW 教育＆文化 親師懇談會 
+ZH-TW 教育＆文化 親職教育 
+ZH-TW 教育＆文化 懇親會 
+ZH-TW 教育＆文化 檢定考試 
+ZH-TW 教育＆文化 翹課/蹺課 
+ZH-CN 教育＆文化  一免一补
+ZH-CN 教育＆文化  一费制
+ZH-CN 教育＆文化  入托
+ZH-CN 教育＆文化  三下乡
+ZH-CN 教育＆文化  上线
+ZH-CN 教育＆文化  大课
+ZH-CN 教育＆文化  小教
+ZH-CN 教育＆文化  工读学校
+ZH-CN 教育＆文化  广播电视大学
+ZH-CN 教育＆文化  中师
+ZH-CN 教育＆文化  中考
+ZH-CN 教育＆文化  中专
+ZH-CN 教育＆文化  互选
+ZH-CN 教育＆文化  公办教师
+ZH-CN 教育＆文化  双元制
+ZH-CN 教育＆文化  双失
+ZH-CN 教育＆文化  双百方针
+ZH-CN 教育＆文化  双待
+ZH-CN 教育＆文化  少年宫
+ZH-CN 教育＆文化  开考
+ZH-CN 教育＆文化  手势语
+ZH-CN 教育＆文化  文革/文化大革命/无产阶级文化大革命
+ZH-CN 教育＆文化  文化水平
+ZH-CN 教育＆文化  文化台
+ZH-CN 教育＆文化  文化园
+ZH-CN 教育＆文化  文化快餐
+ZH-CN 教育＆文化  文化宫
+ZH-CN 教育＆文化  文化站
+ZH-CN 教育＆文化  文凭试
+ZH-CN 教育＆文化  毛入学率
+ZH-CN 教育＆文化  业大/业余大学
+ZH-CN 教育＆文化  代培
+ZH-CN 教育＆文化  刊授
+ZH-CN 教育＆文化  台生
+ZH-CN 教育＆文化  司考
+ZH-CN 教育＆文化  外展训练/拓展训练
+ZH-CN 教育＆文化  外语角
+ZH-CN 教育＆文化  市长班
+ZH-CN 教育＆文化  民办教师
+ZH-CN 教育＆文化  汉语水平考试
+ZH-CN 教育＆文化  汉语年
+ZH-CN 教育＆文化  电教馆/电化教育馆
+ZH-CN 教育＆文化  优生
+ZH-CN 教育＆文化  优育
+ZH-CN 教育＆文化  会标/会徽
+ZH-CN 教育＆文化  会标
+ZH-CN 教育＆文化  动手能力
+ZH-CN 教育＆文化  压题
+ZH-CN 教育＆文化  成人高考
+ZH-CN 教育＆文化  托幼
+ZH-CN 教育＆文化  网校/网络学校
+ZH-CN 教育＆文化  老三届
+ZH-CN 教育＆文化  老年大学
+ZH-CN 教育＆文化  考托
+ZH-CN 教育＆文化  考学
+ZH-CN 教育＆文化  考点
+ZH-CN 教育＆文化  考研
+ZH-CN 教育＆文化  考博
+ZH-CN 教育＆文化  考级
+ZH-CN 教育＆文化  自考生
+ZH-CN 教育＆文化  自学考试
+ZH-CN 教育＆文化  两个文明
+ZH-CN 教育＆文化  体校/体育运动学校
+ZH-CN 教育＆文化  技校
+ZH-CN 教育＆文化  投档
+ZH-CN 教育＆文化  投档线
+ZH-CN 教育＆文化  后门生/条子生
+ZH-CN 教育＆文化  函大/函授大学
+ZH-CN 教育＆文化  单考单招/高等职业教育单独招生考试
+ZH-CN 教育＆文化  单科大学
+ZH-CN 教育＆文化  卧谈会
+ZH-CN 教育＆文化  国内字
+ZH-CN 教育＆文化  国际词
+ZH-CN 教育＆文化  学生流
+ZH-CN 教育＆文化  实考分
+ZH-CN 教育＆文化  治愚
+ZH-CN 教育＆文化  盲审
+ZH-CN 教育＆文化  远教/远程教育/远距离教育
+ZH-CN 教育＆文化  青年宫/青年文化宮
+ZH-CN 教育＆文化  俄语年
+ZH-CN 教育＆文化  复读
+ZH-CN 教育＆文化  客观题
+ZH-CN 教育＆文化  挂科
+ZH-CN 教育＆文化  洋插队
+ZH-CN 教育＆文化  派位/电脑派位
+ZH-CN 教育＆文化  流失生
+ZH-CN 教育＆文化  研网
+ZH-CN 教育＆文化  研究生院
+ZH-CN 教育＆文化  秋假
+ZH-CN 教育＆文化  科协
+ZH-CN 教育＆文化  科学发展观
+ZH-CN 教育＆文化  科学学
+ZH-CN 教育＆文化  科学城
+ZH-CN 教育＆文化  科学院
+ZH-CN 教育＆文化  穿靴戴帽
+ZH-CN 教育＆文化  统考
+ZH-CN 教育＆文化  统读
+ZH-CN 教育＆文化  英才班
+ZH-CN 教育＆文化  首创精神
+ZH-CN 教育＆文化  借读
+ZH-CN 教育＆文化  差生/差等生
+ZH-CN 教育＆文化  校历
+ZH-CN 教育＆文化  校企
+ZH-CN 教育＆文化  特长生
+ZH-CN 教育＆文化  特级教师
+ZH-CN 教育＆文化  窄播
+ZH-CN 教育＆文化  素质教育
+ZH-CN 教育＆文化  茶歇
+ZH-CN 教育＆文化  高师
+ZH-CN 教育＆文化  高考移民
+ZH-CN 教育＆文化  高自考/高等教育自学考试
+ZH-CN 教育＆文化  高知
+ZH-CN 教育＆文化  高校/高等学校
+ZH-CN 教育＆文化  售文网
+ZH-CN 教育＆文化  掐尖子
+ZH-CN 教育＆文化  控分线
+ZH-CN 教育＆文化  教程
+ZH-CN 教育＆文化  第二课堂
+ZH-CN 教育＆文化  脱盲
+ZH-CN 教育＆文化  通用字表
+ZH-CN 教育＆文化  逛灯
+ZH-CN 教育＆文化  博导/博士生导师
+ZH-CN 教育＆文化  普高/普通高等学校
+ZH-CN 教育＆文化  普高/普通高级中学
+ZH-CN 教育＆文化  普教
+ZH-CN 教育＆文化  温课
+ZH-CN 教育＆文化  集体主义
+ZH-CN 教育＆文化  板报/黑板报
+ZH-CN 教育＆文化  勤工俭学
+ZH-CN 教育＆文化  算草
+ZH-CN 教育＆文化  精神文明建设
+ZH-CN 教育＆文化  精神污染
+ZH-CN 教育＆文化  精神垃圾
+ZH-CN 教育＆文化  精神产品
+ZH-CN 教育＆文化  裸分
+ZH-CN 教育＆文化  酷语
+ZH-CN 教育＆文化  翻斗乐
+ZH-CN 教育＆文化  军民共建
+ZH-CN 教育＆文化  军博会
+ZH-CN 教育＆文化  应试教育
+ZH-CN 教育＆文化  废学
+ZH-CN 教育＆文化  扫盲
+ZH-CN 教育＆文化  小升初
+ZH-CN 教育＆文化  择校生
+ZH-CN 教育＆文化  满堂灌
+ZH-CN 教育＆文化  硕导
+ZH-CN 教育＆文化  职业大学
+ZH-CN 教育＆文化  蓝牌
+ZH-CN 教育＆文化  规范字
+ZH-CN 教育＆文化  让座日
+ZH-CN 教育＆文化  讲师团
+ZH-CN 教育＆文化  课本剧
+ZH-CN 教育＆文化  课题组
+ZH-CN 教育＆文化  调研
+ZH-CN 教育＆文化  转校费
+ZH-CN 教育＆文化  预考
+ZH-CN 教育＆文化  预研
+ZH-CN 教育＆文化  特困生
+ZH-CN 教育＆文化  二外
+ZH-CN 教育＆文化  代培生
+ZH-CN 教育＆文化  博士点
+ZH-CN 教育＆文化  反面教员
+ZH-CN 教育＆文化  专升本
+ZH-CN 教育＆文化  尖子生
+ZH-CN 教育＆文化  工农兵学员
+ZH-CN 教育＆文化  成考/成人高考
+ZH-CN 教育＆文化  教委
+ZH-CN 教育＆文化  统招生
+ZH-CN 教育＆文化  早早班
+ZH-CN 教育＆文化  高复班
+ZH-CN 教育＆文化  义教
+ZH-CN 教育＆文化  电教/电化教育
+ZH-CN 教育＆文化  考风
+ZH-CN 教育＆文化  普法
+SYNONYM 自然科學 PM2.5/細懸浮微粒 PM2.5/细颗粒物/可入肺颗粒物
+SYNONYM 自然科學 P波/初波/初達波 P波/初波/初至波
+SYNONYM 自然科學 Ｘ光/Ｘ射線/倫琴射線/愛克斯光/愛克斯射線 Ｘ光/Ｘ射线/伦琴射线/爱克斯光/爱克斯射线/Ｘ线
+SYNONYM 自然科學 二次汙染 二次污染/次生污染
+SYNONYM 自然科學 二氧化矽 二氧化硅
+SYNONYM 自然科學 二氧化碳雷射 二氧化碳激光
+SYNONYM 自然科學 二氧化碳雷射儀 二氧化碳激光器
+SYNONYM 自然科學 二硫化物 二硫化物/二硫化合物
+SYNONYM 自然科學 人造皮 人造革
+SYNONYM 自然科學 十億分率/十億分點 十亿分率
+SYNONYM 自然科學 三原色 三原色/三基色
+SYNONYM 自然科學 三酸甘油酯/甘油三酸酯 三酸甘油酯/甘油三酸酯/甘油三酯
+SYNONYM 自然科學 凡得瓦力 凡得瓦力/范德瓦耳斯力
+SYNONYM 自然科學 土石流 泥石流
+SYNONYM 自然科學 大漆/生漆 大漆/生漆/土漆/国漆
+SYNONYM 自然科學 大豪雨 大豪雨/特大暴雨
+SYNONYM 自然科學 小蘇打 小苏打/食粉
+SYNONYM 自然科學 不斷電系統 不间断电源
+SYNONYM 自然科學 互感應 互感应/互感
+SYNONYM 自然科學 元素態物質 单质
+SYNONYM 自然科學 公寸 公寸/分米
+SYNONYM 自然科學 公制/國際公制 公制/国际公制/米制
+SYNONYM 自然科學 公撮 市撮
+SYNONYM 自然科學 化學受器 化学受体
+SYNONYM 自然科學 反聖嬰/聖女現象/反聖嬰現象 拉尼娜/拉尼娜现象/反厄尔尼诺现象
+SYNONYM 自然科學 反衝力/後座力/反撞力/後撞力 反冲力/后坐力
+SYNONYM 自然科學 反應堆/反應爐/原子爐/核反應堆/核子反應爐/核子反應器 反应堆/反应炉/原子炉/核反应堆/核子反应炉/原子核反应堆
+SYNONYM 自然科學 天然氣/天然瓦斯 天然气
+SYNONYM 自然科學 天擇/自然淘汰 天择/自然淘汰/自然选择
+SYNONYM 自然科學 太空人/太空飛行員 航天员/宇航员
+SYNONYM 自然科學 太空工業 航天工业
+SYNONYM 自然科學 太空技術 太空技术/宇航技术/空间技术/航天技术
+SYNONYM 自然科學 太空科學 空间科学
+SYNONYM 自然科學 太空站 太空站/空间站/航太站/航天站
+SYNONYM 自然科學 太空探測器 太空探测器/宇宙探测器/空间探测器
+SYNONYM 自然科學 太空梭 太空梭/航天飞机
+SYNONYM 自然科學 太空船/宇宙飛船 太空船/宇宙飞船/飞船/太空机
+SYNONYM 自然科學 太空漫步 太空漫步/太空行走
+SYNONYM 自然科學 太陽光電產業 太阳光电产业/光伏产业
+SYNONYM 自然科學 太陽爐 太阳炉/太阳灶
+SYNONYM 自然科學 引子 引物
+SYNONYM 自然科學 引子酶/導引酶 引发酶
+SYNONYM 自然科學 木棉/紅棉 木棉/红棉/攀枝花
+SYNONYM 自然科學 火星塞 火花塞
+SYNONYM 自然科學 去氧核糖 脱氧核糖
+SYNONYM 自然科學 去氧核糖核酸 脱氧核糖核酸
+SYNONYM 自然科學 去氧核糖核酸水解酶 脱氧核糖核酸水解酶
+SYNONYM 自然科學 可可 可可/蔻蔻
+SYNONYM 自然科學 尼龍/尼隆/耐隆 尼龙/锦纶
+SYNONYM 自然科學 平方公里 平方公里/平方千米
+SYNONYM 自然科學 平方米/平方公尺 平方米/平方公尺/平方/平米
+SYNONYM 自然科學 本氏液 本立德溶液
+SYNONYM 自然科學 永夜 极夜
+SYNONYM 自然科學 甘胺酸 甘氨酸/氨基乙酸
+SYNONYM 自然科學 生存競爭 生存竞争/生存斗争
+SYNONYM 自然科學 生技/生物科技 生技/生物科技/生物技术
+SYNONYM 自然科學 生物晶片 生物芯片
+SYNONYM 自然科學 生物節律/生物時鐘/生理時鐘 生物节律/生物钟
+SYNONYM 自然科學 生物學/生命科學/生科 生物学/生命科学
+SYNONYM 自然科學 生產者/獨立營養生物/自營生物 生产者/独立营养生物/自养生物
+SYNONYM 自然科學 生態群/生物群集/生物群聚 生态群
+SYNONYM 自然科學 白礬/明礬 白矾/明矾/明石
+SYNONYM 自然科學 立方米/立方公尺 立方米/立方公尺/立方
+SYNONYM 自然科學 立體聲/身歷聲/立體身歷聲 立体声
+SYNONYM 自然科學 光汙染/光害/光害汙染 光污染
+SYNONYM 自然科學 光纖/光纖維/光學纖維 光纤/光纤维/光学纤维/光导纤维
+SYNONYM 自然科學 全距 全距/极差
+SYNONYM 自然科學 共軛複數 共轭复数/复共轭的
+SYNONYM 自然科學 合成石油 合成石油/人造石油
+SYNONYM 自然科學 吉貝素/激勃素 赤霉素
+SYNONYM 自然科學 吉貝酸/激勃酸 赤霉酸
+SYNONYM 自然科學 向日性/向光性/趨光性 向日性/向光性/趋光性/向旋旋光性
+SYNONYM 自然科學 回力標/迴力鏢/迴旋標/迴旋鏢 回力标/回力镖/回旋标/回旋镖/自归器/飞机板/飞去来器
+SYNONYM 自然科學 回潮/返潮/反潮 回潮/返潮
+SYNONYM 自然科學 地陷/地層下陷/地盤下陷 地陷/地层下陷/地面沉降
+SYNONYM 自然科學 地震等級/地震規模 地震等级/震级/地震震级
+SYNONYM 自然科學 宇宙空間/外太空 宇宙空间/外层空间
+SYNONYM 自然科學 守宮/壁虎 守宫/壁虎/蝎虎/蝎虎子
+SYNONYM 自然科學 次波/剪力波/次達波 次波/剪力波
+SYNONYM 自然科學 自由下落 自由降落
+SYNONYM 自然科學 伽馬射線 伽马射线/丙种射线
+SYNONYM 自然科學 冷媒/冷卻劑/致冷劑 冷媒/冷却剂/致冷剂/雪种/制冷剂
+SYNONYM 自然科學 卵胎生 卵胎生/半胎生
+SYNONYM 自然科學 均值定理 中值定理
+SYNONYM 自然科學 抗氧化劑 抗氧化剂/抗氧剂
+SYNONYM 自然科學 抗藥性 抗药性/耐药性
+SYNONYM 自然科學 折光率/屈光率 光焦度
+SYNONYM 自然科學 折射光 折光
+SYNONYM 自然科學 汽油彈/凝固汽油彈 汽油弹/凝固汽油弹/纳磅弹
+SYNONYM 自然科學 角平分線/分角線 角平分线
+SYNONYM 自然科學 貝他射線 贝塔射线/乙种射线
+SYNONYM 自然科學 乳膠 乳胶/胶乳
+SYNONYM 自然科學 亞佛加厥定律 阿伏加德罗定律
+SYNONYM 自然科學 亞佛加厥數 阿伏伽德罗数
+SYNONYM 自然科學 刺竹/苦竹/大勒竹/鬱竹 刺竹/苦竹/大勒竹/鸡筋油竹
+SYNONYM 自然科學 受質/底材/基質 受质/底物
+SYNONYM 自然科學 奈米 纳米
+SYNONYM 自然科學 奈米技術 纳米技术
+SYNONYM 自然科學 奈米材料 纳米材料
+SYNONYM 自然科學 奈米科學 纳米科学
+SYNONYM 自然科學 奈米纖維 纳米纤维
+SYNONYM 自然科學 定向天擇 定向选择
+SYNONYM 自然科學 弧度制/弳度制 弧度制
+SYNONYM 自然科學 波以耳定律 玻意耳定律
+SYNONYM 自然科學 矽片 硅片
+SYNONYM 自然科學 矽谷 硅谷
+SYNONYM 自然科學 矽晶片 硅晶片
+SYNONYM 自然科學 矽酸鹽 硅酸盐
+SYNONYM 自然科學 矽膠 硅胶
+SYNONYM 自然科學 矽橡膠 硅橡胶
+SYNONYM 自然科學 矽鋼 硅鋼
+SYNONYM 自然科學 矽藻 硅藻
+SYNONYM 自然科學 空氣汙染指標 空气污染指数
+SYNONYM 自然科學 空氣品質 空气质量
+SYNONYM 自然科學 芮氏/芮氏地震規模 里氏/里氏震级
+SYNONYM 自然科學 花崗石/花崗岩 花岗石/花岗岩/麻石
+SYNONYM 自然科學 虎克定律 胡克定律
+SYNONYM 自然科學 表面活性劑/界面活性劑 表面活性剂
+SYNONYM 自然科學 阿爾法射線/阿伐射線 阿尔法射线/甲种射线
+SYNONYM 自然科學 品脫/派恩脫 品脱
+SYNONYM 自然科學 指數生長/指數增長/指數型成長/指數型族群成長 指数生长/种群指数生长
+SYNONYM 自然科學 指數增長/指數型成長 指数增长
+SYNONYM 自然科學 施子 施主
+SYNONYM 自然科學 染色分體 染色单体
+SYNONYM 自然科學 氟氯烷 氟利昂
+SYNONYM 自然科學 氟氯碳化物/氟氯碳化合物 氯氟碳化物
+SYNONYM 自然科學 砈 砹
+SYNONYM 自然科學 科學記法 科学计数法
+SYNONYM 自然科學 胚層 胚层/胚叶
+SYNONYM 自然科學 重量莫耳濃度 重量摩尔浓度
+SYNONYM 自然科學 風向儀 向风针
+SYNONYM 自然科學 飛碟/不明飛行物/幽浮 飞碟/不明飞行物
+SYNONYM 自然科學 原子序 原子序数
+SYNONYM 自然科學 原子價 原子价/化合价
+SYNONYM 自然科學 原生質 原生质/活质
+SYNONYM 自然科學 差集 补集
+SYNONYM 自然科學 核反應/核子反應 核反应
+SYNONYM 自然科學 核電廠/核能電廠/核能發電廠 核电厂/核能电厂/核能发电厂/核电站
+SYNONYM 自然科學 核糖核酸酵素 核酶
+SYNONYM 自然科學 桃莉羊 多莉羊
+SYNONYM 自然科學 氨水/阿摩尼亞水 氨水
+SYNONYM 自然科學 浬/海里/海浬 浬/海里
+SYNONYM 自然科學 浸塗 涂渍
+SYNONYM 自然科學 純合子/同型合子/同基因型合子 纯合子
+SYNONYM 自然科學 胺基酸 氨基酸
+SYNONYM 自然科學 臭氧層 臭氧层/臭气层
+SYNONYM 自然科學 航太 航天
+SYNONYM 自然科學 航太人 航天人
+SYNONYM 自然科學 馬蹄蓮/海芋 马蹄莲
+SYNONYM 自然科學 高科技 高科技/高技术/高新技术
+SYNONYM 自然科學 參照物 参照物/参考系
+SYNONYM 自然科學 基因剔除 基因敲除
+SYNONYM 自然科學 基因晶片 基因芯片
+SYNONYM 自然科學 基因體 基因组
+SYNONYM 自然科學 基改生物/基因改造生物 遗传修饰生物体
+SYNONYM 自然科學 液化瓦斯 液化气
+SYNONYM 自然科學 球面方程式 球面方程
+SYNONYM 自然科學 異種雜交 异种杂交/串种
+SYNONYM 自然科學 笛摩根法則 德摩根法则
+SYNONYM 自然科學 莫耳 摩/摩尔
+SYNONYM 自然科學 莫耳質量 摩尔质量
+SYNONYM 自然科學 莫耳體積 摩尔体积
+SYNONYM 自然科學 單株抗體 单克隆抗体
+SYNONYM 自然科學 喹啉/奎林 喹啉
+SYNONYM 自然科學 散逸層/外氣層 散逸层/外逸层/逃逸层/外大气层
+SYNONYM 自然科學 晶片 芯片
+SYNONYM 自然科學 棲地/棲息地 栖地/栖息地/生境
+SYNONYM 自然科學 殖株/群殖/選殖 克隆
+SYNONYM 自然科學 絕對溫標/熱力學溫標/克氏溫標/凱氏溫標 绝对温标/热力学温标/开氏温标
+SYNONYM 自然科學 裂解 裂化
+SYNONYM 自然科學 超音速 超音速/超声速
+SYNONYM 自然科學 超聲波/超音波 超声波
+SYNONYM 自然科學 黃鼠/鼲鼠/達烏爾黃鼠 黄鼠/鼲鼠/达乌尔黄鼠/地松鼠/蒙古黄鼠/达斡尔黄鼠
+SYNONYM 自然科學 黑土/黑沃土 黑土/暗沃土
+SYNONYM 自然科學 黑鮶/許氏平鮋 黑鲪/许氏平鲉/黑寨/黑石鲈
+SYNONYM 自然科學 塑膠炸彈 塑胶炸弹/塑料炸弹
+SYNONYM 自然科學 概率/或然率/機率 概率/或然率/机会率/几率
+SYNONYM 自然科學 稜柱/角柱 棱柱
+SYNONYM 自然科學 稜錐/稜錐體/角錐/角錐體 棱锥/棱锥体
+SYNONYM 自然科學 聖嬰/艾尼紐/聖嬰現象 圣婴/艾尼纽/圣婴现象/厄尔尼诺/厄尔尼诺现象
+SYNONYM 自然科學 落塵 落尘/降尘
+SYNONYM 自然科學 跳電 跳闸
+SYNONYM 自然科學 雷射/鐳射/雷射光 雷射/镭射/雷射光/莱射/莱塞/激光
+SYNONYM 自然科學 雷射器 莱塞/激光器
+SYNONYM 自然科學 雷射導引 激光制导
+SYNONYM 自然科學 電泳晶片 电泳芯片
+SYNONYM 自然科學 電容/電容器/容電器 电容/电容器
+SYNONYM 自然科學 電荷耦合元件 电荷耦合器件
+SYNONYM 自然科學 電晶體 晶体管
+SYNONYM 自然科學 電解槽 电解池
+SYNONYM 自然科學 電廠/發電廠 电厂/发电厂/发电站
+SYNONYM 自然科學 電爐 电炉/电灶
+SYNONYM 自然科學 熊貓/貓熊/大貓熊 熊猫/猫熊/大熊猫
+SYNONYM 自然科學 福爾馬林/福馬林 福尔马林
+SYNONYM 自然科學 網路 网络
+SYNONYM 自然科學 聚合作用 聚合反应
+SYNONYM 自然科學 聚酯纖維 聚酯纤维/涤纶
+SYNONYM 自然科學 臺灣獼猴 台湾猕猴/台湾猴
+SYNONYM 自然科學 增溫層/熱氣層 增温层/热气层/暖层/热层/热成层
+SYNONYM 自然科學 標準化石/指準化石/指標化石 标准化石/标志化石
+SYNONYM 自然科學 樣本數 样本数/样本量
+SYNONYM 自然科學 樣帶 样带/样条
+SYNONYM 自然科學 蝤蛑/梭子蟹 蝤蛑/梭子蟹/枪蟹
+SYNONYM 自然科學 質數 质数/素数
+SYNONYM 自然科學 震央 震中
+SYNONYM 自然科學 震度/地震強度 烈度/地震烈度
+SYNONYM 自然科學 噪音 噪音/噪声
+SYNONYM 自然科學 噪音汙染 噪音污染/噪声污染
+SYNONYM 自然科學 燃料裝填週期/核子反應器爐心壽命 换料周期/堆芯寿期
+SYNONYM 自然科學 螢光 熒光
+SYNONYM 自然科學 螢光粉 荧光粉/荧火粉
+SYNONYM 自然科學 螢光棒 荧光棒
+SYNONYM 自然科學 螢光劑/螢光增白劑 荧光剂/荧光增白剂/白色染料
+SYNONYM 自然科學 選殖 克隆化
+SYNONYM 自然科學 鍅 钫
+SYNONYM 自然科學 優養化 富营养化
+SYNONYM 自然科學 戴奧辛 二（口+恶）英
+SYNONYM 自然科學 燭/燭光 烛/烛光/坎/坎德拉
+SYNONYM 自然科學 環境負載力 环境承载力
+SYNONYM 自然科學 螺旋菌 螺菌
+SYNONYM 自然科學 邁/英里/哩 迈/英里
+SYNONYM 自然科學 轉移矩陣 转移矩阵/转移阵
+SYNONYM 自然科學 轉錄本 转录本/转录物
+SYNONYM 自然科學 爆炸物/爆裂物 爆炸物
+SYNONYM 自然科學 鏡反射/鏡面反射/鏡像反射 镜反射/镜面反射
+SYNONYM 自然科學 類質同形體 类质同形体/同形体
+SYNONYM 自然科學 鯕鰍/飛魚虎/鬼頭刀 鲯鳅
+SYNONYM 自然科學 懸浮微粒 可吸入颗粒物
+SYNONYM 自然科學 耀斑/太陽耀斑/日焰 耀斑/太阳耀斑
+SYNONYM 自然科學 藻華 藻华/水华/藻花
+SYNONYM 自然科學 蠑螈/榮蚖/榮原 蝾螈
+SYNONYM 自然科學 體積百分率 体积百分率/体积百分数
+SYNONYM 自然科學 體積莫耳濃度 体积摩尔浓度
+SYNONYM 自然科學 鉳 锫
+HOMONYM 自然科學 油品 油品
+HOMONYM 自然科學 洪水位 洪水位
+HOMONYM 自然科學 基盤 基盘
+HOMONYM 自然科學 裂解 裂解
+HOMONYM 自然科學 熱電 热电
+HOMONYM 自然科學 豬草 猪草
+ZH-TW 自然科學 二項分配 
+ZH-TW 自然科學 中間值定理 
+ZH-TW 自然科學 片利共生 
+ZH-TW 自然科學 生態池 
+ZH-TW 自然科學 地牛翻身 
+ZH-TW 自然科學 自然保育 
+ZH-TW 自然科學 自然保留區 
+ZH-TW 自然科學 西北雨 
+ZH-TW 自然科學 乘式 
+ZH-TW 自然科學 核爆/核子爆炸 
+ZH-TW 自然科學 航太工業 
+ZH-TW 自然科學 陸上警報 
+ZH-TW 自然科學 落塵 
+ZH-TW 自然科學 臺尺 
+ZH-TW 自然科學 臺斤 
+ZH-TW 自然科學 臺兩 
+ZH-CN 自然科學  三废
+ZH-CN 自然科學  井喷
+ZH-CN 自然科學  开化/开冻
+ZH-CN 自然科學  日化
+ZH-CN 自然科學  水电站
+ZH-CN 自然科學  水暖
+ZH-CN 自然科學  火电站
+ZH-CN 自然科學  火情
+ZH-CN 自然科學  乏汽
+ZH-CN 自然科學  生态文明
+ZH-CN 自然科學  生态移民
+ZH-CN 自然科學  电站
+ZH-CN 自然科學  电喷
+ZH-CN 自然科學  白色污染
+ZH-CN 自然科學  白灾
+ZH-CN 自然科學  立窑
+ZH-CN 自然科學  长城站/中国南极长城站
+ZH-CN 自然科學  亚光
+ZH-CN 自然科學  光伏
+ZH-CN 自然科學  冰坨
+ZH-CN 自然科學  宇航
+ZH-CN 自然科學  虫情
+ZH-CN 自然科學  尾气
+ZH-CN 自然科學  沙荒
+ZH-CN 自然科學  防凌
+ZH-CN 自然科學  制冷
+ZH-CN 自然科學  备汛
+ZH-CN 自然科學  延长米
+ZH-CN 自然科學  总星系
+ZH-CN 自然科學  拉限电
+ZH-CN 自然科學  油气流
+ZH-CN 自然科學  环志
+ZH-CN 自然科學  雨情
+ZH-CN 自然科學  复壮
+ZH-CN 自然科學  洁能
+ZH-CN 自然科學  洋垃圾
+ZH-CN 自然科學  桑拿天
+ZH-CN 自然科學  神舟
+ZH-CN 自然科學  能效
+ZH-CN 自然科學  航天器
+ZH-CN 自然科學  茬子
+ZH-CN 自然科學  草测
+ZH-CN 自然科學  追风车
+ZH-CN 自然科學  高新
+ZH-CN 自然科學  减塑
+ZH-CN 自然科學  探测狗
+ZH-CN 自然科學  第一生产力
+ZH-CN 自然科學  黄标车
+ZH-CN 自然科學  硬目标
+ZH-CN 自然科學  稀料
+ZH-CN 自然科學  超视距
+ZH-CN 自然科學  超标天
+ZH-CN 自然科學  震情
+ZH-CN 自然科學  霉损
+ZH-CN 自然科學  传感器网络
+ZH-CN 自然科學  热电厂
+ZH-CN 自然科學  节能减排
+ZH-CN 自然科學  调峰
+ZH-CN 自然科學  贫水
+ZH-CN 自然科學  轨道站
+ZH-CN 自然科學  软资源
+ZH-CN 自然科學  辐照
+ZH-CN 自然科學  进尺
+ZH-CN 自然科學  胶乳/橡浆
+ZH-CN 自然科學  气氛温度
+ZH-CN 自然科學  科委
+SYNONYM 地理 大地基準點 大地基准点/大地原点
+SYNONYM 地理 火環/環太平洋火圈/環太平洋火山帶 火环/环太平洋火圈/环太平洋火山带/太平洋火圈/太平洋火山带
+SYNONYM 地理 布希曼人 布须曼人
+SYNONYM 地理 沙丘 沙丘/沙包
+SYNONYM 地理 東北季風 东北季候风
+SYNONYM 地理 科克斯板塊 科科板块/科科斯板块
+SYNONYM 地理 夏令時間/日光節約時間 夏令时间/经济时/夏令時/夏时制/日光节约时
+SYNONYM 地理 格林威治時間 格林尼治时间
+SYNONYM 地理 海拔/海拔高度/絕對高度 海拔/海拔高度/绝对高度/拔海
+SYNONYM 地理 珠穆朗瑪峰/聖母峰 珠穆朗玛峰/珠峰
+SYNONYM 地理 國際換日線 日界线/国际日期变更线
+HOMONYM 地理 離島 离岛
+ZH-TW 地理 中原標準時間/國家標準時間 
+ZH-TW 地理 西北颱 
+ZH-TW 地理 海埔新生地 
+ZH-TW 地理 落山風 
+ZH-CN 地理  北京时间
+ZH-CN 地理  石漠化
+ZH-CN 地理  地方时
+ZH-CN 地理  治沙
+ZH-CN 地理  治黄
+ZH-CN 地理  高原气候
+ZH-CN 地理  淖尔
+ZH-CN 地理  搭界
+ZH-CN 地理  标图
+ZH-CN 地理  结合部
+ZH-CN 地理  脑包
+SYNONYM 文學＆藝術 介詞/前置詞/介系詞 介词/前置词
+SYNONYM 文學＆藝術 文明戲/新劇 文明戏
+SYNONYM 文學＆藝術 比擬/轉化 比拟
+SYNONYM 文學＆藝術 布堆畫/布貼花/布貼畫 布堆画/布贴花/布贴画/拨花
+SYNONYM 文學＆藝術 指畫/手指畫/指頭畫 指画/手指画/指头画/指墨画
+SYNONYM 文學＆藝術 音詩/詩曲 音诗
+SYNONYM 文學＆藝術 倒敘/逆敘 倒叙/逆叙/倒插笔
+SYNONYM 文學＆藝術 特洛伊木馬/特洛依木馬 特洛伊木马
+SYNONYM 文學＆藝術 剪紙動畫 剪纸动画/剪纸片/剪纸影片
+SYNONYM 文學＆藝術 曼陀林/曼陀琳/曼陀鈴/曼德琳 曼陀林/曼陀琳/曼陀铃/曼德琳/曼德林
+SYNONYM 文學＆藝術 喻依 喻体
+SYNONYM 文學＆藝術 喻體 本体
+SYNONYM 文學＆藝術 報導文學 报告文学
+SYNONYM 文學＆藝術 普普/普普藝術 普普/普普艺术/波普/波普艺术
+SYNONYM 文學＆藝術 詞組/短語/片語 词组/短语
+SYNONYM 文學＆藝術 圓舞曲/華爾滋 圆舞曲/华尔兹
+SYNONYM 文學＆藝術 歌仔戲 歌仔戏/芗剧
+SYNONYM 文學＆藝術 網路文學 网络文学
+SYNONYM 文學＆藝術 劇目/劇碼 剧目
+SYNONYM 文學＆藝術 觱達 觱达/筚达
+SYNONYM 文學＆藝術 薩克斯/薩克管/薩克斯風 萨克斯/萨克管/萨克斯风/萨克斯管
+SYNONYM 文學＆藝術 藍調 布鲁斯
+SYNONYM 文學＆藝術 羅曼史 罗曼史/罗曼司
+SYNONYM 文學＆藝術 饒舌 饶舌/说唱
+HOMONYM 文學＆藝術 喻體 喻体
+ZH-TW 文學＆藝術 子弟戲 
+ZH-TW 文學＆藝術 生態藝術 
+ZH-TW 文學＆藝術 在地作家 
+ZH-TW 文學＆藝術 夾注號 
+ZH-TW 文學＆藝術 素人畫家 
+ZH-TW 文學＆藝術 劇場 
+ZH-TW 文學＆藝術 藝文活動 
+ZH-TW 文學＆藝術 藝品 
+ZH-CN 文學＆藝術  小人书/小人儿书
+ZH-CN 文學＆藝術  尺页
+ZH-CN 文學＆藝術  文工团/文艺工作团
+ZH-CN 文學＆藝術  写家
+ZH-CN 文學＆藝術  出台
+ZH-CN 文學＆藝術  民乐
+ZH-CN 文學＆藝術  全景画
+ZH-CN 文學＆藝術  名剧周
+ZH-CN 文學＆藝術  执棒
+ZH-CN 文學＆藝術  知音体
+ZH-CN 文學＆藝術  表演唱
+ZH-CN 文學＆藝術  表演票
+ZH-CN 文學＆藝術  青戏节/北京国际青年戏剧节
+ZH-CN 文學＆藝術  俏头
+ZH-CN 文學＆藝術  信天游/顺天游
+ZH-CN 文學＆藝術  范儿
+ZH-CN 文學＆藝術  音配像
+ZH-CN 文學＆藝術  笑坛
+ZH-CN 文學＆藝術  笔道
+ZH-CN 文學＆藝術  唱演
+ZH-CN 文學＆藝術  傍角/傍角儿/抓龙尾巴
+ZH-CN 文學＆藝術  傍角/傍角儿
+ZH-CN 文學＆藝術  舞蹈诗
+ZH-CN 文學＆藝術  潜台词
+ZH-CN 文學＆藝術  翻场
+ZH-CN 文學＆藝術  创演
+ZH-CN 文學＆藝術  组稿
+ZH-CN 文學＆藝術  调演
+ZH-CN 文學＆藝術  软雕塑
+ZH-CN 文學＆藝術  戏歌
+ZH-CN 文學＆藝術  易色
+ZH-CN 文學＆藝術  贴画
+ZH-CN 文學＆藝術  着重号
+ZH-CN 文學＆藝術  隔音符号
+SYNONYM 體育運動 二傳手/托球員/舉球員 二传手/托手
+SYNONYM 體育運動 大火鍋 大盖帽
+SYNONYM 體育運動 太空漫步機 太空漫步机/太空机
+SYNONYM 體育運動 水上芭蕾 水上芭蕾/花样游泳
+SYNONYM 體育運動 世大運/世界大學運動會 大运会/世界大学生运动会
+SYNONYM 體育運動 主裁判 主裁判/主裁
+SYNONYM 體育運動 出招 出招/出招儿
+SYNONYM 體育運動 加油棒/啦啦棒 加油棒/啦啦棒/助威棒/球迷棒
+SYNONYM 體育運動 外野手 外野手/外场手
+SYNONYM 體育運動 外圍賽/預選賽/周邊賽 外围赛/预选赛
+SYNONYM 體育運動 乒乓球/乒乓/桌球 乒乓球
+SYNONYM 體育運動 乒乓球/桌球 乒乓球
+SYNONYM 體育運動 先發投手 先发投手/开局投手
+SYNONYM 體育運動 全壘打/紅不讓 全垒打/本垒打
+SYNONYM 體育運動 有氧運動 有氧运动/有氧代谢/带氧运动
+SYNONYM 體育運動 呼拉圈/胡拉圈 呼拉圈
+SYNONYM 體育運動 帕運/帕運會/帕奧會/殘障奧運會/帕拉林匹克運動會/殘障奧林匹克運動會 残奥会/残疾人奥运会/残疾人奥林匹克运动会
+SYNONYM 體育運動 東道國/地主國 东道国
+SYNONYM 體育運動 直排輪 直排轮/单排轮滑
+SYNONYM 體育運動 花式溜冰 花样滑冰
+SYNONYM 體育運動 花式滑水 花样滑水
+SYNONYM 體育運動 保齡球 保龄球/地滚球
+SYNONYM 體育運動 風浪板 帆板/滑浪风帆
+SYNONYM 體育運動 俯臥撐/伏地挺身 俯卧撑
+SYNONYM 體育運動 捕手 捕手/接手
+SYNONYM 體育運動 高空彈跳 蹦极/蹦极跳
+SYNONYM 體育運動 國際奧林匹克委員會/國際奧會 国际奥林匹克委员会/国际奥委会
+SYNONYM 體育運動 國標舞/標準舞/國際標準舞 国标舞/标准舞/国际标准舞/体育舞蹈/国际标准交谊舞
+SYNONYM 體育運動 捷泳/自由式/自由泳 捷泳/自由式/自由泳/爬泳
+SYNONYM 體育運動 探戈 探戈/糖果舞
+SYNONYM 體育運動 混合式游泳 混合泳
+SYNONYM 體育運動 軟骨功 软骨功/柔身术
+SYNONYM 體育運動 森巴 森巴/桑巴
+SYNONYM 體育運動 華爾滋 华尔兹
+SYNONYM 體育運動 溜冰場 溜冰场/旱冰场
+SYNONYM 體育運動 滑輪溜冰/輪式溜冰 轮滑
+SYNONYM 體育運動 滑輪鞋 滑轮鞋/旱冰鞋/轮滑鞋
+SYNONYM 體育運動 槌球 门球
+SYNONYM 體育運動 蓋火鍋 盖火锅/盖帽儿
+SYNONYM 體育運動 彈翻床 蹦床
+SYNONYM 體育運動 撞球 撞球/台球/桌球
+SYNONYM 體育運動 熱身/暖身 热身
+SYNONYM 體育運動 翹翹板/蹺蹺板 翘翘板/跷跷板/压板
+SYNONYM 體育運動 韻律操/韻律體操 韵律操/韵律体操/艺术体操
+SYNONYM 體育運動 競速滑冰 速滑/速度滑冰
+SYNONYM 體育運動 籃圈/籃框 篮圈/篮筐
+HOMONYM 體育運動 大運會 大运会
+HOMONYM 體育運動 剃光頭 剃光头
+HOMONYM 體育運動 高妹 高妹
+HOMONYM 體育運動 陪跑 陪跑
+HOMONYM 體育運動 蹲牛棚 蹲牛棚
+ZH-TW 體育運動 一軍 
+ZH-TW 體育運動 二軍 
+ZH-TW 體育運動 三冠王 
+ZH-TW 體育運動 合氣禪 
+ZH-TW 體育運動 自由車 
+ZH-TW 體育運動 爭獎賽 
+ZH-TW 體育運動 區運 
+ZH-TW 體育運動 強投 
+ZH-TW 體育運動 敗部復活 
+ZH-TW 體育運動 球敘 
+ZH-TW 體育運動 超馬 
+ZH-TW 體育運動 魔術數字 
+ZH-CN 體育運動  力量房
+ZH-CN 體育運動  三角赛
+ZH-CN 體育運動  广播操/广播体操
+ZH-CN 體育運動  少林操
+ZH-CN 體育運動  主裁
+ZH-CN 體育運動  冬运
+ZH-CN 體育運動  正赛
+ZH-CN 體育運動  田管
+ZH-CN 體育運動  夺金点/争金点/冲金点/抢金点
+ZH-CN 體育運動  全冠王
+ZH-CN 體育運動  农运会/农民运动会
+ZH-CN 體育運動  冲金
+ZH-CN 體育運動  冲奖
+ZH-CN 體育運動  技巧/技巧运动
+ZH-CN 體育運動  国奥
+ZH-CN 體育運動  狗刨
+ZH-CN 體育運動  舍宾
+ZH-CN 體育運動  城运会/城市运动会
+ZH-CN 體育運動  残运会/残疾人运动会
+ZH-CN 體育運動  浪射
+ZH-CN 體育運動  特奥日
+ZH-CN 體育運動  健将
+ZH-CN 體育運動  副选队
+ZH-CN 體育運動  捧杯
+ZH-CN 體育運動  梦它舞
+ZH-CN 體育運動  球霸
+ZH-CN 體育運動  掰腕子
+ZH-CN 體育運動  短平快
+ZH-CN 體育運動  黑衣法官
+ZH-CN 體育運動  零转会费
+ZH-CN 體育運動  撞线
+ZH-CN 體育運動  踺子
+ZH-CN 體育運動  场均
+ZH-CN 體育運動  牵引伞
+ZH-CN 體育運動  组合拳
+ZH-CN 體育運動  绿茵场
+ZH-CN 體育運動  转会
+ZH-CN 體育運動  官哨
+ZH-CN 體育運動  染黄
+ZH-CN 體育運動  球评
+ZH-CN 體育運動  望金坐银
+ZH-CN 體育運動  野泳
+SYNONYM 影視＆娛樂 KTV/卡拉OK KTV/卡拉OK/歌吧/歌屋
+SYNONYM 影視＆娛樂 二輪片/二輪電影 二轮片/二轮电影/复映片
+SYNONYM 影視＆娛樂 女打仔 女打仔/打女
+SYNONYM 影視＆娛樂 小耳朵 小鍋
+SYNONYM 影視＆娛樂 午夜場 午夜场/零点场
+SYNONYM 影視＆娛樂 太空漫步/月球漫步 太空漫步/月球漫步/太空步
+SYNONYM 影視＆娛樂 卡帶 卡带/盒带
+SYNONYM 影視＆娛樂 安可/恩可 安可
+SYNONYM 影視＆娛樂 收錄音機 收录音机/收录机
+SYNONYM 影視＆娛樂 行動劇 活报剧
+SYNONYM 影視＆娛樂 走秀 走秀/走台
+SYNONYM 影視＆娛樂 走音/走調/走調兒 走音/跑调/跑调儿
+SYNONYM 影視＆娛樂 披頭四 披头士
+SYNONYM 影視＆娛樂 軍教片 军旅剧
+SYNONYM 影視＆娛樂 迪士尼 迪士尼/迪斯尼
+SYNONYM 影視＆娛樂 迪斯可 的士高/迪斯科
+SYNONYM 影視＆娛樂 首映典禮 首映典礼/首映式/首映礼
+SYNONYM 影視＆娛樂 家家酒/扮家家酒 过家家
+SYNONYM 影視＆娛樂 配音/伴音 配音/伴音/伴声
+SYNONYM 影視＆娛樂 高清晰度電視/高解析度電視/高畫質電視 高清晰度电视/高解析度电视/高清电视
+SYNONYM 影視＆娛樂 假唱/對嘴 假唱/咪嘴/夹口型
+SYNONYM 影視＆娛樂 唱片/唱碟/唱片兒 唱片/唱碟/唱片儿/唱盘
+SYNONYM 影視＆娛樂 唱片行 音像店
+SYNONYM 影視＆娛樂 票房 票房/片房
+SYNONYM 影視＆娛樂 喝倒彩/喝倒采 喝倒彩/叫倒好儿
+SYNONYM 影視＆娛樂 單元劇 单本剧
+SYNONYM 影視＆娛樂 園遊會 游园会
+SYNONYM 影視＆娛樂 搞笑藝人/諧星 搞笑艺人/笑星
+SYNONYM 影視＆娛樂 話劇/文明戲/新劇 话剧/文明戏
+SYNONYM 影視＆娛樂 遊樂場/遊樂園 游乐场/游乐园/娱乐城
+SYNONYM 影視＆娛樂 雷射唱片 激光唱片
+SYNONYM 影視＆娛樂 雷射唱機 激光唱机
+SYNONYM 影視＆娛樂 電腦音樂 计算机音乐
+SYNONYM 影視＆娛樂 電影/映畫 电影
+SYNONYM 影視＆娛樂 電臀舞/搖臀舞 电臀舞
+SYNONYM 影視＆娛樂 實況錄影 实况录像
+SYNONYM 影視＆娛樂 演藝人員 演艺人员/演职人员
+SYNONYM 影視＆娛樂 碟片/影碟 碟片/影碟/视盘/视频光盘/激光视盘
+SYNONYM 影視＆娛樂 網路選美 网络选美
+SYNONYM 影視＆娛樂 網劇/網路劇 网剧/网络剧
+SYNONYM 影視＆娛樂 寬螢幕電視 宽屏幕电视
+SYNONYM 影視＆娛樂 影音 音像/声像
+SYNONYM 影視＆娛樂 影音製品 音像制品
+SYNONYM 影視＆娛樂 錄影 录像
+SYNONYM 影視＆娛樂 錄影帶 录像带
+SYNONYM 影視＆娛樂 錄影機 录像机
+SYNONYM 影視＆娛樂 戲路 戏路/戏路子
+SYNONYM 影視＆娛樂 懸疑 悬疑/悬念
+SYNONYM 影視＆娛樂 懸疑劇 悬疑剧/悬念剧
+HOMONYM 影視＆娛樂 大字報 大字报
+HOMONYM 影視＆娛樂 夯歌 夯歌
+HOMONYM 影視＆娛樂 西餐秀 西餐秀
+HOMONYM 影視＆娛樂 跑票 跑票
+HOMONYM 影視＆娛樂 影集 影集
+HOMONYM 影視＆娛樂 聯歡會 联欢会
+ZH-TW 影視＆娛樂 八點檔 
+ZH-TW 影視＆娛樂 上片 
+ZH-TW 影視＆娛樂 上通告 
+ZH-TW 影視＆娛樂 大嫂團 
+ZH-TW 影視＆娛樂 工地秀 
+ZH-TW 影視＆娛樂 公視/公共電視 
+ZH-TW 影視＆娛樂 文康 
+ZH-TW 影視＆娛樂 牛肉秀 
+ZH-TW 影視＆娛樂 牛肉場 
+ZH-TW 影視＆娛樂 打歌 
+ZH-TW 影視＆娛樂 本土劇 
+ZH-TW 影視＆娛樂 甘草演員 
+ZH-TW 影視＆娛樂 同樂會 
+ZH-TW 影視＆娛樂 秀約 
+ZH-TW 影視＆娛樂 那卡西 
+ZH-TW 影視＆娛樂 抽當 
+ZH-TW 影視＆娛樂 保護級 
+ZH-TW 影視＆娛樂 星海 
+ZH-TW 影視＆娛樂 映演 
+ZH-TW 影視＆娛樂 限制級 
+ZH-TW 影視＆娛樂 茶室 
+ZH-TW 影視＆娛樂 國片 
+ZH-TW 影視＆娛樂 帶狀節目 
+ZH-TW 影視＆娛樂 康樂隊 
+ZH-TW 影視＆娛樂 第四臺 
+ZH-TW 影視＆娛樂 通告藝人 
+ZH-TW 影視＆娛樂 普級/普遍級 
+ZH-TW 影視＆娛樂 跑趴 
+ZH-TW 影視＆娛樂 開麥拉 
+ZH-TW 影視＆娛樂 電視影集 
+ZH-TW 影視＆娛樂 製播案 
+ZH-TW 影視＆娛樂 輔導級 
+ZH-TW 影視＆娛樂 爛梗 
+ZH-CN 影視＆娛樂  上座率
+ZH-CN 影視＆娛樂  五个一工程
+ZH-CN 影視＆娛樂  文娱
+ZH-CN 影視＆娛樂  加片
+ZH-CN 影視＆娛樂  生活秀
+ZH-CN 影視＆娛樂  穴头
+ZH-CN 影視＆娛樂  休闲带
+ZH-CN 影視＆娛樂  会串
+ZH-CN 影視＆娛樂  回归剧
+ZH-CN 影視＆娛樂  回放
+ZH-CN 影視＆娛樂  快男
+ZH-CN 影視＆娛樂  系列片
+ZH-CN 影視＆娛樂  系列剧
+ZH-CN 影視＆娛樂  走穴
+ZH-CN 影視＆娛樂  实况剧
+ZH-CN 影視＆娛樂  岩男郎
+ZH-CN 影視＆娛樂  录像片
+ZH-CN 影視＆娛樂  拉拉秀
+ZH-CN 影視＆娛樂  青春剧
+ZH-CN 影視＆娛樂  室内剧
+ZH-CN 影視＆娛樂  赳客
+ZH-CN 影視＆娛樂  迪厅/迪吧
+ZH-CN 影視＆娛樂  音博会
+ZH-CN 影視＆娛樂  音乐电视
+ZH-CN 影視＆娛樂  展播
+ZH-CN 影視＆娛樂  特型演员
+ZH-CN 影視＆娛樂  高保真
+ZH-CN 影視＆娛樂  情景剧
+ZH-CN 影視＆娛樂  银屏
+ZH-CN 影視＆娛樂  超女
+ZH-CN 影視＆娛樂  群众演员
+ZH-CN 影視＆娛樂  精品剧
+ZH-CN 影視＆娛樂  蹦迪
+ZH-CN 影視＆娛樂  临记
+ZH-CN 影視＆娛樂  汇映
+ZH-CN 影視＆娛樂  热剧
+ZH-CN 影視＆娛樂  现代戏
+ZH-CN 影視＆娛樂  签售
+ZH-CN 影視＆娛樂  贴片广告
+ZH-CN 影視＆娛樂  饮歌
+ZH-CN 影視＆娛樂  电视系列片
+ZH-CN 影視＆娛樂  摄像机
+ZH-CN 影視＆娛樂  央视/中央电视台/中国中央电视台
+ZH-CN 影視＆娛樂  投拍
+ZH-CN 影視＆娛樂  通宵电影
+SYNONYM 觀光旅遊 自由行 自由行/个人游
+SYNONYM 觀光旅遊 自助旅行/自助旅遊 自助旅行/自助旅游/自助游
+SYNONYM 觀光旅遊 背包客 背包客/背囊客
+SYNONYM 觀光旅遊 旅遊事業/觀光事業 旅游事业
+SYNONYM 觀光旅遊 旅遊業 旅游业/旅业
+SYNONYM 觀光旅遊 單眼相機 单眼相机/单反相机
+SYNONYM 觀光旅遊 無煙工業/無煙囪工業 无烟工业
+SYNONYM 觀光旅遊 遊客資訊中心 游客信息中心
+SYNONYM 觀光旅遊 遊覽車 旅游车
+SYNONYM 觀光旅遊 露營車/露營休閒車 房车
+SYNONYM 觀光旅遊 觀光局/觀光旅遊局 旅游局
+ZH-TW 觀光旅遊 水火同源 
+ZH-TW 觀光旅遊 代客泊車 
+ZH-TW 觀光旅遊 民宿 
+ZH-TW 觀光旅遊 陸客 
+ZH-TW 觀光旅遊 陸客團 
+ZH-TW 觀光旅遊 華導 
+ZH-TW 觀光旅遊 新七奇 
+ZH-TW 觀光旅遊 跳機 
+ZH-TW 觀光旅遊 觀光工廠 
+ZH-CN 觀光旅遊  五水共导
+ZH-CN 觀光旅遊  车模展
+ZH-CN 觀光旅遊  风情街
+ZH-CN 觀光旅遊  风貌区
+ZH-CN 觀光旅遊  包间
+ZH-CN 觀光旅遊  包房
+ZH-CN 觀光旅遊  叫早/叫床
+ZH-CN 觀光旅遊  全陪
+ZH-CN 觀光旅遊  乡村游/农家游
+ZH-CN 觀光旅遊  地接社
+ZH-CN 觀光旅遊  地陪/地接
+ZH-CN 觀光旅遊  行包
+ZH-CN 觀光旅遊  汽车游
+ZH-CN 觀光旅遊  品质游
+ZH-CN 觀光旅遊  钟点房
+ZH-CN 觀光旅遊  接柜
+ZH-CN 觀光旅遊  陶吧
+ZH-CN 觀光旅遊  游车河
+ZH-CN 觀光旅遊  游步道
+ZH-CN 觀光旅遊  窗口单位
+ZH-CN 觀光旅遊  精品游
+ZH-CN 觀光旅遊  腐败游
+ZH-CN 觀光旅遊  红色旅游
+ZH-CN 觀光旅遊  错时游
+ZH-CN 觀光旅遊  驴友
+ZH-CN 觀光旅遊  踏足
+SYNONYM 博弈 打麻將/搓麻將 打麻将/搓麻将/搓麻
+SYNONYM 博弈 西洋棋 国际象棋
+SYNONYM 博弈 投注站 投注站/彩点
+SYNONYM 博弈 開獎機 开奖机/顶球机
+SYNONYM 博弈 零和遊戲 零和游戏/零和博弈
+ZH-TW 博弈 大家樂 
+ZH-TW 博弈 全餐 
+ZH-TW 博弈 乾泳 
+ZH-TW 博弈 運彩/運動彩券 
+ZH-TW 博弈 槓龜 
+ZH-TW 博弈 網路六合彩 
+ZH-CN 博弈  马彩
+ZH-CN 博弈  体彩/体育彩票
+ZH-CN 博弈  吹波机/吹球机
+ZH-CN 博弈  足彩/足球彩票
+ZH-CN 博弈  博彩
+ZH-CN 博弈  摇号
+ZH-CN 博弈  落汗
+ZH-CN 博弈  福彩/福利彩票
+ZH-CN 博弈  码长城
+ZH-CN 博弈  篮彩
+ZH-CN 博弈  贴时贴分
+ZH-CN 博弈  昏招
+ZH-CN 博弈  落码
+SYNONYM 政治＆法律 大英國協/不列顛國協 英联邦
+SYNONYM 政治＆法律 公共危險罪 危害公共安全罪
+SYNONYM 政治＆法律 少年矯正學校 少年管教所
+SYNONYM 政治＆法律 日照權 阳光权
+SYNONYM 政治＆法律 正犯 正犯/实行犯
+SYNONYM 政治＆法律 先進國家/開發國家/已開發國家 先进国家/发达国家
+SYNONYM 政治＆法律 共犯 共犯/同案犯
+SYNONYM 政治＆法律 刑事偵查 刑事侦查/刑侦
+SYNONYM 政治＆法律 自訴 自诉/私诉
+SYNONYM 政治＆法律 告訴乃論 告诉乃论/告诉才处理
+SYNONYM 政治＆法律 典獄長 监狱长
+SYNONYM 政治＆法律 拘提 拘传
+SYNONYM 政治＆法律 東協/東南亞國家協會 东盟/东南亚国家联盟
+SYNONYM 政治＆法律 法律援助 法律援助/法援
+SYNONYM 政治＆法律 政治庇護 政治庇护/政治避难
+SYNONYM 政治＆法律 看守所 看守所/收容所
+SYNONYM 政治＆法律 峰會/高峰會/高峰會議 峰会/高峰会/高峰会议/首脑会议
+SYNONYM 政治＆法律 海盜 海盗/海匪
+SYNONYM 政治＆法律 假執行 假执行/先予执行
+SYNONYM 政治＆法律 假處分 诉讼保全/财产保全
+SYNONYM 政治＆法律 國民外交 民间外交
+SYNONYM 政治＆法律 國家賠償/國賠 国家赔偿
+SYNONYM 政治＆法律 執達員 执达员/执达吏
+SYNONYM 政治＆法律 第四權 第四权/第四权力
+SYNONYM 政治＆法律 智慧財產權 知识产权
+SYNONYM 政治＆法律 最高法院 最高人民法院
+SYNONYM 政治＆法律 訴願 诉愿/行政复议
+SYNONYM 政治＆法律 開發中國家 发展中国家/欠发达国家
+SYNONYM 政治＆法律 傳訊/傳喚 传讯/传唤/传审
+SYNONYM 政治＆法律 電腦犯罪 电脑犯罪/计算机犯罪
+SYNONYM 政治＆法律 慣盜/慣賊/慣竊 惯盗/惯贼/惯窃/惯偷
+SYNONYM 政治＆法律 網路犯罪 网络犯罪
+SYNONYM 政治＆法律 罰鍰 罚款
+SYNONYM 政治＆法律 裸照案/豔照案/不雅照案 裸照案/艳照案/不雅照案/艳照门
+SYNONYM 政治＆法律 踩點 踩点/踩道
+SYNONYM 政治＆法律 輪姦/輪暴 轮奸
+SYNONYM 政治＆法律 獨立國協 独联体
+SYNONYM 政治＆法律 鎮暴警察 防暴警察
+SYNONYM 政治＆法律 警員/員警 警员
+SYNONYM 政治＆法律 警察局/警局 警察局/公安局
+SYNONYM 政治＆法律 聽證會/公聽會 听证会
+SYNONYM 政治＆法律 竊盜案 盗窃案
+SYNONYM 政治＆法律 鑽漏洞 钻空子
+HOMONYM 政治＆法律 上訴 上诉
+HOMONYM 政治＆法律 下半旗/降半旗 下半旗/降半旗
+HOMONYM 政治＆法律 小兩會 小两会
+HOMONYM 政治＆法律 分管 分管
+HOMONYM 政治＆法律 市鎮 市镇
+HOMONYM 政治＆法律 民主人士 民主人士
+HOMONYM 政治＆法律 民主革命 民主革命
+HOMONYM 政治＆法律 民事責任 民事责任
+HOMONYM 政治＆法律 身分權 身份权
+HOMONYM 政治＆法律 政工 政工
+HOMONYM 政治＆法律 政審 政审
+HOMONYM 政治＆法律 跑票 跑票
+HOMONYM 政治＆法律 群眾路線 群众路线
+HOMONYM 政治＆法律 監理所 监理所
+HOMONYM 政治＆法律 駐外使節 驻外使节
+HOMONYM 政治＆法律 臨檢 临检
+HOMONYM 政治＆法律 藍軍 蓝军
+HOMONYM 政治＆法律 蹲牛棚 蹲牛棚
+HOMONYM 政治＆法律 繼承法 继承法
+HOMONYM 政治＆法律 黨工 党工
+ZH-TW 政治＆法律 中間選民 
+ZH-TW 政治＆法律 互選 
+ZH-TW 政治＆法律 內亂罪 
+ZH-TW 政治＆法律 公地放領 
+ZH-TW 政治＆法律 公部門/公共部門 
+ZH-TW 政治＆法律 公證結婚 
+ZH-TW 政治＆法律 切結 
+ZH-TW 政治＆法律 切結書 
+ZH-TW 政治＆法律 少年感化院 
+ZH-TW 政治＆法律 少年輔育院 
+ZH-TW 政治＆法律 少年觀護所 
+ZH-TW 政治＆法律 日據時代 
+ZH-TW 政治＆法律 主計處 
+ZH-TW 政治＆法律 冬防 
+ZH-TW 政治＆法律 失風 
+ZH-TW 政治＆法律 市公所 
+ZH-TW 政治＆法律 民代/民意代表 
+ZH-TW 政治＆法律 犯行 
+ZH-TW 政治＆法律 立委/立法委員 
+ZH-TW 政治＆法律 交保候傳 
+ZH-TW 政治＆法律 共識制 
+ZH-TW 政治＆法律 地檢署/地方法院檢察署 
+ZH-TW 政治＆法律 存證信函 
+ZH-TW 政治＆法律 收容人 
+ZH-TW 政治＆法律 行政立法/委任立法 
+ZH-TW 政治＆法律 助選 
+ZH-TW 政治＆法律 助講 
+ZH-TW 政治＆法律 巡佐 
+ZH-TW 政治＆法律 戒護 
+ZH-TW 政治＆法律 抗告 
+ZH-TW 政治＆法律 更生人 
+ZH-TW 政治＆法律 更生保護 
+ZH-TW 政治＆法律 更生教育 
+ZH-TW 政治＆法律 走路工 
+ZH-TW 政治＆法律 併科 
+ZH-TW 政治＆法律 具保 
+ZH-TW 政治＆法律 固票 
+ZH-TW 政治＆法律 官等 
+ZH-TW 政治＆法律 治平專案 
+ZH-TW 政治＆法律 泛綠 
+ZH-TW 政治＆法律 泛藍 
+ZH-TW 政治＆法律 金光黨 
+ZH-TW 政治＆法律 非行少年 
+ZH-TW 政治＆法律 非常上訴 
+ZH-TW 政治＆法律 亮票 
+HOMONYM 政治＆法律 亮票 
+ZH-TW 政治＆法律 保警/保安員警 
+ZH-TW 政治＆法律 保護令/民事保護令 
+ZH-TW 政治＆法律 拜票 
+ZH-TW 政治＆法律 按鈴申告 
+ZH-TW 政治＆法律 政務官 
+ZH-TW 政治＆法律 春安工作 
+ZH-TW 政治＆法律 派令/人事派令 
+ZH-TW 政治＆法律 凍省/精省/廢省 
+ZH-TW 政治＆法律 凍蒜 
+ZH-TW 政治＆法律 恐龍法官 
+ZH-TW 政治＆法律 書記官 
+ZH-TW 政治＆法律 書記官長 
+ZH-TW 政治＆法律 海基會 
+ZH-TW 政治＆法律 特任 
+ZH-TW 政治＆法律 特別行政區 
+ZH-TW 政治＆法律 荐任/薦任 
+ZH-TW 政治＆法律 送辦 
+ZH-TW 政治＆法律 配票 
+ZH-TW 政治＆法律 配票單 
+ZH-TW 政治＆法律 假投票 
+ZH-TW 政治＆法律 假決議 
+ZH-TW 政治＆法律 做票 
+ZH-TW 政治＆法律 偵防 
+ZH-TW 政治＆法律 圈投 
+ZH-TW 政治＆法律 圈選 
+ZH-TW 政治＆法律 基本盤 
+ZH-TW 政治＆法律 情治 
+ZH-TW 政治＆法律 教誨師 
+ZH-TW 政治＆法律 棄保效應 
+ZH-TW 政治＆法律 票倉 
+ZH-TW 政治＆法律 票源 
+ZH-TW 政治＆法律 販安毒 
+ZH-TW 政治＆法律 勞基法/勞動基準法 
+ZH-TW 政治＆法律 掣據 
+ZH-TW 政治＆法律 換軌 
+ZH-TW 政治＆法律 港警 
+ZH-TW 政治＆法律 無黨籍 
+ZH-TW 政治＆法律 虛級化 
+ZH-TW 政治＆法律 買票 
+ZH-TW 政治＆法律 飭回 
+ZH-TW 政治＆法律 搜索票 
+ZH-TW 政治＆法律 搶嫌 
+ZH-TW 政治＆法律 綁樁 
+ZH-TW 政治＆法律 義警/義勇警察 
+ZH-TW 政治＆法律 落後國家/未開發國家 
+ZH-TW 政治＆法律 對造 
+ZH-TW 政治＆法律 管收 
+ZH-TW 政治＆法律 綠軍 
+ZH-TW 政治＆法律 綠營 
+ZH-TW 政治＆法律 輔選 
+ZH-TW 政治＆法律 領務組 
+ZH-TW 政治＆法律 複決 
+ZH-TW 政治＆法律 複決權 
+ZH-TW 政治＆法律 論告 
+ZH-TW 政治＆法律 質詢秀 
+ZH-TW 政治＆法律 褫奪公權 
+ZH-TW 政治＆法律 選務 
+ZH-TW 政治＆法律 選情 
+ZH-TW 政治＆法律 選罷法 
+ZH-TW 政治＆法律 選戰 
+ZH-TW 政治＆法律 選舉秀 
+ZH-TW 政治＆法律 選舉蟑螂 
+ZH-TW 政治＆法律 檢調 
+ZH-TW 政治＆法律 聲押 
+ZH-TW 政治＆法律 謝票 
+ZH-TW 政治＆法律 藍營 
+ZH-TW 政治＆法律 闖空門 
+ZH-TW 政治＆法律 藥頭 
+ZH-TW 政治＆法律 黨鞭 
+ZH-TW 政治＆法律 鐵票 
+ZH-TW 政治＆法律 鐵票區 
+ZH-TW 政治＆法律 竊嫌 
+ZH-TW 政治＆法律 觀選 
+ZH-TW 政治＆法律 觀護人 
+ZH-CN 政治＆法律  一票式
+ZH-CN 政治＆法律  一窗式
+ZH-CN 政治＆法律  二进宫
+ZH-CN 政治＆法律  人民法院
+ZH-CN 政治＆法律  人民政府
+ZH-CN 政治＆法律  民警/人民警察
+ZH-CN 政治＆法律  儿童团
+ZH-CN 政治＆法律  入常
+ZH-CN 政治＆法律  三个代表
+ZH-CN 政治＆法律  三违一堵
+ZH-CN 政治＆法律  上层建筑
+ZH-CN 政治＆法律  上线
+ZH-CN 政治＆法律  上访
+ZH-CN 政治＆法律  下访
+ZH-CN 政治＆法律  土政策
+ZH-CN 政治＆法律  大盖帽
+ZH-CN 政治＆法律  工作访问
+ZH-CN 政治＆法律  干警
+ZH-CN 政治＆法律  飞地
+ZH-CN 政治＆法律  不管部长
+ZH-CN 政治＆法律  公安
+ZH-CN 政治＆法律  公权
+ZH-CN 政治＆法律  公权私用
+ZH-CN 政治＆法律  公检法
+ZH-CN 政治＆法律  双普选
+ZH-CN 政治＆法律  双规
+ZH-CN 政治＆法律  反扒
+ZH-CN 政治＆法律  反革命
+ZH-CN 政治＆法律  水法
+ZH-CN 政治＆法律  水炮车
+ZH-CN 政治＆法律  片儿警
+ZH-CN 政治＆法律  车匪路霸
+ZH-CN 政治＆法律  出台
+ZH-CN 政治＆法律  出警
+ZH-CN 政治＆法律  务虚
+ZH-CN 政治＆法律  务实
+ZH-CN 政治＆法律  去行政化
+ZH-CN 政治＆法律  发现权
+ZH-CN 政治＆法律  外办
+ZH-CN 政治＆法律  打私
+ZH-CN 政治＆法律  打拐
+ZH-CN 政治＆法律  打假
+ZH-CN 政治＆法律  民主党派
+ZH-CN 政治＆法律  集中制/民主集中制
+ZH-CN 政治＆法律  民族区域自治
+ZH-CN 政治＆法律  民转刑
+ZH-CN 政治＆法律  白区
+ZH-CN 政治＆法律  长官意志
+ZH-CN 政治＆法律  企业法人
+ZH-CN 政治＆法律  伙犯
+ZH-CN 政治＆法律  共青团/中国共产主义青年团
+ZH-CN 政治＆法律  刑拘/刑事拘留
+ZH-CN 政治＆法律  团伙
+ZH-CN 政治＆法律  地级市
+ZH-CN 政治＆法律  收支两条线
+ZH-CN 政治＆法律  死缓
+ZH-CN 政治＆法律  灰色消费
+ZH-CN 政治＆法律  网警/网络警察
+ZH-CN 政治＆法律  自主知识产权/自有知识产权
+ZH-CN 政治＆法律  自治区
+ZH-CN 政治＆法律  自治州
+ZH-CN 政治＆法律  自治县
+ZH-CN 政治＆法律  行署/行政公署
+ZH-CN 政治＆法律  行政拘留
+ZH-CN 政治＆法律  串案
+ZH-CN 政治＆法律  劫道
+ZH-CN 政治＆法律  劳动法
+ZH-CN 政治＆法律  劳改/劳动改造
+ZH-CN 政治＆法律  劳教/劳动教养
+ZH-CN 政治＆法律  告地状
+ZH-CN 政治＆法律  告破
+ZH-CN 政治＆法律  岗卡
+ZH-CN 政治＆法律  抄老窝
+ZH-CN 政治＆法律  抗诉
+ZH-CN 政治＆法律  改好率
+ZH-CN 政治＆法律  改革开放
+ZH-CN 政治＆法律  防特
+ZH-CN 政治＆法律  净身出户
+ZH-CN 政治＆法律  单位犯罪
+ZH-CN 政治＆法律  单极
+ZH-CN 政治＆法律  取保候审
+ZH-CN 政治＆法律  国资行
+ZH-CN 政治＆法律  官倒
+ZH-CN 政治＆法律  性赔偿
+ZH-CN 政治＆法律  总参/总参谋部
+ZH-CN 政治＆法律  总路线
+ZH-CN 政治＆法律  治保
+ZH-CN 政治＆法律  治假
+ZH-CN 政治＆法律  治爆缉枪
+ZH-CN 政治＆法律  经侦
+ZH-CN 政治＆法律  表决稿
+ZH-CN 政治＆法律  保安线
+ZH-CN 政治＆法律  保廉
+ZH-CN 政治＆法律  信访
+ZH-CN 政治＆法律  城管
+ZH-CN 政治＆法律  挂黄牌
+ZH-CN 政治＆法律  指导性计划
+ZH-CN 政治＆法律  政府行为
+ZH-CN 政治＆法律  毒案
+ZH-CN 政治＆法律  流窜犯
+ZH-CN 政治＆法律  省区
+ZH-CN 政治＆法律  省级
+ZH-CN 政治＆法律  专区
+ZH-CN 政治＆法律  背包党
+ZH-CN 政治＆法律  述廉
+ZH-CN 政治＆法律  郊县
+ZH-CN 政治＆法律  重复访
+ZH-CN 政治＆法律  首问制
+ZH-CN 政治＆法律  乘警
+ZH-CN 政治＆法律  党八股
+ZH-CN 政治＆法律  党票
+ZH-CN 政治＆法律  息诉
+ZH-CN 政治＆法律  海峡西岸
+ZH-CN 政治＆法律  涉黑团伙
+ZH-CN 政治＆法律  特警/特种警察
+ZH-CN 政治＆法律  特首
+ZH-CN 政治＆法律  选民证
+ZH-CN 政治＆法律  排污权
+ZH-CN 政治＆法律  排摸/摸排
+ZH-CN 政治＆法律  接警
+ZH-CN 政治＆法律  接访
+ZH-CN 政治＆法律  总书记/第一书记
+ZH-CN 政治＆法律  部委
+ZH-CN 政治＆法律  部标
+ZH-CN 政治＆法律  菜篮子工程
+ZH-CN 政治＆法律  跑官
+ZH-CN 政治＆法律  跑面
+ZH-CN 政治＆法律  集镇
+ZH-CN 政治＆法律  黑户
+ZH-CN 政治＆法律  黑色收入
+ZH-CN 政治＆法律  黑砖场/黑砖窑
+ZH-CN 政治＆法律  黑窝
+ZH-CN 政治＆法律  黑线
+ZH-CN 政治＆法律  塞腰包
+ZH-CN 政治＆法律  搜查证
+ZH-CN 政治＆法律  新区
+ZH-CN 政治＆法律  禁液令
+ZH-CN 政治＆法律  禁塑
+ZH-CN 政治＆法律  群言堂
+ZH-CN 政治＆法律  群访
+ZH-CN 政治＆法律  逼供信
+ZH-CN 政治＆法律  隔离审查
+ZH-CN 政治＆法律  零口供
+ZH-CN 政治＆法律  管卡压
+ZH-CN 政治＆法律  管教所
+ZH-CN 政治＆法律  踩窝子
+ZH-CN 政治＆法律  醉驾
+ZH-CN 政治＆法律  蹲守
+ZH-CN 政治＆法律  蹲坑
+ZH-CN 政治＆法律  蹲点
+ZH-CN 政治＆法律  警司
+ZH-CN 政治＆法律  警种
+ZH-CN 政治＆法律  警监
+ZH-CN 政治＆法律  警衔
+ZH-CN 政治＆法律  书记员
+ZH-CN 政治＆法律  倾斜政策
+ZH-CN 政治＆法律  县级市
+ZH-CN 政治＆法律  妇联/妇女联合会
+ZH-CN 政治＆法律  扫黄打非
+ZH-CN 政治＆法律  换届
+ZH-CN 政治＆法律  检控
+ZH-CN 政治＆法律  检察院/人民检察院
+ZH-CN 政治＆法律  现案
+ZH-CN 政治＆法律  监外执行
+ZH-CN 政治＆法律  监督岗
+ZH-CN 政治＆法律  简政放权
+ZH-CN 政治＆法律  红区/苏区
+ZH-CN 政治＆法律  红头文件
+ZH-CN 政治＆法律  红歌/红色歌曲
+ZH-CN 政治＆法律  纪委
+ZH-CN 政治＆法律  组织上
+ZH-CN 政治＆法律  组织生活
+ZH-CN 政治＆法律  组织关系
+ZH-CN 政治＆法律  组织性
+ZH-CN 政治＆法律  绝卖
+ZH-CN 政治＆法律  综合治理
+ZH-CN 政治＆法律  罚没
+ZH-CN 政治＆法律  罚没款
+ZH-CN 政治＆法律  肃反
+ZH-CN 政治＆法律  肃毒战
+ZH-CN 政治＆法律  计划单列市
+ZH-CN 政治＆法律  认岗定责/领岗定责
+ZH-CN 政治＆法律  讲师团
+ZH-CN 政治＆法律  评干
+ZH-CN 政治＆法律  负案
+ZH-CN 政治＆法律  转干
+ZH-CN 政治＆法律  转关系
+ZH-CN 政治＆法律  钉子岗
+ZH-CN 政治＆法律  钓鱼执法
+ZH-CN 政治＆法律  领导班子
+ZH-CN 政治＆法律  骑劫
+ZH-CN 政治＆法律  骗汇
+ZH-CN 政治＆法律  少管所/少年犯管教所
+ZH-CN 政治＆法律  工读学校
+ZH-CN 政治＆法律  人大代表
+ZH-CN 政治＆法律  两会
+ZH-CN 政治＆法律  八六三计划
+ZH-CN 政治＆法律  剥夺政治权利
+ZH-CN 政治＆法律  四套班子
+ZH-CN 政治＆法律  国务委员
+ZH-CN 政治＆法律  大案要案
+ZH-CN 政治＆法律  打扒
+ZH-CN 政治＆法律  控罪
+ZH-CN 政治＆法律  政治面目/政治面貌
+ZH-CN 政治＆法律  政务公开
+ZH-CN 政治＆法律  粉友
+ZH-CN 政治＆法律  经警
+ZH-CN 政治＆法律  查堵
+ZH-CN 政治＆法律  党支书
+ZH-CN 政治＆法律  高级干部
+ZH-CN 政治＆法律  党校
+ZH-CN 政治＆法律  间谍门
+ZH-CN 政治＆法律  制假分子
+ZH-CN 政治＆法律  造假分子
+ZH-CN 政治＆法律  和平共处五项原则
+ZH-CN 政治＆法律  突审
+ZH-CN 政治＆法律  海协会
+ZH-CN 政治＆法律  银政
+ZH-CN 政治＆法律  硬杠杠
+ZH-CN 政治＆法律  端老窝
+ZH-CN 政治＆法律  管片
+ZH-CN 政治＆法律  戴官帽子
+ZH-CN 政治＆法律  非企业法人
+SYNONYM 國防軍事 士官長 军士长
+SYNONYM 國防軍事 巡航飛彈/巡弋飛彈 巡航飞弹
+SYNONYM 國防軍事 來復槍/來福槍 来复枪
+SYNONYM 國防軍事 洲際導彈/洲際飛彈 洲际导弹
+SYNONYM 國防軍事 核子試爆 核试验
+SYNONYM 國防軍事 核子戰爭 核战争
+SYNONYM 國防軍事 核潛艇/核子潛艇 核潜艇
+SYNONYM 國防軍事 閃電戰 闪电战/闪击战
+SYNONYM 國防軍事 高科技戰爭 高科技战争/高技术战争
+SYNONYM 國防軍事 補給船/補給艦/運補船 补给船/补给舰/运补船/供应舰
+SYNONYM 國防軍事 資訊戰 信息战
+SYNONYM 國防軍事 雷射武器 激光武器
+SYNONYM 國防軍事 旗艦 旗舰/指挥舰
+SYNONYM 國防軍事 遠程巡航導彈/長程巡弋飛彈 远程巡航导弹
+SYNONYM 國防軍事 彈道飛彈 弹道导弹/弹道式导弹
+SYNONYM 國防軍事 震撼彈 震撼弹/闪爆弹/盲聋弹/晕眩弹/眩晕弹/震爆弹/爆震弹
+SYNONYM 國防軍事 導彈/導向飛彈 导弹
+SYNONYM 國防軍事 戰鬥機/驅逐機 战斗机/驱逐机/歼击机
+SYNONYM 國防軍事 燒夷彈/燃燒彈 烧夷弹/燃烧弹/纵火弹
+SYNONYM 國防軍事 護衛艦/護航艦 护卫舰
+HOMONYM 國防軍事 政工 政工
+HOMONYM 國防軍事 登陸艦 登陆舰
+HOMONYM 國防軍事 衛戍區 卫戍区
+HOMONYM 國防軍事 藍軍 蓝军
+HOMONYM 國防軍事 體位 体位
+ZH-TW 國防軍事 兵工 
+ZH-TW 國防軍事 役男 
+ZH-TW 國防軍事 役期 
+ZH-TW 國防軍事 站衛兵 
+ZH-TW 國防軍事 退除役 
+ZH-TW 國防軍事 國防體育 
+ZH-TW 國防軍事 替代役 
+ZH-TW 國防軍事 替代役男 
+ZH-TW 國防軍事 灘頭堡 
+ZH-CN 國防軍事  人防/人民防空
+ZH-CN 國防軍事  方面军
+ZH-CN 國防軍事  水面舰
+ZH-CN 國防軍事  司令员
+ZH-CN 國防軍事  司务长
+ZH-CN 國防軍事  列兵
+ZH-CN 國防軍事  扛枪杆
+ZH-CN 國防軍事  兵油子
+ZH-CN 國防軍事  别动队
+ZH-CN 國防軍事  制天权
+ZH-CN 國防軍事  武警/武装警察/武警部队
+ZH-CN 國防軍事  盲导弹
+ZH-CN 國防軍事  政委/政治委员
+ZH-CN 國防軍事  指导员/政治指导员
+ZH-CN 國防軍事  教导员/政治教导员
+ZH-CN 國防軍事  荣誉军人
+ZH-CN 國防軍事  钢枪
+ZH-CN 國防軍事  核争执
+ZH-CN 國防軍事  核两用品
+ZH-CN 國防軍事  铁道兵
+ZH-CN 國防軍事  解放军/中国人民解放军
+ZH-CN 國防軍事  军分区
+ZH-CN 國防軍事  军体/军事体育
+ZH-CN 國防軍事  军委
+ZH-CN 國防軍事  军管会
+ZH-CN 國防軍事  军乐团
+ZH-CN 國防軍事  小米加步枪
+ZH-CN 國防軍事  诱弹/诱饵炸弹
+ZH-CN 國防軍事  预备队
+ZH-CN 國防軍事  地下核试验
+ZH-CN 國防軍事  两弹一星
+ZH-CN 國防軍事  休整
+ZH-CN 國防軍事  兵痞
+ZH-CN 國防軍事  铁流
+SYNONYM 經貿商務 內線交易 内幕交易
+SYNONYM 經貿商務 生產工具 生产工具/劳动工具
+SYNONYM 經貿商務 石油輸出國組織/石油輸出國家組織/油國組織 石油输出国组织/石油输出国家组织/欧佩克
+SYNONYM 經貿商務 仲介 中介
+SYNONYM 經貿商務 仲介費 中介费
+SYNONYM 經貿商務 投報率/投資報酬率 投报率/投资回报率
+SYNONYM 經貿商務 決標 决标/定标
+SYNONYM 經貿商務 底價/底標 底价/标底
+SYNONYM 經貿商務 店面/鋪面房 店面/铺面房/门面房
+SYNONYM 經貿商務 房市 房市/楼市
+SYNONYM 經貿商務 拍賣 拍卖/甩卖
+SYNONYM 經貿商務 東協自由貿易協定 东盟自由贸易协议
+SYNONYM 經貿商務 東協自由貿易區 东盟自由贸易区
+SYNONYM 經貿商務 空殼公司/空頭公司 空壳公司/皮包公司
+SYNONYM 經貿商務 保本 保本/保底
+SYNONYM 經貿商務 保證價格 保护价
+SYNONYM 經貿商務 品質管制/品管 品质管制/质管
+SYNONYM 經貿商務 品檢 质检
+SYNONYM 經貿商務 負成長 负增长
+SYNONYM 經貿商務 拿回扣 拿回扣/吃回扣
+SYNONYM 經貿商務 消費者物價指數 消费者物价指数/消费者价格指数/居民消费价格指数
+SYNONYM 經貿商務 缺貨 缺货/脱销
+SYNONYM 經貿商務 國民生產毛額 国民生产毛额/国民生产总值
+SYNONYM 經貿商務 國民所得 国民收入
+SYNONYM 經貿商務 貧窮線 贫困线
+SYNONYM 經貿商務 通貨膨脹/通膨 通货膨胀/通胀
+SYNONYM 經貿商務 勞力密集型 劳动密集型
+SYNONYM 經貿商務 電子商務 电子商务/电商
+SYNONYM 經貿商務 嘜 唛/唛头/嚜头
+SYNONYM 經貿商務 暢銷 畅销/旺销
+SYNONYM 經貿商務 網拍/網路拍賣 网拍/网络拍卖
+SYNONYM 經貿商務 網路行銷 网络营销
+SYNONYM 經貿商務 網路書店 网上书店
+SYNONYM 經貿商務 網路經濟 网络经济
+SYNONYM 經貿商務 營運 营运/运营
+SYNONYM 經貿商務 營運長/首席營運長 运营官/首席运营官
+SYNONYM 經貿商務 櫃檯 柜台/前台
+HOMONYM 經貿商務 生產力 生产力
+HOMONYM 經貿商務 自由市場 自由市场
+HOMONYM 經貿商務 國企 国企
+HOMONYM 經貿商務 排富 排富
+ZH-TW 經貿商務 公股 
+ZH-TW 經貿商務 多角化 
+ZH-TW 經貿商務 客制化 
+ZH-TW 經貿商務 度小月 
+ZH-TW 經貿商務 科學園區/科學工業園區 
+ZH-TW 經貿商務 情趣店/情趣商店 
+ZH-TW 經貿商務 窒息量 
+ZH-TW 經貿商務 頂讓 
+ZH-TW 經貿商務 插旗 
+ZH-TW 經貿商務 黃藍燈 
+ZH-TW 經貿商務 搓圓仔湯 
+ZH-TW 經貿商務 綁樁 
+ZH-TW 經貿商務 經建 
+ZH-TW 經貿商務 關係企業 
+ZH-CN 經貿商務  二道贩子
+ZH-CN 經貿商務  厂标
+ZH-CN 經貿商務  三资企业
+ZH-CN 經貿商務  个体经济
+ZH-CN 經貿商務  小生产
+ZH-CN 經貿商務  小农经济
+ZH-CN 經貿商務  干租
+ZH-CN 經貿商務  中试
+ZH-CN 經貿商務  五点一线
+ZH-CN 經貿商務  公私合营
+ZH-CN 經貿商務  双带双扶
+ZH-CN 經貿商務  双转移
+ZH-CN 經貿商務  开街
+ZH-CN 經貿商務  开箱率
+ZH-CN 經貿商務  引资
+ZH-CN 經貿商務  车间
+ZH-CN 經貿商務  贴牌/代加工
+ZH-CN 經貿商務  出票
+ZH-CN 經貿商務  发盘
+ZH-CN 經貿商務  外引内联
+ZH-CN 經貿商務  外企
+ZH-CN 經貿商務  市场准入
+ZH-CN 經貿商務  必要劳动
+ZH-CN 經貿商務  打榜
+ZH-CN 經貿商務  正回购
+ZH-CN 經貿商務  民族资本
+ZH-CN 經貿商務  民营经济
+ZH-CN 經貿商務  生产手段/生产资料
+ZH-CN 經貿商務  生产队
+ZH-CN 經貿商務  皮包商
+ZH-CN 經貿商務  长线产品
+ZH-CN 經貿商務  企业工商执照注册号
+ZH-CN 經貿商務  企事业
+ZH-CN 經貿商務  企稳
+ZH-CN 經貿商務  关停并转
+ZH-CN 經貿商務  动销
+ZH-CN 經貿商務  吃回扣
+ZH-CN 經貿商務  合作化/集体化
+ZH-CN 經貿商務  回水
+ZH-CN 經貿商務  网交会/网络商品交易会
+ZH-CN 經貿商務  行俏
+ZH-CN 經貿商務  齐抓共管
+ZH-CN 經貿商務  两高一资
+ZH-CN 經貿商務  冷链/冷藏链
+ZH-CN 經貿商務  冷销
+ZH-CN 經貿商務  劳动对象
+ZH-CN 經貿商務  投入品
+ZH-CN 經貿商務  私营经济
+ZH-CN 經貿商務  辛迪加
+ZH-CN 經貿商務  供销社/供销合作社
+ZH-CN 經貿商務  具体劳动
+ZH-CN 經貿商務  国企/国有企业
+ZH-CN 經貿商務  国有经济
+ZH-CN 經貿商務  性价比/性能价格比
+ZH-CN 經貿商務  总装
+ZH-CN 經貿商務  抽象劳动
+ZH-CN 經貿商務  拐点论
+ZH-CN 經貿商務  治穷
+ZH-CN 經貿商務  物化劳动
+ZH-CN 經貿商務  环境壁垒/绿色壁垒
+ZH-CN 經貿商務  生产力/社会生产力
+ZH-CN 經貿商務  经济园
+ZH-CN 經貿商務  开发区/经济开发区/经济技术开发区
+ZH-CN 經貿商務  经济特区
+ZH-CN 經貿商務  运营商
+ZH-CN 經貿商務  返工
+ZH-CN 經貿商務  返利
+ZH-CN 經貿商務  金桥工程
+ZH-CN 經貿商務  非公有制经济
+ZH-CN 經貿商務  信誉度
+ZH-CN 經貿商務  南南合作
+ZH-CN 經貿商務  城调
+ZH-CN 經貿商務  拼缝
+ZH-CN 經貿商務  指导线
+ZH-CN 經貿商務  春拍
+ZH-CN 經貿商務  活劳动
+ZH-CN 經貿商務  派购
+ZH-CN 經貿商務  皇粮
+ZH-CN 經貿商務  科企
+ZH-CN 經貿商務  科技含量
+ZH-CN 經貿商務  科技扶贫
+ZH-CN 經貿商務  统配
+ZH-CN 經貿商務  统货
+ZH-CN 經貿商務  统销
+ZH-CN 經貿商務  倒运
+ZH-CN 經貿商務  倒票
+ZH-CN 經貿商務  倒牌子
+ZH-CN 經貿商務  倒买倒卖
+ZH-CN 經貿商務  倒汇
+ZH-CN 經貿商務  准入制
+ZH-CN 經貿商務  海西/海西经济区/海峡西岸经济区
+ZH-CN 經貿商務  特许专营/特许经营
+ZH-CN 經貿商務  班组
+ZH-CN 經貿商務  留人奖
+ZH-CN 經貿商務  高企
+ZH-CN 經貿商務  高新/高新技术企业
+ZH-CN 經貿商務  高新区
+ZH-CN 經貿商務  深加工
+ZH-CN 經貿商務  盘活
+ZH-CN 經貿商務  剩余劳动
+ZH-CN 經貿商務  割肉
+ZH-CN 經貿商務  割尾巴
+ZH-CN 經貿商務  强农惠农
+ZH-CN 經貿商務  智力投资
+ZH-CN 經貿商務  短平快
+ZH-CN 經貿商務  硬苦力
+ZH-CN 經貿商務  联社
+ZH-CN 經貿商務  联产承包责任制
+ZH-CN 經貿商務  联产计酬
+ZH-CN 經貿商務  集贸/集市贸易
+ZH-CN 經貿商務  集成化
+ZH-CN 經貿商務  集体经济
+ZH-CN 經貿商務  集贸市场
+ZH-CN 經貿商務  路游/路演
+ZH-CN 經貿商務  零投入
+ZH-CN 經貿商務  霸王合同
+ZH-CN 經貿商務  买办资本
+ZH-CN 經貿商務  买办阶级/买办资产阶级
+ZH-CN 經貿商務  军转民
+ZH-CN 經貿商務  创业园
+ZH-CN 經貿商務  创收
+ZH-CN 經貿商務  创利
+ZH-CN 經貿商務  创汇
+ZH-CN 經貿商務  创汇额
+ZH-CN 經貿商務  奖售
+ZH-CN 經貿商務  抢注
+ZH-CN 經貿商務  捞资本
+ZH-CN 經貿商務  标王
+ZH-CN 經貿商務  汇展
+ZH-CN 經貿商務  湿租
+ZH-CN 經貿商務  腾笼换鸟
+ZH-CN 經貿商務  蓝牌
+ZH-CN 經貿商務  评标
+ZH-CN 經貿商務  质监
+ZH-CN 經貿商務  转企/转企改制
+ZH-CN 經貿商務  转轨经济
+ZH-CN 經貿商務  软文
+ZH-CN 經貿商務  软储备
+ZH-CN 經貿商務  辅料
+ZH-CN 經貿商務  进级点
+ZH-CN 經貿商務  铺摊子
+ZH-CN 經貿商務  销势
+ZH-CN 經貿商務  闹市区
+ZH-CN 經貿商務  预亏
+ZH-CN 經貿商務  预盈
+ZH-CN 經貿商務  颓市
+ZH-CN 經貿商務  广交会/广州交易会/中国进出口商品交易会
+ZH-CN 經貿商務  企改
+ZH-CN 經貿商務  地方粮票
+ZH-CN 經貿商務  专业村
+ZH-CN 經貿商務  平销
+ZH-CN 經貿商務  底商
+ZH-CN 經貿商務  批租
+ZH-CN 經貿商務  批零
+ZH-CN 經貿商務  投拍
+ZH-CN 經貿商務  招商引资
+ZH-CN 經貿商務  拍品
+ZH-CN 經貿商務  星火计划
+ZH-CN 經貿商務  生意额
+ZH-CN 經貿商務  百强县
+ZH-CN 經貿商務  亚投行
+ZH-CN 經貿商務  西部大开发
+ZH-CN 經貿商務  乡企
+ZH-CN 經貿商務  票证
+ZH-CN 經貿商務  电子口岸
+ZH-CN 經貿商務  一级市场
+SYNONYM 財務金融 外匯存底 外汇储备
+SYNONYM 財務金融 本益比 本益比/市盈率
+SYNONYM 財務金融 利多 利多/利好
+SYNONYM 財務金融 利空 利空/利淡
+SYNONYM 財務金融 亞洲開發銀行/亞銀 亚洲开发银行/亚行
+SYNONYM 財務金融 定期 定期/死期
+SYNONYM 財務金融 店頭/店頭市場 场外交易市场
+SYNONYM 財務金融 房屋稅 房产税
+SYNONYM 財務金融 披索 比索
+SYNONYM 財務金融 空地稅 土地闲置税
+SYNONYM 財務金融 空頭支票/芭樂票 空头支票
+SYNONYM 財務金融 長紅/滿堂紅 长红/飘红
+SYNONYM 財務金融 信用狀 信用证
+SYNONYM 財務金融 急救金 应急金
+SYNONYM 財務金融 胖手指 胖手指/乌龙指
+SYNONYM 財務金融 起徵點 起征点/起税点/征税起点
+SYNONYM 財務金融 國庫 国库/金库
+SYNONYM 財務金融 國稅 国税/中央税/国家税
+SYNONYM 財務金融 強制保險 强制保险/法定保险
+SYNONYM 財務金融 強勢貨幣 强势货币/硬通货
+SYNONYM 財務金融 理賠服務中心 理赔站
+SYNONYM 財務金融 通提 通兌
+SYNONYM 財務金融 通儲 通存
+SYNONYM 財務金融 報酬率 回报率
+SYNONYM 財務金融 硬幣/銅板 硬币
+SYNONYM 財務金融 稅票 税票/税单
+SYNONYM 財務金融 超領 超支
+SYNONYM 財務金融 進項 进项/来项
+SYNONYM 財務金融 網銀/網路銀行 网银/网上银行/网络银行
+SYNONYM 財務金融 徵信所/徵信社 征信所
+SYNONYM 財務金融 歐元 欧元/欧罗
+SYNONYM 財務金融 盤跌 盘跌/阴跌
+SYNONYM 財務金融 閻王帳 阎王账/阎王债
+SYNONYM 財務金融 儲值 充值
+SYNONYM 財務金融 儲值卡 充值卡
+SYNONYM 財務金融 總收入 总收入/毛收入
+SYNONYM 財務金融 聯貸/聯合貸款 银团贷款
+HOMONYM 財務金融 互助會 互助会
+HOMONYM 財務金融 公益卡 公益卡
+HOMONYM 財務金融 金庫 金库
+HOMONYM 財務金融 配股 配股
+HOMONYM 財務金融 脫產 脱产
+HOMONYM 財務金融 勞保 劳保
+HOMONYM 財務金融 稅單 税单
+HOMONYM 財務金融 跑路費 辛苦费
+HOMONYM 財務金融 農保 农保
+HOMONYM 財務金融 聯保 联保
+HOMONYM 財務金融 聯貸 联贷
+ZH-TW 財務金融 十八趴/軍公教十八趴 
+ZH-TW 財務金融 中概股 
+ZH-TW 財務金融 公告現值 
+ZH-TW 財務金融 公保/公務人員保險 
+ZH-TW 財務金融 水餃股 
+ZH-TW 財務金融 主計 
+ZH-TW 財務金融 地雷股 
+ZH-TW 財務金融 年金 
+ZH-TW 財務金融 老人年金 
+ZH-TW 財務金融 低檔 
+ZH-TW 財務金融 投現 
+ZH-TW 財務金融 禿鷹 
+ZH-TW 財務金融 私校保險/私立學校教職員保險 
+ZH-TW 財務金融 定存奴 
+ZH-TW 財務金融 股王 
+ZH-TW 財務金融 軋票 
+ZH-TW 財務金融 金檢 
+ZH-TW 財務金融 長黑 
+ZH-TW 財務金融 高檔 
+ZH-TW 財務金融 國民年金 
+ZH-TW 財務金融 國民旅遊卡 
+ZH-TW 財務金融 奢侈稅 
+ZH-TW 財務金融 悠遊卡 
+ZH-TW 財務金融 悠遊聯名卡 
+ZH-TW 財務金融 殺豬公 
+ZH-TW 財務金融 現金卡 
+ZH-TW 財務金融 稅負制 
+ZH-TW 財務金融 菸捐/健康捐/福利捐 
+ZH-TW 財務金融 超貸 
+ZH-TW 財務金融 郵政儲金 
+ZH-TW 財務金融 傳產股 
+ZH-TW 財務金融 塑膠貨幣 
+ZH-TW 財務金融 試算 
+ZH-TW 財務金融 跳票 
+ZH-TW 財務金融 農民年金 
+ZH-TW 財務金融 零用金 
+ZH-TW 財務金融 劃撥 
+ZH-TW 財務金融 綜所稅/綜合所得稅 
+ZH-TW 財務金融 撐盤 
+ZH-TW 財務金融 證所稅/證券交易所得稅 
+ZH-CN 財務金融  一折式
+ZH-CN 財務金融  一费通
+ZH-CN 財務金融  创板/创业板/二板市场/创业板市场
+ZH-CN 財務金融  三角债
+ZH-CN 財務金融  三责险
+ZH-CN 財務金融  下浮
+ZH-CN 財務金融  个调税
+ZH-CN 財務金融  个贷
+ZH-CN 財務金融  大小非
+ZH-CN 財務金融  小票
+ZH-CN 財務金融  公积金
+ZH-CN 財務金融  内房股
+ZH-CN 財務金融  内银股
+ZH-CN 財務金融  双底
+ZH-CN 財務金融  月供
+ZH-CN 財務金融  欠账卡
+ZH-CN 財務金融  毛票/角票
+ZH-CN 財務金融  气球贷
+ZH-CN 財務金融  车购税/车辆购置税
+ZH-CN 財務金融  主承销商
+ZH-CN 財務金融  主板市场
+ZH-CN 財務金融  主税/正税/本税/独立税
+ZH-CN 財務金融  北水南来/北水南流/北水南调
+ZH-CN 財務金融  打白条
+ZH-CN 財務金融  白条/白条子/白条儿
+ZH-CN 財務金融  再贷款
+ZH-CN 財務金融  划痕险
+ZH-CN 財務金融  划转
+ZH-CN 財務金融  协税
+ZH-CN 財務金融  回归股
+ZH-CN 財務金融  扣账卡/借记卡
+ZH-CN 財務金融  自汗钱
+ZH-CN 財務金融  行权日/购买日
+ZH-CN 財務金融  住房公积金
+ZH-CN 財務金融  利税
+ZH-CN 財務金融  吸储
+ZH-CN 財務金融  快易贷
+ZH-CN 財務金融  投行
+ZH-CN 財務金融  豆腐账
+ZH-CN 財務金融  供楼
+ZH-CN 財務金融  国际卡
+ZH-CN 財務金融  学贷险
+ZH-CN 財務金融  社保金
+ZH-CN 財務金融  社保税/社会保障税
+ZH-CN 財務金融  社保费
+ZH-CN 財務金融  股改
+ZH-CN 財務金融  股票红利税
+ZH-CN 財務金融  保安线
+ZH-CN 財務金融  封转开
+ZH-CN 財務金融  持仓量
+ZH-CN 財務金融  按揭
+ZH-CN 財務金融  洗仓/震仓
+ZH-CN 財務金融  国有股
+ZH-CN 財務金融  派款
+ZH-CN 財務金融  钢镚儿/钢镚子
+ZH-CN 財務金融  原始股
+ZH-CN 財務金融  套头交易
+ZH-CN 財務金融  耕地占用税
+ZH-CN 財務金融  逃贷
+ZH-CN 財務金融  逆市
+ZH-CN 財務金融  减仓
+ZH-CN 財務金融  清算制
+ZH-CN 財務金融  清产核资
+ZH-CN 財務金融  袋袋账
+ZH-CN 財務金融  银团
+ZH-CN 財務金融  银团贷款
+ZH-CN 財務金融  银联卡
+ZH-CN 財務金融  银证通
+ZH-CN 財務金融  强债/增强型债券基金
+ZH-CN 財務金融  惠农卡/金穗惠农卡
+ZH-CN 財務金融  猫币
+ZH-CN 財務金融  短险
+ZH-CN 財務金融  税耗子
+ZH-CN 財務金融  税控机
+ZH-CN 財務金融  新老划段/新老划断
+ZH-CN 財務金融  融资链
+ZH-CN 財務金融  濠赌股
+ZH-CN 財務金融  薪效
+ZH-CN 財務金融  储蓄所
+ZH-CN 財務金融  导银
+ZH-CN 財務金融  现贷派
+ZH-CN 財務金融  简身险/简易人身保险
+ZH-CN 財務金融  红利税/股票红利税
+ZH-CN 財務金融  红筹股
+ZH-CN 財務金融  翘尾
+ZH-CN 財務金融  调节税
+ZH-CN 財務金融  财政补贴
+ZH-CN 財務金融  购置税
+ZH-CN 財務金融  贷记卡
+ZH-CN 財務金融  转按揭
+ZH-CN 財務金融  软通货
+ZH-CN 財務金融  连阳
+ZH-CN 財務金融  连阴
+ZH-CN 財務金融  镚子
+ZH-CN 財務金融  顺市
+ZH-CN 財務金融  飘绿
+ZH-CN 財務金融  三险一金
+ZH-CN 財務金融  信用社/信用合作社
+ZH-CN 財務金融  切汇
+ZH-CN 財務金融  吃床板/吃床腿
+ZH-CN 財務金融  定损
+ZH-CN 財務金融  惜赔
+ZH-CN 財務金融  恶意透支
+ZH-CN 財務金融  走牛
+ZH-CN 財務金融  逃废
+ZH-CN 財務金融  隐形收入/隐性收入
+ZH-CN 財務金融  上浮
+ZH-CN 財務金融  踏空
+ZH-CN 財務金融  利息所得税
+ZH-CN 財務金融  征管
+ZH-CN 財務金融  抽逃
+ZH-CN 財務金融  通存通兑
+SYNONYM 社會＆民情 入贅 入赘/倒插门
+SYNONYM 社會＆民情 工運/勞工運動 工运/工人运动
+SYNONYM 社會＆民情 公告期 公示期
+SYNONYM 社會＆民情 公曆/西曆/國曆/陽曆/太陽曆 公历/西历/国历/阳历/太阳历/格里历
+SYNONYM 社會＆民情 世界展望會 世界宣明会
+SYNONYM 社會＆民情 代溝 代沟/代差
+SYNONYM 社會＆民情 出分子 出份子/随分子
+SYNONYM 社會＆民情 外遇/婚外情 外遇/婚外情/婚外恋
+SYNONYM 社會＆民情 生活水平/生活水準 生活水平/生活水准/生活程度
+SYNONYM 社會＆民情 生活品質 生活质量/生存质量
+SYNONYM 社會＆民情 年假/特休/特別休假 年假/年休假
+SYNONYM 社會＆民情 作媒/做媒 作媒/做媒/保媒
+SYNONYM 社會＆民情 扮白臉 唱红脸
+SYNONYM 社會＆民情 扮黑臉 唱白脸
+SYNONYM 社會＆民情 男女平等/兩性平權 男女平等
+SYNONYM 社會＆民情 抽水站 抽水站/泵站/扬水站
+SYNONYM 社會＆民情 拉炮 拉炮/彩炮/礼宾花
+SYNONYM 社會＆民情 春酒 春酒/春茗
+SYNONYM 社會＆民情 宰牲節/犧牲節/古爾邦節 宰牲节/牺牲节/古尔邦节/尔德节
+SYNONYM 社會＆民情 家庭計畫 计划生育
+SYNONYM 社會＆民情 消防栓/救火栓 消防栓/消火栓
+SYNONYM 社會＆民情 逆境商數 逆境商数/逆商/逆境商/挫折商
+SYNONYM 社會＆民情 國定假日 国定假日/法定假日
+SYNONYM 社會＆民情 國際兒童村 国际儿童村/儿童村/SOS儿童村
+SYNONYM 社會＆民情 國際兒童節 国际儿童节/六一国际儿童节
+SYNONYM 社會＆民情 國慶日 国庆日/国庆节
+SYNONYM 社會＆民情 基層 基层/低层
+SYNONYM 社會＆民情 掃黑 扫黑/打黑
+SYNONYM 社會＆民情 救護隊/救難隊 救护队
+SYNONYM 社會＆民情 牽線 牵线/牵头
+SYNONYM 社會＆民情 軟體 软件
+SYNONYM 社會＆民情 速食戀愛 速食恋爱/快餐恋爱
+SYNONYM 社會＆民情 報導 报导/报道
+SYNONYM 社會＆民情 無性婚姻 无性婚姻/无性婚
+SYNONYM 社會＆民情 焦點新聞 焦点新闻/沸点新闻
+SYNONYM 社會＆民情 雅痞 雅痞/雅皮士/雅痞士
+SYNONYM 社會＆民情 集體婚禮/集團婚禮/集團結婚 集体婚礼
+SYNONYM 社會＆民情 傳統風味/古早味 传统风味
+SYNONYM 社會＆民情 意識形態/觀念形態/意識型態/觀念型態 意识形态/观念形态
+SYNONYM 社會＆民情 義工/志工 义工
+SYNONYM 社會＆民情 聖誕節/耶誕節 圣诞节
+SYNONYM 社會＆民情 農民曆 农家历
+SYNONYM 社會＆民情 舞龍 舞龙/玩龙灯
+SYNONYM 社會＆民情 認養 认养/认领
+SYNONYM 社會＆民情 嬉皮 嬉皮士
+SYNONYM 社會＆民情 導言 导语
+SYNONYM 社會＆民情 樹葬 树葬/植树葬
+SYNONYM 社會＆民情 雙薪家庭 双职工家庭
+SYNONYM 社會＆民情 雙響/二踢腳 双响/二踢脚/两响
+SYNONYM 社會＆民情 龐克 朋克
+SYNONYM 社會＆民情 讀者投書 读者来信
+HOMONYM 社會＆民情 人頭 人头
+HOMONYM 社會＆民情 公關/公共關係 公关/公共关系
+HOMONYM 社會＆民情 高姿態 高姿态
+ZH-TW 社會＆民情 中途之家 
+ZH-TW 社會＆民情 公休 
+ZH-TW 社會＆民情 公共給水 
+ZH-TW 社會＆民情 分偶 
+ZH-TW 社會＆民情 文宣 
+ZH-TW 社會＆民情 出草 
+ZH-TW 社會＆民情 平衡報導 
+ZH-TW 社會＆民情 民族掃墓節 
+ZH-TW 社會＆民情 生命禮儀 
+ZH-TW 社會＆民情 光復節/臺灣光復節 
+ZH-TW 社會＆民情 在地 
+ZH-TW 社會＆民情 自由日 
+ZH-TW 社會＆民情 自強活動 
+ZH-TW 社會＆民情 西瓜效應 
+ZH-TW 社會＆民情 志工化 
+ZH-TW 社會＆民情 抓猴 
+ZH-TW 社會＆民情 走春 
+ZH-TW 社會＆民情 和解共生 
+ZH-TW 社會＆民情 拉抬 
+ZH-TW 社會＆民情 近貧 
+ZH-TW 社會＆民情 度晬 
+ZH-TW 社會＆民情 炸寒單 
+ZH-TW 社會＆民情 軍人節 
+ZH-TW 社會＆民情 家扶 
+ZH-TW 社會＆民情 家庭訪視 
+ZH-TW 社會＆民情 站衛兵 
+ZH-TW 社會＆民情 送做堆 
+ZH-TW 社會＆民情 陣頭 
+ZH-TW 社會＆民情 造勢會 
+ZH-TW 社會＆民情 登記婚 
+ZH-TW 社會＆民情 義民節 
+ZH-TW 社會＆民情 電子花車 
+ZH-TW 社會＆民情 僑社 
+ZH-TW 社會＆民情 彈性放假 
+ZH-TW 社會＆民情 辦桌 
+ZH-TW 社會＆民情 餐會 
+ZH-TW 社會＆民情 蹺家/翹家 
+ZH-CN 社會＆民情  一条街
+ZH-CN 社會＆民情  丁克
+ZH-CN 社會＆民情  万元户
+ZH-CN 社會＆民情  三台合一/三警合一
+ZH-CN 社會＆民情  三陪
+ZH-CN 社會＆民情  大龄
+ZH-CN 社會＆民情  干休所
+ZH-CN 社會＆民情  中国梦
+ZH-CN 社會＆民情  五保户
+ZH-CN 社會＆民情  井喷
+ZH-CN 社會＆民情  公假
+ZH-CN 社會＆民情  双休日
+ZH-CN 社會＆民情  水炮
+ZH-CN 社會＆民情  仪仗
+ZH-CN 社會＆民情  处警
+ZH-CN 社會＆民情  民工潮
+ZH-CN 社會＆民情  生产关系
+ZH-CN 社會＆民情  份儿钱
+ZH-CN 社會＆民情  优抚
+ZH-CN 社會＆民情  关系户
+ZH-CN 社會＆民情  关联方
+ZH-CN 社會＆民情  吃喝风
+ZH-CN 社會＆民情  吃请
+ZH-CN 社會＆民情  在谱
+ZH-CN 社會＆民情  年龄段
+ZH-CN 社會＆民情  有偿新闻
+ZH-CN 社會＆民情  礼花
+ZH-CN 社會＆民情  老大难
+ZH-CN 社會＆民情  老少边穷
+ZH-CN 社會＆民情  老封建
+ZH-CN 社會＆民情  老眼光
+ZH-CN 社會＆民情  肉孜节
+ZH-CN 社會＆民情  自由民
+ZH-CN 社會＆民情  低保
+ZH-CN 社會＆民情  形姻/互助婚姻/形式婚姻
+ZH-CN 社會＆民情  走热
+ZH-CN 社會＆民情  阳光操作
+ZH-CN 社會＆民情  事实婚姻
+ZH-CN 社會＆民情  单过
+ZH-CN 社會＆民情  参保率
+ZH-CN 社會＆民情  奔小康
+ZH-CN 社會＆民情  官本位
+ZH-CN 社會＆民情  怪圈
+ZH-CN 社會＆民情  抹锅灰
+ZH-CN 社會＆民情  拥军优属
+ZH-CN 社會＆民情  盲流
+ZH-CN 社會＆民情  社安
+ZH-CN 社會＆民情  社保/社会保险
+ZH-CN 社會＆民情  社保/社会保障
+ZH-CN 社會＆民情  社保卡/社会保障卡
+ZH-CN 社會＆民情  社情
+ZH-CN 社會＆民情  空巢家庭
+ZH-CN 社會＆民情  迎峰度夏
+ZH-CN 社會＆民情  迎讲树
+ZH-CN 社會＆民情  返贫
+ZH-CN 社會＆民情  保电
+ZH-CN 社會＆民情  冒富
+ZH-CN 社會＆民情  拼爹
+ZH-CN 社會＆民情  洋节
+ZH-CN 社會＆民情  砍刀帮
+ZH-CN 社會＆民情  穿靴戴帽
+ZH-CN 社會＆民情  美誉度
+ZH-CN 社會＆民情  剥削阶级
+ZH-CN 社會＆民情  拉近乎/套近乎
+ZH-CN 社會＆民情  套磁
+ZH-CN 社會＆民情  祝酒
+ZH-CN 社會＆民情  祝酒歌
+ZH-CN 社會＆民情  祝酒词
+ZH-CN 社會＆民情  祝捷
+ZH-CN 社會＆民情  笑笑团
+ZH-CN 社會＆民情  笑脸墙/微笑墙
+ZH-CN 社會＆民情  送温暖
+ZH-CN 社會＆民情  排险
+ZH-CN 社會＆民情  排爆
+ZH-CN 社會＆民情  排队日
+ZH-CN 社會＆民情  探亲假
+ZH-CN 社會＆民情  接地气
+ZH-CN 社會＆民情  断档
+ZH-CN 社會＆民情  眼球效应
+ZH-CN 社會＆民情  陪老
+ZH-CN 社會＆民情  黄金周/黄金假日
+ZH-CN 社會＆民情  傍大款
+ZH-CN 社會＆民情  割尾巴
+ZH-CN 社會＆民情  媒体节
+ZH-CN 社會＆民情  插队
+ZH-CN 社會＆民情  温饱线
+ZH-CN 社會＆民情  联调
+ZH-CN 社會＆民情  装红脸
+ZH-CN 社會＆民情  搭界
+ZH-CN 社會＆民情  群发
+ZH-CN 社會＆民情  群体性事件
+ZH-CN 社會＆民情  群访
+ZH-CN 社會＆民情  路怒
+ZH-CN 社會＆民情  福利院
+ZH-CN 社會＆民情  靠谱/靠谱儿
+ZH-CN 社會＆民情  整风
+ZH-CN 社會＆民情  蹭饭
+ZH-CN 社會＆民情  临界婚姻
+ZH-CN 社會＆民情  习惯势力
+ZH-CN 社會＆民情  传承链
+ZH-CN 社會＆民情  传播链
+ZH-CN 社會＆民情  恶捧
+ZH-CN 社會＆民情  抢险
+ZH-CN 社會＆民情  换肚肠
+ZH-CN 社會＆民情  热看
+ZH-CN 社會＆民情  热假/高温假
+ZH-CN 社會＆民情  热传
+ZH-CN 社會＆民情  热词
+ZH-CN 社會＆民情  窝点
+ZH-CN 社會＆民情  红火
+ZH-CN 社會＆民情  节徽
+ZH-CN 社會＆民情  谈朋友
+ZH-CN 社會＆民情  错峰
+ZH-CN 社會＆民情  闯关东
+ZH-CN 社會＆民情  顶牛
+ZH-CN 社會＆民情  顶牛儿
+ZH-CN 社會＆民情  饥饿线
+ZH-CN 社會＆民情  五爱
+ZH-CN 社會＆民情  五讲四美
+ZH-CN 社會＆民情  插队落户
+ZH-CN 社會＆民情  改口费
+ZH-CN 社會＆民情  领证
+ZH-CN 社會＆民情  人才战略
+ZH-CN 社會＆民情  打离婚
+ZH-CN 社會＆民情  晒干瓢
+ZH-CN 社會＆民情  凰求凤
+ZH-CN 社會＆民情  搞活
+ZH-CN 社會＆民情  解扣子
+ZH-CN 社會＆民情  裸婚
+ZH-CN 社會＆民情  结对
+ZH-CN 社會＆民情  维稳
+SYNONYM 宗教＆道德 三元大帝/三官大帝/三官帝君/三界公/三界爺 三元大帝/三官大帝/三官帝君
+SYNONYM 宗教＆道德 不沾鍋 不粘锅
+SYNONYM 宗教＆道德 拉偏架 拉偏架/拉偏手儿
+SYNONYM 宗教＆道德 放鴿子 放鸽子/放飞机
+SYNONYM 宗教＆道德 真主/阿拉 真主/安拉
+SYNONYM 宗教＆道德 頂客家庭 丁克家庭
+SYNONYM 宗教＆道德 插隊 插队/加塞儿
+SYNONYM 宗教＆道德 黑帖/無名帖/黑函 黑帖/无名帖
+SYNONYM 宗教＆道德 黑箱作業 黑箱操作/暗箱操作
+SYNONYM 宗教＆道德 精神暴力 精神暴力/软暴力
+SYNONYM 宗教＆道德 廟祝/廟公 庙祝
+ZH-TW 宗教＆道德 七爺八爺 
+ZH-TW 宗教＆道德 八家將 
+ZH-TW 宗教＆道德 三字經 
+ZH-TW 宗教＆道德 大身尪 
+ZH-TW 宗教＆道德 大拜拜 
+ZH-TW 宗教＆道德 五年祭 
+ZH-TW 宗教＆道德 分身 
+ZH-TW 宗教＆道德 乩童 
+ZH-TW 宗教＆道德 好兄弟 
+ZH-TW 宗教＆道德 安太歲 
+ZH-TW 宗教＆道德 抹黃 
+ZH-TW 宗教＆道德 限制級 
+ZH-TW 宗教＆道德 剝皮 
+ZH-TW 宗教＆道德 貢龜 
+ZH-TW 宗教＆道德 割喉戰 
+ZH-TW 宗教＆道德 黑白講 
+ZH-TW 宗教＆道德 奧步 
+ZH-TW 宗教＆道德 搶孤 
+ZH-TW 宗教＆道德 電音三太子 
+ZH-TW 宗教＆道德 劈腿 
+ZH-TW 宗教＆道德 爐主 
+ZH-CN 宗教＆道德  上眼药
+ZH-CN 宗教＆道德  小广播
+ZH-CN 宗教＆道德  打黑枪
+ZH-CN 宗教＆道德  老实巴交
+ZH-CN 宗教＆道德  刨祖坟
+ZH-CN 宗教＆道德  吹冷风
+ZH-CN 宗教＆道德  吹枕头风
+ZH-CN 宗教＆道德  吹枕边风
+ZH-CN 宗教＆道德  告黑状
+ZH-CN 宗教＆道德  使假
+ZH-CN 宗教＆道德  刮阴风
+ZH-CN 宗教＆道德  制黄
+ZH-CN 宗教＆道德  官德
+ZH-CN 宗教＆道德  放冷风
+ZH-CN 宗教＆道德  叛卖
+ZH-CN 宗教＆道德  指脊梁骨
+ZH-CN 宗教＆道德  挖祖坟
+ZH-CN 宗教＆道德  派性
+ZH-CN 宗教＆道德  玻璃小鞋
+ZH-CN 宗教＆道德  穿小鞋
+ZH-CN 宗教＆道德  掏浆糊/淘糨糊/捣糨糊
+ZH-CN 宗教＆道德  掐尖子
+ZH-CN 宗教＆道德  猫匿/猫腻/猫儿腻
+ZH-CN 宗教＆道德  黑材料
+ZH-CN 宗教＆道德  塞私货
+ZH-CN 宗教＆道德  碰瓷
+ZH-CN 宗教＆道德  蒙事
+ZH-CN 宗教＆道德  糖弹/糖衣炮弹
+ZH-CN 宗教＆道德  权钱交易
+ZH-CN 宗教＆道德  泼脏水
+ZH-CN 宗教＆道德  纠风
+ZH-CN 宗教＆道德  纠风办
+ZH-CN 宗教＆道德  纪律性
+ZH-CN 宗教＆道德  纪检
+ZH-CN 宗教＆道德  荤段子/黄段子
+ZH-CN 宗教＆道德  算后账
+ZH-CN 宗教＆道德  扯大旗
+ZH-CN 宗教＆道德  玩猫儿腻
+ZH-CN 宗教＆道德  穿连裆裤
+ZH-CN 宗教＆道德  野路子
+ZH-CN 宗教＆道德  蔫儿坏
+ZH-CN 宗教＆道德  记小账
+ZH-CN 宗教＆道德  攒人品
+SYNONYM 農林漁牧礦 土埂/田埂/田壟 土埂/田埂/田垄/地埂/地埂子
+SYNONYM 農林漁牧礦 水田 水田/水地
+SYNONYM 農林漁牧礦 水耕 水耕/水培
+SYNONYM 農林漁牧礦 石棉/石綿 石棉
+SYNONYM 農林漁牧礦 行道樹/路樹 行道树
+SYNONYM 農林漁牧礦 乳牛 乳牛/奶牛
+SYNONYM 農林漁牧礦 乳羊 乳羊/奶羊
+SYNONYM 農林漁牧礦 契約農業 契约农业/订单农业
+SYNONYM 農林漁牧礦 魚苗 鱼苗/鱼花
+SYNONYM 農林漁牧礦 琺瑯質 珐琅质/釉质
+SYNONYM 農林漁牧礦 農膜 农膜/地膜
+SYNONYM 農林漁牧礦 精準農業 精准农业/精确农业
+SYNONYM 農林漁牧礦 箱網 网箱
+SYNONYM 農林漁牧礦 箱網養殖 网箱养殖
+SYNONYM 農林漁牧礦 輪作/輪栽/輪種 轮作/轮栽/轮种/倒茬
+SYNONYM 農林漁牧礦 鐵粉 铁粉/精粉/铁精粉
+HOMONYM 農林漁牧礦 農會 农会
+HOMONYM 農林漁牧礦 豬草 猪草
+HOMONYM 農林漁牧礦 礦務局 矿务局
+ZH-TW 農林漁牧礦 保安林 
+ZH-TW 農林漁牧礦 牽罟 
+ZH-TW 農林漁牧礦 農耕隊 
+ZH-CN 農林漁牧礦  厂矿
+ZH-CN 農林漁牧礦  三农
+ZH-CN 農林漁牧礦  个子
+ZH-CN 農林漁牧礦  工作面
+ZH-CN 農林漁牧礦  飞播
+ZH-CN 農林漁牧礦  公仆林
+ZH-CN 農林漁牧礦  双抢
+ZH-CN 農林漁牧礦  开割
+ZH-CN 農林漁牧礦  开割/开镰
+ZH-CN 農林漁牧礦  水地/水浇地
+ZH-CN 農林漁牧礦  代耕
+ZH-CN 農林漁牧礦  仪仗树
+ZH-CN 農林漁牧礦  打钎
+ZH-CN 農林漁牧礦  生荒
+ZH-CN 農林漁牧礦  生猪
+ZH-CN 農林漁牧礦  生态牛
+ZH-CN 農林漁牧礦  田管
+ZH-CN 農林漁牧礦  电灌
+ZH-CN 農林漁牧礦  休牧
+ZH-CN 農林漁牧礦  冲田
+ZH-CN 農林漁牧礦  吃青
+ZH-CN 農林漁牧礦  回采率
+ZH-CN 農林漁牧礦  存栏
+ZH-CN 農林漁牧礦  米猪/豆猪
+ZH-CN 農林漁牧礦  米粮川
+ZH-CN 農林漁牧礦  自留山
+ZH-CN 農林漁牧礦  自留地
+ZH-CN 農林漁牧礦  估产
+ZH-CN 農林漁牧礦  岗地
+ZH-CN 農林漁牧礦  护田林
+ZH-CN 農林漁牧礦  护秋
+ZH-CN 農林漁牧礦  麦垛
+ZH-CN 農林漁牧礦  单产
+ZH-CN 農林漁牧礦  变工
+ZH-CN 農林漁牧礦  坡改梯
+ZH-CN 農林漁牧礦  拉秧
+ZH-CN 農林漁牧礦  林垦
+ZH-CN 農林漁牧礦  注册场
+ZH-CN 農林漁牧礦  返青
+ZH-CN 農林漁牧礦  采育
+ZH-CN 農林漁牧礦  鱼秧子
+ZH-CN 農林漁牧礦  亲鱼
+ZH-CN 農林漁牧礦  保墒
+ZH-CN 農林漁牧礦  冒顶
+ZH-CN 農林漁牧礦  垫圈
+ZH-CN 農林漁牧礦  春禁
+ZH-CN 農林漁牧礦  活茬
+ZH-CN 農林漁牧礦  护青/看青
+ZH-CN 農林漁牧礦  科技户/科技示范户
+ZH-CN 農林漁牧礦  苗情
+ZH-CN 農林漁牧礦  浮选
+ZH-CN 農林漁牧礦  能源林
+ZH-CN 農林漁牧礦  控释肥
+ZH-CN 農林漁牧礦  混交林
+ZH-CN 農林漁牧礦  离土
+ZH-CN 農林漁牧礦  笨鸡
+ZH-CN 農林漁牧礦  掰芽子
+ZH-CN 農林漁牧礦  散养
+ZH-CN 農林漁牧礦  猫鱼
+ZH-CN 農林漁牧礦  菜地
+ZH-CN 農林漁牧礦  趁墒
+ZH-CN 農林漁牧礦  超级稻/超高产水稻
+ZH-CN 農林漁牧礦  失墒/跑墒
+ZH-CN 農林漁牧礦  碾场
+ZH-CN 農林漁牧礦  薪炭林
+ZH-CN 農林漁牧礦  翻场
+ZH-CN 農林漁牧礦  专业户
+ZH-CN 農林漁牧礦  退养
+ZH-CN 農林漁牧礦  军垦
+ZH-CN 農林漁牧礦  垱
+ZH-CN 農林漁牧礦  换茬
+ZH-CN 農林漁牧礦  绿盾
+ZH-CN 農林漁牧礦  蓝色农业
+ZH-CN 農林漁牧礦  责任田
+ZH-CN 農林漁牧礦  顶心/顶尖
+ZH-CN 農林漁牧礦  小煤窑
+ZH-CN 農林漁牧礦  旱涝保收
+ZH-CN 農林漁牧礦  涉农
+ZH-CN 農林漁牧礦  狗屎地
+ZH-CN 農林漁牧礦  农企
+ZH-CN 農林漁牧礦  三夏
+ZH-CN 農林漁牧礦  头茬
+ZH-CN 農林漁牧礦  菜博会
+ZH-CN 農林漁牧礦  落膘
+ZH-CN 農林漁牧礦  路矿
+ZH-CN 農林漁牧礦  碱荒
+ZH-CN 農林漁牧礦  稳产
+SYNONYM 職場 人力派遣 劳务派遣
+SYNONYM 職場 工會 工会/工联
+SYNONYM 職場 工寮 工棚
+SYNONYM 職場 代班 代班/顶班/替班
+SYNONYM 職場 出師/出道/滿師 出师/出道/满师/出徒
+SYNONYM 職場 外快 外快/外水/活钱
+SYNONYM 職場 全勤 全勤/满勤
+SYNONYM 職場 合聘 联聘
+SYNONYM 職場 名譽職 名誉职/名誉职务
+SYNONYM 職場 回聘 回聘/返聘
+SYNONYM 職場 在職訓練 在职培训/岗位培训
+SYNONYM 職場 年資/資齡 年资/资龄/工龄
+SYNONYM 職場 自由業 自由职业
+SYNONYM 職場 受薪族 工薪族
+SYNONYM 職場 受薪階級/薪水階級 工薪阶层
+SYNONYM 職場 契約工 合同工
+SYNONYM 職場 拾荒/拾破爛/撿破爛/揀破爛 拾荒/拾破烂/捡破烂/捡破烂儿
+SYNONYM 職場 查哨 查哨/查岗
+SYNONYM 職場 浮動工資 浮动工资/活工资
+SYNONYM 職場 特種行業 特种行业/特业/特行
+SYNONYM 職場 接班/接棒 接班
+SYNONYM 職場 第一級產業 第一级产业/初级产业/第一产业
+SYNONYM 職場 第二級產業 第二级产业/第二产业
+SYNONYM 職場 第三級產業 第三级产业/第三产业/三产
+SYNONYM 職場 第四級產業 第四级产业/第四产业
+SYNONYM 職場 視訊會議 视频会议/电视电话会议
+SYNONYM 職場 遣散費/資遣費 遣散费
+SYNONYM 職場 徵才會 招聘会
+SYNONYM 職場 調薪 调薪/调资
+SYNONYM 職場 隱性失業/隱藏性失業 隐性失业/隐藏性失业/亚失业
+SYNONYM 職場 離任 离任/离岗
+SYNONYM 職場 識別證 识别证/胸卡/胸牌
+SYNONYM 職場 續聘 续聘/连聘
+HOMONYM 職場 分管 分管
+HOMONYM 職場 缺編 缺编
+HOMONYM 職場 高職 高职
+HOMONYM 職場 掛點 挂点
+HOMONYM 職場 脫產 脱产
+HOMONYM 職場 總工會 总工会
+ZH-TW 職場 人力銀行 
+ZH-TW 職場 上游業者 
+ZH-TW 職場 下游業者 
+ZH-TW 職場 下聘 
+ZH-TW 職場 工安/工業安全 
+ZH-TW 職場 升等考試 
+ZH-TW 職場 升資 
+ZH-TW 職場 加減賺 
+ZH-TW 職場 加給 
+ZH-TW 職場 加菜金 
+ZH-TW 職場 休職 
+ZH-TW 職場 考照 
+ZH-TW 職場 育兒假/育嬰假 
+ZH-TW 職場 走路工 
+ZH-TW 職場 前段班 
+ZH-TW 職場 前置作業 
+ZH-TW 職場 後段班 
+ZH-TW 職場 怠職 
+ZH-TW 職場 洽公 
+ZH-TW 職場 風化區 
+ZH-TW 職場 差假 
+ZH-TW 職場 時程 
+ZH-TW 職場 特考/特種考試 
+ZH-TW 職場 紙上作業 
+ZH-TW 職場 做白工 
+ZH-TW 職場 密等 
+ZH-TW 職場 從業勞工 
+ZH-TW 職場 敘薪 
+ZH-TW 職場 終身俸 
+ZH-TW 職場 勞工安全 
+ZH-TW 職場 普考/普通考試/公務人員普通考試 
+ZH-TW 職場 無給職 
+ZH-TW 職場 超勤 
+ZH-TW 職場 週休二日 
+ZH-TW 職場 傳產/傳統產業 
+ZH-TW 職場 勤惰 
+ZH-TW 職場 新血輪 
+ZH-TW 職場 資位 
+ZH-TW 職場 遇缺不補 
+ZH-TW 職場 甄訓 
+ZH-TW 職場 徵才 
+ZH-TW 職場 調差 
+ZH-TW 職場 頭路 
+ZH-TW 職場 檢附 
+ZH-TW 職場 營造業 
+ZH-TW 職場 臨時會 
+ZH-TW 職場 職等 
+ZH-TW 職場 職業工會 
+ZH-TW 職場 轉檯 
+ZH-TW 職場 離職金 
+ZH-TW 職場 蹺班/翹班 
+ZH-TW 職場 議場 
+ZH-CN 職場  劳保
+ZH-CN 職場  二把刀
+ZH-CN 職場  厂休
+ZH-CN 職場  厂礼拜
+ZH-CN 職場  厂纪
+ZH-CN 職場  三贴近
+ZH-CN 職場  上岗
+ZH-CN 職場  下马
+ZH-CN 職場  下岗
+ZH-CN 職場  下放
+ZH-CN 職場  下海
+ZH-CN 職場  下课
+ZH-CN 職場  义务工
+ZH-CN 職場  工联/工联会
+ZH-CN 職場  工薪收入
+ZH-CN 職場  内退
+ZH-CN 職場  分包
+ZH-CN 職場  办公会议
+ZH-CN 職場  办结率
+ZH-CN 職場  升井
+ZH-CN 職場  双肩挑
+ZH-CN 職場  开小会
+ZH-CN 職場  文山会海
+ZH-CN 職場  文秘
+ZH-CN 職場  业委会/业主委员会
+ZH-CN 職場  以点带面
+ZH-CN 職場  出工
+ZH-CN 職場  出乘
+ZH-CN 職場  包干儿
+ZH-CN 職場  包片儿
+ZH-CN 職場  包保
+ZH-CN 職場  包产
+ZH-CN 職場  半脱产
+ZH-CN 職場  外宣
+ZH-CN 職場  外智
+ZH-CN 職場  对话会
+ZH-CN 職場  平均主义/绝对平均主义
+ZH-CN 職場  归口
+ZH-CN 職場  用工
+ZH-CN 職場  立卷
+ZH-CN 職場  立项
+ZH-CN 職場  全休
+ZH-CN 職場  农转非
+ZH-CN 職場  农轻重
+ZH-CN 職場  决心书
+ZH-CN 職場  吃干饭
+ZH-CN 職場  吃劳保
+ZH-CN 職場  吃空额
+ZH-CN 職場  吃皇粮
+ZH-CN 職場  在编
+ZH-CN 職場  好处费
+ZH-CN 職場  年审
+ZH-CN 職場  扛活
+ZH-CN 職場  死工资
+ZH-CN 職場  灰色收入
+ZH-CN 職場  考语
+ZH-CN 職場  行天桥/走猫步
+ZH-CN 職場  设岗定责
+ZH-CN 職場  两张皮
+ZH-CN 職場  串岗
+ZH-CN 職場  劳动手段/劳动资料
+ZH-CN 職場  劳动日
+ZH-CN 職場  劳动保护
+ZH-CN 職場  劳动强度
+ZH-CN 職場  听会
+ZH-CN 職場  吹风会
+ZH-CN 職場  宏观调控
+ZH-CN 職場  岗位工资
+ZH-CN 職場  岗位津贴
+ZH-CN 職場  批件
+ZH-CN 職場  批条
+ZH-CN 職場  报批
+ZH-CN 職場  私活儿
+ZH-CN 職場  辛苦费/跑路费
+ZH-CN 職場  阳光工资
+ZH-CN 職場  事务主义
+ZH-CN 職場  定编
+ZH-CN 職場  拆台
+ZH-CN 職場  空白点
+ZH-CN 職場  补台
+ZH-CN 職場  轮岗
+ZH-CN 職場  返岗
+ZH-CN 職場  复杂劳动
+ZH-CN 職場  复岗
+ZH-CN 職場  复转
+ZH-CN 職場  封顶
+ZH-CN 職場  待岗
+ZH-CN 職場  持证上岗
+ZH-CN 職場  挂任
+ZH-CN 職場  挂靠
+ZH-CN 職場  挂靠费
+ZH-CN 職場  挂职
+ZH-CN 職場  看点
+ZH-CN 職場  倒休/调休
+ZH-CN 職場  倒逼
+ZH-CN 職場  效益工资
+ZH-CN 職場  浮夸风
+ZH-CN 職場  海归
+ZH-CN 職場  病休
+ZH-CN 職場  神仙会
+ZH-CN 職場  胶皮饭碗
+ZH-CN 職場  能上能下
+ZH-CN 職場  铁工资
+ZH-CN 職場  铁交椅
+ZH-CN 職場  圈阅
+ZH-CN 職場  培训券
+ZH-CN 職場  清点费
+ZH-CN 職場  离休
+ZH-CN 職場  离退休
+ZH-CN 職場  3A办公/移动办公
+ZH-CN 職場  第二职业
+ZH-CN 職場  脱岗/离岗
+ZH-CN 職場  陪聊
+ZH-CN 職場  提干
+ZH-CN 職場  煮夹生饭
+ZH-CN 職場  硬目标
+ZH-CN 職場  硬任务
+ZH-CN 職場  硬指标
+ZH-CN 職場  窗口行业
+ZH-CN 職場  超假
+ZH-CN 職場  搞花架子
+ZH-CN 職場  搭错车
+ZH-CN 職場  新老交替
+ZH-CN 職場  新鲜血液
+ZH-CN 職場  歇班
+ZH-CN 職場  碰头会
+ZH-CN 職場  落聘待岗
+ZH-CN 職場  解剖麻雀
+ZH-CN 職場  零报告
+ZH-CN 職場  境外就业
+ZH-CN 職場  增岗
+ZH-CN 職場  履职
+ZH-CN 職場  潜绩
+ZH-CN 職場  踩点
+ZH-CN 職場  霸王面
+ZH-CN 職場  择业期
+ZH-CN 職場  斩件式
+ZH-CN 職場  內退/退养
+ZH-CN 職場  满负荷
+ZH-CN 職場  现场会
+ZH-CN 職場  窝工
+ZH-CN 職場  竞岗/竞争上岗
+ZH-CN 職場  简单劳动
+ZH-CN 職場  练手
+ZH-CN 職場  结构工资
+ZH-CN 職場  职介
+ZH-CN 職場  职务工资
+ZH-CN 職場  脑库/思想库
+ZH-CN 職場  记工
+ZH-CN 職場  试岗
+ZH-CN 職場  试点
+ZH-CN 職場  诚实劳动
+ZH-CN 職場  误工
+ZH-CN 職場  调干
+ZH-CN 職場  责任事故
+ZH-CN 職場  责权利
+ZH-CN 職場  购物假
+ZH-CN 職場  转岗
+ZH-CN 職場  软目标
+ZH-CN 職場  软任务
+ZH-CN 職場  软指标
+ZH-CN 職場  违规记分
+ZH-CN 職場  顶岗
+ZH-CN 職場  顶班
+ZH-CN 職場  传帮带
+ZH-CN 職場  内招
+ZH-CN 職場  压锭
+ZH-CN 職場  外脑
+ZH-CN 職場  套改
+ZH-CN 職場  委培
+ZH-CN 職場  招干
+ZH-CN 職場  明补
+ZH-CN 職場  暗补
+ZH-CN 職場  服务忌语
+ZH-CN 職場  职务消费
+ZH-CN 職場  算死账
+ZH-CN 職場  通气会
+ZH-CN 職場  陪会
+ZH-CN 職場  坐班
+ZH-CN 職場  引智
+ZH-CN 職場  处子秀
+ZH-CN 職場  在岗
+ZH-CN 職場  在聘
+ZH-CN 職場  扛长工
+ZH-CN 職場  条条杠杠
+ZH-CN 職場  条条框框
+ZH-CN 職場  拔尖子
+ZH-CN 職場  画圈
+ZH-CN 職場  做夹生饭
+ZH-CN 職場  富余人员
+ZH-CN 職場  踏足
+ZH-CN 職場  竞聘
+ZH-TW 網路新詞 很夯 
+ZH-TW 網路新詞 按讚 
+ZH-CN 網路新詞  互粉
+ZH-CN 網路新詞  爪机
+ZH-CN 網路新詞  牛人
+ZH-CN 網路新詞  投诉网
+ZH-CN 網路新詞  拍砖
+ZH-CN 網路新詞  很二
+ZH-CN 網路新詞  炫客
+ZH-CN 網路新詞  晒客
+ZH-CN 網路新詞  菊花教
+ZH-CN 網路新詞  毁三观
+ZH-CN 網路新詞  跟帖
+ZH-CN 網路新詞  雷人
+ZH-CN 網路新詞  雷倒
+ZH-CN 網路新詞  躺枪
+ZH-CN 網路新詞  热帖
+ZH-CN 網路新詞  给力
+ZH-CN 網路新詞  钻石男
+ZH-CN 網路新詞  拉黑
+ZH-CN 網路新詞  贴子
+SYNONYM 其他 人肉盾牌 人肉盾牌/人体盾牌
+SYNONYM 其他 心理準備 心理准备/思想准备
+SYNONYM 其他 出頭 出头/冒头/冒尖
+SYNONYM 其他 即溶 速溶
+SYNONYM 其他 告捷 告捷/告胜
+SYNONYM 其他 定時 定时/定点
+SYNONYM 其他 招數/著數/招式 招数/着数
+SYNONYM 其他 直立式 立式
+SYNONYM 其他 花式 花样
+SYNONYM 其他 品質 品质/质量
+SYNONYM 其他 哈拉 海吹
+SYNONYM 其他 哈啾 阿嚏
+SYNONYM 其他 穿幫 穿帮/穿崩/穿绷/穿煲
+SYNONYM 其他 倒數 倒读数
+SYNONYM 其他 倒數計時 倒计时
+SYNONYM 其他 拿喬/拿翹 拿乔
+SYNONYM 其他 留海/劉海/瀏海 留海/刘海/刘海儿
+SYNONYM 其他 退役/除役 退役
+SYNONYM 其他 脫帽 免冠
+SYNONYM 其他 雪人 雪人/雪罗汉
+SYNONYM 其他 換腦袋 换脑瓜子
+SYNONYM 其他 普普 普普/波普
+SYNONYM 其他 硬實力 硬实力/硬力量
+SYNONYM 其他 硬體 硬件
+SYNONYM 其他 跌破眼鏡 跌破眼镜/跌眼镜
+SYNONYM 其他 準點 准点/正点
+SYNONYM 其他 資訊 信息
+SYNONYM 其他 零增長/零成長 零增长
+SYNONYM 其他 網路 网络
+SYNONYM 其他 震撼彈 重磅炸弹
+SYNONYM 其他 導火線 导火线/导火索/导爆索
+SYNONYM 其他 機制 机制/机理
+SYNONYM 其他 燙髮 烫发/烫头
+SYNONYM 其他 離題 离题/走题/跑题
+SYNONYM 其他 攝影 摄像
+HOMONYM 其他 正點 正点
+HOMONYM 其他 油品 油品
+HOMONYM 其他 空檔 空档
+HOMONYM 其他 很感冒 很感冒
+HOMONYM 其他 晨練 晨练
+HOMONYM 其他 梯次 梯次
+HOMONYM 其他 脫線 脱线
+HOMONYM 其他 感冒 感冒
+HOMONYM 其他 落忍 落忍
+HOMONYM 其他 零突破 零突破
+HOMONYM 其他 摸頭 摸头
+HOMONYM 其他 滿點 满点
+HOMONYM 其他 窩心 窝心
+HOMONYM 其他 鐵齒 铁齿
+ZH-TW 其他 一把罩 
+ZH-TW 其他 三不五時 
+ZH-TW 其他 三振 
+ZH-TW 其他 上空 
+ZH-TW 其他 上壘 
+ZH-TW 其他 口袋名單 
+ZH-TW 其他 大尾 
+ZH-TW 其他 大車拼 
+ZH-TW 其他 大會串 
+ZH-TW 其他 五四三 
+ZH-TW 其他 歹命 
+ZH-TW 其他 歹勢 
+ZH-TW 其他 水噹噹 
+ZH-TW 其他 牛步化 
+ZH-TW 其他 代誌 
+ZH-TW 其他 凸槌 
+ZH-TW 其他 出包 
+ZH-TW 其他 包粽 
+ZH-TW 其他 古早 
+ZH-TW 其他 幼齒 
+ZH-TW 其他 打高空 
+ZH-TW 其他 打啵 
+ZH-TW 其他 打槍 
+ZH-TW 其他 正港 
+ZH-TW 其他 白目 
+ZH-TW 其他 交流道 
+ZH-TW 其他 仿襲 
+ZH-TW 其他 吃排頭 
+ZH-TW 其他 好加在 
+ZH-TW 其他 好康 
+ZH-TW 其他 有料 
+ZH-TW 其他 死翹翹 
+ZH-TW 其他 兵變 
+ZH-TW 其他 冷感 
+ZH-TW 其他 呆水位 
+ZH-TW 其他 形塑 
+ZH-TW 其他 抓包 
+ZH-TW 其他 更齡 
+ZH-TW 其他 沒路用/無路用 
+ZH-TW 其他 走透透 
+ZH-TW 其他 兩光 
+ZH-TW 其他 阿莎力 
+ZH-TW 其他 阿達 
+ZH-TW 其他 保留地 
+ZH-TW 其他 垮臉 
+ZH-TW 其他 歪哥 
+ZH-TW 其他 洽詢 
+ZH-TW 其他 研議 
+ZH-TW 其他 借過 
+ZH-TW 其他 臭蓋 
+ZH-TW 其他 鬥陣 
+ZH-TW 其他 假仙 
+ZH-TW 其他 偷跑 
+ZH-TW 其他 唬爛 
+ZH-TW 其他 情資 
+ZH-TW 其他 掉漆/落漆 
+ZH-TW 其他 脫序 
+ZH-TW 其他 麻吉 
+ZH-TW 其他 剩餘價值 
+ZH-TW 其他 喇舌 
+ZH-TW 其他 喝茫 
+ZH-TW 其他 惡質 
+ZH-TW 其他 換軌 
+ZH-TW 其他 揪甘心 
+ZH-TW 其他 揪團 
+ZH-TW 其他 普普 
+ZH-TW 其他 硬拗 
+ZH-TW 其他 硬喬 
+ZH-TW 其他 硬頸 
+ZH-TW 其他 陽春型 
+ZH-TW 其他 愛現 
+ZH-TW 其他 裝笑尾 
+ZH-TW 其他 跟監 
+ZH-TW 其他 撇步 
+ZH-TW 其他 稱頭 
+ZH-TW 其他 認分 
+ZH-TW 其他 踹共 
+ZH-TW 其他 龜毛 
+ZH-TW 其他 營隊 
+ZH-TW 其他 擺道 
+ZH-TW 其他 續攤 
+ZH-TW 其他 顧人怨 
+ZH-TW 其他 變造 
+ZH-TW 其他 鬱卒 
+ZH-CN 其他  一风吹
+ZH-CN 其他  一锅煮
+ZH-CN 其他  二五眼
+ZH-CN 其他  三缄口
+ZH-CN 其他  三观不正
+ZH-CN 其他  下坡溜
+ZH-CN 其他  下软蛋
+ZH-CN 其他  小锅菜
+ZH-CN 其他  山侃海聊/神侃海聊
+ZH-CN 其他  马大哈
+ZH-CN 其他  不大离
+ZH-CN 其他  内饰
+ZH-CN 其他  分成
+ZH-CN 其他  开小灶
+ZH-CN 其他  开门红
+ZH-CN 其他  开涮
+ZH-CN 其他  开红灯
+ZH-CN 其他  开绿灯
+ZH-CN 其他  手潮
+ZH-CN 其他  毛寸
+ZH-CN 其他  火上房
+ZH-CN 其他  加砝码
+ZH-CN 其他  包袱底儿
+ZH-CN 其他  四化/四个现代化
+ZH-CN 其他  奶声奶气
+ZH-CN 其他  打小九九
+ZH-CN 其他  打头炮
+ZH-CN 其他  打棍子
+ZH-CN 其他  打横炮
+ZH-CN 其他  犯口舌
+ZH-CN 其他  甩重磅炸弹
+ZH-CN 其他  白寿
+ZH-CN 其他  交红运
+ZH-CN 其他  动换
+ZH-CN 其他  吃小灶/吃偏饭
+ZH-CN 其他  吃偏食
+ZH-CN 其他  吃透
+ZH-CN 其他  回头率
+ZH-CN 其他  老鼻子
+ZH-CN 其他  冷招
+ZH-CN 其他  吹耳边风
+ZH-CN 其他  坐蜡
+ZH-CN 其他  坑爹
+ZH-CN 其他  局气/局器
+ZH-CN 其他  扮亮/扮靓
+ZH-CN 其他  扯闲篇
+ZH-CN 其他  抓手
+ZH-CN 其他  攻关
+ZH-CN 其他  过电影
+ZH-CN 其他  过硬/过得硬
+ZH-CN 其他  侃大山
+ZH-CN 其他  到点
+ZH-CN 其他  奔头儿
+ZH-CN 其他  拉网式
+ZH-CN 其他  拍脑袋/拍脑门儿
+ZH-CN 其他  放利
+ZH-CN 其他  放空炮
+ZH-CN 其他  放卫星
+ZH-CN 其他  明面
+ZH-CN 其他  昏话
+ZH-CN 其他  治软
+ZH-CN 其他  花功
+ZH-CN 其他  信息点
+ZH-CN 其他  冒傻气
+ZH-CN 其他  前台
+ZH-CN 其他  挖潜
+ZH-CN 其他  看点
+ZH-CN 其他  背头
+ZH-CN 其他  背床板
+ZH-CN 其他  范儿
+ZH-CN 其他  面老
+ZH-CN 其他  倒灶
+ZH-CN 其他  倒烟
+ZH-CN 其他  埋汰
+ZH-CN 其他  峰位
+ZH-CN 其他  拿大头
+ZH-CN 其他  浪谷
+ZH-CN 其他  浪峰
+ZH-CN 其他  海聊
+ZH-CN 其他  神侃
+ZH-CN 其他  称钱/趁钱
+ZH-CN 其他  赶点
+ZH-CN 其他  退坡
+ZH-CN 其他  高标号
+ZH-CN 其他  兜风
+ZH-CN 其他  兜底
+ZH-CN 其他  堵窟窿
+ZH-CN 其他  添堵
+ZH-CN 其他  焗油
+ZH-CN 其他  眼风
+ZH-CN 其他  插一腿
+ZH-CN 其他  插空
+ZH-CN 其他  揭画皮
+ZH-CN 其他  短期行为
+ZH-CN 其他  装相
+ZH-CN 其他  装熊
+ZH-CN 其他  催谷
+ZH-CN 其他  搞掂
+ZH-CN 其他  搭便
+ZH-CN 其他  摆份儿
+ZH-CN 其他  解疙瘩
+ZH-CN 其他  零水平
+ZH-CN 其他  嘎嘣脆
+ZH-CN 其他  撒胡椒面
+ZH-CN 其他  潜网
+ZH-CN 其他  翻身仗
+ZH-CN 其他  翻浆
+ZH-CN 其他  捞稻草
+ZH-CN 其他  显摆
+ZH-CN 其他  码放
+ZH-CN 其他  纽结点
+ZH-CN 其他  组合拳
+ZH-CN 其他  认死理
+ZH-CN 其他  误区
+ZH-CN 其他  软目标
+ZH-CN 其他  钻口袋
+ZH-CN 其他  闲侃
+ZH-CN 其他  闹心
+ZH-CN 其他  顶杠
+ZH-CN 其他  短项
+ZH-CN 其他  破局
+ZH-CN 其他  作脸
+ZH-CN 其他  不动窝
+ZH-CN 其他  假大空
+ZH-CN 其他  冬瓜豆腐
+ZH-CN 其他  地量
+ZH-CN 其他  打不住
+ZH-CN 其他  昏招
+ZH-CN 其他  晕菜
+ZH-CN 其他  欠奉
+ZH-CN 其他  歇菜
+ZH-CN 其他  疵毛
+ZH-CN 其他  砸砖
+ZH-CN 其他  破事
+ZH-CN 其他  置气
+ZH-CN 其他  认衰
+ZH-CN 其他  走形式
+ZH-CN 其他  掐架
+ZH-CN 其他  做工作
+ZH-CN 其他  山海经
+ZH-CN 其他  梯度
+ZH-CN 其他  特牛
+ZH-CN 其他  榆木疙瘩
+ZH-CN 其他  一次性
+ZH-CN 其他  二乎
+ZH-CN 其他  大热倒灶
+ZH-CN 其他  大窝脖
+ZH-CN 其他  守摊子
+ZH-CN 其他  听小汇报
+ZH-CN 其他  定级
+ZH-CN 其他  放瞎炮
+ZH-CN 其他  炒小锅菜
+ZH-CN 其他  趴窝
+ZH-CN 其他  哭鼻子
+ZH-CN 其他  铁板钉钉
+ZH-CN 其他  凑手
+ZH-CN 其他  聊山海经
+ZH-CN 其他  说山海经
+ZH-CN 其他  硬道理
+ZH-CN 其他  腰杆粗
+ZH-CN 其他  解眼馋
+ZH-CN 其他  摸底细
+ZH-CN 其他  摸脉络
+ZH-CN 其他  创优
+ZH-CN 其他  挤牙缝
+ZH-CN 其他  满拧
+ZH-CN 其他  牵牛鼻子
+ZH-CN 其他  码垛
+ZH-CN 其他  红红火火
+ZH-CN 其他  缩微
+ZH-CN 其他  谱新篇
+ZH-CN 其他  顶破天
+ZH-CN 其他  顺坡溜
+ZH-CN 其他  饭口
+ZH-TW 網路新詞 麥方 
+ZH-TW 小吃＆點心 麥方 
