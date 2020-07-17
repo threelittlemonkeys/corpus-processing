@@ -1,13 +1,15 @@
 import sys
+import re
 import xlsxwriter
 
 def tsv2xlsx(filename):
     fi = open(filename)
     fo = xlsxwriter.Workbook(filename + ".xlsx")
     worksheet = fo.add_worksheet()
-    for idx, text in enumerate(fi):
-        text = (x.replace('"', '""') for x in text.split("\t"))
-        worksheet.write_row(idx, 0, text)
+    for i, row in enumerate(fi):
+        for j, col in enumerate(row.split("\t")):
+            col = col.strip()
+            worksheet.write(i, j, col)
     fo.close()
     fi.close()
 

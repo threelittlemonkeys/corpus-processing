@@ -2,6 +2,10 @@ import sys
 import re
 from collections import defaultdict
 
+HWK = "｡ ｢ ｣ ､ ･ ｳﾞ ｶﾞ ｷﾞ ｸﾞ ｹﾞ ｺﾞ ｻﾞ ｼﾞ ｽﾞ ｾﾞ ｿﾞ ﾀﾞ ﾁﾞ ﾂﾞ ﾃﾞ ﾄﾞ ﾊﾞ ﾋﾞ ﾌﾞ ﾍﾞ ﾎﾞ ﾊﾟ ﾋﾟ ﾌﾟ ﾍﾟ ﾎﾟ ｦ ｧ ｨ ｩ ｪ ｫ ｬ ｭ ｮ ｯ ｰ ｱ ｲ ｳ ｴ ｵ ｶ ｷ ｸ ｹ ｺ ｻ ｼ ｽ ｾ ｿ ﾀ ﾁ ﾂ ﾃ ﾄ ﾅ ﾆ ﾇ ﾈ ﾉ ﾊ ﾋ ﾌ ﾍ ﾎ ﾏ ﾐ ﾑ ﾒ ﾓ ﾔ ﾕ ﾖ ﾗ ﾘ ﾙ ﾚ ﾛ ﾜ ﾝ ﾞ ﾟ".split(" ") # half width Katakana
+FWK = "。 「 」 、 ・ ヴ ガ ギ グ ゲ ゴ ザ ジ ズ ゼ ゾ ダ ヂ ヅ デ ド バ ビ ブ ベ ボ パ ピ プ ペ ポ ヲ ァ ィ ゥ ェ ォ ャ ュ ョ ッ ー ア イ ウ エ オ カ キ ク ケ コ サ シ ス セ ソ タ チ ツ テ ト ナ ニ ヌ ネ ノ ハ ヒ フ ヘ ホ マ ミ ム メ モ ヤ ユ ヨ ラ リ ル レ ロ ワ ン ゛ ゜".split(" ") # full width Katakana
+H2FWK = {h: f for h, f in zip(HWK, FWK)}
+
 def clean_corpus(filename, options):
     fo = open(filename)
     verbose = "v" in options
@@ -10,10 +14,10 @@ def clean_corpus(filename, options):
         raw = line.strip()
 
         # control characters
-        line = re.sub("[\u0000-\u001F\u007F\u0080-\u009F]", " ", line)
+        line = re.sub("[\u0000-\u001F\u007F\u0080-\u009F]+", " ", line)
 
         # whitespace characters
-        line = re.sub("[\u0020\u00A0\u2000-\u200B\u202F\u205F\u3000]", " ", line)
+        line = re.sub("[\u0020\u00A0\u2000-\u200B\u202F\u205F\u3000]+", " ", line)
 
         # private use area
         line = re.sub("[\uE000-\uF8FF]", " ", line)
@@ -23,6 +27,21 @@ def clean_corpus(filename, options):
 
         # full width characters
         line = "".join(chr(ord(c) - 0xFEE0) if "\uFF01" <= c <= "\uFF5E" else c for c in line)
+
+        # half width characters
+        i, _line = 0, ""
+        while i < len(line):
+            k = True
+            for j in (2, 1):
+                if line[i:i + j] in H2FWK:
+                    _line += H2FWK[line[i:i + j]]
+                    k = False
+                    i += j
+                    break
+            if k:
+                _line += line[i]
+                i += 1
+        line = _line
 
         line = re.sub(" {2,}", " ", line)
         line = line.strip()
