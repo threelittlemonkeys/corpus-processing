@@ -18,9 +18,9 @@ def tsv2xlsx(filename):
     fo = xlsxwriter.Workbook(filename + ".xlsx")
     worksheet = fo.add_worksheet()
     for i, row in enumerate(fi):
-        for j, col in enumerate(row.split("\t")):
-            col = convert(col.strip())
-            worksheet.write(i, j, col)
+        for j, txt in enumerate(row.split("\t")):
+            txt = convert(txt.strip())
+            worksheet.write(i, j, txt)
     fo.close()
     fi.close()
 
