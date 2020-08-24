@@ -43,10 +43,10 @@ def filter(action, key, fn_txt, fn_ref):
             if key == "tgt" and tgt in pool:
                 print(line)
                 continue
-            if key == "any" and src in pool or tgt in pool:
+            if key == "any" and (src in pool or tgt in pool):
                 print(line)
                 continue
-            if key == "both" and src in pool and tgt in pool:
+            if key == "both" and (src in pool and tgt in pool):
                 print(line)
                 continue
 
@@ -57,10 +57,10 @@ def filter(action, key, fn_txt, fn_ref):
             if key == "tgt" and tgt not in pool:
                 print(line)
                 continue
-            if key == "any" and src not in pool or tgt not in pool:
+            if key == "any" and (src not in pool or tgt not in pool):
                 print(line)
                 continue
-            if key == "both" and src not in pool and tgt not in pool:
+            if key == "both" and (src not in pool and tgt not in pool):
                 print(line)
                 continue
 
