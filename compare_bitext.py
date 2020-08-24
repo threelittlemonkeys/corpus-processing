@@ -2,7 +2,7 @@ import sys
 import re
 
 def normalize(x):
-    x = re.sub("[ \f\n\r\v\u00a0\u1680\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff]", "", x)
+    x = re.sub("[^\t0-9A-Za-z\u4E00-\u9FFF\uAC00-\uD7AF]", "", x)
     x = x.lower()
     return x
 
