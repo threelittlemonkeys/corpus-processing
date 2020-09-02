@@ -1,27 +1,35 @@
 import sys
 import re
-import json
+import ast
+
+def flatten(x, y):
+    for k, v in x.items():
+        if type(v) == str:
+            y[k] = v
+        if type(v) == dict:
+            flatten(v, y)
 
 def json2tsv():
-    pl = dict()
     cnt = 0
-
+    pl = dict()
     with open(sys.argv[1]) as fo:
         names = sys.argv[2:]
         for line in fo:
-            jo = json.loads(line)
+            o = dict()
+            vs = []
             cnt += 1
-            values = []
-            for x in names:
-                if x in jo:
-                    y = jo[x]
-                    y = re.sub("\s+", " ", y)
-                    y = y.strip()
+            flatten(ast.literal_eval(line), o)
+            for k in names:
+                if k in o:
+                    v = o[k]
+                    v = re.sub("\s+", " ", v)
+                    v = v.strip()
                 else:
-                    y = ""
-                values.append(y)
-            line = "\t".join(values)
-            pl[line] = True
+                    v = ""
+                vs.append(v)
+            vs = "\t".join(vs)
+            if vs not in pl:
+                pl[vs] = True
 
     for line in pl:
         print(line)
