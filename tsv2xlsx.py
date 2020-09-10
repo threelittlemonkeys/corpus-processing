@@ -19,7 +19,11 @@ def tsv2xlsx(filename):
     worksheet = fo.add_worksheet()
     for i, row in enumerate(fi):
         for j, txt in enumerate(row.split("\t")):
-            txt = convert(txt.strip())
+            txt = re.sub("\s+", " ", txt)
+            txt = txt.strip()
+            txt = convert(txt)
+            if txt[0] == "=":
+                txt = "'" + txt
             worksheet.write(i, j, txt)
     fo.close()
     fi.close()
