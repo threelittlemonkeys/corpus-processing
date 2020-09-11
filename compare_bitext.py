@@ -2,35 +2,37 @@ import sys
 import re
 
 def normalize(x):
-    x = re.sub("[^\t0-9A-Za-z\u4E00-\u9FFF\uAC00-\uD7AF]", "", x)
+    x = re.sub("[^0-9A-Za-z\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]", "", x)
     x = x.lower()
     return x
 
 def filter(action, key, fn_txt, fn_ref):
 
     pool = {}
-    fo = open(fn_ref)
-    for line in fo:
-        norm = normalize(line)
-        src, tgt = norm.split("\t")
+    fo_ref = open(fn_ref)
+    for line in fo_ref:
+        src, tgt = line.split("\t")
+        src = normalize(src)
+        tgt = normalize(tgt)
         pool[src] = True
         pool[tgt] = True
-    fo.close()
+    fo_ref.close()
 
     num_sents = 0
     num_errors = 0
 
-    fo = open(fn_txt)
-    for line in fo:
-        line = line.strip()
-        norm = normalize(line)
+    fo_txt = open(fn_txt)
+    for line in fo_txt:
+        num_sents += 1
 
-        if norm.count("\t") != 1:
+        if line.count("\t") != 1:
             num_errors += 1
             continue
 
-        num_sents += 1
-        src, tgt = norm.split("\t")
+        line = line.strip()
+        src, tgt = line.split("\t")
+        src = normalize(src)
+        tgt = normalize(tgt)
 
         if src == "" or tgt == "":
             num_errors += 1
@@ -64,7 +66,7 @@ def filter(action, key, fn_txt, fn_ref):
                 print(line)
                 continue
 
-    fo.close()
+    fo_txt.close()
     sys.stderr.write("%d sentences\n" % num_sents)
     sys.stderr.write("%d errors\n" % num_errors)
 
