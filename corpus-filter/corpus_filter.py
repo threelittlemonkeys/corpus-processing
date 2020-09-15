@@ -1,77 +1,110 @@
 import sys
 import re
+import time
+from dictionary import *
+from parameters import *
 
-ERROR_CODE = [
-    "SRC:EMPTY", # empty source sentence
-    "TGT:EMPTY", # empty target sentence
-    "IDENTICAL", # identical source and target sentences
-    "SRC:TOO_SHORT", # source sentence too short
-    "TGT:TOO_SHORT", # target sentence too short
-    "SRC:TOO_LONG", # source sentence too long
-    "TGT:TOO_LONG", # target sentence too long
-]
+error_log = list()
+error_counts = {code: 0 for code in ERROR_CODE}
 
-MINIMUM_SENTENCE_LENGTH = 2
-SENTENCE_LENGTH_RATIO = 3
+def log_error(code):
+    error_log.append(code)
+    error_counts[code] += 1
 
 def normalize(txt):
     txt = txt.lower()
     return txt
 
-def tokenize(txt):
-    txt = re.sub("(?<=[^ ])(?=[^ 0-9A-Za-z])", r" ", txt)
-    txt = re.sub("(?<=[^ 0-9A-Za-z])(?=[^ ])", r" ", txt)
+def tokenize(txt, lang):
+    txt = re.sub("(?<=[^ ])(?=[^ 0-9a-z])", r" ", txt)
+    txt = re.sub("(?<=[^ 0-9a-z])(?=[^ ])", r" ", txt)
     txt = txt.split(" ")
     return txt
 
-def log_error(errors, error_counts, i):
-    k = ERROR_CODE[i]
-    errors.append(k)
-    error_counts[k] += 1
+def extract_nums(txt, lang):
+    if lang == "en":
+        nums = EN_NUMS
+    criterion = lambda x: x.isnumeric()
+    return list(filter(criterion, txt))
 
 def corpus_filter(src_lang, tgt_lang, filename):
-    ln = 0
     fo = open(filename)
-    error_counts = {k: 0 for k in ERROR_CODE}
+    timer = time.time()
+    ln_err = 0
+    ln_sum = 0
 
     for line in fo:
         line = line.strip()
-        errors = list()
+        error_log.clear()
 
         _src, _tgt = line.split("\t")
         src = normalize(_src)
         tgt = normalize(_tgt)
 
         if src == "":
-            log_error(errors, error_counts, 0)
+            log_error("SRC_EMPTY")
         if tgt == "":
-            log_error(errors, error_counts, 1)
+            log_error("TGT_EMPTY")
         if src == tgt:
-            log_error(errors, error_counts, 2)
+            log_error("SRC_AND_TGT_IDENTICAL")
+        elif src in tgt:
+            log_error("SRC_IN_TGT")
+        elif tgt in src:
+            log_error("TGT_IN_SRC")
 
-        src = tokenize(src)
-        tgt = tokenize(tgt)
+        if src_lang == "en" and not re.search("[a-z]", src):
+            log_error("SRC_INVALID_LANGUAGE")
+        if tgt_lang == "zh" and not re.search("[\u4E00-\u9FFF]", tgt):
+            log_error("TGT_INVALID_LANGUAGE")
 
-        if len(src) < MINIMUM_SENTENCE_LENGTH:
-            log_error(errors, error_counts, 3)
-        if len(tgt) < MINIMUM_SENTENCE_LENGTH:
-            log_error(errors, error_counts, 4)
+        if re.match(r"(.{3,})\1{3,}", src):
+            log_error("SRC_REPEATED")
+        if re.match(r"(.{3,})\1{3,}", tgt):
+            log_error("TGT_REPEATED")
 
-        if len(src) / len(tgt) > SENTENCE_LENGTH_RATIO:
-            log_error(errors, error_counts, 5)
-        if len(tgt) / len(src) > SENTENCE_LENGTH_RATIO:
-            log_error(errors, error_counts, 6)
+        src = tokenize(src, src_lang)
+        tgt = tokenize(tgt, src_lang)
 
-        if len(errors):
-            print(_src, _tgt, ",".join(errors), sep = "\t")
-        ln += 1
+        if len(src) > MAX_SENT_LEN:
+            log_error("SRC_TOO_LONG")
+        if len(tgt) > MAX_SENT_LEN:
+            log_error("TGT_TOO_LONG")
+        if len(src) < MIN_SENT_LEN:
+            log_error("SRC_TOO_SHORT")
+        if len(tgt) < MIN_SENT_LEN:
+            log_error("TGT_TOO_SHORT")
+
+        if len(src) / len(tgt) > SENT_LEN_RATIO:
+            log_error("SRC_TOO_LONGER")
+        if len(tgt) / len(src) > SENT_LEN_RATIO:
+            log_error("TGT_TOO_LONGER")
+
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, src)):
+            log_error("LONG_WORD_IN_SRC")
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
+            log_error("LONG_WORD_IN_TGT")
+
+        src_nums = extract_nums(src, src_lang)
+        tgt_nums = extract_nums(tgt, tgt_lang)
+        if src_nums or tgt_nums:
+            pass
+            # print(src, tgt)
+            # print(src_nums, tgt_nums)
+
+        if len(error_log):
+            print(_src, _tgt, ",".join(error_log), sep = "\t")
+            ln_err += 1
+        ln_sum += 1
 
     fo.close()
+    timer = time.time() - timer
 
     print()
-    for k, v in sorted(error_counts.items(), key = lambda x: -x[1]):
-        print(k, v, "(%.4f%%)" % (v / ln * 100))
-    print("%d sentences in total" %  ln)
+    for code, cnt in sorted(error_counts.items(), key = lambda x: -x[1]):
+        print(code, cnt, "(%.4f%%)" % (cnt / ln_sum * 100))
+    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100))
+    print("%d sentence pairs in total" % ln_sum)
+    print("%f seconds" % timer)
 
 if __name__ == "__main__":
     if len(sys.argv) != 4:
