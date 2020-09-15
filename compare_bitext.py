@@ -23,13 +23,13 @@ def filter(action, key, fn_txt, fn_ref):
 
     fo_txt = open(fn_txt)
     for line in fo_txt:
+        line = line.strip()
         num_sents += 1
 
         if line.count("\t") != 1:
             num_errors += 1
             continue
 
-        line = line.strip()
         src, tgt = line.split("\t")
         src = normalize(src)
         tgt = normalize(tgt)
