@@ -21,8 +21,9 @@ def filter(action, key, fn_txt, fn_ref):
     num_sents = 0
     num_errors = 0
 
-    fo_txt = open(fn_txt)
-    for line in fo_txt:
+    fo_in = open(fn_txt)
+    fo_out = open("%s.%s.%s" % (fn_txt, action, key), "w")
+    for line in fo_in:
         line = line.strip()
         num_sents += 1
 
@@ -38,37 +39,35 @@ def filter(action, key, fn_txt, fn_ref):
             num_errors += 1
             continue
 
+        flag = False
+
         if action == "dup":
-            if key == "src" and src in pool:
-                print(line)
-                continue
+            if key == "src" and src not in pool:
+                flag = True
             if key == "tgt" and tgt in pool:
-                print(line)
-                continue
+                flag = True
             if key == "any" and (src in pool or tgt in pool):
-                print(line)
-                continue
+                flag = True
             if key == "both" and (src in pool and tgt in pool):
-                print(line)
-                continue
+                flag = True
 
         if action == "uniq":
             if key == "src" and src not in pool:
-                print(line)
-                continue
+                flag = True
             if key == "tgt" and tgt not in pool:
-                print(line)
-                continue
+                flag = True
             if key == "any" and (src not in pool or tgt not in pool):
-                print(line)
-                continue
+                flag = True
             if key == "both" and (src not in pool and tgt not in pool):
-                print(line)
-                continue
+                flag = True
 
-    fo_txt.close()
-    sys.stderr.write("%d sentences\n" % num_sents)
-    sys.stderr.write("%d errors\n" % num_errors)
+        if flag:
+            print(line, file = fo_out)
+
+    fo_in.close()
+    fo_out.close()
+    print("%d sentences" % num_sents)
+    print("%d errors" % num_errors)
 
 if __name__ == "__main__":
     if len(sys.argv) != 5:

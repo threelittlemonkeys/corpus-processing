@@ -7,16 +7,17 @@ H2FWK = {h: f for h, f in zip(HWK, FWK)}
 
 def clean_corpus(filename, options):
     fo = open(filename)
+    bitext = "b" in options
     verbose = "v" in options
 
     for line in fo:
         raw = line.strip()
 
         # control characters
-        line = re.sub("[\u0000-\u001F\u007F\u0080-\u009F]+", " ", line)
+        line = re.sub("[\u0000-\u0006\u0008-\u001F\u007F\u0080-\u009F]+", " ", line)
 
         # whitespace characters
-        line = re.sub("[\u0020\u00A0\u2000-\u200B\u202F\u205F\u3000]+", " ", line)
+        line = re.sub("[\u0007\u0020\u00A0\u2000-\u200B\u202F\u205F\u3000]+", " ", line)
 
         # private use area
         line = re.sub("[\uE000-\uF8FF]+", " ", line)
@@ -55,7 +56,7 @@ def clean_corpus(filename, options):
 
 if __name__ == "__main__":
     if len(sys.argv) not in [2, 3]:
-        sys.exit("Usage: %s filename [-v]" % sys.argv[0])
+        sys.exit("Usage: %s filename [-bv]" % sys.argv[0])
 
     options = "" if len(sys.argv) == 2 else sys.argv[2]
     clean_corpus(sys.argv[1], options)
