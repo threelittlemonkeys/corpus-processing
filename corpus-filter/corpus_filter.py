@@ -36,7 +36,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("TGT_REPEATED")
 
         src = tokenize(src, src_lang)
-        tgt = tokenize(tgt, src_lang)
+        tgt = tokenize(tgt, tgt_lang)
 
         if len(src) > MAX_SENT_LEN:
             log_error("SRC_TOO_LONG")
@@ -57,12 +57,11 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
             log_error("LONG_WORD_IN_TGT")
 
-        src_nums = extract_nums(src, src_lang)
-        tgt_nums = extract_nums(tgt, tgt_lang)
-        if src_nums or tgt_nums:
-            pass
-            # print(src, tgt)
-            # print(src_nums, tgt_nums)
+        src_nums = set(extract_numbers(src, src_lang))
+        tgt_nums = set(extract_numbers(tgt, tgt_lang))
+        nums = src_nums.symmetric_difference(tgt_nums) - {0, 1}
+        if len(nums) > 1:
+            log_error("NUMBER_MISMATCH")
 
         if len(error_log):
             print(_src, _tgt, ",".join(error_log), sep = "\t")
