@@ -85,6 +85,8 @@ def extract_numbers(txt, lang):
             n = word_to_number(w, lang)
         else:
             continue
-        nums.append(n)
+        n = re.sub("0+$", "", str(n))
+        if n:
+            nums.append(int(n))
 
     return nums
