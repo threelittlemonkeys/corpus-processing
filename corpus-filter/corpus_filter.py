@@ -63,9 +63,9 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if len(nums) > 1:
             log_error("NUMBER_MISMATCH")
 
-        if len(error_log):
-            print(_src, _tgt, ",".join(error_log), sep = "\t")
-            ln_err += 1
+        for code in error_log:
+            print(code, _src, _tgt, sep = "\t")
+        ln_err += (len(error_log) > 0)
         ln_sum += 1
 
     fo.close()
