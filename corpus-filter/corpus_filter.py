@@ -1,31 +1,4 @@
-import sys
-import re
-import time
-from dictionary import *
-from parameters import *
-
-error_log = list()
-error_counts = {code: 0 for code in ERROR_CODE}
-
-def log_error(code):
-    error_log.append(code)
-    error_counts[code] += 1
-
-def normalize(txt):
-    txt = txt.lower()
-    return txt
-
-def tokenize(txt, lang):
-    txt = re.sub("(?<=[^ ])(?=[^ 0-9a-z])", r" ", txt)
-    txt = re.sub("(?<=[^ 0-9a-z])(?=[^ ])", r" ", txt)
-    txt = txt.split(" ")
-    return txt
-
-def extract_nums(txt, lang):
-    if lang == "en":
-        nums = EN_NUMS
-    criterion = lambda x: x.isnumeric()
-    return list(filter(criterion, txt))
+from utils import *
 
 def corpus_filter(src_lang, tgt_lang, filename):
     fo = open(filename)
@@ -100,10 +73,11 @@ def corpus_filter(src_lang, tgt_lang, filename):
     timer = time.time() - timer
 
     print()
-    for code, cnt in sorted(error_counts.items(), key = lambda x: -x[1]):
+    for code, cnt in sorted(error_cnt.items(), key = lambda x: -x[1]):
         print(code, cnt, "(%.4f%%)" % (cnt / ln_sum * 100))
-    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100))
+    print()
     print("%d sentence pairs in total" % ln_sum)
+    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100))
     print("%f seconds" % timer)
 
 if __name__ == "__main__":
