@@ -51,7 +51,7 @@ def tokenize(txt, lang):
 
     if lang == "en":
         txt = subiter(RE_NUM_EN_A, "[ -]+", "_", txt)
-    if lang == "zh":
+    if lang in ("ja", "ko", "zh"):
         txt = subiter(RE_NUM_ZH_A, " ", "_", txt)
 
     txt = txt.split(" ")
@@ -65,7 +65,7 @@ def word_to_number(txt, lang):
         n = []
         if lang == "en" and RE_NUM_EN_B.match(w):
             n = w2n(w, EN_NUMS)
-        if lang == "zh" and RE_NUM_ZH_B.match(w):
+        if lang in ("ja", "ko", "zh") and RE_NUM_ZH_B.match(w):
             n = w2n(w, ZH_NUMS)
         ns.extend(n)
 
