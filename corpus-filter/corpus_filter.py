@@ -57,15 +57,15 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
             log_error("LONG_WORD_IN_TGT")
 
-        src_nums = set(extract_numbers(src, src_lang))
-        tgt_nums = set(extract_numbers(tgt, tgt_lang))
-        nums = src_nums.symmetric_difference(tgt_nums) - {0, 1}
+        src_nums = word_to_number(src, src_lang)
+        tgt_nums = word_to_number(tgt, tgt_lang)
+        nums = src_nums.symmetric_difference(tgt_nums)
         if len(nums) > 1:
             log_error("NUMBER_MISMATCH")
 
-        for code in error_log:
-            print(code, _src, _tgt, sep = "\t")
-        ln_err += (len(error_log) > 0)
+        if error_log:
+            print(_src, _tgt, error_log[0], sep = "\t")
+            ln_err += 1
         ln_sum += 1
 
     fo.close()

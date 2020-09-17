@@ -1,6 +1,7 @@
 import sys
 import re
 import time
+import math
 from dictionary import *
 from parameters import *
 from utils import *
@@ -15,12 +16,12 @@ RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 RE_NON_ALNUM_L = re.compile("(?<=[^ 0-9a-z])(?=[^ ])")
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ 0-9a-z])")
 
-_RE_NUM_EN = "(%s)" % "|".join(EN_NUMS)
-_RE_NUM_ZH = "[%s]" % "".join(ZH_NUMS)
-RE_NUM_EN_A = re.compile("%s(( -)? %s)+" % (_RE_NUM_EN, _RE_NUM_EN))
-RE_NUM_EN_B = re.compile("%s(_%s)*$" % (_RE_NUM_EN, _RE_NUM_EN))
-RE_NUM_ZH_A = re.compile("%s( %s)+" % (_RE_NUM_ZH, _RE_NUM_ZH))
-RE_NUM_ZH_B = re.compile("%s(_%s)*$" % (_RE_NUM_ZH, _RE_NUM_ZH))
+RE_NUM_EN = "([0-9]+|%s)" % ("|".join(EN_NUMS))
+RE_NUM_ZH = "([0-9]+|[%s])" % "".join(ZH_NUMS)
+RE_NUM_EN_A = re.compile("%s(( -)? %s)+" % (RE_NUM_EN, RE_NUM_EN))
+RE_NUM_EN_B = re.compile("%s(_%s)*$" % (RE_NUM_EN, RE_NUM_EN))
+RE_NUM_ZH_A = re.compile("%s( %s)+" % (RE_NUM_ZH, RE_NUM_ZH))
+RE_NUM_ZH_B = re.compile("%s(_%s)*$" % (RE_NUM_ZH, RE_NUM_ZH))
 
 def log_error(code):
     error_log.append(code)
@@ -56,37 +57,16 @@ def tokenize(txt, lang):
     txt = txt.split(" ")
     return txt
 
-def word_to_number(word, lang):
-    num = []
-
-    if lang == "en":
-        w2n = EN_NUMS
-        units = ("hundred", "thousand", "million", "billion", "trillion")
-    if lang == "zh":
-        w2n = ZH_NUMS
-        units = ("十", "百", "千", "万", "亿", "兆")
-
-    for w in word.split("_"):
-        if num and w in units:
-            num[-1] *= w2n[w]
-        else:
-            num.append(w2n[w])
-    return sum(num)
-
-def extract_numbers(txt, lang):
-    nums = list()
+def word_to_number(txt, lang):
+    ns = list()
+    w2n = lambda x, y: [y[x] if x in y else x for x in x.split("_")]
 
     for w in txt:
-        if w.isdigit():
-            n = int(w)
-        elif lang == "en" and RE_NUM_EN_B.match(w):
-            n = word_to_number(w, lang)
-        elif lang == "zh" and RE_NUM_ZH_B.match(w):
-            n = word_to_number(w, lang)
-        else:
-            continue
-        n = re.sub("0+$", "", str(n))
-        if n:
-            nums.append(int(n))
+        n = []
+        if lang == "en" and RE_NUM_EN_B.match(w):
+            n = w2n(w, EN_NUMS)
+        if lang == "zh" and RE_NUM_ZH_B.match(w):
+            n = w2n(w, ZH_NUMS)
+        ns.extend(n)
 
-    return nums
+    return set("".join(map(str, ns))) - {"0", "1"}
