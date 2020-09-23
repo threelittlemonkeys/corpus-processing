@@ -29,7 +29,7 @@ def log_error(code):
 
 def normalize(txt):
     txt = re.sub("\s+", " ", txt)
-    txt = re.sub("(?<=[0-9])[ ,.]+(?=[0-9])", "", txt)
+    # txt = re.sub("(?<=[0-9])[ ,.]+(?=[0-9])", "", txt)
     txt = txt.lower()
     txt = txt.strip()
     return txt
@@ -49,10 +49,12 @@ def tokenize(txt, lang):
     txt = RE_NON_ALNUM_L.sub(" ", txt)
     txt = RE_NON_ALNUM_R.sub(" ", txt)
 
+    '''
     if lang == "en":
         txt = subiter(RE_NUM_EN_A, "[ -]+", "_", txt)
     if lang in ("ja", "ko", "zh"):
         txt = subiter(RE_NUM_ZH_A, " ", "_", txt)
+    '''
 
     txt = txt.split(" ")
     return txt

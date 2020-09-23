@@ -1,6 +1,6 @@
 from utils import *
 
-def corpus_filter(src_lang, tgt_lang, filename):
+def corpus_filter(filename):
     fo = open(filename)
     timer = time.time()
     ln_err = 0
@@ -25,9 +25,9 @@ def corpus_filter(src_lang, tgt_lang, filename):
         elif tgt in src:
             log_error("TGT_IN_SRC")
 
-        if src_lang == "en" and not re.search("[a-z]", src):
+        if SRC_LANG == "en" and not re.search("[a-z]", src):
             log_error("SRC_INVALID_LANGUAGE")
-        if tgt_lang == "zh" and not re.search("[\u4E00-\u9FFF]", tgt):
+        if TGT_LANG == "zh" and not re.search("[\u4E00-\u9FFF]", tgt):
             log_error("TGT_INVALID_LANGUAGE")
 
         if re.match(r"(.{3,})\1{3,}", src):
@@ -35,8 +35,8 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if re.match(r"(.{3,})\1{3,}", tgt):
             log_error("TGT_REPEATED")
 
-        src = tokenize(src, src_lang)
-        tgt = tokenize(tgt, tgt_lang)
+        src = tokenize(src, SRC_LANG)
+        tgt = tokenize(tgt, TGT_LANG)
 
         if len(src) > MAX_SENT_LEN:
             log_error("SRC_TOO_LONG")
@@ -51,14 +51,13 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("SRC_TOO_LONGER")
         if len(tgt) / len(src) > SENT_LEN_RATIO:
             log_error("TGT_TOO_LONGER")
-
         if any(map(lambda x: len(x) > MAX_WORD_LEN, src)):
             log_error("LONG_WORD_IN_SRC")
         if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
             log_error("LONG_WORD_IN_TGT")
 
-        src_nums = word_to_number(src, src_lang)
-        tgt_nums = word_to_number(tgt, tgt_lang)
+        src_nums = word_to_number(src, SRC_LANG)
+        tgt_nums = word_to_number(tgt, TGT_LANG)
         nums = src_nums.symmetric_difference(tgt_nums)
         if len(nums) > 1:
             log_error("NUMBER_MISMATCH")
@@ -80,7 +79,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
     print("%f seconds" % timer)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        sys.exit("Usage: %s src_lang tgt_lang filename" % sys.argv[0])
+    if len(sys.argv) != 2:
+        sys.exit("Usage: %s filename" % sys.argv[0])
 
     corpus_filter(*sys.argv[1:])
