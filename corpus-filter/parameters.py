@@ -19,8 +19,8 @@ ERROR_CODE = [
     "NUMBER_MISMATCH",
 ]
 
-SRC_LANG = "en"
-TGT_LANG = "ko"
+SRC_LANG = "ko"
+TGT_LANG = "ja"
 
 MAX_SENT_LEN = 100
 MIN_SENT_LEN = 1
