@@ -2,6 +2,8 @@ from utils import *
 
 def corpus_filter(filename):
     fo = open(filename)
+    fa = open(filename + ".a", "w")
+    fb = open(filename + ".b", "w")
     timer = time.time()
     ln_err = 0
     ln_sum = 0
@@ -56,18 +58,24 @@ def corpus_filter(filename):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
             log_error("LONG_WORD_IN_TGT")
 
+        '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)
         nums = src_nums.symmetric_difference(tgt_nums)
         if len(nums) > 1:
             log_error("NUMBER_MISMATCH")
+        '''
 
         if error_log:
-            print(_src, _tgt, error_log[0], sep = "\t")
+            print(_src, _tgt, error_log[0], sep = "\t", file = fb)
             ln_err += 1
+        else:
+            print(_src, _tgt, sep = "\t", file = fa)
         ln_sum += 1
 
     fo.close()
+    fa.close()
+    fb.close()
     timer = time.time() - timer
 
     print()
@@ -82,4 +90,4 @@ if __name__ == "__main__":
     if len(sys.argv) != 2:
         sys.exit("Usage: %s filename" % sys.argv[0])
 
-    corpus_filter(*sys.argv[1:])
+    corpus_filter(sys.argv[1])
