@@ -87,7 +87,13 @@ def corpus_filter(filename):
     print("%f seconds" % timer)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 2:
-        sys.exit("Usage: %s filename" % sys.argv[0])
+    if len(sys.argv) not in (2, 4):
+        sys.exit("Usage: %s [src_lang] [tgt_lang] filename" % sys.argv[0])
 
-    corpus_filter(sys.argv[1])
+    if len(sys.argv) == 4:
+        SRC_LANG = sys.argv[1]
+        TGT_LANG = sys.argv[2]
+
+    print("SRC_LANG: %s" % SRC_LANG)
+    print("TGT_LANG: %s" % TGT_LANG)
+    corpus_filter(sys.argv[-1])
