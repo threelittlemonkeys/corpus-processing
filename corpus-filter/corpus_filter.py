@@ -9,7 +9,6 @@ def corpus_filter(filename):
     ln_sum = 0
 
     for line in fo:
-        line = line.strip()
         error_log.clear()
 
         _src, _tgt = line.split("\t")
@@ -94,6 +93,6 @@ if __name__ == "__main__":
         SRC_LANG = sys.argv[1]
         TGT_LANG = sys.argv[2]
 
-    print("SRC_LANG: %s" % SRC_LANG)
-    print("TGT_LANG: %s" % TGT_LANG)
+    print("SRC_LANG = %s" % SRC_LANG)
+    print("TGT_LANG = %s" % TGT_LANG)
     corpus_filter(sys.argv[-1])
