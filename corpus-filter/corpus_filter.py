@@ -12,6 +12,8 @@ def corpus_filter(filename):
         error_log.clear()
 
         _src, _tgt = line.split("\t")
+        _src = _src.strip()
+        _tgt = _tgt.strip()
         src = normalize(_src)
         tgt = normalize(_tgt)
 
@@ -71,6 +73,8 @@ def corpus_filter(filename):
         else:
             print(_src, _tgt, sep = "\t", file = fa)
         ln_sum += 1
+        if ln_sum % 100000 == 0:
+            print("%d sentence pairs" % ln_sum)
 
     fo.close()
     fa.close()
