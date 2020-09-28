@@ -30,9 +30,12 @@ def corpus_filter(filename):
 
         if SRC_LANG == "en" and not re.search("[a-z]", src):
             log_error("SRC_INVALID_LANGUAGE")
+        if TGT_LANG == "ko" and not re.search("[\uAC00-\uD7A3]", tgt):
+            log_error("TGT_INVALID_LANGUAGE")
         if TGT_LANG == "zh" and not re.search("[\u4E00-\u9FFF]", tgt):
             log_error("TGT_INVALID_LANGUAGE")
 
+        '''
         if re.match(r"(.{3,})\1{3,}", src):
             log_error("SRC_REPEATED")
         if re.match(r"(.{3,})\1{3,}", tgt):
@@ -58,6 +61,7 @@ def corpus_filter(filename):
             log_error("LONG_WORD_IN_SRC")
         if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
             log_error("LONG_WORD_IN_TGT")
+        '''
 
         '''
         src_nums = word_to_number(src, SRC_LANG)
