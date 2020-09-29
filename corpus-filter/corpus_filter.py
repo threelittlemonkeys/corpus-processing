@@ -2,8 +2,9 @@ from utils import *
 
 def corpus_filter(filename):
     fo = open(filename)
-    fa = open(filename + ".a", "w")
-    fb = open(filename + ".b", "w")
+    fa = open(filename + ".flt.in", "w")
+    fb = open(filename + ".flt.out", "w")
+    fc = open(filename + ".flt.log", "w")
     timer = time.time()
     ln_err = 0
     ln_sum = 0
@@ -23,19 +24,22 @@ def corpus_filter(filename):
             log_error("TGT_EMPTY")
         if src == tgt:
             log_error("SRC_AND_TGT_IDENTICAL")
-        elif src in tgt:
-            log_error("SRC_IN_TGT")
-        elif tgt in src:
-            log_error("TGT_IN_SRC")
+        else:
+            if src in tgt:
+                log_error("SRC_IN_TGT")
+            if tgt in src:
+                log_error("TGT_IN_SRC")
 
-        if SRC_LANG == "en" and not re.search("[a-z]", src):
-            log_error("SRC_INVALID_LANGUAGE")
-        if TGT_LANG == "ko" and not re.search("[\uAC00-\uD7A3]", tgt):
-            log_error("TGT_INVALID_LANGUAGE")
-        if TGT_LANG == "zh" and not re.search("[\u4E00-\u9FFF]", tgt):
-            log_error("TGT_INVALID_LANGUAGE")
+        sil = any(a == SRC_LANG and not b.search(src) for a, b in RE_LANGS)
+        til = any(a == TGT_LANG and not b.search(tgt) for a, b in RE_LANGS)
+        if sil and til:
+            log_error("SRC_AND_TGT_INVALID_LANGUAGES")
+        else:
+            if sil:
+                log_error("SRC_INVALID_LANGUAGE")
+            if til:
+                log_error("TGT_INVALID_LANGUAGE")
 
-        '''
         if re.match(r"(.{3,})\1{3,}", src):
             log_error("SRC_REPEATED")
         if re.match(r"(.{3,})\1{3,}", tgt):
@@ -61,7 +65,6 @@ def corpus_filter(filename):
             log_error("LONG_WORD_IN_SRC")
         if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
             log_error("LONG_WORD_IN_TGT")
-        '''
 
         '''
         src_nums = word_to_number(src, SRC_LANG)
@@ -72,7 +75,8 @@ def corpus_filter(filename):
         '''
 
         if error_log:
-            print(_src, _tgt, error_log[0], sep = "\t", file = fb)
+            for error_code in error_log:
+                print(_src, _tgt, error_code, sep = "\t", file = fb)
             ln_err += 1
         else:
             print(_src, _tgt, sep = "\t", file = fa)
@@ -80,18 +84,18 @@ def corpus_filter(filename):
         if ln_sum % 100000 == 0:
             print("%d sentence pairs" % ln_sum)
 
+    timer = time.time() - timer
+
+    for code, cnt in sorted(error_cnt.items(), key = lambda x: -x[1]):
+        print(code, cnt, "(%.4f%%)" % (cnt / ln_sum * 100), file = fc)
+    print(file = fc)
+    print("%d sentence pairs in total" % ln_sum, file = fc)
+    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100), file = fc)
+    print("%f seconds" % timer, file = fc)
+
     fo.close()
     fa.close()
     fb.close()
-    timer = time.time() - timer
-
-    print()
-    for code, cnt in sorted(error_cnt.items(), key = lambda x: -x[1]):
-        print(code, cnt, "(%.4f%%)" % (cnt / ln_sum * 100))
-    print()
-    print("%d sentence pairs in total" % ln_sum)
-    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100))
-    print("%f seconds" % timer)
 
 if __name__ == "__main__":
     if len(sys.argv) not in (2, 4):
