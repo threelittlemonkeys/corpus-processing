@@ -12,6 +12,8 @@ def corpus_filter(filename):
     for line in fo:
         error_log.clear()
 
+        if line.count("\t") != 1:
+            exit(line)
         _src, _tgt = line.split("\t")
         _src = _src.strip()
         _tgt = _tgt.strip()
@@ -30,20 +32,28 @@ def corpus_filter(filename):
             if tgt in src:
                 log_error("TGT_IN_SRC")
 
-        sil = any(a == SRC_LANG and not b.search(src) for a, b in RE_LANGS)
-        til = any(a == TGT_LANG and not b.search(tgt) for a, b in RE_LANGS)
-        if sil and til:
-            log_error("SRC_AND_TGT_INVALID_LANGUAGES")
-        else:
-            if sil:
-                log_error("SRC_INVALID_LANGUAGE")
-            if til:
-                log_error("TGT_INVALID_LANGUAGE")
-
-        if re.match(r"(.{3,})\1{3,}", src):
+        if RE_REPETITION.match(src):
             log_error("SRC_REPEATED")
-        if re.match(r"(.{3,})\1{3,}", tgt):
+        if RE_REPETITION.match(tgt):
             log_error("TGT_REPEATED")
+
+        nbs = len(RE_BRACKET.findall(src))
+        nbt = len(RE_BRACKET.findall(tgt))
+        if nbs != nbt:
+            log_error("BRACKET_MISMATCH")
+
+        if SRC_LANG == "en" and RE_LANG_CJK.search(src):
+            log_error("CJK_CHARACTERS_IN_SRC")
+
+        isl = any(a == SRC_LANG and not b.search(src) for a, b in RE_LANGS.items())
+        itl = any(a == TGT_LANG and not b.search(tgt) for a, b in RE_LANGS.items())
+        if isl and itl:
+            log_error("INVALID_SRC_AND_TGT_LANG")
+        else:
+            if isl:
+                log_error("INVALID_SRC_LANG")
+            if itl:
+                log_error("INVALID_TGT_LANG")
 
         src = tokenize(src, SRC_LANG)
         tgt = tokenize(tgt, TGT_LANG)
@@ -98,12 +108,11 @@ def corpus_filter(filename):
     fb.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) not in (2, 4):
-        sys.exit("Usage: %s [src_lang] [tgt_lang] filename" % sys.argv[0])
+    if len(sys.argv) != 4:
+        sys.exit("Usage: %s src_lang tgt_lang filename" % sys.argv[0])
 
-    if len(sys.argv) == 4:
-        SRC_LANG = sys.argv[1]
-        TGT_LANG = sys.argv[2]
+    SRC_LANG = sys.argv[1]
+    TGT_LANG = sys.argv[2]
 
     print("SRC_LANG = %s" % SRC_LANG)
     print("TGT_LANG = %s" % TGT_LANG)
