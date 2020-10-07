@@ -42,17 +42,20 @@ def corpus_filter(filename):
         if nbs != nbt:
             log_error("BRACKET_MISMATCH")
 
-        if SRC_LANG == "en" and RE_LANG_CJK.search(src):
-            log_error("CJK_CHARACTERS_IN_SRC")
+        for side, lang, txt in (("SRC", SRC_LANG, src), ("TGT", TGT_LANG, tgt)):
+            if lang == "en" and RE_LANG_CJK.search(txt) \
+            or lang == "ko" and RE_LANG_JA.search(txt) \
+            or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA.search(txt)):
+                log_error("INVALID_LANG_IN_%s" % side)
 
-        isl = any(a == SRC_LANG and not b.search(src) for a, b in RE_LANGS.items())
-        itl = any(a == TGT_LANG and not b.search(tgt) for a, b in RE_LANGS.items())
-        if isl and itl:
+        sil = any(a == SRC_LANG and not b.search(src) for a, b in RE_LANGS.items())
+        til = any(a == TGT_LANG and not b.search(tgt) for a, b in RE_LANGS.items())
+        if sil and til:
             log_error("INVALID_SRC_AND_TGT_LANG")
         else:
-            if isl:
+            if sil:
                 log_error("INVALID_SRC_LANG")
-            if itl:
+            if til:
                 log_error("INVALID_TGT_LANG")
 
         src = tokenize(src, SRC_LANG)

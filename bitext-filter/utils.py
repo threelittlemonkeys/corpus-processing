@@ -19,6 +19,7 @@ RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
 
 RE_LANG_EN = re.compile("[A-Za-z]")
+RE_LANG_JA = re.compile("[\u3040-\u30FF]")
 RE_LANG_KO = re.compile("[\uAC00-\uD7A3]")
 RE_LANG_ZH = re.compile("[\u4E00-\u9FFF]")
 RE_LANG_CJK = re.compile("[\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7A3]")
