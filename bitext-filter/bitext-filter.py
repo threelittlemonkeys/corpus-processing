@@ -44,7 +44,7 @@ def corpus_filter(filename):
 
         for side, lang, txt in (("SRC", SRC_LANG, src), ("TGT", TGT_LANG, tgt)):
             if lang == "en" and RE_LANG_CJK.search(txt) \
-            or lang == "ko" and RE_LANG_JA.search(txt) \
+            or lang == "ko" and (RE_LANG_JA.search(txt) or RE_LANG_ZH.search(txt)) \
             or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA.search(txt)):
                 log_error("INVALID_LANG_IN_%s" % side)
 
