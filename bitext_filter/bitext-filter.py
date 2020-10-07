@@ -12,9 +12,9 @@ def corpus_filter(filename):
     for line in fo:
         error_log.clear()
 
-        if line.count("\t") != 1:
+        if line.count("\t") != 2:
             exit(line)
-        _src, _tgt = line.split("\t")
+        _idx, _src, _tgt = line.split("\t")
         _src = _src.strip()
         _tgt = _tgt.strip()
         src = normalize(_src)
@@ -86,10 +86,10 @@ def corpus_filter(filename):
 
         if error_log:
             for error_code in error_log:
-                print(_src, _tgt, error_code, sep = "\t", file = fb)
+                print(_idx, _src, _tgt, error_code, sep = "\t", file = fb)
             ln_err += 1
         else:
-            print(_src, _tgt, sep = "\t", file = fa)
+            print(_idx, _src, _tgt, sep = "\t", file = fa)
         ln_sum += 1
         if ln_sum % 100000 == 0:
             print("%d sentence pairs" % ln_sum)
