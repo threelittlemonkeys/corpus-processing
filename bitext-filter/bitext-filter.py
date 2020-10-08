@@ -1,84 +1,107 @@
 from utils import *
 
-def corpus_filter(filename):
-    fo = open(filename)
-    fa = open(filename + ".flt.in", "w")
-    fb = open(filename + ".flt.out", "w")
-    fc = open(filename + ".flt.log", "w")
-    timer = time.time()
+def corpus_filter(fn_raw, fn_tag):
+
     ln_err = 0
     ln_sum = 0
+    timer = time.time()
 
-    for line in fo:
+    fo_raw = open(fn_raw)
+    fo_tag = open(fn_tag) if fn_tag else None
+    fa = open(fn_raw + ".flt.in", "w")
+    fb = open(fn_raw + ".flt.out", "w")
+    fc = open(fn_raw + ".flt.log", "w")
+
+    for line_raw in fo_raw:
         error_log.clear()
 
-        if line.count("\t") != 2:
-            exit(line)
-        _idx, _src, _tgt = line.split("\t")
-        _src = _src.strip()
-        _tgt = _tgt.strip()
-        src = normalize(_src)
-        tgt = normalize(_tgt)
+        if line_raw.count("\t") != 2:
+            exit(line_raw)
+        idx, s0, t0 = line_raw.split("\t")
+        s0 = s0.strip()
+        t0 = t0.strip()
+        s1 = normalize(s0)
+        t1 = normalize(t0)
 
-        if src == "":
+        if s1 == "":
             log_error("SRC_EMPTY")
-        if tgt == "":
+        if t1 == "":
             log_error("TGT_EMPTY")
-        if src == tgt:
+        if s1 == t1:
             log_error("SRC_AND_TGT_IDENTICAL")
         else:
-            if src in tgt:
+            if s1 in t1:
                 log_error("SRC_IN_TGT")
-            if tgt in src:
+            if t1 in s1:
                 log_error("TGT_IN_SRC")
 
-        if RE_REPETITION.match(src):
+        if RE_REPETITION.match(s1):
             log_error("SRC_REPEATED")
-        if RE_REPETITION.match(tgt):
+        if RE_REPETITION.match(t1):
             log_error("TGT_REPEATED")
 
-        nbs = len(RE_BRACKET.findall(src))
-        nbt = len(RE_BRACKET.findall(tgt))
+        nbs = len(RE_BRACKET.findall(s1))
+        nbt = len(RE_BRACKET.findall(t1))
         if nbs != nbt:
             log_error("BRACKET_MISMATCH")
 
-        for side, lang, txt in (("SRC", SRC_LANG, src), ("TGT", TGT_LANG, tgt)):
+        for side, lang, txt in (("SRC", SRC_LANG, s1), ("TGT", TGT_LANG, t1)):
             if lang == "en" and RE_LANG_CJK.search(txt) \
             or lang == "ko" and (RE_LANG_JA.search(txt) or RE_LANG_ZH.search(txt)) \
             or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA.search(txt)):
                 log_error("INVALID_LANG_IN_%s" % side)
 
-        sil = any(a == SRC_LANG and not b.search(src) for a, b in RE_LANGS.items())
-        til = any(a == TGT_LANG and not b.search(tgt) for a, b in RE_LANGS.items())
+        sil = any(a == SRC_LANG and not b.search(s1) for a, b in RE_LANGS.items())
+        til = any(a == TGT_LANG and not b.search(t1) for a, b in RE_LANGS.items())
         if sil and til:
             log_error("INVALID_SRC_AND_TGT_LANG")
-        else:
-            if sil:
-                log_error("INVALID_SRC_LANG")
-            if til:
-                log_error("INVALID_TGT_LANG")
+        elif sil:
+            log_error("INVALID_SRC_LANG")
+        elif til:
+            log_error("INVALID_TGT_LANG")
 
-        src = tokenize(src, SRC_LANG)
-        tgt = tokenize(tgt, TGT_LANG)
+        s2 = tokenize(s1, SRC_LANG)
+        t2 = tokenize(t1, TGT_LANG)
 
-        if len(src) > MAX_SENT_LEN:
+        if len(s2) > MAX_SENT_LEN:
             log_error("SRC_TOO_LONG")
-        if len(tgt) > MAX_SENT_LEN:
+        if len(t2) > MAX_SENT_LEN:
             log_error("TGT_TOO_LONG")
-        if len(src) < MIN_SENT_LEN:
+        if len(s2) < MIN_SENT_LEN:
             log_error("SRC_TOO_SHORT")
-        if len(tgt) < MIN_SENT_LEN:
+        if len(t2) < MIN_SENT_LEN:
             log_error("TGT_TOO_SHORT")
 
-        if len(src) / len(tgt) > SENT_LEN_RATIO:
+        if len(s2) / len(t2) > SENT_LEN_RATIO:
             log_error("SRC_TOO_LONGER")
-        if len(tgt) / len(src) > SENT_LEN_RATIO:
+        if len(t2) / len(s2) > SENT_LEN_RATIO:
             log_error("TGT_TOO_LONGER")
-        if any(map(lambda x: len(x) > MAX_WORD_LEN, src)):
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, s2)):
             log_error("LONG_WORD_IN_SRC")
-        if any(map(lambda x: len(x) > MAX_WORD_LEN, tgt)):
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
+        if fo_tag:
+            line_tag = fo_tag.readline()
+            s3, t3 = line_tag.split("\t")
+            s3 = s3.strip().split(" ")
+            t3 = t3.strip().split(" ")
+            s3 = [re.split("/(?=[^/]+$)", x) for x in s3]
+            t3 = [re.split("/(?=[^/]+$)", x) for x in t3]
+
+            s3_nnp = [x[0] for x in s3 if x[1] == "NNP"]
+            t3_nnp = [x[0] for x in t3 if x[1] == "NNP"]
+            if len(s3_nnp) != len(t3_nnp):
+                log_error("NNP_MISMATCH")
+                '''
+                print(s0)
+                print(t0)
+                print(" ".join("/".join(x) for x in s3))
+                print(" ".join("/".join(x) for x in t3))
+                print(s3_nnp)
+                print(t3_nnp)
+                print()
+                '''
         '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)
@@ -86,13 +109,12 @@ def corpus_filter(filename):
         if len(nums) > 1:
             log_error("NUMBER_MISMATCH")
         '''
-
         if error_log:
             for error_code in error_log:
-                print(_idx, _src, _tgt, error_code, sep = "\t", file = fb)
+                print(idx, s0, t0, error_code, sep = "\t", file = fb)
             ln_err += 1
         else:
-            print(_idx, _src, _tgt, sep = "\t", file = fa)
+            print(idx, s0, t0, sep = "\t", file = fa)
         ln_sum += 1
         if ln_sum % 100000 == 0:
             print("%d sentence pairs" % ln_sum)
@@ -106,17 +128,21 @@ def corpus_filter(filename):
     print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100), file = fc)
     print("%f seconds" % timer, file = fc)
 
-    fo.close()
+    fo_raw.close()
+    fo_tag.close() if fo_tag else True
     fa.close()
     fb.close()
+    fc.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4:
-        sys.exit("Usage: %s src_lang tgt_lang filename" % sys.argv[0])
+    if len(sys.argv) not in (4, 5):
+        sys.exit("Usage: %s src_lang tgt_lang raw tagged" % sys.argv[0])
 
     SRC_LANG = sys.argv[1]
     TGT_LANG = sys.argv[2]
+    fn_raw = sys.argv[3]
+    fn_tag = sys.argv[4] if len(sys.argv) == 5 else ""
 
     print("SRC_LANG = %s" % SRC_LANG)
     print("TGT_LANG = %s" % TGT_LANG)
-    corpus_filter(sys.argv[-1])
+    corpus_filter(fn_raw, fn_tag)
