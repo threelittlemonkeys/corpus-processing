@@ -35,15 +35,19 @@ def corpus_filter(fn_raw, fn_tag):
             if t1 in s1:
                 log_error("TGT_IN_SRC")
 
-        if RE_REPETITION.match(s1):
-            log_error("SRC_REPEATED")
-        if RE_REPETITION.match(t1):
-            log_error("TGT_REPEATED")
-
         nbs = len(RE_BRACKET.findall(s1))
         nbt = len(RE_BRACKET.findall(t1))
         if nbs != nbt:
             log_error("BRACKET_MISMATCH")
+
+        # if RE_INVALID_CHAR.search(s1):
+        if RE_URL.search(s1):
+            print(s1, t1)
+
+        if RE_REPETITION.match(s1):
+            log_error("SRC_REPEATED")
+        if RE_REPETITION.match(t1):
+            log_error("TGT_REPEATED")
 
         for side, lang, txt in (("SRC", SRC_LANG, s1), ("TGT", TGT_LANG, t1)):
             if lang == "en" and RE_LANG_CJK.search(txt) \
@@ -81,6 +85,7 @@ def corpus_filter(fn_raw, fn_tag):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
+        '''
         if fo_tag:
             line_tag = fo_tag.readline()
             s3, t3 = line_tag.split("\t")
@@ -93,15 +98,15 @@ def corpus_filter(fn_raw, fn_tag):
             t3_nnp = [x[0] for x in t3 if x[1] == "NNP"]
             if len(s3_nnp) != len(t3_nnp):
                 log_error("NNP_MISMATCH")
-                '''
-                print(s0)
-                print(t0)
-                print(" ".join("/".join(x) for x in s3))
-                print(" ".join("/".join(x) for x in t3))
-                print(s3_nnp)
-                print(t3_nnp)
-                print()
-                '''
+                if True:
+                    print(s0)
+                    print(t0)
+                    print(" ".join("/".join(x) for x in s3))
+                    print(" ".join("/".join(x) for x in t3))
+                    print(s3_nnp)
+                    print(t3_nnp)
+                    print()
+        '''
         '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)

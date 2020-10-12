@@ -6,8 +6,31 @@ from dictionary import *
 from parameters import *
 from utils import *
 
-error_log = list()
-error_cnt = {code: 0 for code in ERROR_CODE}
+ERROR_CODE = [
+    "SRC_EMPTY",
+    "TGT_EMPTY",
+    "SRC_AND_TGT_IDENTICAL",
+    "SRC_IN_TGT",
+    "TGT_IN_SRC",
+    "BRACKET_MISMATCH",
+    "SRC_REPEATED",
+    "TGT_REPEATED",
+    "INVALID_LANG_IN_SRC",
+    "INVALID_LANG_IN_TGT",
+    "INVALID_SRC_LANG",
+    "INVALID_TGT_LANG",
+    "INVALID_SRC_AND_TGT_LANG",
+    "SRC_TOO_LONG",
+    "TGT_TOO_LONG",
+    "SRC_TOO_SHORT",
+    "TGT_TOO_SHORT",
+    "SRC_TOO_LONGER",
+    "TGT_TOO_LONGER",
+    "LONG_WORD_IN_SRC",
+    "LONG_WORD_IN_TGT",
+    "NNP_MISMATCH",
+    "NUMBER_MISMATCH",
+]
 
 RE_ALPHA_L = re.compile("(?<=[a-z])(?=[^ a-z])")
 RE_ALPHA_R = re.compile("(?<=[^ a-z])(?=[a-z])")
@@ -15,8 +38,11 @@ RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
 RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 RE_NON_ALNUM_L = re.compile("(?<=[^ 0-9a-z])(?=[^ ])")
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ 0-9a-z])")
-RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
+
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
+RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
+RE_URL = re.compile("https?://")
+# RE_INVALID_CHAR = re.compile("[a-z][a-z0-9]*[_:?]+[a-z0-9]")
 
 RE_LANG_EN = re.compile("[A-Za-z]")
 RE_LANG_JA = re.compile("[\u3040-\u30FF]")
@@ -36,6 +62,9 @@ RE_NUM_EN_A = re.compile("%s(( -)? %s)+" % (RE_NUM_EN, RE_NUM_EN))
 RE_NUM_EN_B = re.compile("%s(_%s)*$" % (RE_NUM_EN, RE_NUM_EN))
 RE_NUM_ZH_A = re.compile("%s( %s)+" % (RE_NUM_ZH, RE_NUM_ZH))
 RE_NUM_ZH_B = re.compile("%s(_%s)*$" % (RE_NUM_ZH, RE_NUM_ZH))
+
+error_log = list()
+error_cnt = {code: 0 for code in ERROR_CODE}
 
 def log_error(code):
     error_log.append(code)
