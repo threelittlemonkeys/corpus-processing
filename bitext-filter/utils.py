@@ -13,17 +13,19 @@ ERROR_CODE = [
     "SRC_IN_TGT",
     "TGT_IN_SRC",
     "BRACKET_MISMATCH",
+    "QUOTATION_MISMATCH",
     "URL_IN_SRC",
     "URL_IN_TGT",
     "SRC_REPEATED",
     "TGT_REPEATED",
     "INVALID_WORD_IN_SRC",
     "INVALID_WORD_IN_TGT",
-    "INVALID_LANG_IN_SRC",
-    "INVALID_LANG_IN_TGT",
-    "INVALID_SRC_LANG",
-    "INVALID_TGT_LANG",
-    "INVALID_SRC_AND_TGT_LANG",
+    "INVALID_SRC_LANGUAGE",
+    "INVALID_TGT_LANGUAGE",
+    "INVALID_LANGUAGE_IN_SRC",
+    "INVALID_LANGUAGE_IN_TGT",
+    "MULTIPLE_SENTENCES_IN_SRC",
+    "MULTIPLE_SENTENCES_IN_TGT",
     "SRC_TOO_LONG",
     "TGT_TOO_LONG",
     "SRC_TOO_SHORT",
@@ -44,15 +46,20 @@ RE_NON_ALNUM_L = re.compile("(?<=[^ 0-9a-z])(?=[^ ])")
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ 0-9a-z])")
 
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
+RE_QUOTATION = re.compile("[\"“”]")
 RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
-RE_INVALID_CHAR = re.compile("[a-z][a-z0-9]*[^ a-z0-9,.'/<>(){}[\]-]+[a-z0-9]")
+RE_INVALID_WORD = re.compile("[a-z][a-z0-9]*[^ a-z0-9,.'/<>(){}[\]-]+[a-z0-9]")
 
 RE_LANG_EN = re.compile("[A-Za-z]")
 RE_LANG_JA = re.compile("[\u3040-\u30FF]")
 RE_LANG_KO = re.compile("[\uAC00-\uD7A3]")
 RE_LANG_ZH = re.compile("[\u4E00-\u9FFF]")
 RE_LANG_CJK = re.compile("[\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7A3]")
+
+RE_SENT_BOUND_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
+RE_SENT_BOUND_KO = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
+RE_SENT_BOUND_ZH = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
 
 RE_LANGS = {
     "en": RE_LANG_EN,
@@ -80,6 +87,9 @@ def normalize(txt):
     txt = txt.lower()
     txt = txt.strip()
     return txt
+
+def compare_findall(ro, a, b):
+    return len(ro.findall(a)) == len(ro.findall(b))
 
 def subiter(ro, p1, p2, txt):
     for m in ro.finditer(txt):
