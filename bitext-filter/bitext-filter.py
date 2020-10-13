@@ -35,19 +35,23 @@ def corpus_filter(fn_raw, fn_tag):
             if t1 in s1:
                 log_error("TGT_IN_SRC")
 
-        nbs = len(RE_BRACKET.findall(s1))
-        nbt = len(RE_BRACKET.findall(t1))
-        if nbs != nbt:
+        if len(RE_BRACKET.findall(s1)) != len(RE_BRACKET.findall(t1)):
             log_error("BRACKET_MISMATCH")
 
-        # if RE_INVALID_CHAR.search(s1):
         if RE_URL.search(s1):
-            print(s1, t1)
+            log_error("URL_IN_SRC")
+        if RE_URL.search(s1):
+            log_error("URL_IN_TGT")
 
         if RE_REPETITION.match(s1):
             log_error("SRC_REPEATED")
         if RE_REPETITION.match(t1):
             log_error("TGT_REPEATED")
+
+        if RE_INVALID_CHAR.search(s1):
+            log_error("INVALID_WORD_IN_SRC")
+        if RE_INVALID_CHAR.search(t1):
+            log_error("INVALID_WORD_IN_TGT")
 
         for side, lang, txt in (("SRC", SRC_LANG, s1), ("TGT", TGT_LANG, t1)):
             if lang == "en" and RE_LANG_CJK.search(txt) \
@@ -84,7 +88,6 @@ def corpus_filter(fn_raw, fn_tag):
             log_error("LONG_WORD_IN_SRC")
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
-
         '''
         if fo_tag:
             line_tag = fo_tag.readline()

@@ -13,8 +13,12 @@ ERROR_CODE = [
     "SRC_IN_TGT",
     "TGT_IN_SRC",
     "BRACKET_MISMATCH",
+    "URL_IN_SRC",
+    "URL_IN_TGT",
     "SRC_REPEATED",
     "TGT_REPEATED",
+    "INVALID_WORD_IN_SRC",
+    "INVALID_WORD_IN_TGT",
     "INVALID_LANG_IN_SRC",
     "INVALID_LANG_IN_TGT",
     "INVALID_SRC_LANG",
@@ -39,10 +43,10 @@ RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 RE_NON_ALNUM_L = re.compile("(?<=[^ 0-9a-z])(?=[^ ])")
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ 0-9a-z])")
 
-RE_REPETITION = re.compile("(.{3,})\\1{3,}")
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
 RE_URL = re.compile("https?://")
-# RE_INVALID_CHAR = re.compile("[a-z][a-z0-9]*[_:?]+[a-z0-9]")
+RE_REPETITION = re.compile("(.{3,})\\1{3,}")
+RE_INVALID_CHAR = re.compile("[a-z][a-z0-9]*[^ a-z0-9,.'/<>(){}[\]-]+[a-z0-9]")
 
 RE_LANG_EN = re.compile("[A-Za-z]")
 RE_LANG_JA = re.compile("[\u3040-\u30FF]")
