@@ -23,23 +23,31 @@ def corpus_filter(fn_raw, fn_tag):
         s1 = normalize(s0)
         t1 = normalize(t0)
 
-        if s1 == "": log_error("SRC_EMPTY")
-        if t1 == "": log_error("TGT_EMPTY")
-        if s1 == t1: log_error("SRC_AND_TGT_IDENTICAL")
+        if s1 == "":
+            log_error("SRC_EMPTY")
+        if t1 == "":
+            log_error("TGT_EMPTY")
+        if s1 == t1:
+            log_error("SRC_AND_TGT_IDENTICAL")
         else:
-            if s1 in t1: log_error("SRC_IN_TGT")
-            if t1 in s1: log_error("TGT_IN_SRC")
+            if s1 in t1:
+                log_error("SRC_IN_TGT")
+            if t1 in s1:
+                log_error("TGT_IN_SRC")
 
-        if not compare_findall(RE_BRACKET, s1, t1): log_error("BRACKET_MISMATCH")
-        if not compare_findall(RE_QUOTATION, s1, t1): log_error("QUOTATION_MISMATCH")
+        if not compare_findall(RE_BRACKET, s1, t1):
+            log_error("BRACKET_MISMATCH")
+        if not compare_findall(RE_QUOTATION, s1, t1):
+            log_error("QUOTATION_MISMATCH")
 
-        for side, txt in (("SRC", s1), ("TGT", t1)):
+        for txt, lang, side, in ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT")):
 
-            if RE_URL.search(txt): log_error("URL_IN_%s" % side)
-            if RE_REPETITION.match(txt): log_error("%s_REPEATED" % side)
-            if RE_INVALID_WORD.search(txt): log_error("INVALID_WORD_IN_%s" % side)
-
-        for side, lang, txt in (("SRC", SRC_LANG, s1), ("TGT", TGT_LANG, t1)):
+            if RE_URL.search(txt):
+                log_error("URL_IN_%s" % side)
+            if RE_REPETITION.match(txt):
+                log_error("%s_REPEATED" % side)
+            if RE_INVALID_WORD.search(txt):
+                log_error("INVALID_WORD_IN_%s" % side)
 
             if lang == "en" and not RE_LANG_EN.search(txt) \
             or lang == "ko" and not RE_LANG_KO.search(txt) \
@@ -59,16 +67,24 @@ def corpus_filter(fn_raw, fn_tag):
         s2 = tokenize(s1, SRC_LANG)
         t2 = tokenize(t1, TGT_LANG)
 
-        if len(s2) > MAX_SENT_LEN: log_error("SRC_TOO_LONG")
-        if len(t2) > MAX_SENT_LEN: log_error("TGT_TOO_LONG")
-        if len(s2) < MIN_SENT_LEN: log_error("SRC_TOO_SHORT")
-        if len(t2) < MIN_SENT_LEN: log_error("TGT_TOO_SHORT")
+        if len(s2) > MAX_SENT_LEN:
+            log_error("SRC_TOO_LONG")
+        if len(t2) > MAX_SENT_LEN:
+            log_error("TGT_TOO_LONG")
+        if len(s2) < MIN_SENT_LEN:
+            log_error("SRC_TOO_SHORT")
+        if len(t2) < MIN_SENT_LEN:
+            log_error("TGT_TOO_SHORT")
 
-        if len(s2) / len(t2) > SENT_LEN_RATIO: log_error("SRC_TOO_LONGER")
-        if len(t2) / len(s2) > SENT_LEN_RATIO: log_error("TGT_TOO_LONGER")
-        if any(map(lambda x: len(x) > MAX_WORD_LEN, s2)): log_error("LONG_WORD_IN_SRC")
-        if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)): log_error("LONG_WORD_IN_TGT")
-        '''
+        if len(s2) / len(t2) > SENT_LEN_RATIO:
+            log_error("SRC_TOO_LONGER")
+        if len(t2) / len(s2) > SENT_LEN_RATIO:
+            log_error("TGT_TOO_LONGER")
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, s2)):
+            log_error("LONG_WORD_IN_SRC")
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
+            log_error("LONG_WORD_IN_TGT")
+
         if fo_tag:
             line_tag = fo_tag.readline()
             s3, t3 = line_tag.split("\t")
@@ -89,7 +105,6 @@ def corpus_filter(fn_raw, fn_tag):
                     print(s3_nnp)
                     print(t3_nnp)
                     print()
-        '''
         '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)

@@ -1,10 +1,8 @@
 import sys
-import re
 import time
 import math
-from dictionary import *
 from parameters import *
-from utils import *
+from regex import *
 
 ERROR_CODE = [
     "SRC_EMPTY",
@@ -38,42 +36,6 @@ ERROR_CODE = [
     "NUMBER_MISMATCH",
 ]
 
-RE_ALPHA_L = re.compile("(?<=[a-z])(?=[^ a-z])")
-RE_ALPHA_R = re.compile("(?<=[^ a-z])(?=[a-z])")
-RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
-RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
-RE_NON_ALNUM_L = re.compile("(?<=[^ 0-9a-z])(?=[^ ])")
-RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ 0-9a-z])")
-
-RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
-RE_QUOTATION = re.compile("[\"“”]")
-RE_URL = re.compile("https?://")
-RE_REPETITION = re.compile("(.{3,})\\1{3,}")
-RE_INVALID_WORD = re.compile("[a-z][a-z0-9]*[^ a-z0-9,.'/<>(){}[\]-]+[a-z0-9]")
-
-RE_LANG_EN = re.compile("[A-Za-z]")
-RE_LANG_JA = re.compile("[\u3040-\u30FF]")
-RE_LANG_KO = re.compile("[\uAC00-\uD7A3]")
-RE_LANG_ZH = re.compile("[\u4E00-\u9FFF]")
-RE_LANG_CJK = re.compile("[\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7A3]")
-
-RE_SENT_BOUND_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
-RE_SENT_BOUND_KO = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
-RE_SENT_BOUND_ZH = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
-
-RE_LANGS = {
-    "en": RE_LANG_EN,
-    "ko": RE_LANG_KO,
-    "zh": RE_LANG_ZH,
-}
-
-RE_NUM_EN = "([0-9]+|%s)" % ("|".join(EN_NUMS))
-RE_NUM_ZH = "([0-9]+|[%s])" % "".join(ZH_NUMS)
-RE_NUM_EN_A = re.compile("%s(( -)? %s)+" % (RE_NUM_EN, RE_NUM_EN))
-RE_NUM_EN_B = re.compile("%s(_%s)*$" % (RE_NUM_EN, RE_NUM_EN))
-RE_NUM_ZH_A = re.compile("%s( %s)+" % (RE_NUM_ZH, RE_NUM_ZH))
-RE_NUM_ZH_B = re.compile("%s(_%s)*$" % (RE_NUM_ZH, RE_NUM_ZH))
-
 error_log = list()
 error_cnt = {code: 0 for code in ERROR_CODE}
 
@@ -88,16 +50,6 @@ def normalize(txt):
     txt = txt.strip()
     return txt
 
-def compare_findall(ro, a, b):
-    return len(ro.findall(a)) == len(ro.findall(b))
-
-def subiter(ro, p1, p2, txt):
-    for m in ro.finditer(txt):
-        a = m.group()
-        b = re.sub(p1, p2, a)
-        txt = txt.replace(a, b, 1)
-    return txt
-
 def tokenize(txt, lang):
     txt = RE_ALPHA_L.sub(" ", txt)
     txt = RE_ALPHA_R.sub(" ", txt)
@@ -106,15 +58,11 @@ def tokenize(txt, lang):
     txt = RE_NON_ALNUM_L.sub(" ", txt)
     txt = RE_NON_ALNUM_R.sub(" ", txt)
 
-    '''
-    if lang == "en":
-        txt = subiter(RE_NUM_EN_A, "[ -]+", "_", txt)
-    if lang in ("ja", "ko", "zh"):
-        txt = subiter(RE_NUM_ZH_A, " ", "_", txt)
-    '''
-
     txt = txt.split(" ")
     return txt
+
+def compare_findall(ro, a, b):
+    return len(ro.findall(a)) == len(ro.findall(b))
 
 def word_to_number(txt, lang):
     ns = list()
