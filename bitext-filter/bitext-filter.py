@@ -59,9 +59,9 @@ def corpus_filter(fn_raw, fn_tag):
             or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA.search(txt)):
                 log_error("INVALID_LANGUAGE_IN_%s" % side)
 
-            if lang == "en" and RE_SENT_BOUND_EN.search(txt) \
-            or lang == "ko" and RE_SENT_BOUND_KO.search(txt) \
-            or lang == "zh" and RE_SENT_BOUND_ZH.search(txt):
+            if lang == "en" and RE_SENTS_EN.search(txt) \
+            or lang == "ko" and RE_SENTS_KO.search(txt) \
+            or lang == "zh" and RE_SENTS_ZH.search(txt):
                 log_error("MULTIPLE_SENTENCES_IN_%s" % side)
 
         s2 = tokenize(s1, SRC_LANG)
@@ -93,18 +93,16 @@ def corpus_filter(fn_raw, fn_tag):
             s3 = [re.split("/(?=[^/]+$)", x) for x in s3]
             t3 = [re.split("/(?=[^/]+$)", x) for x in t3]
 
-            s3_nnp = [x[0] for x in s3 if x[1] == "NNP"]
-            t3_nnp = [x[0] for x in t3 if x[1] == "NNP"]
-            if len(s3_nnp) != len(t3_nnp):
-                log_error("NNP_MISMATCH")
-                if True:
-                    print(s0)
-                    print(t0)
-                    print(" ".join("/".join(x) for x in s3))
-                    print(" ".join("/".join(x) for x in t3))
-                    print(s3_nnp)
-                    print(t3_nnp)
-                    print()
+            s3_nnp = extract_nnp(s3, SRC_LANG)
+            t3_nnp = extract_nnp(t3, TGT_LANG)
+            if len(s3_nnp) != len(t3_nnp) > 0:
+                print(s0)
+                print(t0)
+                print(" ".join(["/".join(x) for x in s3]))
+                print(" ".join(["/".join(x) for x in t3]))
+                print(s3_nnp)
+                print(t3_nnp)
+                print()
         '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)

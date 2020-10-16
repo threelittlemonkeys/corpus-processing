@@ -64,6 +64,21 @@ def tokenize(txt, lang):
 def compare_findall(ro, a, b):
     return len(ro.findall(a)) == len(ro.findall(b))
 
+def extract_nnp(txt, lang):
+    nnp = []
+    for idx, (word, tag) in enumerate(txt):
+        if tag != "NNP":
+            continue
+        if lang == "en":
+            if not RE_NNP_EN.search(word):
+                continue
+            # TODO if idx and
+        if lang == "ko":
+            if not RE_NNP_KO.search(word):
+                continue
+        nnp.append(word)
+    return nnp
+
 def word_to_number(txt, lang):
     ns = list()
     w2n = lambda x, y: [y[x] if x in y else x for x in x.split("_")]

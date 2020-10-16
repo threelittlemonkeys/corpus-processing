@@ -14,15 +14,19 @@ RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
 RE_INVALID_WORD = re.compile("[a-z][a-z0-9]*[^ a-z0-9,.'/<>(){}[\]-]+[a-z0-9]")
 
-RE_LANG_EN = re.compile("[A-Za-z]")
+RE_LANG_EN = re.compile("[a-z]")
 RE_LANG_JA = re.compile("[\u3040-\u30FF]")
 RE_LANG_KO = re.compile("[\uAC00-\uD7A3]")
 RE_LANG_ZH = re.compile("[\u4E00-\u9FFF]")
 RE_LANG_CJK = re.compile("[\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7A3]")
 
-RE_SENT_BOUND_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
-RE_SENT_BOUND_KO = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
-RE_SENT_BOUND_ZH = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
+RE_SENTS_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
+RE_SENTS_KO = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
+RE_SENTS_ZH = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
+
+RE_NNP_EN = re.compile("^[a-z'-]+$")
+RE_NNP_KO = re.compile("^[\uAC00-\uD7A3-]+$")
+RE_NNP_ZH = re.compile("")
 
 RE_NUM_EN = "([0-9]+|%s)" % ("|".join(EN_NUMS))
 RE_NUM_ZH = "([0-9]+|[%s])" % "".join(ZH_NUMS)
