@@ -64,15 +64,14 @@ def tokenize(txt, lang):
 def compare_findall(ro, a, b):
     return len(ro.findall(a)) == len(ro.findall(b))
 
-def extract_nnp(txt, lang):
+def extract_nnp(seq, lang):
     nnp = []
-    for idx, (word, tag) in enumerate(txt):
-        if tag != "NNP":
+    for idx, (word, tag) in enumerate(seq):
+        if not (idx and "A" <= word[0] <= "Z" or tag == "NNP"):
             continue
         if lang == "en":
             if not RE_NNP_EN.search(word):
                 continue
-            # TODO if idx and
         if lang == "ko":
             if not RE_NNP_KO.search(word):
                 continue

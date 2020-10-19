@@ -24,8 +24,8 @@ RE_SENTS_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
 RE_SENTS_KO = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
 RE_SENTS_ZH = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
 
-RE_NNP_EN = re.compile("^[a-z'-]+$")
-RE_NNP_KO = re.compile("^[\uAC00-\uD7A3-]+$")
+RE_NNP_EN = re.compile("^[A-Za-z'-]+$")
+RE_NNP_KO = re.compile("^[A-Za-z\uAC00-\uD7A3-]+$")
 RE_NNP_ZH = re.compile("")
 
 RE_NUM_EN = "([0-9]+|%s)" % ("|".join(EN_NUMS))

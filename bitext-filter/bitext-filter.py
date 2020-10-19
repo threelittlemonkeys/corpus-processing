@@ -95,14 +95,9 @@ def corpus_filter(fn_raw, fn_tag):
 
             s3_nnp = extract_nnp(s3, SRC_LANG)
             t3_nnp = extract_nnp(t3, TGT_LANG)
-            if len(s3_nnp) != len(t3_nnp) > 0:
-                print(s0)
-                print(t0)
-                print(" ".join(["/".join(x) for x in s3]))
-                print(" ".join(["/".join(x) for x in t3]))
-                print(s3_nnp)
-                print(t3_nnp)
-                print()
+            if len(s3_nnp) and len(t3_nnp) and len(s3_nnp) != len(t3_nnp):
+                log_error("NNP_MISMATCH")
+                print("\n".join(t3_nnp))
         '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)
