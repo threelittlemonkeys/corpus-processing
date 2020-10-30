@@ -18,7 +18,12 @@ def json2tsv():
             o = dict()
             vs = []
             cnt += 1
-            flatten(ast.literal_eval(line), o)
+            try:
+                line = ast.literal_eval(line)
+            except Exception as e:
+                print(e, file = sys.stderr)
+                continue
+            flatten(line, o)
             for k in names:
                 if k in o:
                     v = o[k]
@@ -28,14 +33,13 @@ def json2tsv():
                     v = ""
                 vs.append(v)
             vs = "\t".join(vs)
-            if vs not in pl:
-                pl[vs] = True
+            if vs in pl:
+                continue
+            pl[vs] = True
+            print(vs)
 
-    for line in pl:
-        print(line)
-
-    sys.stderr.write("%d in total\n" % cnt)
-    sys.stderr.write("%d uniq \n" % len(pl))
+    print("%d in total\n" % cnt, file = sys.stderr)
+    print("%d uniq \n" % len(pl), file = sys.stderr)
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
