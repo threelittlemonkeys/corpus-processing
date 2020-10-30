@@ -1,6 +1,7 @@
 import sys
 import re
 import ast
+import json
 
 def flatten(x, y):
     for k, v in x.items():
@@ -19,10 +20,9 @@ def json2tsv():
             vs = []
             cnt += 1
             try:
+                line = json.loads(line)
+            except:
                 line = ast.literal_eval(line)
-            except Exception as e:
-                print(e, file = sys.stderr)
-                continue
             flatten(line, o)
             for k in names:
                 if k in o:
@@ -38,8 +38,8 @@ def json2tsv():
             pl[vs] = True
             print(vs)
 
-    print("%d in total\n" % cnt, file = sys.stderr)
-    print("%d uniq \n" % len(pl), file = sys.stderr)
+    print("%d in total" % cnt, file = sys.stderr)
+    print("%d uniq" % len(pl), file = sys.stderr)
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
