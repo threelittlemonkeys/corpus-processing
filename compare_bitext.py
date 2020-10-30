@@ -62,8 +62,7 @@ def filter(action, key, fn_txt, fn_ref):
                 flag = True
 
         if flag:
-            print(line, file = fo_out)
-            # print(str(num_sents) + "\t" + line, file = fo_out)
+            print("%d\t%s" % (num_sents, line), file = fo_out)
 
     fo_in.close()
     fo_out.close()

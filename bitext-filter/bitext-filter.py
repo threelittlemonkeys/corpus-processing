@@ -97,7 +97,6 @@ def corpus_filter(fn_raw, fn_tag):
             t3_nnp = extract_nnp(t3, TGT_LANG)
             if len(s3_nnp) and len(t3_nnp) and len(s3_nnp) != len(t3_nnp):
                 log_error("NNP_MISMATCH")
-                print("\n".join(t3_nnp))
         '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)
