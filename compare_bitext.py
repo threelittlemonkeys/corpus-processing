@@ -70,6 +70,8 @@ def filter(action, key, fn_txt, fn_ref):
     print("%d errors" % num_errors)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5:
+    if len(sys.argv) != 5 \
+    or sys.argv[1] not in ("dup", "uniq") \
+    or sys.argv[2] not in ("src", "tgt", "any", "both"):
         sys.exit("Usage: %s dup|uniq src|tgt|any|both text reference" % sys.argv[0])
     filter(*sys.argv[1:])
