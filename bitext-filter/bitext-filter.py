@@ -35,10 +35,12 @@ def corpus_filter(fn_raw, fn_tag):
             if t1 in s1:
                 log_error("TGT_IN_SRC")
 
+        '''
         if not compare_findall(RE_BRACKET, s1, t1):
             log_error("BRACKET_MISMATCH")
         if not compare_findall(RE_QUOTATION, s1, t1):
             log_error("QUOTATION_MISMATCH")
+        '''
 
         for txt, lang, side, in ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT")):
 
@@ -97,6 +99,7 @@ def corpus_filter(fn_raw, fn_tag):
             t3_nnp = extract_nnp(t3, TGT_LANG)
             if len(s3_nnp) and len(t3_nnp) and len(s3_nnp) != len(t3_nnp):
                 log_error("NNP_MISMATCH")
+
         '''
         src_nums = word_to_number(src, SRC_LANG)
         tgt_nums = word_to_number(tgt, TGT_LANG)
@@ -104,6 +107,7 @@ def corpus_filter(fn_raw, fn_tag):
         if len(nums) > 1:
             log_error("NUMBER_MISMATCH")
         '''
+
         if error_log:
             for error_code in error_log:
                 print(idx, s0, t0, error_code, sep = "\t", file = fb)
