@@ -22,7 +22,7 @@ def tsv2xlsx(filename):
             txt = re.sub("\s+", " ", txt)
             txt = txt.strip()
             txt = convert(txt)
-            if len(txt) and txt[0] == "=":
+            if type(txt) == str and len(txt) and txt[0] == "=":
                 txt = "'" + txt
             worksheet.write(i, j, txt)
     fo.close()
