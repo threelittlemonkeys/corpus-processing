@@ -36,6 +36,8 @@ def corpus_filter(fn_raw, fn_tag):
                 log_error("TGT_IN_SRC")
 
         '''
+        if not compare_findall(RE_PUNC, s1, t1):
+            log_error("PUNCTUATION_MARK_MISMATCH")
         if not compare_findall(RE_BRACKET, s1, t1):
             log_error("BRACKET_MISMATCH")
         if not compare_findall(RE_QUOTATION, s1, t1):

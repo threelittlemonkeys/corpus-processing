@@ -8,6 +8,7 @@ RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 RE_NON_ALNUM_L = re.compile("(?<=[^ 0-9a-z])(?=[^ ])")
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ 0-9a-z])")
 
+RE_PUNC = re.compile("[,.?!，．。？！]")
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
 RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z])|[\"“”]")
 RE_URL = re.compile("https?://")
