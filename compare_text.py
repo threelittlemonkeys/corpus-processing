@@ -6,27 +6,25 @@ def normalize(x):
     x = x.lower()
     return x
 
-def compare_text(action, key, fn_txt, fn_ref):
+def compare_text(action, key, filename):
 
     pool = {}
-    fo_ref = open(fn_ref)
-    for line in fo_ref:
+    fo = open(filename)
+    for line in fo:
         norm = normalize(line) if key == "norm" else line
         pool[norm] = line
-    fo_ref.close()
+    fo.close()
 
-    fo_txt = open(fn_txt)
-    for line in fo_txt:
+    for line in sys.stdin:
         norm = normalize(line) if key == "norm" else line
         if action == "dup" and norm in pool:
             print(line, end = "")
         if action == "uniq" and norm not in pool:
             print(line, end = "")
-    fo_txt.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5 \
+    if len(sys.argv) != 4 \
     or sys.argv[1] not in ("dup", "uniq") \
     or sys.argv[2] not in ("raw", "norm"):
-        sys.exit("Usage: %s dup|uniq raw|norm text reference" % sys.argv[0])
+        sys.exit("Usage: %s dup|uniq raw|norm ref < txt" % sys.argv[0])
     compare_text(*sys.argv[1:])

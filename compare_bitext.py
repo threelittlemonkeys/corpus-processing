@@ -6,23 +6,22 @@ def normalize(x):
     x = x.lower()
     return x
 
-def compare_bitext(action, key, fn_txt, fn_ref):
+def compare_bitext(action, key, filename):
 
     pool = {}
-    fo_ref = open(fn_ref)
-    for line in fo_ref:
+    fo = open(filename)
+    for line in fo:
         src, tgt = line.split("\t")
         src = normalize(src)
         tgt = normalize(tgt)
         pool[src] = True
         pool[tgt] = True
-    fo_ref.close()
+    fo.close()
 
     num_sents = 0
     num_errors = 0
 
-    fo_txt = open(fn_txt)
-    for line in fo_txt:
+    for line in sys.stdin:
         line = line.strip()
         num_sents += 1
 
@@ -63,13 +62,12 @@ def compare_bitext(action, key, fn_txt, fn_ref):
         if flag:
             print("%d\t%s" % (num_sents, line))
 
-    fo_txt.close()
     print("%d sentences" % num_sents, file = sys.stderr)
     print("%d errors" % num_errors, file = sys.stderr)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 5 \
+    if len(sys.argv) != 4 \
     or sys.argv[1] not in ("dup", "uniq") \
     or sys.argv[2] not in ("src", "tgt", "any", "both"):
-        sys.exit("Usage: %s dup|uniq src|tgt|any|both text reference" % sys.argv[0])
+        sys.exit("Usage: %s dup|uniq src|tgt|any|both ref < txt" % sys.argv[0])
     compare_bitext(*sys.argv[1:])
