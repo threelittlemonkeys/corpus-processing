@@ -21,9 +21,8 @@ def compare_bitext(action, key, fn_txt, fn_ref):
     num_sents = 0
     num_errors = 0
 
-    fo_in = open(fn_txt)
-    fo_out = open("%s.%s.%s" % (fn_txt, action, key), "w")
-    for line in fo_in:
+    fo_txt = open(fn_txt)
+    for line in fo_txt:
         line = line.strip()
         num_sents += 1
 
@@ -62,12 +61,11 @@ def compare_bitext(action, key, fn_txt, fn_ref):
                 flag = True
 
         if flag:
-            print("%d\t%s" % (num_sents, line), file = fo_out)
+            print("%d\t%s" % (num_sents, line))
 
-    fo_in.close()
-    fo_out.close()
-    print("%d sentences" % num_sents)
-    print("%d errors" % num_errors)
+    fo_txt.close()
+    print("%d sentences" % num_sents, file = sys.stderr)
+    print("%d errors" % num_errors, file = sys.stderr)
 
 if __name__ == "__main__":
     if len(sys.argv) != 5 \
