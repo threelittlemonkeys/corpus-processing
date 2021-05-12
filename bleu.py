@@ -9,24 +9,27 @@ def detokenize(x):
     return x
 
 if __name__ == '__main__':
-    if len(sys.argv) < 2:
-        sys.exit("Usage: %s refs hyps" % sys.argv[0])
+    if len(sys.argv) < 4:
+        sys.exit("Usage: %s src refs hyps" % sys.argv[0])
     func = SmoothingFunction()
-    refs = open(sys.argv[1])
-    hyps = [open(x) for x in sys.argv[2:]]
+    src = open(sys.argv[1])
+    refs = open(sys.argv[2])
+    hyps = [open(x) for x in sys.argv[3:]]
     scores = [[] for _ in hyps]
-    for r, *hs in zip(refs, *hyps):
+    for s, r, *hs in zip(src, refs, *hyps):
+        line = list()
+        s = s.strip()
         _r = [r.strip().split(" ")]
-        print(detokenize(r), end = "")
+        line.extend([s, detokenize(r)])
         for i, h in enumerate(hs):
             _h = h.strip().split(" ")
             b = sentence_bleu(_r, _h, smoothing_function = func.method3)
-            print("\t%f\t%s" % (b, detokenize(h)), end = "")
             scores[i].append(b)
-        print()
+            line.extend(["%0.4f" % b, detokenize(h)])
+        print(*line, sep = "\t")
     refs.close()
     hyps = [x.close() for x in hyps]
     print("\t", end = "")
     for bs in scores:
-        print("%f\t" % (sum(bs) / len(bs)), end = "")
+        print("%0.4f\t" % (sum(bs) / len(bs)), end = "")
     print()
