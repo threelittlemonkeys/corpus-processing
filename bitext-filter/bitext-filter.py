@@ -1,6 +1,12 @@
 from utils import *
+from ner import bilingual_ner
 
 def corpus_filter(fn_raw, fn_tag):
+
+    print("SRC_LANG = %s" % SRC_LANG)
+    print("TGT_LANG = %s" % TGT_LANG)
+
+    ner = bilingual_ner(SRC_LANG, TGT_LANG)
 
     ln_err = 0
     ln_sum = 0
@@ -90,6 +96,12 @@ def corpus_filter(fn_raw, fn_tag):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
+        ne = ner.search(s2, t1)
+        if any(b == None for a, b in ne.items()):
+            print(s0)
+            print(t0)
+            print([a for a, b in ne.items() if b == None])
+
         if fo_tag:
             line_tag = fo_tag.readline()
             s3, t3 = line_tag.split("\t")
@@ -151,6 +163,4 @@ if __name__ == "__main__":
     fn_raw = sys.argv[3]
     fn_tag = sys.argv[4] if len(sys.argv) == 5 else ""
 
-    print("SRC_LANG = %s" % SRC_LANG)
-    print("TGT_LANG = %s" % TGT_LANG)
     corpus_filter(fn_raw, fn_tag)

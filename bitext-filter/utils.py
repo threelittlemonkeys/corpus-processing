@@ -58,7 +58,6 @@ def tokenize(txt, lang):
     txt = RE_NUM_R.sub(" ", txt)
     txt = RE_NON_ALNUM_L.sub(" ", txt)
     txt = RE_NON_ALNUM_R.sub(" ", txt)
-
     txt = txt.split(" ")
     return txt
 
