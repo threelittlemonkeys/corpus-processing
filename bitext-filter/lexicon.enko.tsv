@@ -1,8 +1,8 @@
 AM ET	동부 시간 오전
 AMOLED
 Air Force	공군
-American	미국	미국인	아메리칸
-Asian	아시아	아시아인	아시안
+America	미국	아메리칸	아메리카	미
+Asia	아시아	아시안
 Associated Press	AP	연합 통신
 Barack Obama	버락 오바마	오바마
 British	영국	영국인
@@ -10,16 +10,19 @@ Britney	브리트니
 Britney Spears	브리트니 스피어스
 Central Park	센트럴 파크	센트럴 공원
 Champions League	챔피언스 리그	챔피언즈 리그
+China	중국	차이나 중
 China Unicom	차이나 유니콤
 Chinese	중국	중국인
 City Hall	시청	시티 홀
 Clinton	클린턴
 Cold War	냉전
+Daewoo	대우
 Daewoo Electronics	대우 전자	대우 일렉트로닉스
 Democratic Party	민주당
 East Asia	동 아시아
 Eastern Europe	동 유럽	동구
 Eiffel Tower	에펠 탑	에펠 타워	에펠
+Europe	유럽	구
 European Union	유럽 연합	EU
 Federal Reserve	연방 준비
 French	프랑스	프랑스인	프랑스어	불어	후렌치	프렌치
@@ -41,7 +44,7 @@ Hyundai Motor	현대 자동차	현대차	현대
 IBM
 Internet	인터넷
 Japan	일본	재팬	일
-Japanese	일본	일본인	일본어	일어	일제
+Japanese	일본	일본인	일본어	일어	일제	일
 Jeju Island	제주도	제주
 Joseon	조선
 Justice Department	법무부	사법부
@@ -50,9 +53,8 @@ Kim Jong Un	김정은	김 위원장
 Kim Jong-il	김정일	김 국방위원장
 Kim Jong-un	김정은	김 위원장
 Kookmin Bank	국민 은행	KB
-Korea	한국	대한민국	코리아
+Korea	한국	대한 민국	코리아	코리아	코리언	한	고려
 Korea Telecom	한국 통신	KT
-Korean	한국	대한민국	코리아	코리안 코리언	한
 Korean Air	대한 항공
 Korean Peninsula	한반도	조선 반도
 Korean War	한국 전쟁	625
@@ -71,7 +73,7 @@ Michael Jackson	마이클 잭슨
 Middle East	중동
 N-SCTY Corporation
 National Assembly	국회	의회
-National Security	국가 안보
+National Security	국가 안보	국가 안전
 New Jersey	뉴 저지
 New Orleans	뉴 올리언스	뉴 올리언즈
 New Year	새해	신년	설날	설
@@ -81,9 +83,8 @@ New Zealand	뉴질랜드
 Nobel Peace Prize	노벨 평화상
 Nobel Prize	노벨 상	노벨
 North America	북미	북 아메리카	미국
-North American	북미	북 아메리카	미국
 North Carolina	노스 캐롤라이나
-North Korea	북한	북조선
+North Korea	북한	북조선	북
 North Pole	북극
 Northern Ireland	북 아일랜드	아일랜드
 Olympic	올림픽
@@ -100,7 +101,7 @@ President Kim	김 대통령	김대중 대통령
 President Lee	이명박 대통령	이 대통령
 President Lee Myung-bak	이명박 대통령	이 대통령
 President Obama	오바마 대통령	오바마
-President Roh	노무현 대통령	노 대통령
+President Roh	노 대통령	노무현 대통령
 President Roh Moo-hyun	노무현 대통령	노 대통령
 Prime Minister	총리	수상
 SK Telecom	SK 텔레콤	SKT
@@ -110,18 +111,16 @@ Samsung Electro-Mechanics	삼성 전기
 Samsung Electronics	삼성 전자	삼성
 SDI
 SDS
-San Diego	샌디에이고	샌디에고
-San Francisco	샌프란시스코
+San Diego	샌 디에이고	샌 디에고
+San Francisco	샌 프란시스코
 Santa Claus	산타 클로스	산타
 Saudi Arabia	사우디 아라비아
 Security Council	안전 보장 이사회	안보리
 Seoul National University	서울대	서울 대학교	SNU
-South Africa	남아프리카 공화국	남아공
+South Africa	남 아프리카	남 아프리카 공화국	남아공
 South America	남미	남 아메리카	중남미
-South Korea	한국	남한	대한민국
-South Korean	한국	남한	대한민국	한국인
+South Korea	한국	남한	대한 민국	남조선	한
 Southeast Asia	동남아	동남 아시아
-Southeast Asian	동남아	동남 아시아
 Soviet Union	소련	소비에트 연방	소비에트	러시아	USSR
 Sri Lanka	스리랑카
 State Department	국무부
@@ -130,7 +129,8 @@ Supreme Court	대법원	법원
 TFT LCD
 TV	TV	티비	티브이	텔레비전	테레비	텔레비젼
 Times Square	타임스 스퀘어	타임즈 스퀘어	타임 스퀘어
-Tom Cruise	톰 크루즈
+Tom	톰	탐
+Tom Cruise	톰 크루즈	탐 크루즈
 USA Today	유에스에이 투데이	유에스 투데이	USA Today	USA 투데이
 United Kingdom	영국	UK
 United Nations	유엔	UN	국제연합

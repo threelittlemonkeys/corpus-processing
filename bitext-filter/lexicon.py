@@ -20,7 +20,7 @@ class lexicon(): # bilingual lexicon
             src = src.lower()
             tgt = [w.lower().replace(" ", "") for w in tgt]
             if not tgt:
-                tgt.append(src.replace(" ", ""))
+                tgt.append(src)
             self.data[src] = tgt
         fo.close()
 
