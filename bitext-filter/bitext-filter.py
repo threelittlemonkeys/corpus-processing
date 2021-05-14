@@ -21,7 +21,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
         error_log.clear()
 
         if line.count("\t") != 2:
-            exit(line)
+            sys.exit("Error: invalid format in %s" % filename)
         idx, s0, t0 = line.split("\t")
         s0 = s0.strip()
         t0 = t0.strip()

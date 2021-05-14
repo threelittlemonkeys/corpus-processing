@@ -2,7 +2,7 @@ AM ET	동부 시간 오전
 AMOLED
 Air Force	공군
 American	미국	미국인	아메리칸
-Asian	아시아	아시아인
+Asian	아시아	아시아인	아시안
 Associated Press	AP	연합 통신
 Barack Obama	버락 오바마	오바마
 British	영국	영국인
@@ -23,24 +23,24 @@ Eiffel Tower	에펠 탑	에펠 타워	에펠
 European Union	유럽 연합	EU
 Federal Reserve	연방 준비
 French	프랑스	프랑스인	프랑스어	불어	후렌치	프렌치
-Gates	게이츠
+Bill Gates	빌 게이츠
 Gordon Brown	고든 브라운
-Grand Canyon	그랜드 캐년	그랜드 캐니언
+Grand Canyon	그랜드 캐년	그랜드 캐니언	그랜드 케니언
 Great Britain	영국	대영 제국
 Great Wall	만리장성
 HP
 Han River	한강
 Hanaro Telecom	하나로 통신	하나로 텔레콤
-Harry	해리 헤리
+Harry	해리	헤리
 Hillary	힐러리
 Hilton	힐튼
 Hong Kong	홍콩
-Hotel	호텔
+hotel	호텔	숙소
 Hynix Semiconductor	하이닉스 반도체	하이닉스
 Hyundai Motor	현대 자동차	현대차	현대
 IBM
 Internet	인터넷
-Japan	일본	재팬
+Japan	일본	재팬	일
 Japanese	일본	일본인	일본어	일어	일제
 Jeju Island	제주도	제주
 Joseon	조선
@@ -52,7 +52,7 @@ Kim Jong-un	김정은	김 위원장
 Kookmin Bank	국민 은행	KB
 Korea	한국	대한민국	코리아
 Korea Telecom	한국 통신	KT
-Korean	한국	대한민국	코리아	코리안 코리언
+Korean	한국	대한민국	코리아	코리안 코리언	한
 Korean Air	대한 항공
 Korean Peninsula	한반도	조선 반도
 Korean War	한국 전쟁	625
@@ -63,7 +63,7 @@ LG Philips LCD	LG 필립스 LCD
 LG Telecom	LG텔레콤	LGT
 Las Vegas	라스베이거스	라스베가스
 Latin America	라틴 아메리카	중남미
-Los Angeles	LA	로스앤젤레스	로스엔젤레스
+Los Angeles	LA	로스 앤젤레스	로스 엔젤레스	로스 엔젤러스
 Main Street	메인 스트리트	중심가
 Major League	메이저 리그
 Manchester United	맨체스터 유나이티드	맨체스터
@@ -80,8 +80,8 @@ New York Times	뉴욕 타임즈	뉴욕 타임스
 New Zealand	뉴질랜드
 Nobel Peace Prize	노벨 평화상
 Nobel Prize	노벨 상	노벨
-North America	북미	북 아메리카
-North American	북미	북 아메리카
+North America	북미	북 아메리카	미국
+North American	북미	북 아메리카	미국
 North Carolina	노스 캐롤라이나
 North Korea	북한	북조선
 North Pole	북극
@@ -105,10 +105,11 @@ President Roh Moo-hyun	노무현 대통령	노 대통령
 Prime Minister	총리	수상
 SK Telecom	SK 텔레콤	SKT
 Saddam Hussein	사담 후세인
+Samsung	삼성
 Samsung Electro-Mechanics	삼성 전기
 Samsung Electronics	삼성 전자	삼성
-Samsung SDI	삼성 SDI
-Samsung SDS	삼성 SDS
+SDI
+SDS
 San Diego	샌디에이고	샌디에고
 San Francisco	샌프란시스코
 Santa Claus	산타 클로스	산타
@@ -127,14 +128,14 @@ State Department	국무부
 Sun Microsystems	선 마이크로시스템즈	선 마이크로시스템스	썬 마이크로시스템즈	썬 마이크로시스템스
 Supreme Court	대법원	법원
 TFT LCD
-TV	TV	티비	티브이	텔레비전	테레비
+TV	TV	티비	티브이	텔레비전	테레비	텔레비젼
 Times Square	타임스 스퀘어	타임즈 스퀘어	타임 스퀘어
 Tom Cruise	톰 크루즈
-USA Today	유에스에이 투데이	유에스 투데이	USA Today
+USA Today	유에스에이 투데이	유에스 투데이	USA Today	USA 투데이
 United Kingdom	영국	UK
 United Nations	유엔	UN	국제연합
 United States	미국
-Van Gogh	반 고흐
+Van Gogh	반 고흐	고흐
 Vice President	부통령	부사장
 Wall Street	월 스트리트
 Washington Post	워싱턴 포스트
@@ -143,6 +144,6 @@ World Bank	세계 은행
 World Cup	월드컵
 World Trade	세계 무역
 World Trade Organization	세계 무역 기구	WTO
-World War	세계대전
+World War	세계 대전	대전
 human rights	인권
 the US	미국

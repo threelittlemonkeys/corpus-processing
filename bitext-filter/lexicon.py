@@ -13,7 +13,9 @@ class lexicon(): # bilingual lexicon
 
     def load_data(self, filename):
         fo = open(self.path + filename + ".tsv")
-        for line in fo:
+        for i, line in enumerate(fo):
+            if not re.match("^[^\t]+(\t[^\t]+)*\n", line):
+                sys.exit("Error: invalid format in %s" % filename)
             src, *tgt = line.strip().split("\t")
             src = src.lower()
             tgt = [w.lower().replace(" ", "") for w in tgt]
