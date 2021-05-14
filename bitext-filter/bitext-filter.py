@@ -1,29 +1,28 @@
 from utils import *
-from ner import bilingual_ner
+from lexicon import lexicon 
 
-def corpus_filter(fn_raw, fn_tag):
+def corpus_filter(src_lang, tgt_lang, filename):
 
-    print("SRC_LANG = %s" % SRC_LANG)
-    print("TGT_LANG = %s" % TGT_LANG)
+    print("src_lang = %s" % src_lang)
+    print("tgt_lang = %s" % tgt_lang)
 
-    ner = bilingual_ner(SRC_LANG, TGT_LANG)
+    lex = lexicon(src_lang, tgt_lang)
 
     ln_err = 0
     ln_sum = 0
     timer = time.time()
 
-    fo_raw = open(fn_raw)
-    fo_tag = open(fn_tag) if fn_tag else None
-    fa = open(fn_raw + ".flt.in", "w")
-    fb = open(fn_raw + ".flt.out", "w")
-    fc = open(fn_raw + ".flt.log", "w")
+    fo = open(filename)
+    fa = open(filename + ".flt.in", "w")
+    fb = open(filename + ".flt.out", "w")
+    fc = open(filename + ".flt.log", "w")
 
-    for line_raw in fo_raw:
+    for line in fo:
         error_log.clear()
 
-        if line_raw.count("\t") != 2:
-            exit(line_raw)
-        idx, s0, t0 = line_raw.split("\t")
+        if line.count("\t") != 2:
+            exit(line)
+        idx, s0, t0 = line.split("\t")
         s0 = s0.strip()
         t0 = t0.strip()
         s1 = normalize(s0)
@@ -50,7 +49,7 @@ def corpus_filter(fn_raw, fn_tag):
             log_error("QUOTATION_MISMATCH")
         '''
 
-        for txt, lang, side, in ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT")):
+        for txt, lang, side, in ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT")):
 
             if RE_URL.search(txt):
                 log_error("URL_IN_%s" % side)
@@ -75,8 +74,8 @@ def corpus_filter(fn_raw, fn_tag):
             or lang == "zh" and RE_SENTS_ZH.search(txt):
                 log_error("MULTIPLE_SENTENCES_IN_%s" % side)
 
-        s2 = tokenize(s1, SRC_LANG)
-        t2 = tokenize(t1, TGT_LANG)
+        s2 = tokenize(s1, src_lang)
+        t2 = tokenize(t1, tgt_lang)
 
         if len(s2) > MAX_SENT_LEN:
             log_error("SRC_TOO_LONG")
@@ -96,34 +95,16 @@ def corpus_filter(fn_raw, fn_tag):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
-        ne = ner.search(s2, t1)
-        if any(b == None for a, b in ne.items()):
+        m = lex.search(s2, t1)
+        if None in m.values():
             print(s0)
             print(t0)
-            print([a for a, b in ne.items() if b == None])
-
-        if fo_tag:
-            line_tag = fo_tag.readline()
-            s3, t3 = line_tag.split("\t")
-            s3 = s3.strip().split(" ")
-            t3 = t3.strip().split(" ")
-            s3 = [re.split("/(?=[^/]+$)", x) for x in s3]
-            t3 = [re.split("/(?=[^/]+$)", x) for x in t3]
-
-            s3_nnp = extract_nnp(s3, SRC_LANG)
-            t3_nnp = extract_nnp(t3, TGT_LANG)
-            if len(s3_nnp) or len(t3_nnp):
-                print(s0)
-                print(s3_nnp)
-                print(t0)
-                print(t3_nnp)
-                input()
-            if len(s3_nnp) and len(t3_nnp) and len(s3_nnp) != len(t3_nnp):
-                log_error("NNP_MISMATCH")
+            print(m)
+            input()
 
         '''
-        src_nums = word_to_number(src, SRC_LANG)
-        tgt_nums = word_to_number(tgt, TGT_LANG)
+        src_nums = word_to_number(src, src_lang)
+        tgt_nums = word_to_number(tgt, tgt_lang)
         nums = src_nums.symmetric_difference(tgt_nums)
         if len(nums) > 1:
             log_error("NUMBER_MISMATCH")
@@ -148,19 +129,13 @@ def corpus_filter(fn_raw, fn_tag):
     print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100), file = fc)
     print("%f seconds" % timer, file = fc)
 
-    fo_raw.close()
-    fo_tag.close() if fo_tag else True
+    fo.close()
     fa.close()
     fb.close()
     fc.close()
 
 if __name__ == "__main__":
-    if len(sys.argv) not in (4, 5):
-        sys.exit("Usage: %s src_lang tgt_lang raw tagged" % sys.argv[0])
+    if len(sys.argv) != 4:
+        sys.exit("Usage: %s src_lang tgt_lang corpus" % sys.argv[0])
 
-    SRC_LANG = sys.argv[1]
-    TGT_LANG = sys.argv[2]
-    fn_raw = sys.argv[3]
-    fn_tag = sys.argv[4] if len(sys.argv) == 5 else ""
-
-    corpus_filter(fn_raw, fn_tag)
+    corpus_filter(*sys.argv[1:])

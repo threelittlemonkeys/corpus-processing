@@ -4,7 +4,7 @@ import math
 from parameters import *
 from regex import *
 
-ERROR_CODE = [
+error_codes = [
     "SRC_EMPTY",
     "TGT_EMPTY",
     "SRC_AND_TGT_IDENTICAL",
@@ -38,7 +38,7 @@ ERROR_CODE = [
 ]
 
 error_log = list()
-error_cnt = {code: 0 for code in ERROR_CODE}
+error_cnt = {code: 0 for code in error_codes}
 
 def log_error(code):
     error_log.append(code)
@@ -63,20 +63,6 @@ def tokenize(txt, lang):
 
 def compare_findall(ro, a, b):
     return len(ro.findall(a)) == len(ro.findall(b))
-
-def extract_nnp(seq, lang):
-    nnp = []
-    for idx, (word, tag) in enumerate(seq):
-        if not (idx and "A" <= word[0] <= "Z" or tag == "NNP"):
-            continue
-        if lang == "en":
-            if not RE_NNP_EN.search(word):
-                continue
-        if lang == "ko":
-            if not RE_NNP_KO.search(word):
-                continue
-        nnp.append(word)
-    return nnp
 
 def word_to_number(txt, lang):
     ns = list()
