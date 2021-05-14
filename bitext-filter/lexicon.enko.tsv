@@ -1,61 +1,63 @@
 AM ET	동부 시간 오전
-AMOLED	AMOLED
+AMOLED
 Air Force	공군
-American	미국	미국인
+American	미국	미국인	아메리칸
 Asian	아시아	아시아인
 Associated Press	AP	연합 통신
 Barack Obama	버락 오바마	오바마
-Bill Clinton	빌 클린턴
-Bill Gates	빌 게이츠
 British	영국	영국인
+Britney	브리트니
 Britney Spears	브리트니 스피어스
 Central Park	센트럴 파크	센트럴 공원
 Champions League	챔피언스 리그	챔피언즈 리그
 China Unicom	차이나 유니콤
 Chinese	중국	중국인
 City Hall	시청	시티 홀
+Clinton	클린턴
 Cold War	냉전
 Daewoo Electronics	대우 전자	대우 일렉트로닉스
 Democratic Party	민주당
 East Asia	동 아시아
-Eastern Europe	동 유럽
+Eastern Europe	동 유럽	동구
 Eiffel Tower	에펠 탑	에펠 타워	에펠
 European Union	유럽 연합	EU
 Federal Reserve	연방 준비
-French	프랑스	프랑스인
+French	프랑스	프랑스인	프랑스어	불어	후렌치	프렌치
+Gates	게이츠
 Gordon Brown	고든 브라운
 Grand Canyon	그랜드 캐년	그랜드 캐니언
 Great Britain	영국	대영 제국
 Great Wall	만리장성
-HP Korea	한국 HP	HP	HP 코리아
+HP
 Han River	한강
 Hanaro Telecom	하나로 통신	하나로 텔레콤
-Harry Potter	해리 포터
-Hillary Clinton	힐러리 클린턴	힐러리
-Hilton Hotel	힐튼 호텔
+Harry	해리 헤리
+Hillary	힐러리
+Hilton	힐튼
 Hong Kong	홍콩
-Human Rights	인권
+Hotel	호텔
 Hynix Semiconductor	하이닉스 반도체	하이닉스
 Hyundai Motor	현대 자동차	현대차	현대
-IBM Korea	한국 IBM	IBM 코리아	IBM
+IBM
 Internet	인터넷
-Japan	일본
-Japanese	일본	일본인
+Japan	일본	재팬
+Japanese	일본	일본인	일본어	일어	일제
 Jeju Island	제주도	제주
-Joseon Dynasty	조선 왕조	조선 반도
+Joseon	조선
 Justice Department	법무부	사법부
 Kim Jong Il	김정일	김 국방위원장
 Kim Jong Un	김정은	김 위원장
 Kim Jong-il	김정일	김 국방위원장
 Kim Jong-un	김정은	김 위원장
 Kookmin Bank	국민 은행	KB
-Korea	한국
+Korea	한국	대한민국	코리아
 Korea Telecom	한국 통신	KT
-Korean Air	대한항공
+Korean	한국	대한민국	코리아	코리안 코리언
+Korean Air	대한 항공
 Korean Peninsula	한반도	조선 반도
 Korean War	한국 전쟁	625
-LCD TV	LCD TV
-LG CNS	LG CNS
+LCD TV
+LG CNS
 LG Electronics	LG 전자	LG
 LG Philips LCD	LG 필립스 LCD
 LG Telecom	LG텔레콤	LGT
@@ -67,7 +69,7 @@ Major League	메이저 리그
 Manchester United	맨체스터 유나이티드	맨체스터
 Michael Jackson	마이클 잭슨
 Middle East	중동
-N-SCTY Corporation	N-SCTY Corporation
+N-SCTY Corporation
 National Assembly	국회	의회
 National Security	국가 안보
 New Jersey	뉴 저지
@@ -82,15 +84,14 @@ North America	북미	북 아메리카
 North American	북미	북 아메리카
 North Carolina	노스 캐롤라이나
 North Korea	북한	북조선
-North Korean	북한	북조선
-North Koreans	북한 사람	북한 주민
 North Pole	북극
 Northern Ireland	북 아일랜드	아일랜드
 Olympic	올림픽
 Olympics	올림픽
 Oracle Korea	한국 오라클
-PDP TV	PDP TV
+PDP TV
 PM ET	동부 시간 오후	PM ET
+Potter	포터
 Premier League	프리미어 리그
 President Bush	부시 대통령	부시	부쉬
 President George Bush	조지 부시 대통령	부시	부쉬
@@ -118,7 +119,6 @@ South Africa	남아프리카 공화국	남아공
 South America	남미	남 아메리카	중남미
 South Korea	한국	남한	대한민국
 South Korean	한국	남한	대한민국	한국인
-South Koreans	한국인
 Southeast Asia	동남아	동남 아시아
 Southeast Asian	동남아	동남 아시아
 Soviet Union	소련	소비에트 연방	소비에트	러시아	USSR
@@ -126,12 +126,11 @@ Sri Lanka	스리랑카
 State Department	국무부
 Sun Microsystems	선 마이크로시스템즈	선 마이크로시스템스	썬 마이크로시스템즈	썬 마이크로시스템스
 Supreme Court	대법원	법원
-TFT LCD	TFT LCD
+TFT LCD
 TV	TV	티비	티브이	텔레비전	테레비
-The US	미국
 Times Square	타임스 스퀘어	타임즈 스퀘어	타임 스퀘어
 Tom Cruise	톰 크루즈
-USA TODAY	유에스에이 투데이	USA TODAY
+USA Today	유에스에이 투데이	유에스 투데이	USA Today
 United Kingdom	영국	UK
 United Nations	유엔	UN	국제연합
 United States	미국
@@ -143,4 +142,7 @@ White House	백악관	화이트 하우스
 World Bank	세계 은행
 World Cup	월드컵
 World Trade	세계 무역
+World Trade Organization	세계 무역 기구	WTO
 World War	세계대전
+human rights	인권
+the US	미국

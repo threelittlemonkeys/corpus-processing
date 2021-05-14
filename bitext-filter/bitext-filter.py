@@ -3,8 +3,8 @@ from lexicon import lexicon
 
 def corpus_filter(src_lang, tgt_lang, filename):
 
-    print("src_lang = %s" % src_lang)
-    print("tgt_lang = %s" % tgt_lang)
+    print("src_lang = %s" % src_lang, file = sys.stderr)
+    print("tgt_lang = %s" % tgt_lang, file = sys.stderr)
 
     lex = lexicon(src_lang, tgt_lang)
 
@@ -95,12 +95,12 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
-        m = lex.search(s2, t1)
+        if src_lang == "en" and tgt_lang == "ko":
+            s, t = s2, t1.replace(" ", "")
+        m = lex.search(s, t)
         if None in m.values():
-            print(s0)
-            print(t0)
-            print(m)
-            input()
+            log_error("ENTITY_MISMATCH")
+            print([a for a, b in m.items() if not b], t0)
 
         '''
         src_nums = word_to_number(src, src_lang)
@@ -118,7 +118,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
             print(idx, s0, t0, sep = "\t", file = fa)
         ln_sum += 1
         if ln_sum % 100000 == 0:
-            print("%d sentence pairs" % ln_sum)
+            print("%d sentence pairs" % ln_sum, file = sys.stderr)
 
     timer = time.time() - timer
 

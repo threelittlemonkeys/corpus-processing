@@ -33,7 +33,7 @@ error_codes = [
     "TGT_TOO_LONGER",
     "LONG_WORD_IN_SRC",
     "LONG_WORD_IN_TGT",
-    "NNP_MISMATCH",
+    "ENTITY_MISMATCH",
     "NUMBER_MISMATCH",
 ]
 

@@ -17,6 +17,8 @@ class lexicon(): # bilingual lexicon
             src, *tgt = line.strip().split("\t")
             src = src.lower()
             tgt = [w.lower().replace(" ", "") for w in tgt]
+            if not tgt:
+                tgt.append(src.replace(" ", ""))
             self.data[src] = tgt
         fo.close()
 
