@@ -2,44 +2,27 @@ import sys
 import re
 import json
 
-def json2tsv():
-    pl = dict()
-    cnt = 0
-    
-    with open(sys.argv[1]) as fo:
-        names = sys.argv[2:]
+def json2tsv(filename, names):
+    with open(filename) as fo:
         for line in fo:
-            f = True
-            jo = json.loads(line)
-            cnt += 1
-            values = []
-            for x in names:
-                if x not in line:
-                    f = False
-                    break
-            if not f:
+            try:
+                jo = json.loads(line)
+            except:
                 continue
-            f = True
-            for x in names:
-                y = jo[x]
-                y = re.sub("\s+", " ", y)
-                y = y.strip()
-                if y == "":
-                    f = False
-                    break
-                values.append(y)
-            if not f:
+            if type(jo) != dict:
                 continue
-            line = "\t".join(values)
-            pl[line] = True
-    
-    for line in pl:
-        print(line)
-    
-    sys.stderr.write("%d in total\n" % cnt)
-    sys.stderr.write("%d uniq \n" % len(pl))
+            tsv = []
+            for x in names:
+                y = ""
+                if x in jo:
+                    y = jo[x]
+                if y:
+                    y = y.strip()
+                    y = re.sub("\s+", " ", y)
+                tsv.append(y)
+            print(*tsv, sep = "\t")
 
 if __name__ == "__main__":
     if len(sys.argv) < 3:
         sys.exit("Usage: %s filename name1 ...")
-    json2tsv()
+    json2tsv(sys.argv[1], sys.argv[2:])
