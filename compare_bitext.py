@@ -6,14 +6,15 @@ def normalize(x):
     x = x.lower()
     return x
 
-def compare_bitext(action, key, filename):
+def compare_bitext(action, key, flt, filename):
 
     pool = {}
     fo = open(filename)
     for line in fo:
         src, tgt = line.split("\t")
-        src = normalize(src)
-        tgt = normalize(tgt)
+        if key == "norm":
+            src = normalize(src)
+            tgt = normalize(tgt)
         pool[src] = True
         pool[tgt] = True
     fo.close()
@@ -30,8 +31,9 @@ def compare_bitext(action, key, filename):
             continue
 
         src, tgt = line.split("\t")
-        src = normalize(src)
-        tgt = normalize(tgt)
+        if key == "norm":
+            src = normalize(src)
+            tgt = normalize(tgt)
 
         if src == "" or tgt == "":
             num_errors += 1
@@ -40,23 +42,23 @@ def compare_bitext(action, key, filename):
         flag = False
 
         if action == "dup":
-            if key == "src" and src not in pool:
+            if flt == "src" and src not in pool:
                 flag = True
-            if key == "tgt" and tgt in pool:
+            if flt == "tgt" and tgt in pool:
                 flag = True
-            if key == "any" and (src in pool or tgt in pool):
+            if flt == "any" and (src in pool or tgt in pool):
                 flag = True
-            if key == "both" and (src in pool and tgt in pool):
+            if flt == "both" and (src in pool and tgt in pool):
                 flag = True
 
         if action == "uniq":
-            if key == "src" and src not in pool:
+            if flt == "src" and src not in pool:
                 flag = True
-            if key == "tgt" and tgt not in pool:
+            if flt == "tgt" and tgt not in pool:
                 flag = True
-            if key == "any" and (src not in pool or tgt not in pool):
+            if flt == "any" and (src not in pool or tgt not in pool):
                 flag = True
-            if key == "both" and (src not in pool and tgt not in pool):
+            if flt == "both" and (src not in pool and tgt not in pool):
                 flag = True
 
         if flag:
@@ -69,5 +71,5 @@ if __name__ == "__main__":
     if len(sys.argv) != 4 \
     or sys.argv[1] not in ("dup", "uniq") \
     or sys.argv[2] not in ("src", "tgt", "any", "both"):
-        sys.exit("Usage: %s dup|uniq src|tgt|any|both ref < txt" % sys.argv[0])
+        sys.exit("Usage: %s dup|uniq raw|norm src|tgt|any|both ref < txt" % sys.argv[0])
     compare_bitext(*sys.argv[1:])

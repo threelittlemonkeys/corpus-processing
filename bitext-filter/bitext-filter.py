@@ -100,7 +100,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
         m = lex.search(s, t)
         if None in m.values():
             log_error("ENTITY_MISMATCH")
-            print([a for a, b in m.items() if not b], t0)
+            print("\n".join([a for a, b in m.items() if not b]))
 
         '''
         src_nums = word_to_number(src, src_lang)
