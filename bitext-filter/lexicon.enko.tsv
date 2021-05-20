@@ -10,7 +10,7 @@ Abbas	아바스	압바스
 Abdel	압델
 Abdul	압둘
 Abdullah	압둘라
-Abe	아베
+Abe	아베	에이브
 Abel	아벨
 Abercrombie	아베크롬비	애버크롬비
 Aberdeen	애버딘
@@ -30,7 +30,7 @@ Adam	아담	애덤
 Adams	아담스	애덤스
 Addie	애디
 Addis Ababa	아디스 아바바
-Addison	애디슨	아디슨
+Addison	아디슨	애디슨
 Adebayor	아데바요르
 Adelaide	아들레이드	애들레이드
 Adele	아델
@@ -58,7 +58,7 @@ Agra	아그라
 Aguilera	아길레라
 Ahmad	아마드	아흐마드
 Ahmadi	아마디
-Ahmadinejad	아흐마디네자드	아마디네자드
+Ahmadinejad	아마디네자드	아흐마디네자드
 Ahmed	아메드	아흐메드
 Ahmet	아흐메트
 Aida	아이다
@@ -74,7 +74,7 @@ Akio	아키오
 Akira	아키라
 Akita	아키타
 Akiyama	아키야마
-Al	앨	알
+Al	알	앨
 Al Jazeera	알 자지라
 Alabama	알라바마	앨라배마
 Aladdin	알라딘
@@ -122,7 +122,7 @@ Alitalia	알리탈리아
 Alito	알리토
 Allah	알라
 Allawi	알라위
-Allen	알렌	앨렌
+Allen	알렌	앨런	앨렌
 Allende	아옌데
 Allison	앨리슨
 Alma	알마
@@ -153,7 +153,6 @@ Amir	아미르
 Amman	암만
 Amos	아모스
 Amotech	아모텍
-Amr	아므르
 Amsterdam	암스테르담
 Amundsen	아문센
 Amur	아무르
@@ -183,12 +182,10 @@ Android	안드로이드
 Andromeda	안드로메다
 Andy	앤디
 Anelka	아넬카
-Angel	에인절
 Angela	안젤라	앙겔라	앤젤라
 Angeles	엔젤레스
 Angelina	안젤리나
 Angelo	안젤로
-Angels	에인절스	엔젤스
 Angkor	앙코르
 Angola	앙골라
 Anguk	안국
@@ -207,7 +204,7 @@ Ansari	안사리
 Anseong	안성
 Antarctica	남극
 Anthocyanin	안토시아닌
-Anthony	안소니	안토니	앤서니	앤소니	앤쏘니	앤토니	앤써니
+Anthony	안소니	안토니	앤서니	앤소니	앤써니	앤쏘니	앤토니
 Antigone	안티고네
 Antigua	안티구아
 Antoine	앙투안
@@ -236,7 +233,7 @@ Aquino	아키노
 Arab	아랍
 Arab League	아랍연맹
 Arabian	아라비아
-Arabic	아랍어
+Arabic	아랍
 Arafat	아라파트
 Arai	아라이
 Aral Sea	아랄해
@@ -260,7 +257,7 @@ Arlington	알링턴
 Armageddon	아마겟돈
 Armani	아르마니	알마니
 Armenia	아르메니아
-Armitage	아미티지	아미타지
+Armitage	아미타지	아미티지
 Armstrong	암스트롱
 Arnold	아널드	아놀드
 Arroyo	아로요
@@ -303,13 +300,13 @@ Atari	아타리
 Athena	아테나
 Athens	아테네
 Atkins	앳킨스
-Atlanta	애틀랜타	애틀란타
-Atlantic	애틀랜틱	대서양
+Atlanta	애틀란타	애틀랜타
+Atlantic	대서양	애틀랜틱
 Atlas	아틀라스
 Atta	아타
 Atwood	애트우드
 Auckland	오클랜드
-Auction	옥션	Auction	경매
+Auction	Auction	경매	옥션
 Audi	아우디
 Audrey	오드리
 August	8월	어거스트	팔월
@@ -354,7 +351,6 @@ Baikal	바이칼
 Baikonur	바이코누르
 Bailey	베일리
 Baird	베어드
-Baker	베이커
 Baku	바쿠
 Baldwin	볼드윈
 Balhae	발해
@@ -488,7 +484,7 @@ Bethlehem	베들레헴
 Betsy	베시	벳시
 Betty	베티
 Beverly	베버리	베벌리	비버리	비벌리
-Beverly Hills	비벌리 힐스	비버리 힐즈
+Beverly Hills	비버리 힐즈	비벌리 힐스
 Bevin	베빈
 Beyonce	비욘세
 Bezos	베조스
@@ -523,7 +519,7 @@ Bloomberg	블룸버그
 Bloomfield	블룸필드
 Blue House	청와대
 Boa	보아
-Bob	보브	봅	밥
+Bob	밥	보브	봅
 Boba	보바
 Bobby	바비	보비
 Boca	보카
@@ -561,7 +557,7 @@ Boston	보스턴	보스톤
 Boswell	보스웰
 Bosworth	보스워스
 Bouillabaisse	부야베스
-Bourbon	버번	버번
+Bourbon	버번
 Bowen	보웬
 Boyle	보일
 Brad	브래드
@@ -616,11 +612,11 @@ Bronte	브론테
 Bronx	브롱크스
 Brook	브루크	브룩
 Brookings	브루킹스
-Brooklyn	브루클린	브룩클린	부룩클린
+Brooklyn	부룩클린	브루클린	브룩클린
 Brooks	브룩스
 Brosnan	브로스넌
 Bruce	부르스	브루스
-Bruce Lee	이소룡	부르스 리
+Bruce Lee	부르스 리	이소룡
 Bruins	브루인스
 Brunei	브루나이
 Brunel	브루넬
@@ -632,9 +628,9 @@ Bryce	브라이스
 Buchanan	뷰캐넌
 Bucharest	부쿠레슈티
 Bucheon	부천
-Buckingham	버킹엄	버킹햄	버킹검
+Buckingham	버킹검	버킹엄	버킹햄
 Budapest	부다페스트
-Buddha	부처	석가	불
+Buddha	부처	불	석가
 Buenos Aires	부에노스아이레스
 Buffalo	버팔로	버펄로
 Buffett	버핏
@@ -651,7 +647,7 @@ Burgundy	버건디	부르고뉴
 Burj	부르즈
 Burke	버크
 Burley	벌리
-Burma	버마	미얀마
+Burma	미얀마	버마
 Burrell	버렐
 Burt	버트
 Burundi	부룬디
@@ -663,7 +659,7 @@ Butler	버틀러
 Byron	바이런
 Byzantine	비잔틴
 Byzantium	비잔티움
-CAD	캐드	CAD
+CAD	CAD	캐드
 COEX	코엑스
 COEX Mall	코엑스몰
 COWON SYSTEM	코원시스템
@@ -685,7 +681,7 @@ Calgary	캘거리
 California	캘리포니아
 Callas	칼라스
 Calligraphy	서도
-Calvin	캘빈	켈빈	캐빈
+Calvin	캐빈	캘빈	켈빈
 Calypso	칼립소
 Camacho	카마초
 Camara	카마라
@@ -695,7 +691,7 @@ Cameron	카메론	캐머런	캐머론
 Cameron Diaz	카메론디아즈
 Cameroon	카메룬
 Camilla	카밀라
-Camille	카밀	카미유
+Camille	카미유	카밀
 Campbell	캠벨	캠블	캠프벨
 Campo	캄포
 Camus	카뮈
@@ -703,22 +699,20 @@ Can Tho	깐토	껀터	칸토
 Canaan	가나안
 Canada	캐나다
 Canadian	캐나다	캐나디안	캐내디언
-Canal	카날
 Canas	카나스
 Canberra	캔버라
 Cancun	칸쿤
-Cannes	칸	칸느	깐느
+Cannes	깐느	칸	칸느
 Canterbury	캔터베리
-Cantonese	광동어	광둥어
+Cantonese	광동	광둥
 Cantor	칸토어
 Cape Town	케이프 타운
 Capello	카펠로
 Cappadocia	카파도키아
-Caps	캡스
 Caracas	카라카스
 Cardiff	카디프
 Cardinals	카디널스
-Caribbean	카리브	카리브해
+Caribbean	카리브	캐러비언
 Carlo	카를로
 Carlos	카를로스	칼로스
 Carlson	칼슨
@@ -736,7 +730,7 @@ Carolyn	캐롤린
 Caron	캐론
 Carpenter	카펜터
 Carragher	캐러거
-Carrefour	카르푸	까르푸
+Carrefour	까르푸	카르푸
 Carreras	카레라스
 Carrington	캐링턴
 Carson	카슨
@@ -797,7 +791,7 @@ Changchun	장춘	창춘
 Changmin	창민
 Changwon	창원
 Channing	채닝
-Chaozhou	차오저우	조주
+Chaozhou	조주	차오저우
 Chaplin	채플린
 Chapman	채프먼
 Chardonnay	샤르도네
@@ -991,7 +985,6 @@ Cronin	크로닌
 Crosby	크로스비
 Crouch	크라우치
 Crowell	크로웰
-Crown	크라운
 Crusoe	크루소
 Cuba	쿠바
 Cubs	컵스
@@ -1008,7 +1001,7 @@ Cushing	쿠싱
 Cynthia	신시아
 Cyprus	키프로스
 Cyrus	사이러스	키루스
-Czech	체코	체코어
+Czech	체코
 Czechoslovakia	체코슬로바키아
 Da Vinci	다 빈치
 Dabotap	다보탑
@@ -1046,14 +1039,14 @@ Damian	데미안
 Damien	데미언
 Damon	데이먼
 Damyang	담양
-Dan	댄	단
+Dan	단	댄
 Dana	다나	데이나
 Dandong	단둥
 Dane	데인
 Daniel	다니엘	대니얼	대니엘
 Daniela	다니엘라
 Daniels	다니엘스
-Danish	덴마크어
+Danish	대니쉬	대니시	데니쉬	데니시	덴마크
 Danny	대니
 Dante	단테
 Danube	다뉴브
@@ -1074,10 +1067,9 @@ Davos	다보스
 Dawkins	도킨스
 Dawson	도슨
 Dayton	데이톤
-De	드
+De	데	드
 De Gaulle	드골
 Dead Sea	사해
-Dean	딘
 Dearborn	디어본
 Debbie	데비
 Deborah	데보라
@@ -1110,14 +1102,13 @@ Denver	덴버
 Denzel	덴젤
 Depot	디포
 Depp	뎁
-Der	데르
+Der	더	데르
 Derby	더비
 Derbyshire	더비셔
 Derek	데렉
 Des Moines	디모인
 Descartes	데카르트
 Desmond	데스몬드
-Detector	디텍터
 Detroit	디트로이트
 Deutsche	도이체	도이치
 Devin	데빈
@@ -1140,7 +1131,6 @@ Diddy	디디
 Didier	디디에르
 Diego	디에고
 Dietrich	디트리히
-Digest	다이제스트
 Digimon	디지몬
 Dilbert	딜버트
 Dili	딜리
@@ -1159,7 +1149,6 @@ Diouf	디우프
 Dirk	더크
 Disney	디즈니
 Diva	디바
-Divine	디바인
 Diwaniya	디와니야
 Dixie	딕시
 Dixon	딕슨
@@ -1179,6 +1168,7 @@ Domingo	도밍고
 Dominic	도미닉
 Dominican	도미니카
 Dominique	도미니크
+Don Quixote	돈키호테	동키호테
 Donahue	도나휴
 Donald	도날드	도널드
 Donaldson	도날드슨
@@ -1237,15 +1227,12 @@ Dupont	듀폰	듀퐁
 Duran	듀란
 Durbin	더빈
 Durga	두르가
-Durham	더햄
+Durham	더럼	더햄
 Dustin	더스틴
-Dusty	더스티
-Dutch	네덜란드	네덜란드어	더치
+Dutch	네덜란드	더치
 Dvorak	드보르작
-Dwarf	드워프
 Dwight	드와이트
 Dylan	딜란	딜런
-Dynamics	다이내믹스
 Earl Grey	얼 그레이
 East Africa	동 아프리카
 East Asia	동 아시아
@@ -1253,7 +1240,7 @@ East China Sea	동중국해
 East Germany	동독
 East India	동인도
 East Sea	동해
-Easter	이스터	부활절
+Easter	부활절	이스터
 Easter Island	이스터 섬
 Eastern Europe	동 유럽	동구
 Eastman	이스트먼
@@ -1320,26 +1307,24 @@ Elysee	엘리제
 Emerson	에머슨
 Emily	에밀리
 Eminem	에미넴
-Emirates	에미리트	에미레이트
+Emirates	에미레이트	에미리트
 Emma	에마	엠마
 Emmanuel	에마누엘	엠마누엘	엠마뉴엘
 Emory	에모리
 Empas	엠파스
-Empire	제국
 Enceladus	엔셀라두스	엔켈라두스
 Endeavor	인데버
 Enders	엔더스
 Energizer	에너자이저
 Engel	엥겔
 Engels	엥겔스
-England	잉글랜드	영국
-English	영어	영자	영국	영	잉글랜드
+England	영	영국	잉글랜드
+English	영	영국	잉글랜드
 Eno	에노
 Enoch	에녹
 Enrico	엔리코
 Enrique	엔리케
 Enron	엔론
-Epic	에픽
 Epicurus	에피쿠로스
 Epson	엡손
 Epstein	엡스타인
@@ -1400,12 +1385,12 @@ Evo	에보
 Evra	에브라
 Ewha	이화
 Exchange Bank	외환 은행
-Exeter	엑스터	엑시터	엑서터
+Exeter	엑서터	엑스터	엑시터
 Exorcism	엑소시즘
 Exorcist	엑소시스트
 Exxon	엑슨
 Ezra	에즈라
-FIFA	피파	FIFA
+FIFA	FIFA	피파
 FKI	전경련
 Fabio	파비오
 Fabius	파비우스
@@ -1416,12 +1401,10 @@ Fairfax	페어팩스
 Faisal	파이살
 Falklands	포클랜드
 Fallon	팰런	팰론
-Fallout	낙진
 Fallujah	팔루자
 Falun Gong	파룬궁
 Familia	파밀리아
 Far East	극동
-Farmer	파머
 Farrell	파렐	패럴
 Fatima	파티마
 Faulkner	포크너
@@ -1454,7 +1437,6 @@ Fidel	피델
 Fiesta	피에스타
 Figaro	피가로
 Fillmore	필모어
-Finite	유한
 Finland	핀란드
 Finley	핀리
 Fiona	피오나
@@ -1462,10 +1444,8 @@ Fiorina	피오리나
 Fisher	피셔
 Fitzgerald	피츠제랄드	피츠제럴드
 Flanders	플랑드르
-Fleece	플리스
 Fleming	플레밍
 Fletcher	플레처
-Flex	플렉스
 Flint	플린트
 Flora	플로라
 Florence	플로렌스	피렌체
@@ -1549,7 +1529,6 @@ Gallagher	갤러거
 Gallas	갈라스
 Gallo	갈로
 Galois	갈루아
-Gamble	갬블
 Gandalf	간달프
 Gandhi	간디
 Gando	간도
@@ -1566,7 +1545,6 @@ Gangwon	강원
 Gao	가오
 Gapyeong	가평
 Garcia	가르시아
-Garden	가든	정원	화원
 Gardner	가드너
 Gareth	가레스
 Garfield	가필드
@@ -1585,7 +1563,6 @@ Gaul	갈리아
 Gauss	가우스
 Gavin	가빈
 GeForce	지포스
-Gear	기어
 Gebrselassie	게브르셀라시에
 Gemma	젬마
 Genesis	제네시스	창세기
@@ -1593,9 +1570,8 @@ Geneva	제네바
 Genghis Khan	징기스 칸	칭기즈 칸
 Genie	지니
 Genoa	제노바	제노아
-Gentleman	신사
 Geoje	거제
-George	조지	죠지
+George	조오지	조지	죠오지	죠지
 George Washington	조지 워싱턴
 Georges	조르주
 Georgetown	조지타운
@@ -1605,9 +1581,9 @@ Gerald	제랄드	제럴드
 Geraldine	제랄딘
 Gerhard	게르하르트
 Germain	제르맹
-German	독어	독일	독일어
+German	독	독일
 Germanic	게르만
-Germany	독일
+Germany	독	독일
 Geronimo	제로니모
 Gertrude	거트루드
 Getty	게티
@@ -1640,7 +1616,7 @@ Giuliani	줄리아니
 Givenchy	지방시
 Gladstone	글래드스톤
 Gladwell	글래드웰
-Glasgow	글래스고
+Glasgow	글라스고	글래스고
 Gleason	글리슨
 Glen	글렌
 Glendale	글렌데일
@@ -1686,13 +1662,12 @@ Gould	굴드
 Goya	고야
 Goyang	고양
 Grady	그래디
-Graham	그래햄	그래험	그레이엄	그레이험
+Graham	그래엄	그래햄	그래험	그레이엄	그레이험
 Grammy	그래미
 Granada	그라나다
 Grand Canyon	그랜드 캐년	그랜드 캐니언	그랜드 케니언
 Grand National Party	한나라당
 Grande	그란데
-Grant	그란트	그랜트
 Granville	그랜빌
 Graz	그라츠
 Great Britain	대영 제국	영국
@@ -1726,9 +1701,8 @@ Guadalajara	과달라하라
 Guam	괌
 Guan Yu	관우
 Guangdong	광동	광둥
-Guangzhou	광저우
+Guangzhou	광저우	광주
 Guantanamo	관타나모
-Guardian	가디언
 Guatemala	과테말라
 Guell	구엘
 Guevara	게바라
@@ -1779,7 +1753,6 @@ Haiyan	하이옌
 Hakata	하카타
 Hakim	하킴
 Haksan	학산
-Hale	헤일
 Haley	헤일리
 Halifax	핼리팩스
 Halla	한라
@@ -1865,10 +1838,8 @@ Hatton	해튼
 Havana	아바나	하바나
 Havel	하벨
 Hawaii	하와이
-Hawk	호크
 Hawking	호킹
 Hawkins	호킨스
-Hawks	호크스
 Hayao	하야오
 Hayashi	하야시
 Hayden	헤이든
@@ -2003,7 +1974,6 @@ Honshu	혼슈
 Hoover	후버
 Hopkins	홉킨스
 Hopper	호퍼
-Horizon	호라이즌
 Hormuz	호르무즈
 Horowitz	호로위츠
 Horta	오르타
@@ -2039,10 +2009,8 @@ Hume	흄
 Humphrey	험프리
 Hun	훈
 Hunan	후난
-Hungarian	헝가리어
+Hungarian	헝가리
 Hungary	헝가리
-Hunt	헌트
-Hunter	헌터
 Huntington	헌팅턴
 Hurd	허드
 Hurley	헐리
@@ -2100,7 +2068,6 @@ Iljin	일진
 Illich	일리치
 Illinois	일리노이
 Immanuel	임마누엘
-Imperial	황성
 Imus	아이머스
 Inca	잉카
 Incheon	인천
@@ -2130,7 +2097,6 @@ Interpol	인터폴
 Inuit	이누이트
 Iowa	아이오와
 Ipswich	입스위치
-Ira	아이라
 Iran	이란
 Iraq	이라크
 Ireland	아일랜드
@@ -2153,8 +2119,8 @@ Ismael	이스마엘
 Israel	이스라엘
 Istanbul	이스탄불
 Itaewon	이태원
-Italian	이탈리아	이탈리	이태리
-Italy	이탈리아	이탈리	이태리
+Italian	이탈리	이탈리아	이태리
+Italy	이탈리	이탈리아	이태리
 Ithaca	이타카
 Ito	이토
 Ivan	이반
@@ -2189,18 +2155,18 @@ James	제임스	제임즈
 Jameson	제임슨
 Jamestown	제임스타운
 Jamie	제이미
-Jan	잰	1월
+Jan	1월	잰
 Jane	제인
 Janes	제인스
 Janet	자넷	재닛	쟈넷
 Jangsaengpo	장생포
-Janice	제니스	재니스
+Janice	재니스	제니스
 Jankovic	얀코비치
 Janssen	얀센
 Janus	야누스
 Japan	일	일본	재팬	저팬
 Japanese	일	일본	일본어	일본인	일어	일제
-Jared	제러드	자렛
+Jared	자렛	제러드
 Jarvis	자비스
 Jason	제이슨
 Jasper	재스퍼	제스퍼
@@ -2211,7 +2177,7 @@ Javed	자베드
 Javier	하비에르
 Jawad	자와드
 Jazeera	자지라
-Jean	쟝	장	진
+Jean	장	쟝	진
 Jeb	젭
 Jecheon	제천
 Jed	제드
@@ -2300,19 +2266,19 @@ Julio	줄리오	훌리오
 Julius	율리우스	줄리어스
 Jumong	주몽
 Jun Ho	준호
-June	준	6월
+June	6월	준
 Jung	융	정
 Jungle Book	정글북
 Junichi	주니치
 Junichiro	준이치로
 Junko	준코
 Juno	주노
-Jupiter	주피터
+Jupiter	목성	주피터	쥬피터
 Justice Department	법무부	사법부
 Justice Party	정의당
 Justin	저스틴
 KBS
-KEPCO	한전
+KEPCO	KEPCO	한국전력	한전
 KINTEX	킨텍스
 Kabul	카불
 Kafka	카프카
@@ -2330,7 +2296,7 @@ Kandinsky	칸딘스키
 Kane	케인
 Kangwon Land	강원 랜드
 Kansai	간사이
-Kansas	캔자스	캔자스
+Kansas	캔자스
 Kant	칸트
 Kanto	관동
 Kanye	카니예
@@ -2383,7 +2349,7 @@ Ken	켄
 Kendall	켄달
 Kendra	켄드라
 Kendrick	켄드릭
-Kenji	켄지
+Kenji	겐지	켄지
 Kennedy	케네디
 Kenneth	케네스
 Kenny	케니
@@ -2410,10 +2376,10 @@ Kia	기아
 Kibera	키베라
 Kidman	키드먼
 Kidzania	키자니아
-Kiev	키예프	키에브
+Kiev	키에브	키예프
 Kikuchi	키쿠치
 Kilimanjaro	킬리만자로
-Kim	킴	김
+Kim	김	킴
 Kim Hoon	김훈
 Kim Il	김일
 Kim Jin	김진
@@ -2426,7 +2392,6 @@ Kimura	기무라
 Kinder	킨더
 King Kong	킹콩
 King Sukjong	숙종
-Kings	킹스	킹즈
 Kingsley	킹슬리
 Kingston	킹스턴	킹스톤
 Kinsey	킨지
@@ -2437,14 +2402,11 @@ Kirkuk	키르쿠크	키리쿠크
 Kirov	키로프
 Kissinger	키신저
 Kisumu	키수무
-Kite	연이	카이트
 Klaus	클라우스
 Klein	클라인
 Klimt	클림트
 Klose	클로제	클로즈
 Knightley	나이틀리
-Knights	나이츠
-Knob	노브
 Knox	녹스
 Knoxville	녹스빌
 Knut	크누트
@@ -2464,7 +2426,7 @@ Konkuk University	건국대
 Kookmin Bank	KB	국민 은행
 Kookmin Card	국민 카드
 Koran	코란
-Korea	고려	대한민국	코리아	코리언	한	한국	한국어
+Korea	고려	대한민국	코리아	코리언	한	한국
 Korea Development Institute	한국 개발 연구원
 Korea Football Association	KFA	대한 축구 협회
 Korea Telecom	KT	한국 통신
@@ -2511,7 +2473,7 @@ Kyunghee	경희
 Kyunghee University	경희대
 Kyungmin	경민
 Kyushu	규슈	큐슈
-LAN	랜	LAN
+LAN	LAN	랜
 LCD TV
 LG	LG	엘지
 LG CNS
@@ -2557,7 +2519,7 @@ Larsson	라르손
 Las Vegas	라스 베가스	라스 베이거스
 Latch	래치
 Latif	라티프
-Latin	라틴	라틴어
+Latin	라틴
 Latin America	라틴 아메리카	중남미
 Latte	라떼	라테
 Latvia	라트비아
@@ -2585,7 +2547,6 @@ Lee Min Ho	이민호
 Lee Myung Bak	이명박
 Lee Seung Gi	이승기
 Leeds	리즈
-Legacy	레거시
 Legato	레가토
 Legolas	레골라스
 Lehman	레만	리만	리먼
@@ -2728,7 +2689,7 @@ Lydia	리디아
 Lyle	라일
 Lynch	린치
 Lyon	리옹	리용
-MBC
+MBC	MBC	문화방송
 Maasai	마사이족
 Mabinogi	마비노기
 MacArthur	맥아더
@@ -2758,7 +2719,6 @@ Magdalene	막달라
 Magellan	마젤란
 Maghreb	마그레브
 Magna Chip	매그나칩
-Magnet	마그넷
 Magritte	마그리트
 Maguire	맥과이어
 Mahathir	마하티르
@@ -2843,7 +2803,7 @@ Markus	마르쿠스
 Marlins	말린스
 Marlowe	말로우
 Marrakesh	마라케시
-Marriott	매리어트	메리어트	매리엇	메리엇
+Marriott	매리어트	매리엇	메리어트	메리엇
 Mars	마르스	마스	마즈	화성
 Marseille	마르세유	마르세이유
 Marsh	마쉬
@@ -2857,10 +2817,9 @@ Martinez	마르티네스	마르티네즈	마티네즈
 Martinique	마르티니크
 Martins	마틴스
 Marty	마티
-Marvel	마벨
 Marvin	마빈
 Marx	마르크스
-Mary	매리	메어리	메리
+Mary	매리	메리	메어리
 Maryland	메릴랜드
 Masahiko	마사히코
 Masai	마사이
@@ -2882,7 +2841,7 @@ Matsui	마쓰이
 Matsumoto	마츠모토
 Matsuoka	마츠오카
 Matsushita	마쓰시타
-Matt	맷	매트
+Matt	매트	맷
 Mattel	마텔
 Matterhorn	마터호른
 Matthew	마태	마태복음	매튜	메튜
@@ -2898,10 +2857,9 @@ Maya	마야
 Mayer	메이어
 Mayfield	메이필드
 Mayflower	메이플라워
-Mayo	메이요	마요
+Mayo	마요	메이요
 Mayweather	메이웨더
 Mazda	마쓰다	마즈다
-Maze	메이즈
 Mbeki	음베키
 McAfee	맥아피
 McBride	맥브라이드
@@ -2980,7 +2938,7 @@ Messina	메시나
 Meta	메타
 Metallica	메탈리카
 Mets	메츠
-Mexican	멕시칸
+Mexican	멕시칸	멕시컨	멕시코
 Mexico	멕시코
 Mexico City	멕시코 시티
 Meyer	마이어
@@ -3009,21 +2967,19 @@ Mikhail	미하일
 Mila	밀라
 Milan	밀라노	밀란
 Mildred	밀드레드
-Milestone	마일스톤
 Milford	밀포드
 Miller	밀러
 Millet	밀렛
-Mills	밀스	밀즈
 Milton	밀턴	밀튼
 Milwaukee	밀워키
 Mimi	미미
-Min	민
+Min	민 분
 Minami	미나미
 Minato	미나토
 Mindanao	민다나오
 Mindy	민디
 Minerva	미네르바
-Ming	밍	명
+Ming	명	밍
 Minji	민지
 Minneapolis	미니애폴리스
 Minnesota	미네소타
@@ -3123,7 +3079,6 @@ Mulder	멀더
 Muller	뮬러
 Mumbai	뭄바이
 Mummy	미라
-Munch	뭉크
 Munich	뮌헨
 Munsan	문산
 Murakami	무라카미
@@ -3134,12 +3089,10 @@ Muriel	뮤리엘
 Murphy	머피
 Murray	머레이
 Musharraf	무샤라프
-Mushroom	양송이
 Musk	머스크
 Mussolini	무솔리니
 Mustafa	무스타파
 Mustang	머스탱
-Mutual	상호
 Myanmar	미얀마
 Mycenae	미케네
 Myers	마이어스
@@ -3202,7 +3155,6 @@ Nathan	네이선	네이슨
 Nathaniel	나다니엘
 National Assembly	국회	의회
 National Security	국가 보안	국가 안보	국가 안전
-Nationwide	전국
 Nauru	나우루
 Nautilus	노틸러스
 Navajo	나바호
@@ -3221,7 +3173,7 @@ Nell	넬
 Nelson	넬슨
 Nemo	니모
 Nepal	네팔
-Neptune	넵튠
+Neptune	넵튠	해왕성
 Nero	네로
 Ness	네스
 Nesta	네스타
@@ -3281,7 +3233,7 @@ Nihon	니혼
 Niigata	니가타
 Nike	나이키
 Nikita	니키타
-Nikkei	닛케이	니케이
+Nikkei	니케이	닛케이
 Nikki	니키
 Nikolay	니콜라이
 Nile	나일
@@ -3302,7 +3254,6 @@ Nobel	노벨
 Nobel Peace Prize	노벨 평화상
 Nobel Prize	노벨	노벨 상
 Nobunaga	노부나가
-Node	노드
 Noel	노엘
 Nokia	노키아
 Nomura	노무라
@@ -3350,13 +3301,11 @@ Oaxaca	오악사카
 Oberon	오베론
 Obi	오비
 Obrador	오브라도르
-Observer	옵저버
 Obuchi	오부치
 Oceania	오세아니아
 Ochoa	오초아
 Octavia	옥타비아
 Octavian	옥타비아누스
-Octopus	옥토퍼스
 Oden	오든
 Odin	오딘
 Odori	오도리
@@ -3427,14 +3376,13 @@ Owens	오웬스
 Oxbridge	옥스브리지
 Oxfam	옥스팜
 Oxford	옥스퍼드	옥스포드
-Oyster	오이스터
 Oz	오즈
 Ozawa	오자와
 PDP TV
 PM ET	PM ET	동부 시간 오후
 POSCO	포스코
 Pablo	파블로
-Pacific	퍼시픽	태평양
+Pacific	태평양	퍼시픽
 Pacific Rim	환태평양
 Pacino	파치노
 Packard	팩커드
@@ -3450,7 +3398,6 @@ Palau	팔라우
 Palawan	팔라완
 Palermo	팔레르모
 Palin	페일린
-Palm	팜
 Palm Springs	팜스프링스
 Paltrow	팰트로
 Pamela	파멜라
@@ -3467,7 +3414,6 @@ Paolo	파올로
 Papa	파파
 Papua	파푸아
 Papua New Guinea	파푸아뉴기니
-Paradise	파라다이스
 Paradise Hotel	파라다이스 호텔
 Paraguay	파라과이
 Pareto	파레토
@@ -3507,7 +3453,7 @@ Paxnet	팍스넷
 Paypal	페이팔
 Peabody	피바디
 Peacock	피콕
-Pearl	진주
+Pearl	진주	펄
 Pearl Harbor	진주만
 Pearson	피어슨
 Pedro	페드로
@@ -3517,8 +3463,7 @@ Pelosi	펠로시
 Pena	페나
 Penang	페낭
 Penelope	페넬로페
-Peninsula	반도
-Pennsylvania	펜실베이니아
+Pennsylvania	펜실베니아	펜실베이니아
 Pepe	페페
 Pepsi	펩시
 PepsiCo	펩시코
@@ -3547,7 +3492,6 @@ Petrella	페트렐라
 Petri	페트리
 Petronas	페트로나스
 Petrov	페트로프
-Petty	페티
 Peugeot	푸조
 Pfizer	화이자
 Pharaoh	파라오
@@ -3562,7 +3506,7 @@ Philips	필립스
 Phnom Penh	프놈펜
 Phoenicia	페니키아
 Phoenician	페니키아
-Phoenix	피닉스	봉황
+Phoenix	봉황	피닉스
 Phuket	푸켓
 Piaget	피아제
 Picasso	피카소
@@ -3593,7 +3537,7 @@ Pixar	픽사
 Pizza Hut	피자헛
 Plaza Hotel	플라자 호텔
 Pleo	플레오
-Pluto	플루토
+Pluto	명왕성	플루토
 Plymouth	플리머스
 Poe	포우
 Pohang	포항
@@ -3615,7 +3559,6 @@ Popeye	뽀빠이
 Pororo	뽀로로
 Porsche	포르셰	포르쉐
 Port-au-Prince	포르토프랭스
-Porter	포터
 Portland	포틀랜드
 Portman	포트먼
 Porto	포르토	포르투
@@ -3654,7 +3597,7 @@ Princeton	프린스턴
 Pringles	프링글스
 Priscilla	프리실라
 Pritchard	프리차드	프리처드
-Prix	프릭스
+Prix	프리	프릭스
 Progressive Party	진보당
 Prometheus	프로메테우스
 Proust	프루스트
@@ -3664,8 +3607,7 @@ Proxy	프록시
 Prudential	프루덴셜
 Prussia	프러시아	프로이센
 Psy	싸이
-Psyche	프시케	정신
-Psycho	싸이코
+Psyche	정신	프시케
 Ptolemy	프톨레마이오스
 Puccini	푸치니
 Pudong	푸둥
@@ -3694,14 +3636,12 @@ Qinghai	칭하이
 Quaker	퀘이커
 Qualcomm	퀄컴
 Quebec	퀘벡	퀘벡주
-Queen Seondeok	선덕여왕
-Queens	퀸스
 Queensland	퀸즐랜드
 Quentin	쿠엔틴
 Quidditch	퀴디치
 Quincy	퀸시
-Quixote	돈키호테
-ROM	롬	ROM
+Quixote	키호테
+ROM	ROM	롬
 Rachel	레이철	레이첼
 Radcliffe	래드클리프
 Radel	라델
@@ -3741,7 +3681,7 @@ Reagan	레이건
 Rebecca	레베카
 Rebekah	리브가
 Red Cross	적십자
-Red Hat	레드햇
+Red Hat	레드햇	빨간 모자
 Red Sea	홍해
 Red Sox	레드삭스
 Redford	레드포드
@@ -3753,7 +3693,6 @@ Reeves	리브스
 Regan	리건
 Regent	리젠트
 Regina	레지나
-Registry	레지스트리
 Reigncom	레인콤
 Reina	레이나
 Rem	렘
@@ -3779,9 +3718,7 @@ Ricardo	리카도	리카르도
 Richard	리차드	리챠드	리처드	리쳐드	리하르트
 Richards	리차즈	리처즈
 Richardson	리차드슨	리처드슨
-Richer	리처
 Richmond	리치먼드	리치몬드
-Rick	릭
 Ricky	리키
 Ridley	리들리
 Rihanna	리한나
@@ -3792,12 +3729,10 @@ Ripley	리플리
 Rita	리타
 Ritz	리츠
 Rivera	리베라
-Riverside	리버사이드
 Rivet	리벳
 Riviera	리비에라
 Riyadh	리야드
 Roald	로알드
-Rob	롭
 Robben	로벤
 Robert	로버트	로베르
 Roberta	로버타	로베르타
@@ -3815,7 +3750,6 @@ Rockefeller	록펠러
 Rockefeller Center	록펠러 센터
 Rockies	로키스
 Rockwell	로크웰	록웰
-Rocky	록키
 Rocky Mountains	로키 산맥
 Roddick	로딕
 Rodeo	로데오
@@ -3882,8 +3816,6 @@ Rudolf	루돌프
 Rudy	루디
 Rufus	루퍼스
 Rumsfeld	럼스펠드	럼즈펠드
-Runner	러너	주자
-Runtime	런타임
 Rupert	루퍼트
 Ruskin	러스킨
 Russell	러셀
@@ -3896,7 +3828,7 @@ SBS
 SDI
 SDS
 SK Telecom	SK 텔레콤	SKT
-SM	에스엠
+SM	SM	에스엠
 Saakashvili	사카쉬빌리
 Sabah	사바
 Sable	세이블
@@ -3913,7 +3845,6 @@ Saha	사하
 Sahara	사하라
 Saigon	사이공
 Sailor	세일러
-Saint	세인트
 Saipan	사이판
 Saitama	사이타마
 Saito	사이토
@@ -3968,7 +3899,6 @@ Sandinista	산디니스타
 Sandler	샌들러
 Sandra	산드라	샌드라
 Sandro	산드로
-Sands	샌즈
 Sandy	샌디
 Sanford	샌포드
 Sangam	상암
@@ -3999,7 +3929,7 @@ Saturn	새턴	토성
 Saud	사우드
 Saudi Arabia	사우디	사우디아라비아
 Saul	사울
-Saunders	손더스	선더스
+Saunders	선더스	손더스
 Saussure	소쉬르
 Savoy	사보이
 Sawyer	소여
@@ -4026,7 +3956,7 @@ Schwarzenegger	슈왈제네거	슈워제네거
 Scolari	스콜라리
 Scorsese	스콜세지
 Scott	스캇	스코트	스콧
-Scottish	스코티쉬	스코티시	스코틀랜드
+Scottish	스코틀랜드	스코티쉬	스코티시
 Scotty	스코티
 Scranton	스크랜턴
 Scripps	스크립스
@@ -4057,6 +3987,7 @@ Seocho	서초
 Seodaemun	서대문
 Seokguram	석굴암
 Seomjin River	섬진강
+Seondeok	선덕
 Seongnam	성남
 Seosan	서산
 Seoul	서울
@@ -4083,7 +4014,7 @@ Shalom	샬롬
 Shana	샤나
 Shandong	산동	산둥
 Shane	셰인	쉐인
-Shanghai	상하이	샹하이	상해
+Shanghai	상하이	상해	샹하이
 Shannon	샤논	섀넌
 Shaolin	소림
 Shapiro	샤피로
@@ -4091,7 +4022,6 @@ Shaquille	샤킬
 Sharaf	샤라프
 Sharapova	샤라포바
 Sharif	샤리프
-Shark	샤크
 Sharma	샤르마
 Sharon	샤론
 Shaukat	샤우카트
@@ -4100,17 +4030,15 @@ Sheffield	셰필드
 Sheila	쉴라
 Shelby	셸비	쉘비
 Sheldon	쉘든
-Shell	셸	쉘
 Shelly	셸리	쉘리
 Shelton	쉘턴	쉘튼
 Shenzhen	심천
 Shenzhou	선저우
-Shepherd	쉐퍼드
-Sherbet	샤베트
+Sherbet	샤베트	셔벗
 Sherlock	셜록
 Sherman	셔먼
 Sherpa	셰르파
-Sherry	쉐리	셰리
+Sherry	셰리	쉐리
 Sherwood	셔우드
 Shetland	셰틀랜드
 Shibuya	시부야
@@ -4131,13 +4059,12 @@ Shinyoung	신영
 Shirley	셜리
 Shoichi	쇼이치
 Shoji	쇼지
-Shore	쇼어
 Shrek	슈렉
 Shriver	슈라이버
 Shwe	슈웨
 Siam	시암
 Siberia	시베리아
-Siberian	시베리안
+Siberian	시베리아	시베리안
 Sichuan	쓰촨
 Sicily	시실리	시칠리아
 Siddhartha	싯다르타
@@ -4159,14 +4086,14 @@ Simpson	심슨	심프슨
 Sinai	시나이
 Sinatra	시나트라
 Sinclair	싱클레어
-Singapore	싱가포르
+Singapore	싱가포르	싱가폴
 Singh	싱
 Sinpo	신포
 Sinuiju	신의주
 Sistani	시스타니
 Sistar	시스타
 Sistine	시스티나
-Skull	스컬	해골	두개골
+Skull	두개골	스컬	해골
 Skype	스카이프
 Sloan	슬로언	슬론
 Sloane	슬론
@@ -4228,7 +4155,6 @@ Spain	스패니쉬	스패니시	스페인	스페인어	에스파냐
 Sparks	스팍스
 Sparta	스파르타
 Spartacus	스파르타쿠스
-Spears	스피어스
 Specter	스펙터
 Spence	스펜스
 Spiderman	스파이더맨
@@ -4254,7 +4180,6 @@ Stapleton	스테이플턴
 Star Trek	스타 트렉
 Star Wars	스타 워즈
 State Department	국무부
-Stealth	스텔스
 Steelers	스틸러스
 Steen	스틴
 Stefan	스테판
@@ -4265,7 +4190,6 @@ Steinbrenner	스타인브레너
 Stephanie	스테파니
 Stephen	스티븐
 Sterling	스털링
-Stern	선미	스턴
 Steve	스티브
 Stevie	스티비
 Steward	스튜어드
@@ -4281,8 +4205,6 @@ Stratford	스트랫포드
 Strauss	슈트라우스	스트라우스
 Stravinsky	스트라빈스키
 Strel	스트렐
-Strider	스트라이더
-Striker	스트라이커
 Stringer	스트링거
 Strobe	스트로브
 Stuttgart	슈투트가르트
@@ -4305,7 +4227,6 @@ Sung Yuri	성유리
 Sungjin	성진
 Sungkyunkwan	성균관
 Sungnyemun	숭례문
-Suns	선스
 Suntory	산토리
 Super Junior	슈쥬	슈퍼주니어
 Superman	수퍼맨	슈퍼맨
@@ -4324,7 +4245,6 @@ Sven	스벤
 Svetlana	스베틀라나
 Swahili	스와힐리어
 Swami	스와미
-Swan	스완
 Swansea	스완지
 Swanson	스완슨
 Swatch	스와치
@@ -4334,6 +4254,7 @@ Sweeney	스위니
 Swenson	스웬슨
 Swinton	스윈튼
 Swiss	스위스
+Switzerland	스위스
 Sydney	시드니
 Sylvester	실베스타	실베스터
 Sylvia	실비아
@@ -4358,7 +4279,7 @@ Tahir	타히르
 Tahiti	타히티
 Tahoe	타호
 Tahrir	타흐리르
-Taipei	타이베이
+Taipei	타이베이	타이페이
 Taiwan	대만	타이완
 Taizhou	타이저우
 Taj Mahal	타지마할
@@ -4378,7 +4299,6 @@ Tamil	타밀	타밀족
 Tammy	태미
 Tampa	탬파
 Tamura	타무라
-Tan	탠
 Tanabe	다나베
 Tanaka	다나카	타나카
 Tangier	탕헤르
@@ -4401,12 +4321,11 @@ Tate	테이트
 Tatiana	타티아나
 Tatum	테이텀
 Taurus	토러스
-Taylor	테일러
 Tbilisi	트빌리시
 Tchaikovsky	차이코프스키	차이콥스키
 Technica	테크니카
 Ted	테드
-Teddy	테디	곰 인형
+Teddy	곰 인형	테디
 Teheran	테헤란
 Tel Aviv	텔 아비브
 Telefonica	텔레포니카
@@ -4414,7 +4333,7 @@ Telson	텔슨
 Telson Electronics	텔슨 전자
 Tempelhof	템펠호프
 Templeton	템플턴
-Tempura	뎀뿌라	덴뿌라
+Tempura	덴뿌라	뎀뿌라
 Tenet	테닛
 Tennessee	테네시
 Tennyson	테니슨
@@ -4436,7 +4355,6 @@ Thomas	토마스	토머스
 Thompson	톰슨
 Thor	토르
 Thornton	손튼
-Thread	스레드
 Three Musketeers	삼총사
 Thrunet	두루넷
 TiVo	티보
@@ -4475,7 +4393,7 @@ Toffler	토플러
 Togo	토고
 Tokugawa	도쿠가와
 Tokuyama	도쿠야마
-Tokyo	도쿄	토쿄	동경
+Tokyo	도쿄	동경	토쿄
 Toledo	톨레도
 Tolkien	톨킨
 Tolstoy	톨스토이
@@ -4515,7 +4433,6 @@ Trent	트렌트
 Trenton	트렌턴
 Trevi	트레비
 Trezeguet	트레제게
-Triangle	삼각지
 Tribune	트리뷴
 Trinidad	트리니다드
 Trinity	트리니티
@@ -4539,7 +4456,7 @@ Tunisia	튀니지
 Tupac	투팍
 Turandot	투란도트
 Turing	튜링
-Turkish	터키어
+Turkish	터어키	터키
 Turkmenistan	투르크메니스탄
 Turner	터너
 Turpin	터핀
@@ -4588,10 +4505,9 @@ Ural	우랄
 Uribe	우리베
 Uruguay	우루과이
 Urumqi	우루무치
-Usher	어셔
 Utah	유타
 Uzbekistan	우즈베키스탄	우즈벡
-VAN	반	밴	VAN
+VAN	VAN	반	밴
 VANK	반크
 Vader	베이더
 Valdes	발데스
@@ -4611,10 +4527,9 @@ Vargas	바르가스
 Vatican	바티칸
 Vegas	베가스
 Velazquez	벨라스케스	벨라스케즈
-Vendor	벤더
 Venetian	베네치아
 Venezuela	베네수엘라
-Venice	베니스	베네치아
+Venice	베네치아	베니스
 Venter	벤터
 Venus	금성	비너스
 Vera	베라
@@ -4625,8 +4540,6 @@ Vernon	버논
 Veron	베론
 Versace	베르사체
 Versailles	베르사유	베르사이유
-Veteran	노장
-Vicious	비셔스
 Vicky	비키
 Victor	빅터	빅토르
 Victoria	빅토리아
@@ -4640,7 +4553,7 @@ Vince	빈스
 Vincent	빈센트
 Vinci	빈치
 Virginia	버지니아
-Visa	비자	VISA
+Visa	VISA	비자
 Visa Card	비자카드
 Vishnu	비슈누
 Vivaldi	비발디
@@ -4656,7 +4569,6 @@ Volgograd	볼고그라드
 Volkswagen	폭스바겐
 Voltaire	볼테르
 Volvo	볼보
-Voucher	바우처
 Vronsky	브론스키
 Wade	웨이드
 Wagner	바그너	와그너
@@ -4688,7 +4600,6 @@ Warner	워너
 Warnock	워녹
 Warp	워프
 Warren	워런	워렌
-Warriors	워리어스
 Warsaw	바르샤바
 Warwick	워릭	워윅
 Waseda	와세다
@@ -4719,7 +4630,6 @@ Weiss	와이스
 Welch	웰치
 Weldon	웰든
 Weller	웰러
-Wellington	웰링턴
 Wells	웰스	웰즈
 Welsh	웰쉬	웰시
 Wembley	웸블리
@@ -4754,7 +4664,6 @@ Whitman	위트먼	휘트먼
 Whitmore	휘트모어
 Whitney	휘트니
 Whois	후이즈
-Wicked	위키드
 Wiesbaden	비스바덴
 Wight	와이트
 Wikileaks	위키리크스
@@ -4789,7 +4698,7 @@ Winona	위노나
 Winslet	윈슬렛
 Winston	윈스턴
 Winstone	윈스톤
-Winters	윈터스	윈터즈
+Winters	겨울	윈터스	윈터즈
 Wisconsin	위스콘신
 Witherspoon	위더스푼
 Wittgenstein	비트겐슈타인
@@ -4800,7 +4709,6 @@ Wonder Girls	원더걸스
 Wonderland	원더랜드
 Wong	웡
 Wonjin	원진
-Wooden	우든
 Woodrow	우드로우
 Woodstock	우드스톡
 Woodward	우드워드
@@ -4846,7 +4754,7 @@ Yangon	양곤
 Yangpyeong	양평
 Yangtze	양쯔강
 Yangzhou	양저우
-Yankees	양키스
+Yankees	양키스	양키즈
 Yantai	옌타이
 Yao Ming	야오밍
 Yasin	야신
@@ -4926,57 +4834,53 @@ Zhou Enlai	저우언라이
 Zidane	지단
 Zimbabwe	짐바브웨
 Zimmer	짐머
-Zimmerman	짐머만	짐머맨	지머맨
+Zimmerman	지머맨	짐머만	짐머맨
 Zinedine	지네딘
 Zion	시온
 Zoroaster	조로아스터
 Zucker	주커
 Zuckerberg	저커버그	주커버그
-Zurich	취리히	쮜리히
+Zurich	쮜리히	취리히
 Zvonareva	즈보나레바
-alien	에이리언	에일리언	외계인
 ambassador	대사	앰배서더
 antibiotic	항생
 apocalypse	묵시록
-apple	애플	사과
+apple	사과	애플
 backbone	기간	백본
 capone	카포네
-cigar	시거	시가
-curry	커리	카레
-dragon	용	드래곤
-duke	듀크	공작
-eBay	이베이	eBay
-earl	얼	백작
-evolution	진화	에볼루션
+cigar	담배	시가	시거
+curry	카레	커리
+dragon	드래곤	용
+duke	공작	듀크
+eBay	eBay	이베이
+earl	백작	얼
 flea market	벼룩 시장	플리 마켓
 full browsing	풀 브라우징
 full house	풀 하우스
 gay bar	게이바
-genius	천재	지니어스
 green house	그린 하우스
 high five	하이 파이브
 human rights	인권
 iced tea	아이스 티
 lead free	무연
-liberty	리버티	자유
 meteor shower	유성우
-millionaire	밀리어네어	백만장자
 mini bar	미니 바
+peninsula	반도
 pepper	페퍼	후추
-prince	프린스	왕자	군주	왕
-princess	프린세스	공주
+prince	군주	왕	왕자	프린스
+princess	공주	프린세스
 regular expression	정규식	정규표현식
+runtime	런타임
 shipbuilding	조선
 sign language	수화
 sneakers	스니커즈	운동화
-steering	스티어링
 stomach cancer	위암
 sulfuric acid	황산
 summer	서머	여름	하계
 the US	미	미국
-turkey	터키	칠면조
-vice president	부사장	부통령	부총장	부회장
+turkey	칠면조	터어키	터키
+vice president	부사장	부총장	부통령	부회장
 vocal cord	성대
 whaling	포경
 white night	백야
-winter	윈터	겨울	추위
+winter	겨울	동계	윈터	추위
