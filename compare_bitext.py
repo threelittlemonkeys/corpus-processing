@@ -68,8 +68,9 @@ def compare_bitext(action, key, flt, filename):
     print("%d errors" % num_errors, file = sys.stderr)
 
 if __name__ == "__main__":
-    if len(sys.argv) != 4 \
+    if len(sys.argv) != 5 \
     or sys.argv[1] not in ("dup", "uniq") \
-    or sys.argv[2] not in ("src", "tgt", "any", "both"):
+    or sys.argv[2] not in ("raw", "norm") \
+    or sys.argv[3] not in ("src", "tgt", "any", "both"):
         sys.exit("Usage: %s dup|uniq raw|norm src|tgt|any|both ref < txt" % sys.argv[0])
     compare_bitext(*sys.argv[1:])
