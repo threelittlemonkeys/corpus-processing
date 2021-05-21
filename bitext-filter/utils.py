@@ -46,7 +46,6 @@ def log_error(code):
 
 def normalize(txt):
     txt = re.sub("\s+", " ", txt)
-    txt = re.sub("(?<=[0-9]),(?=[0-9]{3})", "", txt)
     txt = txt.lower()
     txt = txt.strip()
     return txt

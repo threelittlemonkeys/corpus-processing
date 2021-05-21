@@ -1,5 +1,5 @@
 from utils import *
-from lexicon import lexicon 
+from lexicon import lexicon
 
 def corpus_filter(src_lang, tgt_lang, filename):
 
@@ -96,14 +96,15 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("LONG_WORD_IN_TGT")
 
         if src_lang == "en" and tgt_lang == "ko":
-            s, t = s2, t1.replace(" ", "")
+            s, t = s2, re.sub("(?<=[^a-z]) (?=[a-z])", "", t1)
         m0, m1 = lxc.search(s, t)
         if len(m0) != len(m1):
             '''
-            print(s0)
-            print(t0)
-            for a, b in m0.items():
-                print(a, *b, sep = "\t")
+            print("src", s0, sep = "\t")
+            print("tgt", t0, sep = "\t")
+            for w in m0:
+                if w not in m1:
+                    print("", w, *m0[w], sep = "\t")
             print()
             '''
             log_error("ENTITY_MISMATCH")
