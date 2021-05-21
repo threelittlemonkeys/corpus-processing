@@ -3,6 +3,7 @@
 AM ET	동부 시간 오전
 AMOLED
 ANA
+AP	AP	연합 통신
 ASEAN	아세안
 Aaron	아론	애런	에런
 Abba	아바
@@ -220,7 +221,6 @@ Anyang	안양
 Aoki	아오키
 Aoyama	아오야마
 Aozora	아오조라
-AP	AP	연합 통신
 Apache	아파치
 Apex	에이펙스
 Apgujeong	압구정
@@ -278,7 +278,7 @@ Asha	아샤
 Ashley	애쉴리	애슐리
 Ashton	애쉬턴	애쉬톤	애쉬튼	애슈턴
 Asia	아시아	아시안
-Asia Pacific	아태	아시아 태평양
+Asia Pacific	아시아 태평양	아태
 Asian Development Bank	아시아 개발 은행
 Asiana Airlines	아시아나항공
 Asianux	아시아눅스
@@ -482,7 +482,7 @@ Betancourt	베탕쿠르
 Beth	베스
 Bethany	베서니
 Bethesda	베데스다
-Bethlehem	베들레헴	베들레햄
+Bethlehem	베들레햄	베들레헴
 Betsy	베시	벳시
 Betty	베티
 Beverly	베버리	베벌리	비버리	비벌리
@@ -1489,7 +1489,7 @@ Fremont	프리몬트
 French	불어	프랑스	프랑스어	프랑스인	프렌치	후렌치
 Fresno	프레즈노
 Freud	프로이드	프로이트
-Friday	금요일	프라이데이
+Friday	금    금요일	프라이데이
 Friedman	프리드만	프리드먼
 Friedrich	프리드리히
 Frisbee	프리스비
@@ -3025,6 +3025,7 @@ Mona	모나
 Mona Lisa	모나리자
 Monaco	모나코
 Monarch	모나크
+Monday	월	월요일
 Monde	몽드
 Mondrian	몬드리안
 Monet	모네
@@ -3425,7 +3426,7 @@ Paris	파리	파리스	패리스
 Park Jin	박진
 Park Shin Yang	박신양
 Parker	파커
-Parkinson	파킨슨	파키슨
+Parkinson	파키슨	파킨슨
 Parma	파르마
 Parry	패리
 Parsons	파슨스
@@ -4360,6 +4361,7 @@ Thor	토르
 Thornton	손튼
 Three Musketeers	삼총사
 Thrunet	두루넷
+Thursday	목    목요일
 TiVo	티보
 Tia	티아
 Tiana	티아나
@@ -4418,7 +4420,7 @@ Toon	툰
 Toronto	토론토
 Torre	토레
 Torres	토레스
-Tortilla	토르티야	또르띠야
+Tortilla	또르띠야	토르티야
 Toshiba	도시바
 Toto	토토
 Totoro	토토로
@@ -4452,6 +4454,7 @@ Ttukseom	뚝섬
 Tucci	투치
 Tucker	터커
 Tudor	튜더
+Tuesday	화	화요일
 Tuner	튜너
 Tunguska	퉁구스카
 Tunis	튀니스
@@ -4621,6 +4624,7 @@ Weaver	위버
 Weber	베버	웨버
 Webster	웹스터
 Webzen	웹젠
+Wednesday	수	수요일
 Wegener	베게너
 Weibo	웨이보
 Weihai	웨이하이
