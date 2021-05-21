@@ -6,7 +6,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
     print("src_lang = %s" % src_lang, file = sys.stderr)
     print("tgt_lang = %s" % tgt_lang, file = sys.stderr)
 
-    lex = lexicon(src_lang, tgt_lang)
+    lxc = lexicon(src_lang, tgt_lang)
 
     ln_err = 0
     ln_sum = 0
@@ -97,12 +97,16 @@ def corpus_filter(src_lang, tgt_lang, filename):
 
         if src_lang == "en" and tgt_lang == "ko":
             s, t = s2, t1.replace(" ", "")
-        m = lex.search(s, t)
-        if None in m.values():
+        m0, m1 = lxc.search(s, t)
+        if len(m0) != len(m1):
+            '''
+            print(s0)
+            print(t0)
+            for a, b in m0.items():
+                print(a, *b, sep = "\t")
+            print()
+            '''
             log_error("ENTITY_MISMATCH")
-            for a, b in m.items():
-                if b == None:
-                    print(a, s0, t0, sep = "\t")
 
         '''
         src_nums = word_to_number(src, src_lang)

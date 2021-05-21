@@ -16,31 +16,31 @@ class lexicon(): # bilingual lexicon
         for i, line in enumerate(fo):
             if not re.match("^[^\t]+(\t[^\t]+)*\n", line):
                 sys.exit("Error: invalid format in %s" % filename)
-            src, *tgt = line.strip().split("\t")
-            src = src.lower()
-            tgt = [w.lower().replace(" ", "") for w in tgt]
-            if not tgt:
-                tgt.append(src)
-            self.data[src] = tgt
+            a0, *b0 = line.strip().split("\t")
+            a1 = a0.lower()
+            b1 = [w.lower().replace(" ", "") for w in b0]
+            if not b1:
+                b0.append(a0)
+                b1.append(a1)
+            self.data[a1] = [a0, b0, b1]
         fo.close()
 
     def search(self, src, tgt):
-        m = dict()
+        m0 = dict()
+        m1 = dict()
         i = 0
         while i < len(src):
             for j in range(self.maxlen, 0, -1):
-                w = " ".join(src[i:i + j])
-                if w in self.data:
-                    m[w] = None
+                a1 = " ".join(src[i:i + j])
+                if a1 in self.data:
+                    a0, b0, b1 = self.data[a1]
+                    m0[a0] = b0
+                    for b1 in b1:
+                        if b1 in tgt:
+                            m1[a0] = b1
+                            break
                     i += j
                     break
             else:
                 i += 1
-        if not m:
-            return m
-        for a in m:
-            for b in self.data[a]:
-                if b in tgt:
-                    m[a] = b
-                    break
-        return m
+        return m0, m1
