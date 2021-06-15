@@ -17,6 +17,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
     fb = open(filename + ".flt.out", "w")
     fc = open(filename + ".flt.log", "w")
 
+    k = 1
     for line in fo:
         error_log.clear()
 
@@ -99,15 +100,14 @@ def corpus_filter(src_lang, tgt_lang, filename):
             s, t = s2, re.sub("(?<=[^a-z]) (?=[a-z])", "", t1)
         m0, m1 = lxc.search(s, t)
         if len(m0) != len(m1):
-            '''
-            print("src", s0, sep = "\t")
-            print("tgt", t0, sep = "\t")
+            print(k, "src", s0, sep = "\t")
+            print(k, "tgt", t0, sep = "\t")
             for w in m0:
                 if w not in m1:
-                    print("", w, *m0[w], sep = "\t")
+                    print(k, "", w, *m0[w], sep = "\t")
             print()
-            '''
             log_error("ENTITY_MISMATCH")
+            k += 1
 
         '''
         src_nums = word_to_number(src, src_lang)
