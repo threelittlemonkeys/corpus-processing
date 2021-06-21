@@ -8,11 +8,14 @@ class lexicon(): # bilingual lexicon
         self.src_lang = src_lang
         self.tgt_lang = tgt_lang
         self.data = dict()
+        self.maxlen = 0
         self.load_data("lexicon.%s%s" % (src_lang, tgt_lang))
-        self.maxlen = max(map(len, self.data))
 
     def load_data(self, filename):
-        fo = open(self.path + filename + ".tsv")
+        filename = self.path + filename + ".tsv"
+        if not os.path.isfile(filename):
+            return
+        fo = open(filename)
         for i, line in enumerate(fo):
             if not re.match("^[^\t]+(\t[^\t]+)*\n", line):
                 sys.exit("Error: invalid format in %s" % filename)
@@ -24,6 +27,7 @@ class lexicon(): # bilingual lexicon
                 b1.append(a1)
             self.data[a1] = [a0, b0, b1]
         fo.close()
+        self.maxlen = max(map(len, self.data))
 
     def search(self, src, tgt):
         m0 = dict()

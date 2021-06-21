@@ -15,7 +15,7 @@ def replace_text_by_id(filename):
         if idx in pl:
             print(idx, pl[idx], sep = "\t", end = "")
             continue
-        print(idx, line, sep = "\t", end = "")
+        print(line, end = "")
 
 if __name__ == "__main__":
     if len(sys.argv) != 2:

@@ -96,8 +96,11 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
+        '''
+        s, t = "", ""
         if src_lang == "en" and tgt_lang == "ko":
             s, t = s2, re.sub("(?<=[^a-z]) (?=[a-z])", "", t1)
+
         m0, m1 = lxc.search(s, t)
         if len(m0) != len(m1):
             print(k, "src", s0, sep = "\t")
@@ -109,7 +112,6 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("ENTITY_MISMATCH")
             k += 1
 
-        '''
         src_nums = word_to_number(src, src_lang)
         tgt_nums = word_to_number(tgt, tgt_lang)
         nums = src_nums.symmetric_difference(tgt_nums)

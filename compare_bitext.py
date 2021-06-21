@@ -22,9 +22,8 @@ def compare_bitext(action, key, flt, filename):
     num_sents = 0
     num_errors = 0
 
-    for line in sys.stdin:
+    for idx, line in enumerate(sys.stdin, 1):
         line = line.strip()
-        num_sents += 1
 
         if line.count("\t") != 1:
             num_errors += 1
@@ -62,9 +61,11 @@ def compare_bitext(action, key, flt, filename):
                 flag = True
 
         if flag:
-            print("%d\t%s" % (num_sents, line))
+            print("%d\t%s" % (idx, line))
+            num_sents += 1
 
-    print("%d sentences" % num_sents, file = sys.stderr)
+    print("%d sentences in total" % idx, file = sys.stderr)
+    print("%d sentences matched" % num_sents, file = sys.stderr)
     print("%d errors" % num_errors, file = sys.stderr)
 
 if __name__ == "__main__":
