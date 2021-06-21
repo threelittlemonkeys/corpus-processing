@@ -7,7 +7,7 @@ def normalize(x):
     return x
 
 def pivot_bitext(fn_src, src_idx, fn_tgt, tgt_idx):
-    pool = {}
+    pl = {}
     src_idx = int(src_idx)
     tgt_idx = int(tgt_idx)
 
@@ -18,7 +18,7 @@ def pivot_bitext(fn_src, src_idx, fn_tgt, tgt_idx):
             continue
         src = pair[src_idx]
         pivot = normalize(pair[1 - src_idx])
-        pool[pivot] = src
+        pl[pivot] = src
     fo.close()
 
     fo = open(fn_tgt)
@@ -28,8 +28,8 @@ def pivot_bitext(fn_src, src_idx, fn_tgt, tgt_idx):
             continue
         tgt = pair[tgt_idx]
         pivot = normalize(pair[1 - tgt_idx])
-        if pivot in pool:
-            print(pool[pivot], tgt, sep = "\t")
+        if pivot in pl:
+            print(pl[pivot], tgt, sep = "\t")
     fo.close()
 
 if __name__ == "__main__":

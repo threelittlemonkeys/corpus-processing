@@ -2,7 +2,7 @@ import sys
 import re
 import json
 
-pool = dict()
+pl = dict()
 RE_AL = re.compile("[A-Za-z\uAC00-\uD7AF]")
 
 def normalize(line):
@@ -23,9 +23,9 @@ def dump(obj):
                 continue
             if not RE_AL.search(line):
                 continue
-            if line in pool:
+            if line in pl:
                 continue
-            pool[line] = True
+            pl[line] = True
             print(line)
         return
 

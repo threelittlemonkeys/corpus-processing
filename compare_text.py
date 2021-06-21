@@ -8,18 +8,18 @@ def normalize(x):
 
 def compare_text(action, key, filename):
 
-    pool = {}
+    pl = {}
     fo = open(filename)
     for line in fo:
         norm = normalize(line) if key == "norm" else line
-        pool[norm] = line
+        pl[norm] = line
     fo.close()
 
     for line in sys.stdin:
         norm = normalize(line) if key == "norm" else line
-        if action == "dup" and norm in pool:
+        if action == "dup" and norm in pl:
             print(line, end = "")
-        if action == "uniq" and norm not in pool:
+        if action == "uniq" and norm not in pl:
             print(line, end = "")
 
 if __name__ == "__main__":

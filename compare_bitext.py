@@ -8,15 +8,15 @@ def normalize(x):
 
 def compare_bitext(action, key, flt, filename):
 
-    pool = {}
+    pl = {}
     fo = open(filename)
     for line in fo:
         src, tgt = line.split("\t")
         if key == "norm":
             src = normalize(src)
             tgt = normalize(tgt)
-        pool[src] = True
-        pool[tgt] = True
+        pl[src] = True
+        pl[tgt] = True
     fo.close()
 
     num_sents = 0
@@ -42,23 +42,23 @@ def compare_bitext(action, key, flt, filename):
         flag = False
 
         if action == "dup":
-            if flt == "src" and src not in pool:
+            if flt == "src" and src not in pl:
                 flag = True
-            if flt == "tgt" and tgt in pool:
+            if flt == "tgt" and tgt in pl:
                 flag = True
-            if flt == "any" and (src in pool or tgt in pool):
+            if flt == "any" and (src in pl or tgt in pl):
                 flag = True
-            if flt == "both" and (src in pool and tgt in pool):
+            if flt == "both" and (src in pl and tgt in pl):
                 flag = True
 
         if action == "uniq":
-            if flt == "src" and src not in pool:
+            if flt == "src" and src not in pl:
                 flag = True
-            if flt == "tgt" and tgt not in pool:
+            if flt == "tgt" and tgt not in pl:
                 flag = True
-            if flt == "any" and (src not in pool or tgt not in pool):
+            if flt == "any" and (src not in pl or tgt not in pl):
                 flag = True
-            if flt == "both" and (src not in pool and tgt not in pool):
+            if flt == "both" and (src not in pl and tgt not in pl):
                 flag = True
 
         if flag:
