@@ -7,13 +7,16 @@ def replace_text_by_id(filename):
     fo = open(filename)
     for line in fo:
         idx, txt = line.split("\t", 1)
-        pl[idx] = txt
+        if txt not in pl:
+            pl[txt] = list()
+        pl[idx].append(txt)
     fo.close()
 
     for line in sys.stdin:
         idx, *_ = line.split("\t")
         if idx in pl:
-            print(idx, pl[idx], sep = "\t", end = "")
+            for txt in pl[idx]:
+                print(idx, txt, sep = "\t", end = "")
             continue
         print(line, end = "")
 
