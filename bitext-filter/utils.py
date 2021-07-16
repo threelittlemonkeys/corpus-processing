@@ -4,7 +4,7 @@ import math
 from parameters import *
 from regex import *
 
-error_codes = [
+err_codes = [
     "SRC_EMPTY",
     "TGT_EMPTY",
     "SRC_AND_TGT_IDENTICAL",
@@ -37,12 +37,12 @@ error_codes = [
     "NUMBER_MISMATCH",
 ]
 
-error_log = list()
-error_cnt = {code: 0 for code in error_codes}
+err_log = list()
+err_cnt = {code: 0 for code in err_codes}
 
 def log_error(code):
-    error_log.append(code)
-    error_cnt[code] += 1
+    err_log.append(code)
+    err_cnt[code] += 1
 
 def normalize(txt):
     txt = re.sub("\s+", " ", txt)

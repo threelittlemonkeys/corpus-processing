@@ -7,8 +7,8 @@ def replace_text_by_id(filename):
     fo = open(filename)
     for line in fo:
         idx, txt = line.split("\t", 1)
-        if txt not in pl:
-            pl[txt] = list()
+        if idx not in pl:
+            pl[idx] = list()
         pl[idx].append(txt)
     fo.close()
 

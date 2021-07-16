@@ -6,10 +6,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
     print("src_lang = %s" % src_lang, file = sys.stderr)
     print("tgt_lang = %s" % tgt_lang, file = sys.stderr)
 
-    lxc = lexicon(src_lang, tgt_lang)
-
     ln_err = 0
-    ln_sum = 0
     timer = time.time()
 
     fo = open(filename)
@@ -17,17 +14,19 @@ def corpus_filter(src_lang, tgt_lang, filename):
     fb = open(filename + ".flt.out", "w")
     fc = open(filename + ".flt.log", "w")
 
-    k = 1
-    for line in fo:
-        error_log.clear()
+    lxc = lexicon(src_lang, tgt_lang)
+
+    for ln, line in enumerate(fo, 1):
 
         if line.count("\t") != 2:
             sys.exit("Error: invalid format in %s" % filename)
+
         idx, s0, t0 = line.split("\t")
         s0 = s0.strip()
         t0 = t0.strip()
         s1 = normalize(s0)
         t1 = normalize(t0)
+        err_log.clear()
 
         if s1 == "":
             log_error("SRC_EMPTY")
@@ -64,7 +63,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
             or lang == "zh" and not RE_LANG_ZH.search(txt):
                 log_error("INVALID_%s_LANGUAGE" % side)
 
-            if lang == "en" and RE_LANG_CJK.search(txt) \
+            if lang in ("en", "ru") and RE_LANG_CJK.search(txt) \
             or lang == "ja" and RE_LANG_KO.search(txt) \
             or lang == "ko" and (RE_LANG_JA.search(txt) or RE_LANG_ZH.search(txt)) \
             or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA.search(txt)):
@@ -119,23 +118,23 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("NUMBER_MISMATCH")
         '''
 
-        if error_log:
-            for error_code in error_log:
-                print(idx, s0, t0, error_code, sep = "\t", file = fb)
+        if err_log:
+            for err_code in err_log:
+                print(idx, s0, t0, err_code, sep = "\t", file = fb)
             ln_err += 1
         else:
             print(idx, s0, t0, sep = "\t", file = fa)
-        ln_sum += 1
-        if ln_sum % 100000 == 0:
-            print("%d sentence pairs" % ln_sum, file = sys.stderr)
+
+        if ln % 100000 == 0:
+            print("%d sentence pairs" % ln, file = sys.stderr)
 
     timer = time.time() - timer
 
-    for code, cnt in sorted(error_cnt.items(), key = lambda x: -x[1]):
-        print(code, cnt, "(%.4f%%)" % (cnt / ln_sum * 100), file = fc)
+    for code, cnt in sorted(err_cnt.items(), key = lambda x: -x[1]):
+        print(code, cnt, "(%.4f%%)" % (cnt / ln * 100), file = fc)
     print(file = fc)
-    print("%d sentence pairs in total" % ln_sum, file = fc)
-    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln_sum * 100), file = fc)
+    print("%d sentence pairs in total" % ln, file = fc)
+    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln * 100), file = fc)
     print("%f seconds" % timer, file = fc)
 
     fo.close()
