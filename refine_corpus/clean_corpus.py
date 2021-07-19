@@ -1,8 +1,10 @@
+import os
 import sys
 import re
 
+path = (os.path.dirname(__file__) or ".") + "/"
 CONV = dict()
-with open("char_table.tsv") as fo:
+with open(path + "char_table.tsv") as fo:
     for line in fo:
         a, b = line.strip().split("\t")
         CONV[a] = b
