@@ -8,7 +8,7 @@ with open("char_table.tsv") as fo:
         CONV[a] = b
 CONV_MAXLEN = len(max(CONV.keys(), key = len))
 
-def clean_text(line, verbose):
+def clean_text(line, verbose = False):
 
     raw = line.strip()
 
