@@ -1,27 +1,27 @@
 from utils import *
-from lexicon import lexicon
+from lexicon import bilingual_lexicon
 
 def corpus_filter(src_lang, tgt_lang, filename):
 
     print("src_lang = %s" % src_lang, file = sys.stderr)
     print("tgt_lang = %s" % tgt_lang, file = sys.stderr)
 
-    ln_err = 0
-    timer = time.time()
-
     fo = open(filename)
     fa = open(filename + ".flt.in", "w")
     fb = open(filename + ".flt.out", "w")
     fc = open(filename + ".flt.log", "w")
 
-    lxc = lexicon(src_lang, tgt_lang)
+    timer = time.time()
+    lexicon = bilingual_lexicon(src_lang, tgt_lang)
+    num_errs = 0
 
     for ln, line in enumerate(fo, 1):
 
-        if line.count("\t") != 2:
-            sys.exit("Error: invalid format in %s" % filename)
+        if line.count("\t") == 2:
+            idx, s0, t0 = line.split("\t")
+        else:
+            idx, s0, t0 = 0, *line.split("\t")
 
-        idx, s0, t0 = line.split("\t")
         s0 = s0.strip()
         t0 = t0.strip()
         s1 = normalize(s0)
@@ -95,22 +95,24 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
+        if lexicon.data:
+            s3, t3 = "", ""
+            if src_lang == "en" and tgt_lang == "es":
+                s3, t3 = s2, t2
+            if src_lang == "en" and tgt_lang == "ko":
+                s3, t3 = s2, re.sub("(?<=[^a-z]) (?=[a-z])", "", t1)
+            s4, t4 = lexicon.search(s3, t3)
+
+            if len(s4) != len(t4):
+                log_error("ENTITY_MISMATCH")
+                print(ln, "src", s0, sep = "\t")
+                print(ln, "tgt", t0, sep = "\t")
+                for w in s4:
+                    if w not in t4:
+                        print(ln, "", w, *s4[w], sep = "\t")
+                print()
+
         '''
-        s, t = "", ""
-        if src_lang == "en" and tgt_lang == "ko":
-            s, t = s2, re.sub("(?<=[^a-z]) (?=[a-z])", "", t1)
-
-        m0, m1 = lxc.search(s, t)
-        if len(m0) != len(m1):
-            print(k, "src", s0, sep = "\t")
-            print(k, "tgt", t0, sep = "\t")
-            for w in m0:
-                if w not in m1:
-                    print(k, "", w, *m0[w], sep = "\t")
-            print()
-            log_error("ENTITY_MISMATCH")
-            k += 1
-
         src_nums = word_to_number(src, src_lang)
         tgt_nums = word_to_number(tgt, tgt_lang)
         nums = src_nums.symmetric_difference(tgt_nums)
@@ -120,8 +122,8 @@ def corpus_filter(src_lang, tgt_lang, filename):
 
         if err_log:
             for err_code in err_log:
-                print(idx, s0, t0, err_code, sep = "\t", file = fb)
-            ln_err += 1
+                print(idx, err_code, s0, t0, sep = "\t", file = fb)
+            num_errs += 1
         else:
             print(idx, s0, t0, sep = "\t", file = fa)
 
@@ -134,7 +136,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
         print(code, cnt, "(%.4f%%)" % (cnt / ln * 100), file = fc)
     print(file = fc)
     print("%d sentence pairs in total" % ln, file = fc)
-    print("%d sentence pairs filtered out (%.4f%%)" % (ln_err, ln_err / ln * 100), file = fc)
+    print("%d sentence pairs filtered out (%.4f%%)" % (num_errs, num_errs / ln * 100), file = fc)
     print("%f seconds" % timer, file = fc)
 
     fo.close()

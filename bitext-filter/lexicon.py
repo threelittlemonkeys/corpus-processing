@@ -2,7 +2,7 @@ import os
 import sys
 import re
 
-class lexicon(): # bilingual lexicon
+class bilingual_lexicon(): # bilingual lexicon
     def __init__(self, src_lang, tgt_lang):
         self.path = (os.path.dirname(__file__) or ".") + "/"
         self.src_lang = src_lang
@@ -34,8 +34,8 @@ class lexicon(): # bilingual lexicon
         m1 = dict()
         i = 0
         while i < len(src):
-            for j in range(self.maxlen, 0, -1):
-                a1 = " ".join(src[i:i + j])
+            for j in range(min(len(src), i + self.maxlen), 0, -1):
+                a1 = " ".join(src[i:j])
                 if a1 in self.data:
                     a0, b0, b1 = self.data[a1]
                     m0[a0] = b0
