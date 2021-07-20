@@ -24,32 +24,34 @@ def corpus_filter(src_lang, tgt_lang, filename):
 
         s0 = s0.strip()
         t0 = t0.strip()
-        s1 = normalize(s0)
-        t1 = normalize(t0)
+        s1 = normalize(s0, lc = False)
+        t1 = normalize(t0, lc = False)
+        s2 = normalize(s0, lc = True)
+        t2 = normalize(t0, lc = True)
         err_log.clear()
 
-        if s1 == "":
+        if s2 == "":
             log_error("SRC_EMPTY")
-        if t1 == "":
+        if t2 == "":
             log_error("TGT_EMPTY")
-        if s1 == t1:
+        if s2 == t2:
             log_error("SRC_AND_TGT_IDENTICAL")
         else:
-            if s1 in t1:
+            if s2 in t2:
                 log_error("SRC_IN_TGT")
-            if t1 in s1:
+            if t2 in s2:
                 log_error("TGT_IN_SRC")
 
         '''
-        if not compare_findall(RE_PUNC, s1, t1):
+        if not compare_findall(RE_PUNC, s2, t2):
             log_error("PUNCTUATION_MARK_MISMATCH")
-        if not compare_findall(RE_BRACKET, s1, t1):
+        if not compare_findall(RE_BRACKET, s2, t2):
             log_error("BRACKET_MISMATCH")
-        if not compare_findall(RE_QUOTATION, s1, t1):
+        if not compare_findall(RE_QUOTATION, s2, t2):
             log_error("QUOTATION_MISMATCH")
         '''
 
-        for txt, lang, side, in ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT")):
+        for txt, lang, side, in ((s2, src_lang, "SRC"), (t2, tgt_lang, "TGT")):
 
             if RE_URL.search(txt):
                 log_error("URL_IN_%s" % side)
@@ -74,42 +76,49 @@ def corpus_filter(src_lang, tgt_lang, filename):
             or lang == "zh" and RE_SENTS_ZH.search(txt):
                 log_error("MULTIPLE_SENTENCES_IN_%s" % side)
 
-        s2 = tokenize(s1, src_lang)
-        t2 = tokenize(t1, tgt_lang)
+        s3 = tokenize(s1, src_lang)
+        t3 = tokenize(t1, tgt_lang)
 
-        if len(s2) > MAX_SENT_LEN:
+        
+        print(s3)
+        print(t3)
+
+        s4 = tokenize(s2, src_lang)
+        t4 = tokenize(t2, tgt_lang)
+
+        if len(s4) > MAX_SENT_LEN:
             log_error("SRC_TOO_LONG")
-        if len(t2) > MAX_SENT_LEN:
+        if len(t4) > MAX_SENT_LEN:
             log_error("TGT_TOO_LONG")
-        if len(s2) < MIN_SENT_LEN:
+        if len(s4) < MIN_SENT_LEN:
             log_error("SRC_TOO_SHORT")
-        if len(t2) < MIN_SENT_LEN:
+        if len(t4) < MIN_SENT_LEN:
             log_error("TGT_TOO_SHORT")
 
-        if len(s2) / len(t2) > SENT_LEN_RATIO:
+        if len(s4) / len(t4) > SENT_LEN_RATIO:
             log_error("SRC_TOO_LONGER")
-        if len(t2) / len(s2) > SENT_LEN_RATIO:
+        if len(t4) / len(s4) > SENT_LEN_RATIO:
             log_error("TGT_TOO_LONGER")
-        if any(map(lambda x: len(x) > MAX_WORD_LEN, s2)):
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, s4)):
             log_error("LONG_WORD_IN_SRC")
-        if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
+        if any(map(lambda x: len(x) > MAX_WORD_LEN, t4)):
             log_error("LONG_WORD_IN_TGT")
 
         if lexicon.data:
-            s3, t3 = "", ""
+            s5, t5 = "", ""
             if src_lang == "en" and tgt_lang == "es":
-                s3, t3 = s2, t2
+                s5, t5 = s3, t3
             if src_lang == "en" and tgt_lang == "ko":
-                s3, t3 = s2, re.sub("(?<=[^a-z]) (?=[a-z])", "", t1)
-            s4, t4 = lexicon.search(s3, t3)
+                s5, t5 = s3, re.sub("(?<=[^a-z]) (?=[a-z])", "", t2)
+            s5, t5 = lexicon.search(s5, t5)
 
-            if len(s4) != len(t4):
+            if len(s5) != len(t5):
                 log_error("ENTITY_MISMATCH")
                 print(ln, "src", s0, sep = "\t")
                 print(ln, "tgt", t0, sep = "\t")
-                for w in s4:
-                    if w not in t4:
-                        print(ln, "", w, *s4[w], sep = "\t")
+                for w in s5:
+                    if w not in t5:
+                        print(ln, "", w, *s5[w], sep = "\t")
                 print()
 
         '''

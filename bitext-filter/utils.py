@@ -1,10 +1,9 @@
 import sys
 import time
 import math
-from parameters import *
-from regex import *
+from constants import *
 
-err_codes = [
+ERR_CODES = [
     "SRC_EMPTY",
     "TGT_EMPTY",
     "SRC_AND_TGT_IDENTICAL",
@@ -38,15 +37,16 @@ err_codes = [
 ]
 
 err_log = list()
-err_cnt = {code: 0 for code in err_codes}
+err_cnt = {code: 0 for code in ERR_CODES}
 
 def log_error(code):
     err_log.append(code)
     err_cnt[code] += 1
 
-def normalize(txt):
+def normalize(txt, lc):
     txt = re.sub("\s+", " ", txt)
-    txt = txt.lower()
+    if lc:
+        txt = txt.lower()
     txt = txt.strip()
     return txt
 
@@ -62,17 +62,3 @@ def tokenize(txt, lang):
 
 def compare_findall(ro, a, b):
     return len(ro.findall(a)) == len(ro.findall(b))
-
-def word_to_number(txt, lang):
-    ns = list()
-    w2n = lambda x, y: [y[x] if x in y else x for x in x.split("_")]
-
-    for w in txt:
-        n = []
-        if lang == "en" and RE_NUM_EN_B.match(w):
-            n = w2n(w, EN_NUMS)
-        if lang in ("ja", "ko", "zh") and RE_NUM_ZH_B.match(w):
-            n = w2n(w, ZH_NUMS)
-        ns.extend(n)
-
-    return set("".join(map(str, ns))) - {"0", "1"}
