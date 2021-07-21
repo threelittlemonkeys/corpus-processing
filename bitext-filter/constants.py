@@ -5,19 +5,26 @@ MIN_SENT_LEN = 1
 MAX_WORD_LEN = 20
 SENT_LEN_RATIO = 5
 
-RE_ALPHA_L = re.compile("(?<=[A-Za-z\u00C0-\u00FF\u0400-\u04FF])(?=[^ A-Za-z\u00C0-\u00FF\u0400-\u04FF])")
-RE_ALPHA_R = re.compile("(?<=[^ A-Za-z\u00C0-\u00FF\u0400-\u04FF])(?=[A-Za-z\u00C0-\u00FF\u0400-\u04FF])")
+EU_LANGS = ("en", "es", "ru")
+
+_ALPHA = "A-Za-z\u00C0-\u00FF\u0400-\u04FF\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7A3"
+_ALNUM = "0-9%s" % _ALPHA
+
+RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % (_ALPHA, _ALPHA))
+RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % (_ALPHA, _ALPHA))
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
 RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
-RE_NON_ALNUM_L = re.compile("(?<=[^ 0-9A-Za-z\u00C0-\u00FF\u0400-\u04FF])(?=[^ ])")
-RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ 0-9A-Za-z\u00C0-\u00FF\u0400-\u04FF])")
+
+RE_NON_ALNUM = re.compile("[^%s]" % _ALNUM)
+RE_NON_ALNUM_L = re.compile("(?<=[^ %s])(?=[^ ])" % _ALNUM)
+RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ %s])" % _ALNUM)
 
 RE_PUNC = re.compile("[,.?!，．。？！]")
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
 RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z])|[\"“”]")
 RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
-RE_INVALID_WORD = re.compile("[a-z][a-z0-9]*[^ a-z0-9\u00C0-\u00FF\u0400-\u04FF\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7A3,.'/<>(){}[\]-]+[a-z0-9]")
+RE_INVALID_WORD = re.compile("[%s][^ %s,.'´`/<>(){}[\]:-]+[%s]" % (_ALNUM, _ALNUM, _ALNUM))
 
 RE_LANG_EN = re.compile("[a-z]")
 RE_LANG_JA = re.compile("[\u3040-\u30FF]")
@@ -29,6 +36,8 @@ RE_LANG_CJK = re.compile("[\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7A3]")
 RE_SENTS_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
 RE_SENTS_KO = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
 RE_SENTS_ZH = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
+
+RE_NNP = re.compile("^[A-Z][a-z]+$")
 
 EN_NUMS = {
     "one": 1, "first": 1,

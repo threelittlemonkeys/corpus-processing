@@ -43,14 +43,16 @@ def log_error(code):
     err_log.append(code)
     err_cnt[code] += 1
 
-def normalize(txt, lc):
-    txt = re.sub("\s+", " ", txt)
+def normalize(txt, lc = True, alnum = False):
     if lc:
         txt = txt.lower()
+    if alnum:
+       txt = RE_NON_ALNUM.sub(" ", txt)
+    txt = re.sub("\s+", " ", txt)
     txt = txt.strip()
     return txt
 
-def tokenize(txt, lang):
+def tokenize(txt):
     txt = RE_ALPHA_L.sub(" ", txt)
     txt = RE_ALPHA_R.sub(" ", txt)
     txt = RE_NUM_L.sub(" ", txt)
@@ -62,3 +64,8 @@ def tokenize(txt, lang):
 
 def compare_findall(ro, a, b):
     return len(ro.findall(a)) == len(ro.findall(b))
+
+def extract_nnp(txt):
+    tkn = tokenize(normalize(txt, lc = False, alnum = True))
+    func = lambda x: x[0] and RE_NNP.match(x[1])
+    return [w for _, w in filter(func, enumerate(tkn))]
