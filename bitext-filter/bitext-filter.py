@@ -115,7 +115,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
                 print(err_code, line, sep = "\t", end = "", file = fb)
             num_errs += 1
         else:
-            print(line, file = fa)
+            print(line, end = "", file = fa)
 
         if ln % 100000 == 0:
             print("%d sentence pairs" % ln, file = sys.stderr)

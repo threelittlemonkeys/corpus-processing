@@ -67,5 +67,22 @@ def compare_findall(ro, a, b):
 
 def extract_nnp(txt):
     tkn = tokenize(normalize(txt, lc = False, alnum = True))
-    func = lambda x: x[0] and RE_NNP.match(x[1])
-    return [w for _, w in filter(func, enumerate(tkn))]
+    func = lambda i, w: i and len(w) > 3 and RE_NNP.match(w)
+    return [x[1].lower() for x in enumerate(tkn) if func(*x)]
+
+def word_similarity(a, b):
+    if a == b:
+        return True
+    a = re.sub("(.)\\1+", "\\1", a)
+    b = re.sub("(.)\\1+", "\\1", b)
+    a = re.sub("(?<=[aeiouhwy])[^aeiouhwy]+$", "", a)
+    b = re.sub("(?<=[aeiouhwy])[^aeiouhwy]+$", "", b)
+    a = re.sub("[aeiouhwy]", "", a)
+    b = re.sub("[aeiouhwy]", "", b)
+    if a == b:
+        return True
+    if a[:3] == b[:3]:
+        return True
+    if a[-3:] == b[-3:]:
+        return True
+    return False
