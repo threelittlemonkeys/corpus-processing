@@ -38,14 +38,12 @@ def corpus_filter(src_lang, tgt_lang, filename):
             if t1 in s1:
                 log_error("TGT_IN_SRC")
 
-        '''
         if not compare_findall(RE_PUNC, s1, t1):
             log_error("PUNCTUATION_MARK_MISMATCH")
         if not compare_findall(RE_BRACKET, s1, t1):
             log_error("BRACKET_MISMATCH")
         if not compare_findall(RE_QUOTATION, s1, t1):
             log_error("QUOTATION_MISMATCH")
-        '''
 
         for txt, lang, side, in ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT")):
 
@@ -103,12 +101,14 @@ def corpus_filter(src_lang, tgt_lang, filename):
 
             if len(s3) != len(t3):
                 log_error("ENTITY_MISMATCH")
-                print(ln, "src", s1, sep = "\t")
-                print(ln, "tgt", t1, sep = "\t")
+                '''
+                print(ln, "src", s0, sep = "\t")
+                print(ln, "tgt", t0, sep = "\t", end = "")
                 for w in s3:
                     if w not in t3:
                         print(ln, "", w, *s3[w], sep = "\t")
                 print()
+                '''
 
         if err_log:
             for err_code in err_log:
