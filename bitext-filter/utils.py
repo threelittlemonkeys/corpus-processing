@@ -62,6 +62,22 @@ def tokenize(txt):
     txt = txt.split(" ")
     return txt
 
+def stem(word, lang):
+
+    if lang == "ru":
+        pool = RU_SUFFIX
+        maxlen = RU_SUFFIX_MAXLEN
+    else:
+        return word
+
+    for i in range(min(maxlen, len(word)), 0, -1):
+        if i >= len(word):
+            continue
+        if word[-i:] in pool:
+            return word[:-i]
+
+    return word
+
 def compare_findall(ro, a, b):
     return len(ro.findall(a)) == len(ro.findall(b))
 
@@ -70,19 +86,29 @@ def extract_nnp(txt):
     func = lambda i, w: i and len(w) > 3 and RE_NNP.match(w)
     return [x[1].lower() for x in enumerate(tkn) if func(*x)]
 
-def word_similarity(a, b):
+def homophone(a, b):
+
     if a == b:
         return True
+
     a = re.sub("(.)\\1+", "\\1", a)
     b = re.sub("(.)\\1+", "\\1", b)
     a = re.sub("(?<=[aeiouhwy])[^aeiouhwy]+$", "", a)
     b = re.sub("(?<=[aeiouhwy])[^aeiouhwy]+$", "", b)
-    a = re.sub("[aeiouhwy]", "", a)
-    b = re.sub("[aeiouhwy]", "", b)
+
     if a == b:
         return True
+
+    a = re.sub("[aeiouhrwy]", "", a)
+    b = re.sub("[aeiouhrwy]", "", b)
+
+    if a == b:
+        return True
+
     if a[:3] == b[:3]:
         return True
+
     if a[-3:] == b[-3:]:
         return True
+
     return False

@@ -1,6 +1,7 @@
 import os
 import sys
 import re
+from utils import *
 
 class bilingual_lexicon(): # bilingual lexicon
     def __init__(self, src_lang, tgt_lang):
@@ -15,6 +16,7 @@ class bilingual_lexicon(): # bilingual lexicon
         filename = self.path + filename + ".tsv"
         if not os.path.isfile(filename):
             return
+
         fo = open(filename)
         for i, line in enumerate(fo):
             if not re.match("^[^\t]+(\t[^\t]+)*\n", line):
@@ -22,29 +24,42 @@ class bilingual_lexicon(): # bilingual lexicon
             a0, *b0 = line.strip().split("\t")
             a1 = a0.lower()
             b1 = [w.lower().replace(" ", "") for w in b0]
+
             if not b1:
                 b0.append(a0)
                 b1.append(a1)
-            self.data[a1] = [a0, b0, b1]
+
+            if self.tgt_lang == "ru":
+                b0 += [stem(w, self.tgt_lang) for w in b0]
+                b1 += [stem(w, self.tgt_lang) for w in b1]
+
+            self.data[a1] = [a0, set(b0), set(b1)]
+
         fo.close()
-        self.maxlen = max(map(len, self.data))
+
+        self.maxlen = max(map(lambda x: x.count(" "), self.data)) + 1
 
     def search(self, src, tgt):
         m0 = dict()
         m1 = dict()
+
+        if tgt_lang == "ru":
+            tgt = [stem(w, self.tgt_lang) for w in tgt]
+
         i = 0
         while i < len(src):
-            for j in range(min(len(src), i + self.maxlen), 0, -1):
+            for j in range(min(len(src), i + self.maxlen), i, -1):
                 a1 = " ".join(src[i:j])
                 if a1 in self.data:
                     a0, b0, b1 = self.data[a1]
                     m0[a0] = b0
-                    for b1 in b1:
-                        if b1 in tgt:
-                            m1[a0] = b1
+                    for w in b1:
+                        if w in tgt:
+                            m1[a0] = w
                             break
                     i += j
                     break
             else:
                 i += 1
+
         return m0, m1

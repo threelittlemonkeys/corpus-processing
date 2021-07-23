@@ -92,23 +92,17 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("LONG_WORD_IN_TGT")
 
         if lexicon.data:
-            s3, t3 = "", ""
-            if src_lang == "en" and tgt_lang == "es":
-                s3, t3 = s2, t2
-            if src_lang == "en" and tgt_lang == "ko":
-                s3, t3 = s2, re.sub("(?<=[^a-z]) (?=[a-z])", "", t1)
-            s3, t3 = lexicon.search(s3, t3)
+            t3 = re.sub("(?<=[^a-z]) (?=[a-z])", "", t1) if tgt_lang == "ko" else t2
+            s3, t3 = lexicon.search(s2, t3)
 
             if len(s3) != len(t3):
                 log_error("ENTITY_MISMATCH")
-                '''
                 print(ln, "src", s0, sep = "\t")
                 print(ln, "tgt", t0, sep = "\t", end = "")
                 for w in s3:
                     if w not in t3:
                         print(ln, "", w, *s3[w], sep = "\t")
                 print()
-                '''
 
         if err_log:
             for err_code in err_log:

@@ -39,6 +39,9 @@ RE_SENTS_ZH = re.compile("([^.?!]{12}[\uAC00-\uD7A3][.?!]){2}")
 
 RE_NNP = re.compile("^[A-Z][a-z]+$")
 
+RU_SUFFIX = {x: None for x in ("а", "ам", "ами", "ах", "е", "ев", "ей", "ем", "и", "ий", "й", "о", "ов", "ой", "ом", "у", "ы", "ь", "ью", "ю", "я", "ям", "ями", "ях")}
+RU_SUFFIX_MAXLEN = max(map(len, RU_SUFFIX))
+
 EN_NUMS = {
     "one": 1, "first": 1,
     "two": 2, "second": 2,
