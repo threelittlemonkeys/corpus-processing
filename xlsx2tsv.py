@@ -1,3 +1,4 @@
+import re
 import sys
 import xlrd
 
@@ -13,7 +14,7 @@ def xls2tsv(filename, option = None, sheet_idx = 0):
         for sheet_idx in range(workbook.nsheets):
             sheet = workbook.sheet_by_index(sheet_idx)
             fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.name), "w")
-            print_sheet(sheet, fo)
+            print_sheet(fo, sheet)
             fo.close()
 
     if option == "sheet":
@@ -22,10 +23,10 @@ def xls2tsv(filename, option = None, sheet_idx = 0):
         print_sheet(sheet, fo)
         fo.close()
 
-def print_sheet(sheet, stream):
+def print_sheet(fo, sheet):
     for i in range(sheet.nrows):
-        row = [str(sheet.cell_value(i, j)).strip() for j in range(sheet.ncols)]
-        stream.write("%s\n" % "\t".join(row))
+        row = [str(sheet.cell_value(i, j)).strip().replace("\n", "\\n") for j in range(sheet.ncols)]
+        fo.write("%s\n" % "\t".join(row))
 
 if __name__ == "__main__":
     if len(sys.argv) not in [2, 3, 4]:
