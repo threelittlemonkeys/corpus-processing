@@ -111,9 +111,7 @@ for ln, line in enumerate(fo, 1):
     num_src_br = len(RE_FIND_BR.findall(src))
     num_tgt_br = len(RE_FIND_BR.findall(tgt))
 
-    # 6,695,368
-    # 6,528,563 if num_src_quot == num_tgt_quot and num_src_br == num_tgt_br
-    # 130,320 else
+    # Case 0
 
     if num_src_quot == num_tgt_quot and num_src_br == num_tgt_br == 0:
         _print(idx, src, tgt, sep = "\t")
@@ -126,7 +124,6 @@ for ln, line in enumerate(fo, 1):
         continue
 
     # Case 2: quotation marks only at sentence ends
-    # 13,059
 
     if (not num_src_quot or find_quot(src, seo = True)) and find_quot(tgt, seo = True):
         _print(idx, src, tgt, sep = "\t")
