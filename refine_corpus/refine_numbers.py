@@ -1,11 +1,7 @@
 import sys
 import re
 from clean_corpus import clean_text
-
-RE_NUM = re.compile("[0-9０-９]([^0-9０-９\u3040-\u30ff\u4e00-\u9fff\uac00-\ud7af]*[0-9０-９])+")
-RE_NUM_SEP = re.compile("[0-9]{,2}(,[0-9]{3})*$")
-RE_NUM_ONLY = re.compile("[0-9,]+$")
-RE_NUM_YEAR = re.compile("[0-9,]{4,}(?![년年])")
+from constants import *
 
 def augment_data(src, tgt, pts, i, out):
     if i >= len(pts):
@@ -52,7 +48,9 @@ for ln, raw in enumerate(fo):
 
             if a2 == b2:
                 state[i] = True
-                if a1 != b1 or (RE_NUM_YEAR.match(src[ai:]) and RE_NUM_YEAR.match(tgt[bi:])):
+                if a1 != b1 \
+                or (RE_NUM_BIG.match(src[ai:]) and RE_NUM_BIG.match(tgt[bi:]) \
+                and not 1900 <= int(a2) <= 2020 and not 1900 <= int(b2) <= 2020):
                     flag = True
 
             if a1 in ("19" + b1, "20" + b1):
