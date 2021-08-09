@@ -7,11 +7,9 @@ def find_quotes(txt, seo = False):
     quotes = list()
 
     for w in RE_TOKENIZE_A.finditer(txt):
-        i, j = w.start(), w.end()
-        w = w.group().lower()
+        w, i, j = w.group().lower(), w.start(), w.end()
         for m in RE_FIND_QUOT.finditer(w):
-            k = m.start()
-            m = m.group()
+            m, k = m.group(), m.start()
 
             # double quote
             if m in DQ:
@@ -19,11 +17,9 @@ def find_quotes(txt, seo = False):
                 continue
 
             # single quote
-            if w in APOS_WORD:
+            if re.sub("[%s]+$" % QUOT, "", w) in CONTRACTION:
                 continue
-            if w[k + 1:] in APOS_PRT:
-                continue
-            if k == 1 and w[0] in ("d" , "o"):
+            if 0 < k < len(w) - 1:
                 continue
             if k == len(w) - 1 and (w[-2:-1] == "s" or w[-3:-1] == "in"):
                 if not re.search("(^| )[%s]" % SQ, txt[:i]):

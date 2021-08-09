@@ -11,15 +11,14 @@ FQ = "《》「」『』【】" # full-width quotation marks
 BR = "()[]<>{}" # brackets
 QUOT = SQ + DQ + FQ # quotation marks
 
-APOS_WORD = {
+CONTRACTION = {
     y.replace("'", x) for x in SQ for y in
-    ("'cause", "'em", "'til", "'till", "'un", "'uns", "ma'am")
+    ("d", "ll", "m", "re", "s", "t", "ve")
+    + ("'cause", "'em", "'til", "'till", "'un", "'uns", "ma'am")
 }
-APOS_PRT = {"d", "ll", "m", "re", "s", "t", "ve"}
-
-RE_ALNUM = re.compile("[0-9A-Za-z\uAC00-\uD7AF]")
 
 RE_KO = re.compile("[\uAC00-\uD7AF]")
+RE_ALNUM = re.compile("[0-9A-Za-z\uAC00-\uD7AF]")
 
 RE_TOKENIZE_A = re.compile("[,.?!]|[^ ,.?!]+")
 RE_TOKENIZE_B = re.compile("[,.?!%s]|[^ ,.?!%s]+" % (QUOT, QUOT))
