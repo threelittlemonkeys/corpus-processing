@@ -8,13 +8,17 @@ timer = time.time()
 fo_raw = open(sys.argv[1])
 fo_in = open(sys.argv[1] + ".in", "w")
 fo_out = open(sys.argv[1] + ".out", "w")
-fo_out_br = open(sys.argv[1] + ".out.bracket_mismatch", "w")
 
 for ln, line in enumerate(fo_raw, 1):
     idx, src, tgt = line.strip().split("\t")
 
     if ln % 100000 == 0:
         print("%d sentece pairs" % ln, file = sys.stderr)
+
+    # quotation mark preprocessing 
+
+    src = re.sub('"{2,}', '"', src)
+    tgt = re.sub('"{2,}', '"', tgt)
 
     src_quot = find_quotes(src)
     tgt_quot = find_quotes(tgt)
@@ -26,8 +30,10 @@ for ln, line in enumerate(fo_raw, 1):
     # bracket mismatch
 
     if num_src_br != num_tgt_br:
-        print(idx, src, tgt, sep = "\t", file = fo_out_br)
+        print("BRACKET_MISMATCH", idx, src, tgt, sep = "\t", file = fo_out)
         continue
+
+    # quotation mark match
 
     if num_src_quot == num_tgt_quot:
         print(idx, src, tgt, sep = "\t", file = fo_in)
@@ -40,12 +46,13 @@ for ln, line in enumerate(fo_raw, 1):
 
     if (not num_src_quot or src_quot_seo) and tgt_quot_seo \
     or ((not num_tgt_quot or tgt_quot_seo) and src_quot_seo):
-        src = RE_REMOVE_QUOT_SEO.sub("", src)
-        tgt = RE_REMOVE_QUOT_SEO.sub("", tgt)
+        src = remove_indexed_str(src, src_quot_seo)
+        tgt = remove_indexed_str(tgt, tgt_quot_seo)
         print(idx, src, tgt, sep = "\t", file = fo_in)
         continue
 
-    if num_src_quot > 0 and num_src_quot % 2:
+    if re.search("^[^%s]+[%s]+[^%s]+$" % (DQ, DQ, DQ), src) \
+    or re.search("^[^%s]+[%s]+[^%s]+$" % (DQ, DQ, DQ), tgt):
         print(num_src_quot, src, tgt, sep = "\t")
 
     '''
@@ -74,13 +81,12 @@ for ln, line in enumerate(fo_raw, 1):
     # MT source selection from HT text
     # calculate HT-MT simliarity
 
-    print(src, tgt, sep = "\t", file = fo_out)
+    print("UNKNOWN", src, tgt, sep = "\t", file = fo_out)
     continue
 
 fo_raw.close()
 fo_in.close()
 fo_out.close()
-fo_out_br.close()
 
 timer = time.time() - timer
 

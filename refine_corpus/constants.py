@@ -11,7 +11,7 @@ FQ = "《》「」『』【】" # full-width quotation marks
 BR = "()[]<>{}" # brackets
 QUOT = SQ + DQ + FQ # quotation marks
 
-CONTRACTION = {
+CNTR = { # contractions
     y.replace("'", x) for x in SQ for y in
     ("d", "ll", "m", "re", "s", "t", "ve")
     + ("'cause", "'em", "'til", "'till", "'un", "'uns", "ma'am")
@@ -25,5 +25,3 @@ RE_TOKENIZE_B = re.compile("[,.?!%s]|[^ ,.?!%s]+" % (QUOT, QUOT))
 
 RE_FIND_BR = re.compile("[%s]" % re.escape(BR))
 RE_FIND_QUOT = re.compile("[%s]" % QUOT)
-
-RE_REMOVE_QUOT_SEO = re.compile("^[%s ]+|[%s ]+$" % (QUOT, QUOT))

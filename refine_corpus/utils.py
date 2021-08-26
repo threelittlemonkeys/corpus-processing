@@ -17,7 +17,7 @@ def find_quotes(txt, seo = False):
                 continue
 
             # single quote
-            if re.sub("[%s]+$" % QUOT, "", w) in CONTRACTION:
+            if re.sub("[%s]+$" % QUOT, "", w) in CNTR:
                 continue
             if 0 < k < len(w) - 1:
                 continue
@@ -34,6 +34,14 @@ def find_quotes(txt, seo = False):
                 return
 
     return quotes
+
+def remove_indexed_str(txt, ms):
+    k = 0
+    for i, m in ms:
+        i += k
+        txt = txt[:i] + txt[i + len(m):]
+        k -= len(m)
+    return txt
 
 def find_quoted_str(txt, quotes, qlen):
     if len(quotes) != 2:
