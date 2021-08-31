@@ -3,6 +3,9 @@ import time
 from utils import *
 from constants import *
 
+if len(sys.argv) != 2:
+    sys.exit("Usage: %s bitext" % sys.argv[0])
+
 timer = time.time()
 
 fo_raw = open(sys.argv[1])

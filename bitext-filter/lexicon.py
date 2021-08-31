@@ -23,7 +23,11 @@ class bilingual_lexicon(): # bilingual lexicon
                 sys.exit("Error: invalid format in %s" % filename)
             a0, *b0 = line.strip().split("\t")
             a1 = a0.lower()
-            b1 = [w.lower().replace(" ", "") for w in b0]
+
+            if self.tgt_lang in CJK_LANGS:
+                b1 = [w.lower().replace(" ", "") for w in b0]
+            else:
+                b1 = [w.lower() for w in b0]
 
             if not b1:
                 b0.append(a0)
@@ -43,8 +47,12 @@ class bilingual_lexicon(): # bilingual lexicon
         m0 = dict()
         m1 = dict()
 
-        if tgt_lang == "ru":
+        sep = " "
+        if self.tgt_lang in CJK_LANGS:
+            sep = ""
+        if self.tgt_lang == "ru":
             tgt = [stem(w, self.tgt_lang) for w in tgt]
+        tgt = sep.join(tgt)
 
         i = 0
         while i < len(src):

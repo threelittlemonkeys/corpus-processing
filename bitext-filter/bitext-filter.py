@@ -32,18 +32,20 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("TGT_EMPTY")
         if s1 == t1:
             log_error("SRC_AND_TGT_IDENTICAL")
-        elif src_lang not in EU_LANGS and tgt_lang not in EU_LANGS:
+        elif src_lang != "en" and tgt_lang != "en":
             if s1 in t1:
                 log_error("SRC_IN_TGT")
             if t1 in s1:
                 log_error("TGT_IN_SRC")
 
+        '''
         if not compare_findall(RE_PUNC, s1, t1):
             log_error("PUNCTUATION_MARK_MISMATCH")
         if not compare_findall(RE_BRACKET, s1, t1):
             log_error("BRACKET_MISMATCH")
         if not compare_findall(RE_QUOTATION, s1, t1):
             log_error("QUOTATION_MISMATCH")
+        '''
 
         for txt, lang, side, in ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT")):
 
@@ -59,7 +61,7 @@ def corpus_filter(src_lang, tgt_lang, filename):
             or lang == "zh" and not RE_LANG_ZH.search(txt):
                 log_error("INVALID_%s_LANGUAGE" % side)
 
-            if lang in EU_LANGS and RE_LANG_CJK.search(txt) \
+            if lang not in CJK_LANGS and RE_LANG_CJK.search(txt) \
             or lang == "ja" and RE_LANG_KO.search(txt) \
             or lang == "ko" and (RE_LANG_JA.search(txt) or RE_LANG_ZH.search(txt)) \
             or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA.search(txt)):
@@ -92,17 +94,17 @@ def corpus_filter(src_lang, tgt_lang, filename):
             log_error("LONG_WORD_IN_TGT")
 
         if lexicon.data:
-            t3 = re.sub("(?<=[^a-z]) (?=[a-z])", "", t1) if tgt_lang == "ko" else t2
-            s3, t3 = lexicon.search(s2, t3)
-
+            s3, t3 = lexicon.search(s2, t2)
             if len(s3) != len(t3):
                 log_error("ENTITY_MISMATCH")
+                '''
                 print(ln, "src", s0, sep = "\t")
                 print(ln, "tgt", t0, sep = "\t", end = "")
                 for w in s3:
                     if w not in t3:
                         print(ln, "", w, *s3[w], sep = "\t")
                 print()
+                '''
 
         if err_log:
             for err_code in err_log:
