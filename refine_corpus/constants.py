@@ -9,6 +9,7 @@ SQ = "'`´‘’′" # single quotation marks
 DQ = "\"˝“”″" # double quotation marks
 FQ = "《》「」『』【】" # full-width quotation marks
 BR = "()[]<>{}" # brackets
+SYM = "→" # symbols
 QUOT = SQ + DQ + FQ # quotation marks
 
 CNTR = { # contractions
@@ -24,4 +25,5 @@ RE_TOKENIZE_A = re.compile("[,.?!]|[^ ,.?!]+")
 RE_TOKENIZE_B = re.compile("[,.?!%s]|[^ ,.?!%s]+" % (QUOT, QUOT))
 
 RE_FIND_BR = re.compile("[%s]" % re.escape(BR))
+RE_FIND_SYM = re.compile("[%s]" % re.escape(SYM))
 RE_FIND_QUOT = re.compile("[%s]" % QUOT)
