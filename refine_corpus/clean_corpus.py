@@ -1,6 +1,7 @@
 import os
 import sys
 import re
+import html
 
 path = (os.path.dirname(__file__) or ".") + "/"
 CONV = dict()
@@ -32,7 +33,7 @@ def clean_text(line, verbose = False):
     # convert CJK characters
     i = 0
     while i < len(line):
-        for j in range(min(len(line), i + CONV_MAXLEN), 0, -1):
+        for j in range(min(len(line), i + CONV_MAXLEN), i, -1):
             w = line[i:j]
             if w in CONV:
                 line = line[:i] + CONV[w] + line[j:]
@@ -40,6 +41,12 @@ def clean_text(line, verbose = False):
                 break
         else:
             i += 1
+
+    # convert special characters
+    line = re.sub(r"(?<=\S)’(?=(d|ll|m|re|s|t|ve)\b)", "'", line, re.I)
+
+    # convert HTML entities
+    line = html.unescape(line)
 
     line = re.sub(" {2,}", " ", line)
     line = line.strip()

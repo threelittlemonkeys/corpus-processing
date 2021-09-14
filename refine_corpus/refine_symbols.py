@@ -11,7 +11,11 @@ timer = time.time()
 fo = open(sys.argv[1])
 
 for ln, line in enumerate(fo, 1):
-    idx, src, tgt = line.strip().split("\t")
+
+    try:
+        idx, src, tgt = line.strip().split("\t")
+    except:
+        continue
 
     if ln % 100000 == 0:
         print("%d sentece pairs" % ln, file = sys.stderr)
@@ -45,7 +49,7 @@ for ln, line in enumerate(fo, 1):
     # quotation mark match
 
     if num_src_quot == num_tgt_quot:
-        print(idx, src, tgt, sep = "\t")
+        # print(idx, src, tgt, sep = "\t")
         continue
 
     # quotation marks only at sentence ends
@@ -57,7 +61,7 @@ for ln, line in enumerate(fo, 1):
     or ((not num_tgt_quot or tgt_quot_seo) and src_quot_seo):
         src = remove_indexed_str(src, src_quot_seo)
         tgt = remove_indexed_str(tgt, tgt_quot_seo)
-        print(idx, src, tgt, sep = "\t")
+        # print(idx, src, tgt, sep = "\t")
         continue
 
     '''
