@@ -2,6 +2,7 @@ import os
 import sys
 import re
 import html
+import time
 
 path = (os.path.dirname(__file__) or ".") + "/"
 CONV = dict()
@@ -59,6 +60,7 @@ if __name__ == "__main__":
 
     verbose = (len(sys.argv) == 3 and sys.argv[2] == "-v")
 
+    timer = time.time()
     fo = open(sys.argv[1])
     for raw in fo:
         line = clean_text(raw, verbose)
@@ -68,3 +70,5 @@ if __name__ == "__main__":
             print("<", raw, end = "")
             print(">", line, "\n")
     fo.close()
+
+    print("%f seconds" % (time.time() - timer), file = sys.stderr)

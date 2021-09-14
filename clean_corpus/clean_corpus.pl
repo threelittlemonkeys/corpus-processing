@@ -9,6 +9,7 @@ use List::Util qw(min);
 use HTML::Entities;
 use open ":std", ":encoding(UTF-8)";
 
+my $timer = time();
 my $path = dirname(__FILE__) . "/";
 
 my %CONV;
@@ -70,3 +71,5 @@ while(<FILE>) {
 
     print $line, "\n";
 }
+
+printf STDERR "%f seconds\n", time() - $timer;
