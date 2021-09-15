@@ -25,6 +25,31 @@ open FILE, "<:encoding(UTF-8)", $ARGV[0] or die $!;
 while(<FILE>) {
     my $line = $_;
 
+    # full width characters
+    for my $i (0 .. length($line) - 1) {
+        my $c = ord substr $line, $i, 1;
+        if ($c >= 0xFF01 and $c <= 0xFF5E) {
+            substr($line, $i, 1) = chr $c - hex "0xFEE0";
+        }
+    }
+
+    # mixed width CJK characters
+    for (my $i = 0; $i < length($line); ) {
+        my $k = 1;
+        for (my $j = min($CONV_MAXLEN, length($line) - $i); $j > 0; $j--) {
+            my $w = substr $line, $i, $j;
+            if (exists($CONV{$w})) {
+                substr($line, $i, $j) = $CONV{$w};
+                $k = 0;
+                last;
+            }
+        }
+        $i++ if $k;
+    }
+
+    # HTML entities
+    $line = decode_entities($line);
+
     # control characters
     $line =~ s/[\x{0000}-\x{001F}\x{007F}\x{0080}-\x{009F}]+/ /g;
 
@@ -37,34 +62,8 @@ while(<FILE>) {
     # byte order marks
     $line =~ s/[\x{FEFF}\x{FFFE}]+/ /g;
 
-    # full width characters
-    for my $i (0 .. length($line) - 1) {
-        my $c = ord substr $line, $i, 1;
-        if ($c >= 0xFF01 and $c <= 0xFF5E) {
-            substr($line, $i, 1) = chr $c - hex "0xFEE0";
-        }
-    }
-
-    # convert CJK characters
-    for (my $i = 0; $i < length($line); ) {
-        my $j = min($CONV_MAXLEN, length($line) - $i);
-        my $k = 1;
-        for (; $j > 0; $j--) {
-            my $w = substr $line, $i, $j;
-            if (exists($CONV{$w})) {
-                substr($line, $i, $j) = $CONV{$w};
-                $k = 0;
-                last;
-            }
-        }
-        $i++ if $k;
-    }
-
-    # convert special characters
-    $line =~ s/(?<=\S)’(?=(d|ll|m|re|s|t|ve)\b)/'/g;
-
-    # convert HTML entities
-    $line = decode_entities($line);
+    # punctuation marks
+    $line =~ s/(?<=\S)’(?=(d|ll|m|re|s|t|ve)\b)/'/gi;
 
     $line =~ s/ {2,}/ /g;
     $line =~ s/^ | $//g;

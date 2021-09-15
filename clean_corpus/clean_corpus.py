@@ -14,7 +14,23 @@ CONV_MAXLEN = len(max(CONV.keys(), key = len))
 
 def clean_text(line, verbose = False):
 
-    raw = line.strip()
+    # full width characters
+    line = "".join(chr(ord(c) - 0xFEE0) if "\uFF01" <= c <= "\uFF5E" else c for c in line)
+
+    # mixed width CJK characters
+    i = 0
+    while i < len(line):
+        for j in range(min(len(line), i + CONV_MAXLEN), i, -1):
+            w = line[i:j]
+            if w in CONV:
+                line = line[:i] + CONV[w] + line[j:]
+                i += len(CONV[w])
+                break
+        else:
+            i += 1
+
+    # HTML entities
+    line = html.unescape(line)
 
     # control characters
     line = re.sub("[\u0000-\u001F\u007F\u0080-\u009F]+", " ", line)
@@ -28,26 +44,8 @@ def clean_text(line, verbose = False):
     # byte order marks
     line = re.sub("[\uFEFF\uFFFE]", " ", line)
 
-    # full width characters
-    line = "".join(chr(ord(c) - 0xFEE0) if "\uFF01" <= c <= "\uFF5E" else c for c in line)
-
-    # convert CJK characters
-    i = 0
-    while i < len(line):
-        for j in range(min(len(line), i + CONV_MAXLEN), i, -1):
-            w = line[i:j]
-            if w in CONV:
-                line = line[:i] + CONV[w] + line[j:]
-                i += len(CONV[w])
-                break
-        else:
-            i += 1
-
-    # convert special characters
-    line = re.sub(r"(?<=\S)’(?=(d|ll|m|re|s|t|ve)\b)", "'", line, re.I)
-
-    # convert HTML entities
-    line = html.unescape(line)
+    # punctuation marks
+    line = re.sub(r"(?<=\S)’(?=(d|ll|m|re|s|t|ve)\b)", "'", line, flags = re.I)
 
     line = re.sub(" {2,}", " ", line)
     line = line.strip()
