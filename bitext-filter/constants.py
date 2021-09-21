@@ -1,9 +1,9 @@
 import re
 
-MAX_SENT_LEN = 100
+MAX_SENT_LEN = 15
 MIN_SENT_LEN = 1
 MAX_WORD_LEN = 20
-SENT_LEN_RATIO = 2
+SENT_LEN_RATIO = 2.5
 
 _EN = "a-z"
 _ES = "áéíñóúü"

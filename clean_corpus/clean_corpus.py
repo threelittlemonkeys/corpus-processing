@@ -33,10 +33,10 @@ def clean_text(line, verbose = False):
     line = html.unescape(line)
 
     # control characters
-    line = re.sub("[\u0000-\u001F\u007F\u0080-\u009F]+", " ", line)
+    line = re.sub("[\x00-\x1F\x7F\x80-\x9F]+", " ", line)
 
     # whitespace characters
-    line = re.sub("[\u0020\u00A0\u2000-\u200B\u202F\u205F\u3000]+", " ", line)
+    line = re.sub("[\x20\xA0\u2000-\u200B\u202F\u205F\u3000]+", " ", line)
 
     # private use area
     line = re.sub("[\uE000-\uF8FF]", " ", line)
@@ -60,13 +60,16 @@ if __name__ == "__main__":
 
     timer = time.time()
     fo = open(sys.argv[1])
-    for raw in fo:
+    for ln, raw in enumerate(fo, 1):
         line = clean_text(raw, verbose)
         if not verbose:
             print(line)
         elif raw != line:
             print("<", raw, end = "")
             print(">", line, "\n")
+        if ln % 100000 == 0:
+            print("%d sentence pairs" % ln, file = sys.stderr)
+
     fo.close()
 
     print("%f seconds" % (time.time() - timer), file = sys.stderr)

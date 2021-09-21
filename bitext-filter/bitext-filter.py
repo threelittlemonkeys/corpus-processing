@@ -3,9 +3,6 @@ from lexicon import bilingual_lexicon
 
 def corpus_filter(src_lang, tgt_lang, filename):
 
-    print("src_lang = %s" % src_lang, file = sys.stderr)
-    print("tgt_lang = %s" % tgt_lang, file = sys.stderr)
-
     fo = open(filename)
     fa = open(filename + ".flt.in", "w")
     fb = open(filename + ".flt.out", "w")
@@ -17,11 +14,10 @@ def corpus_filter(src_lang, tgt_lang, filename):
 
     for ln, line in enumerate(fo, 1):
 
-        if line.count("\t") != 2:
-            s0, t0 = line.split("\t")
-        else:
-            idx, s0, t0 = line.split("\t")
+        idx, s0, t0 = line.split("\t")
 
+        s0 = s0.strip()
+        t0 = t0.strip()
         s1 = normalize(s0)
         t1 = normalize(t0)
         err_log.clear()
@@ -38,14 +34,22 @@ def corpus_filter(src_lang, tgt_lang, filename):
             if t1 in s1:
                 log_error("TGT_IN_SRC")
 
-        '''
+        for sym in (".", "?", "!"):
+            if s1[-1] != sym and t1[-1] == sym:
+                s0 += sym
+                s1 += sym
+                break
+            if s1[-1] == sym and t1[-1] != sym:
+                t0 += sym
+                t1 += sym
+                break
+
         if not compare_findall(RE_PUNC, s1, t1):
             log_error("PUNCTUATION_MARK_MISMATCH")
         if not compare_findall(RE_BRACKET, s1, t1):
             log_error("BRACKET_MISMATCH")
         if not compare_findall(RE_QUOTATION, s1, t1):
             log_error("QUOTATION_MISMATCH")
-        '''
 
         for txt, lang, side, in ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT")):
 
@@ -93,33 +97,43 @@ def corpus_filter(src_lang, tgt_lang, filename):
         if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
             log_error("LONG_WORD_IN_TGT")
 
-        '''
         if lexicon.data:
             s3, t3 = lexicon.search(s2, t2)
             if len(s3) != len(t3):
                 log_error("ENTITY_MISMATCH")
+                '''
                 print(ln, "src", s0, sep = "\t")
                 print(ln, "tgt", t0, sep = "\t", end = "")
                 for w in s3:
                     if w not in t3:
                         print(ln, "", w, *s3[w], sep = "\t")
                 print()
-        '''
+                '''
 
         if err_log:
             for err_code in err_log:
                 print(err_code, line, sep = "\t", end = "", file = fb)
             num_errs += 1
         else:
-            print(line, end = "", file = fa)
+            print(idx, s0, t0, file = fa)
 
         if ln % 100000 == 0:
             print("%d sentence pairs" % ln, file = sys.stderr)
 
     timer = time.time() - timer
 
+
+    print("SRC_LANG =", src_lang, file = fc)
+    print("TGT_LANG =", tgt_lang, file = fc)
+    print("MAX_SENT_LEN =", MAX_SENT_LEN, file = fc)
+    print("MIN_SENT_LEN =", MIN_SENT_LEN, file = fc)
+    print("MAX_WORD_LEN =", MAX_WORD_LEN, file = fc)
+    print("SENT_LEN_RATIO =", SENT_LEN_RATIO, file = fc)
+    print(file = fc)
+
     for code, cnt in sorted(err_cnt.items(), key = lambda x: -x[1]):
         print(code, cnt, "(%.4f%%)" % (cnt / ln * 100), file = fc)
+
     print(file = fc)
     print("%d sentence pairs in total" % ln, file = fc)
     print("%d sentence pairs filtered out (%.4f%%)" % (num_errs, num_errs / ln * 100), file = fc)
