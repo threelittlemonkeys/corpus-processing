@@ -37,11 +37,15 @@ ERR_CODES = [
 ]
 
 err_log = list()
-err_cnt = {code: 0 for code in ERR_CODES}
+err_cnt = [
+    set(),
+    {code: 0 for code in ERR_CODES}
+]
 
-def log_error(code):
+def log_error(ln, code):
     err_log.append(code)
-    err_cnt[code] += 1
+    err_cnt[0].add(ln)
+    err_cnt[1][code] += 1
 
 def normalize(txt, lc = True, alnum = False):
     if lc:
@@ -52,7 +56,9 @@ def normalize(txt, lc = True, alnum = False):
     txt = txt.strip()
     return txt
 
-def tokenize(txt):
+def tokenize(lang, txt):
+    if lang in ("ja", "zh"):
+        txt = RE_ALPHA.sub(" ", txt)
     txt = RE_ALPHA_L.sub(" ", txt)
     txt = RE_ALPHA_R.sub(" ", txt)
     txt = RE_NUM_L.sub(" ", txt)
@@ -78,8 +84,8 @@ def stem(word, lang):
 
     return word
 
-def compare_findall(ro, a, b):
-    return len(ro.findall(a)) == len(ro.findall(b))
+def diff_findall(ro, a, b):
+    return abs(len(ro.findall(a)) - len(ro.findall(b)))
 
 def extract_nnp(txt):
     tkn = tokenize(normalize(txt, lc = False, alnum = True))
