@@ -3,6 +3,7 @@ import re
 
 def normalize(x):
     x = re.sub("[^0-9A-Za-z\u00C0-\u024F\u0400-\u04FF\u0E00-\u0E7F\u1E00-\u1EFF\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]", "", x)
+    x = re.sub("[0-9]+", "0", x)
     x = x.lower()
     return x
 

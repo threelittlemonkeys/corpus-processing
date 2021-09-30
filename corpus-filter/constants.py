@@ -13,11 +13,11 @@ _RU = "\u0400-\u04FF"
 _VI = "àáâãèéêìíòóôõùúýăđĩũơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ"
 _ZH = "\u4E00-\u9FFF"
 
-EOS_PUNCS = (".", "?", "!")
 CJK_LANGS = ("ja", "ko", "zh")
 
 _ALPHA = _EN + _ES + _JA + _KO + _RU + _VI + _ZH
 _ALNUM = "0-9" + _ALPHA
+_PUNC = ",.?!，．。？！"
 
 RE_ALPHA = re.compile("(?<=[%s])(?=[%s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % (_ALPHA, _ALPHA))
@@ -25,11 +25,13 @@ RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % (_ALPHA, _ALPHA))
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
 RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 
+RE_ALNUM = re.compile("[%s]" % _ALNUM)
 RE_NON_ALNUM = re.compile("[^%s]" % _ALNUM)
 RE_NON_ALNUM_L = re.compile("(?<=[^ %s])(?=[^ ])" % _ALNUM)
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ %s])" % _ALNUM)
 
 RE_PUNC = re.compile("[,.?!，．。？！]")
+RE_PUNC_EOS = re.compile("[,.?!，．。？！]+$")
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
 RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z])|[\"“”]")
 RE_URL = re.compile("https?://")

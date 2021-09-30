@@ -22,7 +22,10 @@ fl = open(corpus + ".flt.log", "w")
 
 for ln, line in enumerate(fc, 1):
 
-    idx, s0, t0 = line.split("\t")
+    try:
+        idx, s0, t0 = line.split("\t")
+    except:
+        idx, s0, t0 = 0, line.split("\t")
 
     s0 = s0.strip()
     t0 = t0.strip()
@@ -58,13 +61,17 @@ for ln, line in enumerate(fc, 1):
     if len(t2) / len(s2) > SENT_LEN_RATIO:
         log_error(ln, "TGT_TOO_LONGER")
 
-    if len(s1) and len(t1):
-        if s1[-1] not in EOS_PUNCS and t1[-1] in EOS_PUNCS:
-            s0 += t1[-1]
-            s1 += t1[-1]
-        if s1[-1] in EOS_PUNCS and t1[-1] not in EOS_PUNCS:
-            t0 += s1[-1]
-            t1 += s1[-1]
+    if len(s1) and len(t2):
+        s_punc_eos = RE_PUNC_EOS.search(s1)
+        t_punc_eos = RE_PUNC_EOS.search(t1)
+        if s_punc_eos and not t_punc_eos and RE_ALNUM.search(t1[-1]):
+            punc_eos = s_punc_eos.group()
+            t0 += punc_eos
+            t1 += punc_eos
+        if not s_punc_eos and t_punc_eos and RE_ALNUM.search(s1[-1]):
+            punc_eos = t_punc_eos.group()
+            s0 += punc_eos
+            s1 += punc_eos
 
     if diff_findall(RE_PUNC, s1, t1) > 1:
         log_error(ln, "PUNCTUATION_MARK_MISMATCH")
@@ -83,7 +90,7 @@ for ln, line in enumerate(fc, 1):
             log_error(ln, "INVALID_WORD_IN_%s" % side)
 
         if lang == "en" and not RE_LANG_EN.search(txt) \
-        if lang == "ja" and not RE_LANG_JA.search(txt) \
+        or lang == "ja" and not RE_LANG_JA.search(txt) \
         or lang == "ko" and not RE_LANG_KO.search(txt) \
         or lang == "ru" and not RE_LANG_RU.search(txt) \
         or lang == "zh" and not RE_LANG_ZH.search(txt):
