@@ -25,7 +25,7 @@ for ln, line in enumerate(fc, 1):
     try:
         idx, s0, t0 = line.split("\t")
     except:
-        idx, s0, t0 = 0, line.split("\t")
+        idx, (s0, t0) = 0, line.split("\t")
 
     s0 = s0.strip()
     t0 = t0.strip()
