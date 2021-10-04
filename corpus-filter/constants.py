@@ -1,6 +1,6 @@
 import re
 
-MAX_SENT_LEN = 20
+MAX_SENT_LEN = 15
 MIN_SENT_LEN = 1
 MAX_WORD_LEN = 20
 SENT_LEN_RATIO = 2.5
@@ -31,9 +31,10 @@ RE_NON_ALNUM_L = re.compile("(?<=[^ %s])(?=[^ ])" % _ALNUM)
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ %s])" % _ALNUM)
 
 RE_PUNC = re.compile("[,.?!，．。？！]")
-RE_PUNC_EOS = re.compile("[,.?!，．。？！]+$")
+RE_PUNC_EOS = re.compile("[,.?!，．。？！\"]+$")
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
 RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z])|[\"“”]")
+RE_SYMBOL = re.compile("[@#$%*+=♪-]")
 RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
 RE_INVALID_WORD = re.compile("(?<=[%s])[^ %s,.&%%'’\"´`/<>(){}[\]:–-]+(?=[%s])" % (_ALNUM, _ALNUM, _ALNUM))

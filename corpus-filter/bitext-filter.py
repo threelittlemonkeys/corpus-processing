@@ -61,24 +61,26 @@ for ln, line in enumerate(fc, 1):
     if len(t2) / len(s2) > SENT_LEN_RATIO:
         log_error(ln, "TGT_TOO_LONGER")
 
-    if len(s1) and len(t2):
-        s_punc_eos = RE_PUNC_EOS.search(s1)
-        t_punc_eos = RE_PUNC_EOS.search(t1)
-        if s_punc_eos and not t_punc_eos and RE_ALNUM.search(t1[-1]):
-            punc_eos = s_punc_eos.group()
-            t0 += punc_eos
-            t1 += punc_eos
-        if not s_punc_eos and t_punc_eos and RE_ALNUM.search(s1[-1]):
-            punc_eos = t_punc_eos.group()
-            s0 += punc_eos
-            s1 += punc_eos
+    sm = RE_PUNC_EOS.search(s1)
+    sms = sm.group() if sm else ""
+    tm = RE_PUNC_EOS.search(t1)
+    tms = tm.group() if tm else ""
+    if sms != tms:
+        if sms.startswith(tms) or sms.endswith(tms):
+            t0 = t0[:len(t0) - len(tms)] + sms
+            t1 = t1[:len(t1) - len(tms)] + sms
+        if tms.startswith(sms) or tms.endswith(sms):
+            s0 = s0[:len(s0) - len(sms)] + tms
+            s1 = s1[:len(s1) - len(sms)] + tms
 
-    if diff_findall(RE_PUNC, s1, t1) > 1:
+    if diff_findall(RE_PUNC, s1, t1):
         log_error(ln, "PUNCTUATION_MARK_MISMATCH")
     if diff_findall(RE_BRACKET, s1, t1):
         log_error(ln, "BRACKET_MISMATCH")
     if diff_findall(RE_QUOTATION, s1, t1):
         log_error(ln, "QUOTATION_MISMATCH")
+    if diff_findall(RE_SYMBOL, s1, t1):
+        log_error(ln, "SYMBOL_MISMATCH")
 
     for txt, lang, side, in ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT")):
 
@@ -129,7 +131,7 @@ for ln, line in enumerate(fc, 1):
         for err_code in err_log:
             print(err_code, line, sep = "\t", end = "", file = fo)
     else:
-        print(idx, s0, t0, file = fi)
+        print(idx, s0, t0, sep = "\t", file = fi)
 
     if ln % 100000 == 0:
         print("%d sentence pairs" % ln, file = sys.stderr)
