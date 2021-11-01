@@ -5,7 +5,7 @@ from utils import *
 
 class bilingual_lexicon(): # bilingual lexicon
     def __init__(self, src_lang, tgt_lang):
-        self.path = (os.path.dirname(__file__) or ".") + "/"
+        self.path = os.path.dirname(__file__) + "/"
         self.src_lang = src_lang
         self.tgt_lang = tgt_lang
         self.data = dict()

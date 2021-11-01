@@ -9,8 +9,9 @@ def tsv2xlsx(filename):
     for idx, text in enumerate(fi):
         _text = list()
         for x in text.split("\t"):
+            x = re.sub("[\x00-\x20]+", " ", x)
             x = x.strip()
-            x = re.sub('^(?=["=])', "'", x)
+            x = re.sub('^(=|"|https?://)', "'\\1", x)
             _text.append(x)
         worksheet.write_row(idx, 0, _text)
     fo.close()
