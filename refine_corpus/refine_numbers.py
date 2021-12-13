@@ -1,7 +1,7 @@
 import sys
 import re
-from clean_corpus import clean_text
 from constants import *
+from clean_corpus import clean_text
 
 def augment_data(src, tgt, pts, i, out):
     if i >= len(pts):

@@ -20,7 +20,7 @@ for ln, line in enumerate(fo, 1):
     if ln % 100000 == 0:
         print("%d sentece pairs" % ln, file = sys.stderr)
 
-    # quotation mark preprocessing 
+    # quotation mark preprocessing
 
     src = re.sub('"{2,}', '"', src)
     tgt = re.sub('"{2,}', '"', tgt)
