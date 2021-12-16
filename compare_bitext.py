@@ -11,19 +11,22 @@ def compare_bitext(action, key, flt, filename):
 
     pl = {}
     fo = open(filename)
-    for line in fo:
-        src, tgt = line.split("\t")
+    for ln, line in enumerate(fo, 1):
+        *_, src, tgt = line.split("\t")
+        tgt = tgt.strip()
         if key == "norm":
             src = normalize(src)
             tgt = normalize(tgt)
         pl[src] = True
         pl[tgt] = True
+        if ln % 100000 == 0:
+            print("%d lines in reference" % ln, file = sys.stderr)
     fo.close()
 
     num_sents = 0
     num_errors = 0
 
-    for idx, line in enumerate(sys.stdin, 1):
+    for ln, line in enumerate(sys.stdin, 1):
         line = line.strip()
 
         if line.count("\t") != 1:
@@ -62,10 +65,13 @@ def compare_bitext(action, key, flt, filename):
                 flag = True
 
         if flag:
-            print("%d\t%s" % (idx, line))
+            print("%d\t%s" % (ln, line))
             num_sents += 1
 
-    print("%d sentences in total" % idx, file = sys.stderr)
+        if ln % 100000 == 0:
+            print("%d lines in target" % ln, file = sys.stderr)
+
+    print("%d sentences in total" % ln, file = sys.stderr)
     print("%d sentences matched" % num_sents, file = sys.stderr)
     print("%d errors" % num_errors, file = sys.stderr)
 
