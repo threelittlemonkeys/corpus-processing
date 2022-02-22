@@ -34,10 +34,10 @@ RE_PUNC = re.compile("[,.?!，．。？！]")
 RE_PUNC_EOS = re.compile("[,.?!，．。？！\"]+$")
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
 RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z])|[\"“”]")
-RE_SYMBOL = re.compile("[@#$%*+=♪-]")
+RE_SYMBOL = re.compile("[@#$%*+=♪\u2190-\u21FF\u25A0-\u26FF]")
+
 RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
-RE_INVALID_WORD = re.compile("(?<=[%s])[^ %s.,·∙&%%'’\"´`/:()<>{}[\]「」–-]+(?=[%s])" % (_ALNUM, _ALNUM, _ALNUM))
 
 RE_LANG_EN = re.compile("[%s]" % _EN)
 RE_LANG_JA = re.compile("[%s]" % (_JA + _ZH))

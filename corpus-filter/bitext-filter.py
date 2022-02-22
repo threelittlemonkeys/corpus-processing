@@ -7,7 +7,6 @@ if len(sys.argv) != 4:
 timer = time.time()
 src_lang = sys.argv[1]
 tgt_lang = sys.argv[2]
-lang_pair = (src_lang, tgt_lang)
 corpus = sys.argv[3]
 lexicon = bilingual_lexicon(src_lang, tgt_lang)
 
@@ -80,14 +79,17 @@ for ln, line in enumerate(fc, 1):
     if diff_findall(RE_SYMBOL, s1, t1):
         log_error(ln, "SYMBOL_MISMATCH")
 
-    for txt, lang, side, in ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT")):
+    pairs = ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT"))
+    for txt, lang, side, in pairs:
 
         if RE_URL.search(txt):
             log_error(ln, "URL_IN_%s" % side)
         if RE_REPETITION.match(txt):
             log_error(ln, "%s_REPEATED" % side)
+        '''
         if RE_INVALID_WORD.search(txt):
             log_error(ln, "INVALID_WORD_IN_%s" % side)
+        '''
 
         if lang == "en" and not RE_LANG_EN.search(txt) \
         or lang == "ja" and not RE_LANG_JA.search(txt) \
