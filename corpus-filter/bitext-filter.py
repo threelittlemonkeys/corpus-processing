@@ -11,10 +11,6 @@ lang_pair = (src_lang, tgt_lang)
 corpus = sys.argv[3]
 lexicon = bilingual_lexicon(src_lang, tgt_lang)
 
-global MAX_SENT_LEN
-if set(lang_pair) & {"ja", "zh"}:
-    MAX_SENT_LEN *= 2
-
 fc = open(corpus)
 fi = open(corpus + ".flt.in", "w")
 fo = open(corpus + ".flt.out", "w")
@@ -56,9 +52,9 @@ for ln, line in enumerate(fc, 1):
     if len(t2) < MIN_SENT_LEN:
         log_error(ln, "TGT_TOO_SHORT")
 
-    if len(s2) / len(t2) > SENT_LEN_RATIO:
+    if len(t2) == 0 or len(s2) / len(t2) > SENT_LEN_RATIO:
         log_error(ln, "SRC_TOO_LONGER")
-    if len(t2) / len(s2) > SENT_LEN_RATIO:
+    if len(s2) == 0 or len(t2) / len(s2) > SENT_LEN_RATIO:
         log_error(ln, "TGT_TOO_LONGER")
 
     sm = RE_PUNC_EOS.search(s1)
@@ -73,12 +69,14 @@ for ln, line in enumerate(fc, 1):
             s0 = s0[:len(s0) - len(sms)] + tms
             s1 = s1[:len(s1) - len(sms)] + tms
 
+    '''
     if diff_findall(RE_PUNC, s1, t1):
         log_error(ln, "PUNCTUATION_MARK_MISMATCH")
     if diff_findall(RE_BRACKET, s1, t1):
         log_error(ln, "BRACKET_MISMATCH")
     if diff_findall(RE_QUOTATION, s1, t1):
         log_error(ln, "QUOTATION_MISMATCH")
+    '''
     if diff_findall(RE_SYMBOL, s1, t1):
         log_error(ln, "SYMBOL_MISMATCH")
 

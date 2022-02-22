@@ -58,8 +58,8 @@ def normalize(txt, lc = True, alnum = False):
     return txt
 
 def tokenize(lang, txt):
-    if lang in ("ja", "zh"):
-        txt = RE_ALPHA.sub(" ", txt)
+    if lang in ("ja", "ko", "zh"):
+        return list(txt.replace(" ", ""))
     txt = RE_ALPHA_L.sub(" ", txt)
     txt = RE_ALPHA_R.sub(" ", txt)
     txt = RE_NUM_L.sub(" ", txt)

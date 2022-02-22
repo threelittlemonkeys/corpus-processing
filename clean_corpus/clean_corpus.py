@@ -30,7 +30,7 @@ class corpus_cleaner():
             for j in range(min(len(line), i + self.maxlen), i, -1):
                 w = line[i:j]
                 if w in self.table:
-                    line = line[:i] + CONV[w] + line[j:]
+                    line = line[:i] + self.table[w] + line[j:]
                     i += len(self.table[w])
                     break
             else:

@@ -1,13 +1,13 @@
 import re
 
-MAX_SENT_LEN = 15
+MAX_SENT_LEN = 100
 MIN_SENT_LEN = 1
 MAX_WORD_LEN = 20
-SENT_LEN_RATIO = 2.5
+SENT_LEN_RATIO = 5
 
 _EN = "a-z"
 _ES = "áéíñóúü"
-_JA = "\u3040-\u30FF"
+_JA = "\u3005\u3040-\u30FF"
 _KO = "\uAC00-\uD7A3"
 _RU = "\u0400-\u04FF"
 _VI = "àáâãèéêìíòóôõùúýăđĩũơưạảấầẩẫậắằẳẵặẹẻẽếềểễệỉịọỏốồổỗộớờởỡợụủứừửữựỳỵỷỹ\u0300-\u0303\u0306\u0309\u0323"
@@ -37,10 +37,10 @@ RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z]
 RE_SYMBOL = re.compile("[@#$%*+=♪-]")
 RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{3,}")
-RE_INVALID_WORD = re.compile("(?<=[%s])[^ %s,.&%%'’\"´`/<>(){}[\]:–-]+(?=[%s])" % (_ALNUM, _ALNUM, _ALNUM))
+RE_INVALID_WORD = re.compile("(?<=[%s])[^ %s.,·∙&%%'’\"´`/:()<>{}[\]「」–-]+(?=[%s])" % (_ALNUM, _ALNUM, _ALNUM))
 
 RE_LANG_EN = re.compile("[%s]" % _EN)
-RE_LANG_JA = re.compile("[%s]" % _JA)
+RE_LANG_JA = re.compile("[%s]" % (_JA + _ZH))
 RE_LANG_KO = re.compile("[%s]" % _KO)
 RE_LANG_ZH = re.compile("[%s]" % _ZH)
 RE_LANG_RU = re.compile("[%s]" % _RU)
