@@ -14,7 +14,7 @@ def augment_data(src, tgt, pts, i, out):
 
 fo = open(sys.argv[1])
 
-for ln, raw in enumerate(fo):
+for ln, raw in enumerate(fo, 1):
 
     if raw.count("\t") != 2:
         # print(raw, end = "")

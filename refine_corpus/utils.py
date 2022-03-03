@@ -6,26 +6,35 @@ def any_alnum(txt):
 def find_quotes(txt, seo = False):
     quotes = list()
 
-    for w in RE_TOKENIZE_A.finditer(txt):
+    for w in RE_TOKEN.finditer(txt):
         w, i, j = w.group().lower(), w.start(), w.end()
+
         for m in RE_FIND_QUOT.finditer(w):
             m, k = m.group(), m.start()
 
             # double quote
+
             if m in DQ:
                 quotes.append((i + k, m))
                 continue
 
             # single quote
-            if re.sub("[%s]+$" % QUOT, "", w) in CNTR:
+
+            if 0 < k < len(w) - 1 and w in CNTR_WORD:
                 continue
-            if 0 < k < len(w) - 1:
+
+            if k == 0 and w in CNTR_L:
                 continue
-            if k == len(w) - 1 and (w[-2:-1] == "s" or w[-3:-1] == "in"):
+
+            if 0 < k < len(w) - 1 and CNTR_R.search(w):
+                continue
+
+            if k == len(w) - 1 and re.search(".{2}(in|s).$", w):
                 if not re.search("(^| )[%s]" % SQ, txt[:i]):
                     continue
-                elif re.search("[%s]( |$)" % SQ, txt[j:]):
+                if re.search("[%s]( |$)" % SQ, txt[j:]):
                     continue
+
             quotes.append((i + k, m))
 
     if seo: # at sentence ends only
@@ -35,78 +44,33 @@ def find_quotes(txt, seo = False):
 
     return quotes
 
-def remove_indexed_str(txt, ms):
+def remove_matched_strs(txt, ms):
     k = 0
     for i, m in ms:
         i += k
         txt = txt[:i] + txt[i + len(m):]
         k -= len(m)
+    txt = re.sub("  +", " ", txt.strip())
     return txt
 
 def find_quoted_str(txt, quotes, qlen):
     if len(quotes) != 2:
-        return
+        return ()
     i, j = quotes[0][0], quotes[1][0]
-    if i > 0 and RE_ALNUM.search(txt[i - 1]):
-        return
+    if i > 0 and any_alnum(txt[i - 1]):
+        return ()
     qstr = txt[i + 1:j].strip()
     if not qstr:
-        return
+        return ()
     if qstr.count(" ") > qlen - 1:
-        return
+        return ()
     return (i, qstr)
 
-def find_transliteration(x, y):
-    if RE_KO.search(x):
-        x = romanize(x)
-    if RE_KO.search(y):
-        y = romanize(y)
-    x = [w.group() for w in RE_TOKENIZE_B.finditer(x.lower())]
-    y = y.lower()
-    xs = []
-    for z in (1, 2):
-        for i in range(len(x) - z + 1):
-            w = "".join(x[i:i + z])
-            if RE_ALNUM.search(w):
-                xs.append((w, edit_distance(w, y)))
-    return min(xs, key = lambda x: x[1])
-
-def romanize(s, norm = False):
-    o = ""
-    I = "g kk n d tt r m b pp s ss 0 j jj ch k t p h".split(" ") # initial consonants
-    M = "a ae ya yae eo e yeo ye o wa wae oe yo u wo we wi yu eu ui i".split(" ") # medial vowels
-    F = "k k k n n n t l k m l l l l l m p p t t ng t t k t p t".split(" ") # final consonants
-    for c in s:
-        u = ord(c)
-        if u < 0xAC00 or u > 0xD7A3: # if not Hangeul syllable
-            o += c
-            continue
-        u -= 0xAC00
-        f = u % 28 # final consonant
-        m = u // 28 % 21 # medial vowel
-        i = u // 28 // 21 # initial consonant
-        if i != 11:
-            o += I[i]
-        o += M[m]
-        if f > 0:
-            o += F[f - 1]
-    return o
-
-def edit_distance(a, b):
-    Za = len(a) + 1
-    Zb = len(b) + 1
-    M = [[0 for i in range(Zb)] for j in range(Za)]
-    for i in range(Za):
-        M[i][0] = i
-    for j in range(Zb):
-        M[0][j] = j
-    for i in range(1, Za):
-        for j in range(1, Zb):
-            M[i][j] = min(
-                M[i - 1][j] + 1, # deletion
-                M[i][j - 1] + 1, # insertion
-                M[i - 1][j - 1] + (a[i - 1] != b[j - 1]) # substitution
-            )
-            if i > 1 and j > 1 and a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transposition
-                M[i][j] = min(M[i][j], M[i - 2][j - 2] + 1)
-    return M[-1][-1]
+def sub_quoted_str(x, y, x_qstr):
+    i, x_qstr = x_qstr
+    pt = re.compile(r"[%s]*%s[%s]*" % (QUOT, re.escape(x_qstr), QUOT), re.I)
+    if len(pt.findall(y)) == 1:
+        x_qstr = x[i:i + len(x_qstr) + 2]
+        y_qstr = pt.search(y).group()
+        y = y.replace(y_qstr, x_qstr)
+    return x, y

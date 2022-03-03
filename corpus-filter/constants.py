@@ -19,7 +19,6 @@ _ALPHA = _EN + _ES + _JA + _KO + _RU + _VI + _ZH
 _ALNUM = "0-9" + _ALPHA
 _PUNC = ",.?!，．。？！"
 
-RE_ALPHA = re.compile("(?<=[%s])(?=[%s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % (_ALPHA, _ALPHA))
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")

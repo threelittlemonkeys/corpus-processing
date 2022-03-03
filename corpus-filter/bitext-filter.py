@@ -1,5 +1,4 @@
 from utils import *
-from lexicon import bilingual_lexicon
 
 if len(sys.argv) != 4:
     sys.exit("Usage: %s src_lang tgt_lang bitext" % sys.argv[0])
@@ -8,7 +7,6 @@ timer = time.time()
 src_lang = sys.argv[1]
 tgt_lang = sys.argv[2]
 corpus = sys.argv[3]
-lexicon = bilingual_lexicon(src_lang, tgt_lang)
 
 fc = open(corpus)
 fi = open(corpus + ".flt.in", "w")
@@ -114,18 +112,7 @@ for ln, line in enumerate(fc, 1):
     if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
         log_error(ln, "LONG_WORD_IN_TGT")
 
-    if lexicon.data:
-        s3, t3 = lexicon.search(s2, t2)
-        if len(s3) != len(t3):
-            log_error(ln, "ENTITY_MISMATCH")
-            '''
-            print(ln, "src", s0, sep = "\t")
-            print(ln, "tgt", t0, sep = "\t", end = "")
-            for w in s3:
-                if w not in t3:
-                    print(ln, "", w, *s3[w], sep = "\t")
-            print()
-            '''
+    # TODO remove sentence pairs that contain low frequency characters
 
     if err_log:
         for err_code in err_log:

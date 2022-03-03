@@ -10,20 +10,32 @@ DQ = "\"˝“”″" # double quotation marks
 FQ = "《》「」『』【】" # full-width quotation marks
 BR = "()[]<>{}" # brackets
 SYM = "→" # symbols
+PUNC = "~,.?!:;"
 QUOT = SQ + DQ + FQ # quotation marks
 
-CNTR = { # contractions
+# contractions
+
+CNTR_WORD = {
     y.replace("'", x) for x in SQ for y in
-    ("d", "ll", "m", "re", "s", "t", "ve")
-    + ("'cause", "'em", "'til", "'till", "'un", "'uns", "ma'am")
+    ("ma'am", "o'clock")
 }
 
-RE_KO = re.compile("[\uAC00-\uD7AF]")
-RE_ALNUM = re.compile("[0-9A-Za-z\uAC00-\uD7AF]")
+CNTR_L = {
+    y.replace("'", x) for x in SQ for y in
+    ("'cause", "'em", "'til", "'till", "'un", "'uns")
+}
 
-RE_TOKENIZE_A = re.compile("[,.?!]|[^ ,.?!]+")
-RE_TOKENIZE_B = re.compile("[,.?!%s]|[^ ,.?!%s]+" % (QUOT, QUOT))
+CNTR_R = [
+    y.replace("'", x) for x in SQ for y in
+    ("'d", "'em", "'ll", "'m", "'re", "'s", "'t", "'ve")
+]
+CNTR_R = re.compile("(%s)$" % "|".join(map(re.escape, CNTR_R)))
+
+RE_ALNUM = re.compile("[0-9A-Za-z\uAC00-\uD7AF]")
+RE_TOKEN = re.compile("[%s]+|[^ %s]+" % (PUNC, PUNC))
 
 RE_FIND_BR = re.compile("[%s]" % re.escape(BR))
 RE_FIND_SYM = re.compile("[%s]" % re.escape(SYM))
+RE_FIND_PUNC = re.compile("[%s]" % re.escape(PUNC))
+RE_FIND_PUNC_EOS = re.compile("[%s]+[%s]*$" % (re.escape(PUNC), re.escape(QUOT)))
 RE_FIND_QUOT = re.compile("[%s]" % QUOT)
