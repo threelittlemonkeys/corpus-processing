@@ -43,7 +43,7 @@ class corpus_cleaner():
         line = re.sub("[\x00-\x1F\x7F\x80-\x9F]+", " ", line)
 
         # whitespace characters
-        line = re.sub("[\x20\xA0\u2000-\u200B\u202F\u205F\u3000]+", " ", line)
+        line = re.sub("[\x20\xA0\u2000-\u200F\u202F\u205F\u3000]+", " ", line)
 
         # private use area
         line = re.sub("[\uE000-\uF8FF]", " ", line)
