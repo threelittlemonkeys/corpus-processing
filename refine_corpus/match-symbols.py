@@ -16,6 +16,9 @@ RE_SYM_R = re.compile("[ %s]*$" % _SYM, re.I)
 
 for line in sys.stdin:
 
+    if line.count("\t") != 1:
+        continue
+
     src, tgt = line.strip().split("\t")
 
     src_sym_l = RE_SYM_L.search(src).group()
