@@ -5,7 +5,7 @@ import re
 PATH = (os.path.dirname(__file__) or ".") + "/"
 
 _SYM = list()
-with open(PATH + "match-symbols.csv") as fo:
+with open(PATH + "match_symbols.csv") as fo:
     for line in fo:
         c = line.split(" ")[1][0]
         _SYM.append(c)
