@@ -28,10 +28,10 @@ for line in sys.stdin:
 
     out = tgt
 
-    if src_sym_l and src_sym_l != tgt_sym_l:
+    if src_sym_l != tgt_sym_l:
         out = src_sym_l + out[len(tgt_sym_l):]
 
-    if src_sym_r and src_sym_r != tgt_sym_r:
+    if src_sym_r != tgt_sym_r:
         out = out[:len(out) - len(tgt_sym_r)] + src_sym_r
 
     print(src, out, sep = "\t")
