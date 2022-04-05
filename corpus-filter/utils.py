@@ -2,6 +2,7 @@ import sys
 import time
 import math
 from constants import *
+from parameters import *
 
 ERR_CODES = [
     "SRC_EMPTY",
@@ -9,10 +10,11 @@ ERR_CODES = [
     "SRC_AND_TGT_IDENTICAL",
     "SRC_IN_TGT",
     "TGT_IN_SRC",
-    "PUNCTUATION_MARK_MISMATCH",
-    "BRACKET_MISMATCH",
-    "QUOTATION_MISMATCH",
+    "LIST_MARKER_MISMATCH",
     "SYMBOL_MISMATCH",
+    "BRACKET_MISMATCH",
+    "PUNCTUATION_MARK_MISMATCH",
+    "QUOTATION_MISMATCH",
     "URL_IN_SRC",
     "URL_IN_TGT",
     "SRC_REPEATED",
@@ -58,8 +60,6 @@ def normalize(txt, lc = True, alnum = False):
     return txt
 
 def tokenize(lang, txt):
-    if lang in ("ja", "ko", "zh"):
-        return list(txt.replace(" ", ""))
     txt = RE_ALPHA_L.sub(" ", txt)
     txt = RE_ALPHA_R.sub(" ", txt)
     txt = RE_NUM_L.sub(" ", txt)
@@ -69,53 +69,5 @@ def tokenize(lang, txt):
     txt = txt.split(" ")
     return txt
 
-def stem(word, lang):
-
-    if lang == "ru":
-        pool = RU_SUFFIX
-        maxlen = RU_SUFFIX_MAXLEN
-    else:
-        return word
-
-    for i in range(min(maxlen, len(word)), 0, -1):
-        if i >= len(word):
-            continue
-        if word[-i:] in pool:
-            return word[:-i]
-
-    return word
-
 def diff_findall(ro, a, b):
     return abs(len(ro.findall(a)) - len(ro.findall(b)))
-
-def extract_nnp(txt):
-    tkn = tokenize(normalize(txt, lc = False, alnum = True))
-    func = lambda i, w: i and len(w) > 3 and RE_NNP.match(w)
-    return [x[1].lower() for x in enumerate(tkn) if func(*x)]
-
-def homophone(a, b):
-
-    if a == b:
-        return True
-
-    a = re.sub("(.)\\1+", "\\1", a)
-    b = re.sub("(.)\\1+", "\\1", b)
-    a = re.sub("(?<=[aeiouhwy])[^aeiouhwy]+$", "", a)
-    b = re.sub("(?<=[aeiouhwy])[^aeiouhwy]+$", "", b)
-
-    if a == b:
-        return True
-
-    a = re.sub("[aeiouhrwy]", "", a)
-    b = re.sub("[aeiouhrwy]", "", b)
-
-    if a == b:
-        return True
-
-    if a[:3] == b[:3]:
-        return True
-
-    if a[-3:] == b[-3:]:
-        return True
-
-    return False

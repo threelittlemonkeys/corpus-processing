@@ -1,12 +1,10 @@
 from utils import *
 
-if len(sys.argv) != 4:
-    sys.exit("Usage: %s src_lang tgt_lang bitext" % sys.argv[0])
+if len(sys.argv) != 2:
+    sys.exit("Usage: %s bitext" % sys.argv[0])
 
 timer = time.time()
-src_lang = sys.argv[1]
-tgt_lang = sys.argv[2]
-corpus = sys.argv[3]
+corpus = sys.argv[1]
 
 fc = open(corpus)
 fi = open(corpus + ".flt.in", "w")
@@ -15,17 +13,14 @@ fl = open(corpus + ".flt.log", "w")
 
 for ln, line in enumerate(fc, 1):
 
-    try:
-        idx, s0, t0 = line.split("\t")
-    except:
-        idx, (s0, t0) = 0, line.split("\t")
+    *idx, s0, t0 = line.split("\t")
 
     s0 = s0.strip()
     t0 = t0.strip()
     s1 = normalize(s0)
     t1 = normalize(t0)
-    s2 = tokenize(src_lang, s1)
-    t2 = tokenize(tgt_lang, t1)
+    s2 = tokenize(SRC_LANG, s1)
+    t2 = tokenize(TGT_LANG, t1)
     err_log.clear()
 
     if s1 == "":
@@ -34,7 +29,7 @@ for ln, line in enumerate(fc, 1):
         log_error(ln, "TGT_EMPTY")
     if s1 == t1:
         log_error(ln, "SRC_AND_TGT_IDENTICAL")
-    elif src_lang != "en" and tgt_lang != "en":
+    elif SRC_LANG != "en" and TGT_LANG != "en":
         if s1 in t1:
             log_error(ln, "SRC_IN_TGT")
         if t1 in s1:
@@ -54,6 +49,7 @@ for ln, line in enumerate(fc, 1):
     if len(s2) == 0 or len(t2) / len(s2) > SENT_LEN_RATIO:
         log_error(ln, "TGT_TOO_LONGER")
 
+    '''
     sm = RE_PUNC_EOS.search(s1)
     sms = sm.group() if sm else ""
     tm = RE_PUNC_EOS.search(t1)
@@ -65,19 +61,21 @@ for ln, line in enumerate(fc, 1):
         if tms.startswith(sms) or tms.endswith(sms):
             s0 = s0[:len(s0) - len(sms)] + tms
             s1 = s1[:len(s1) - len(sms)] + tms
+    '''
 
-    '''
-    if diff_findall(RE_PUNC, s1, t1):
-        log_error(ln, "PUNCTUATION_MARK_MISMATCH")
-    if diff_findall(RE_BRACKET, s1, t1):
-        log_error(ln, "BRACKET_MISMATCH")
-    if diff_findall(RE_QUOTATION, s1, t1):
-        log_error(ln, "QUOTATION_MISMATCH")
-    '''
+    if diff_findall(RE_LIST_MARKER, s1, t1):
+        log_error(ln, "LIST_MARKER_MISMATCH")
     if diff_findall(RE_SYMBOL, s1, t1):
         log_error(ln, "SYMBOL_MISMATCH")
 
-    pairs = ((s1, src_lang, "SRC"), (t1, tgt_lang, "TGT"))
+    if BRACKET_MISMATCH and diff_findall(RE_BRACKET, s1, t1):
+        log_error(ln, "BRACKET_MISMATCH")
+    if PUNCTUATION_MARK_MISMATCH and diff_findall(RE_PUNC, s1, t1) > 1:
+        log_error(ln, "PUNCTUATION_MARK_MISMATCH")
+    if QUOTATION_MISMATCH and diff_findall(RE_QUOTATION, s1, t1):
+        log_error(ln, "QUOTATION_MISMATCH")
+
+    pairs = ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT"))
     for txt, lang, side, in pairs:
 
         if RE_URL.search(txt):
@@ -118,7 +116,7 @@ for ln, line in enumerate(fc, 1):
         for err_code in err_log:
             print(err_code, line, sep = "\t", end = "", file = fo)
     else:
-        print(idx, s0, t0, sep = "\t", file = fi)
+        print(*idx, s0, t0, sep = "\t", file = fi)
 
     if ln % 100000 == 0:
         print("%d sentence pairs" % ln, file = sys.stderr)
@@ -127,8 +125,8 @@ timer = time.time() - timer
 ni = ln - len(err_cnt[0])
 no = len(err_cnt[0])
 
-print("SRC_LANG =", src_lang, file = fl)
-print("TGT_LANG =", tgt_lang, file = fl)
+print("SRC_LANG =", SRC_LANG, file = fl)
+print("TGT_LANG =", TGT_LANG, file = fl)
 print("MAX_SENT_LEN =", MAX_SENT_LEN, file = fl)
 print("MIN_SENT_LEN =", MIN_SENT_LEN, file = fl)
 print("MAX_WORD_LEN =", MAX_WORD_LEN, file = fl)

@@ -1,7 +1,6 @@
 import sys
 import time
 from utils import *
-from constants import *
 
 fo = open(sys.argv[1])
 timer = time.time()

@@ -11,7 +11,7 @@ _FQ = "《》「」『』【】" # full-width quotation marks
 _BR = "()[]<>{}" # brackets
 _SYM = "→" # symbols
 _PUNC = "~,.?!:;"
-_QUOT = _SQ + _DQ + _FQ # quotation marks
+QUOT = _SQ + _DQ + _FQ # quotation marks
 
 # contractions
 
@@ -37,5 +37,5 @@ RE_TOKEN = re.compile("[%s]+|[^ %s]+" % (_PUNC, _PUNC))
 RE_FIND_BR = re.compile("[%s]" % re.escape(_BR))
 RE_FIND_SYM = re.compile("[%s]" % re.escape(_SYM))
 RE_FIND_PUNC = re.compile("[%s]" % re.escape(_PUNC))
-RE_FIND_PUNC_EOS = re.compile("[%s]+[%s]*$" % (re.escape(_PUNC), re.escape(_QUOT)))
-RE_FIND_QUOT = re.compile("[%s]" % _QUOT)
+RE_FIND_PUNC_EOS = re.compile("[%s]+[%s]*$" % (re.escape(_PUNC), re.escape(QUOT)))
+RE_FIND_QUOT = re.compile("[%s]" % QUOT)
