@@ -16,6 +16,7 @@ _PUNC = ",.?!，．。？！"
 
 RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % (_ALPHA, _ALPHA))
+RE_ALPHA_CJ = re.compile("(?<=[%s%s])(?=[%s%s])" % (_JA, _ZH, _JA, _ZH))
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
 RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 
@@ -27,7 +28,7 @@ RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ %s])" % _ALNUM)
 RE_PUNC = re.compile("[,.?!，．。？！]")
 RE_PUNC_EOS = re.compile("[,.?!，．。？！\"]+$")
 RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
-RE_LIST_MARKER = re.compile("^([0-9]\. |[・])")
+RE_LIST_MARKER = re.compile("^([0-9]\. |[❶-➓・])")
 RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z])|[\"“”]")
 RE_SYMBOL = re.compile("[@#%*+=♪\u2190-\u21FF\u25A0-\u26FF\u2700-\u27BF]")
 
@@ -35,7 +36,7 @@ RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{2,}")
 
 RE_LANG_EN = re.compile("[%s]" % _EN)
-RE_LANG_JA = re.compile("[%s]" % (_JA + _ZH))
+RE_LANG_JA = re.compile("[%s]" % _JA)
 RE_LANG_KO = re.compile("[%s]" % _KO)
 RE_LANG_ZH = re.compile("[%s]" % _ZH)
 RE_LANG_RU = re.compile("[%s]" % _RU)

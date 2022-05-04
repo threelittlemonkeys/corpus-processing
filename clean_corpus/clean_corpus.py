@@ -2,7 +2,6 @@ import os
 import sys
 import re
 import html
-import time
 
 class corpus_cleaner():
 
@@ -66,7 +65,6 @@ if __name__ == "__main__":
     cleaner = corpus_cleaner()
     verbose = (len(sys.argv) == 3 and sys.argv[2] == "-v")
 
-    timer = time.time()
     fo = open(sys.argv[1])
     for ln, raw in enumerate(fo, 1):
         line = cleaner.clean(raw)
@@ -79,5 +77,3 @@ if __name__ == "__main__":
             print("%d sentence pairs" % ln, file = sys.stderr)
 
     fo.close()
-
-    print("%f seconds" % (time.time() - timer), file = sys.stderr)

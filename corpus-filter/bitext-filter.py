@@ -1,17 +1,19 @@
 from utils import *
 
-if len(sys.argv) != 2:
-    sys.exit("Usage: %s bitext" % sys.argv[0])
+if len(sys.argv) not in (2, 3):
+    sys.exit("Usage: %s clean_bitext (raw_bitext)" % sys.argv[0])
+
+fa = open(sys.argv[1])
+fb = open(sys.argv[2]) if len(sys.argv) == 3 else None
 
 timer = time.time()
-corpus = sys.argv[1]
+filename = sys.argv[-1]
 
-fc = open(corpus)
-fi = open(corpus + ".flt.in", "w")
-fo = open(corpus + ".flt.out", "w")
-fl = open(corpus + ".flt.log", "w")
+fi = open(filename + ".flt.in", "w")
+fo = open(filename + ".flt.out", "w")
+fl = open(filename + ".flt.log", "w")
 
-for ln, line in enumerate(fc, 1):
+for ln, line in enumerate(fa, 1):
 
     *idx, s0, t0 = line.split("\t")
 
@@ -48,20 +50,6 @@ for ln, line in enumerate(fc, 1):
         log_error(ln, "SRC_TOO_LONGER")
     if len(s2) == 0 or len(t2) / len(s2) > SENT_LEN_RATIO:
         log_error(ln, "TGT_TOO_LONGER")
-
-    '''
-    sm = RE_PUNC_EOS.search(s1)
-    sms = sm.group() if sm else ""
-    tm = RE_PUNC_EOS.search(t1)
-    tms = tm.group() if tm else ""
-    if sms != tms:
-        if sms.startswith(tms) or sms.endswith(tms):
-            t0 = t0[:len(t0) - len(tms)] + sms
-            t1 = t1[:len(t1) - len(tms)] + sms
-        if tms.startswith(sms) or tms.endswith(sms):
-            s0 = s0[:len(s0) - len(sms)] + tms
-            s1 = s1[:len(s1) - len(sms)] + tms
-    '''
 
     if diff_findall(RE_LIST_MARKER, s1, t1):
         log_error(ln, "LIST_MARKER_MISMATCH")
@@ -110,16 +98,17 @@ for ln, line in enumerate(fc, 1):
     if any(map(lambda x: len(x) > MAX_WORD_LEN, t2)):
         log_error(ln, "LONG_WORD_IN_TGT")
 
-    # TODO remove sentence pairs that contain low frequency characters
-
-    if err_log:
-        for err_code in err_log:
-            print(err_code, line, sep = "\t", end = "", file = fo)
-    else:
-        print(*idx, s0, t0, sep = "\t", file = fi)
-
     if ln % 100000 == 0:
         print("%d sentence pairs" % ln, file = sys.stderr)
+
+    if fb:
+        line = next(fb)
+
+    if not err_log:
+        print(line, sep = "\t", end = "", file = fi)
+
+    for err_code in err_log:
+        print(err_code, line, sep = "\t", end = "", file = fo)
 
 timer = time.time() - timer
 ni = ln - len(err_cnt[0])
@@ -143,7 +132,10 @@ print("%d sentence pairs filtered in (%.4f%%)" % (ni, ni / ln * 100), file = fl)
 print("%d sentence pairs filtered out (%.4f%%)" % (no, no / ln * 100), file = fl)
 print("%f seconds" % timer, file = fl)
 
-fc.close()
+fa.close()
+if fb != None:
+    fb.close()
+
 fi.close()
 fo.close()
 fl.close()

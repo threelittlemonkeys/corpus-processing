@@ -1,15 +1,12 @@
 from constants import *
 
-def any_alnum(txt):
-    return RE_ALNUM.search(txt)
-
 def find_quotes(txt, seo = False):
     quotes = list()
 
     for w in RE_TOKEN.finditer(txt):
         w, i, j = w.group().lower(), w.start(), w.end()
 
-        for m in RE_FIND_QUOT.finditer(w):
+        for m in RE_QUOT.finditer(w):
             m, k = m.group(), m.start()
 
             # double quote
@@ -20,13 +17,13 @@ def find_quotes(txt, seo = False):
 
             # single quote
 
-            if 0 < k < len(w) - 1 and w in CNTR_WORD:
+            if 0 < k < len(w) - 1 and w in CTR_WORD:
                 continue
 
-            if k == 0 and w in CNTR_L:
+            if k == 0 and w in CTR_L:
                 continue
 
-            if 0 < k < len(w) - 1 and CNTR_R.search(w):
+            if 0 < k < len(w) - 1 and CTR_R.search(w):
                 continue
 
             if k == len(w) - 1 and re.search(".{2}(in|s).$", w):
@@ -39,7 +36,7 @@ def find_quotes(txt, seo = False):
 
     if seo: # at sentence ends only
         for x in quotes:
-            if any_alnum(txt[:x[0]]) and any_alnum(txt[x[0] + 1:]):
+            if RE_ALNUM.search(txt[:x[0]]) and RE_ALNUM.search(txt[x[0] + 1:]):
                 return
 
     return quotes
@@ -55,18 +52,18 @@ def remove_matched_strs(txt, ms):
 
 def find_quoted_str(txt, quotes, qlen):
     if len(quotes) != 2:
-        return ()
+        return
     i, j = quotes[0][0], quotes[1][0]
-    if i > 0 and any_alnum(txt[i - 1]):
-        return ()
+    if i > 0 and RE_ALNUM.search(txt[i - 1]):
+        return
     qstr = txt[i + 1:j].strip()
     if not qstr:
-        return ()
+        return
     if qstr.count(" ") > qlen - 1:
-        return ()
+        return
     return (i, qstr)
 
-def sub_quoted_str(x, y, x_qstr):
+def replace_quoted_str(x, y, x_qstr):
     i, x_qstr = x_qstr
     pt = re.compile(r"[%s]*%s[%s]*" % (QUOT, re.escape(x_qstr), QUOT), re.I)
     if len(pt.findall(y)) == 1:
