@@ -46,22 +46,25 @@ for ln, line in enumerate(fa, 1):
     if len(t2) < MIN_SENT_LEN:
         log_error(ln, "TGT_TOO_SHORT")
 
-    if len(t2) == 0 or len(s2) / len(t2) > SENT_LEN_RATIO:
+    if len(t2) == 0 or (len(s2) + 5) / (len(t2) + 5) > SENT_LEN_RATIO:
         log_error(ln, "SRC_TOO_LONGER")
-    if len(s2) == 0 or len(t2) / len(s2) > SENT_LEN_RATIO:
+    if len(s2) == 0 or (len(t2) + 5) / (len(s2) + 5) > SENT_LEN_RATIO:
         log_error(ln, "TGT_TOO_LONGER")
 
-    if diff_findall(RE_LIST_MARKER, s1, t1):
+    if LS_MISMATCH and len(findall_diff(RE_LIST_MARKER, s1, t1)) >= LS_MISMATCH:
         log_error(ln, "LIST_MARKER_MISMATCH")
-    if diff_findall(RE_SYMBOL, s1, t1):
+    if SYM_MISMATCH and len(findall_diff(RE_SYMBOL, s1, t1)) >= SYM_MISMATCH:
         log_error(ln, "SYMBOL_MISMATCH")
 
-    if BRACKET_MISMATCH and diff_findall(RE_BRACKET, s1, t1):
+    if BR_MISMATCH and len(findall_diff(RE_BRACKET, s1, t1)) >= BR_MISMATCH:
         log_error(ln, "BRACKET_MISMATCH")
-    if PUNCTUATION_MARK_MISMATCH and diff_findall(RE_PUNC, s1, t1) > 1:
+    if PUNC_MISMATCH and len(findall_diff(RE_PUNC, s1, t1)) >= PUNC_MISMATCH:
         log_error(ln, "PUNCTUATION_MARK_MISMATCH")
-    if QUOTATION_MISMATCH and diff_findall(RE_QUOTATION, s1, t1):
-        log_error(ln, "QUOTATION_MISMATCH")
+    if QUOT_MISMATCH:
+        _s1 = RE_QUOTATION.sub('"', s1)
+        _t1 = RE_QUOTATION.sub('"', t1)
+        if len(findall_diff(RE_QUOTATION, _s1, _t1)) >= QUOT_MISMATCH:
+            log_error(ln, "QUOTATION_MISMATCH")
 
     pairs = ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT"))
     for txt, lang, side, in pairs:
@@ -70,10 +73,6 @@ for ln, line in enumerate(fa, 1):
             log_error(ln, "URL_IN_%s" % side)
         if RE_REPETITION.match(txt):
             log_error(ln, "%s_REPEATED" % side)
-        '''
-        if RE_INVALID_WORD.search(txt):
-            log_error(ln, "INVALID_WORD_IN_%s" % side)
-        '''
 
         if lang == "en" and not RE_LANG_EN.search(txt) \
         or lang == "ja" and not RE_LANG_JA.search(txt) \
@@ -120,6 +119,12 @@ print("MAX_SENT_LEN =", MAX_SENT_LEN, file = fl)
 print("MIN_SENT_LEN =", MIN_SENT_LEN, file = fl)
 print("MAX_WORD_LEN =", MAX_WORD_LEN, file = fl)
 print("SENT_LEN_RATIO =", SENT_LEN_RATIO, file = fl)
+print("LS_MISATCH =", LS_MISMATCH, file = fl)
+print("SYM_MISATCH =", SYM_MISMATCH, file = fl)
+print("BR_MISATCH =", BR_MISMATCH, file = fl)
+print("PUNC_MISATCH =", PUNC_MISMATCH, file = fl)
+print("QUOT_MISATCH =", QUOT_MISMATCH, file = fl)
+
 print(file = fl)
 
 for code, cnt in sorted(err_cnt[1].items(), key = lambda x: -x[1]):

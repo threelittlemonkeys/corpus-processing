@@ -19,8 +19,6 @@ ERR_CODES = [
     "URL_IN_TGT",
     "SRC_REPEATED",
     "TGT_REPEATED",
-    "INVALID_WORD_IN_SRC",
-    "INVALID_WORD_IN_TGT",
     "INVALID_SRC_LANGUAGE",
     "INVALID_TGT_LANGUAGE",
     "INVALID_LANGUAGE_IN_SRC",
@@ -71,5 +69,24 @@ def tokenize(lang, txt):
     txt = txt.split(" ")
     return txt
 
-def diff_findall(ro, a, b):
-    return abs(len(ro.findall(a)) - len(ro.findall(b)))
+def findall_diff(ro, a, b):
+    def _count(x):
+        x = ro.finditer(x)
+        y = dict()
+        for m in x:
+            m = m.group()
+            if m not in y:
+                y[m] = 0
+            y[m] += 1
+        return y
+    a = _count(a)
+    b = _count(b)
+    c = list()
+    for x in set([*a, *b]):
+        if x in a and x in b:
+            c.extend([x] * abs(a[x] - b[x]))
+        elif x in a:
+            c.extend([x] * a[x])
+        elif x in b:
+            c.extend([x] * b[x])
+    return c

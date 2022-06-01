@@ -123,10 +123,10 @@ for ln, line in enumerate(fo, 1):
         print(*idx, src_out, tgt_out, sep = "\t")
 
     continue
-    print(ms)
-    print(pts)
-    print(src)
-    print(tgt)
+    print("ms =", ms)
+    print("pts =", pts)
+    print("src =", src)
+    print("tgt =", tgt)
     input()
 
 fo.close()
