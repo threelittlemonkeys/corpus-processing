@@ -1,12 +1,11 @@
 import re
 
-RE_NUM = re.compile("[0-9]([^0-9\u3040-\u30ff\u4e00-\u9fff\uac00-\ud7af]*[0-9])+")
-RE_NUM_SEP = re.compile("[0-9]{,2}(,[0-9]{3})+")
-RE_NUM_BIG = re.compile("[0-9]{4}(?![년호年])|[0-9]+,[0-9,]+")
-RE_NUM_ONLY = re.compile("[0-9,]+$")
+RE_NUM = re.compile("[0-9]([^0-9\u0400-\u04FF\u3040-\u30FF\u4E00-\u9FFF\uAC00-\uD7AF]?[0-9])+")
+RE_NUM_SEP = re.compile("^[0-9]{,2}([, ][0-9]{3})+$")
+RE_NUM_ONLY = re.compile("^[0-9]+$")
 
 SQ = "'`´‘’′" # single quotation marks
-DQ = "\"˝“”″" # double quotation marks
+DQ = "\"˝“”″«»" # double quotation marks
 FQ = "《》「」『』【】" # full-width quotation marks
 PUNC = "~,.?!:;"
 QUOT = SQ + DQ + FQ # quotation marks

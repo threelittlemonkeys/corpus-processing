@@ -16,10 +16,7 @@ RE_SYM_R = re.compile("[ %s]*$" % _SYM, re.I)
 
 for line in sys.stdin:
 
-    if line.count("\t") != 1:
-        continue
-
-    src, tgt = line.strip().split("\t")
+    *idx, src, tgt = line.strip().split("\t")
 
     src_sym_l = RE_SYM_L.search(src).group()
     tgt_sym_l = RE_SYM_L.search(tgt).group()
@@ -34,4 +31,7 @@ for line in sys.stdin:
     if src_sym_r != tgt_sym_r:
         out = out[:len(out) - len(tgt_sym_r)] + src_sym_r
 
-    print(src, out, sep = "\t")
+    if out == tgt:
+        continue
+
+    print(*idx, src, out, sep = "\t")
