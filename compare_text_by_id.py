@@ -3,12 +3,11 @@ import re
 
 def compare_text_by_id(action, filename):
 
-    pl = {}
-    fo = open(filename)
-    for line in fo:
-        idx, *_ = line.split("\t")
-        pl[idx] = True
-    fo.close()
+    pl = dict()
+    with open(filename) as fo:
+        for line in fo:
+            idx = line.split("\t")[0]
+            pl[idx] = True
 
     for line in sys.stdin:
         idx, *_ = line.split("\t")
