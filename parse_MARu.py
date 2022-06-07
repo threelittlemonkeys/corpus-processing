@@ -13,6 +13,7 @@ for line in sys.stdin:
 
     words = list()
     lemmas = list()
+    tags = list()
 
     for morph in analyzed:
 
@@ -22,6 +23,8 @@ for line in sys.stdin:
 
         words.append(word)
         lemmas.append(lemma)
+        tags.append(tag)
 
-    print(" ".join(tokens), end = "\t")
-    print(" ".join(lemmas), end = "\n")
+    print("tokens =", tokens)
+    print("lemmas =", lemmas)
+    print("tags =", tags)
