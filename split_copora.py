@@ -21,4 +21,3 @@ if __name__ == "__main__":
     if len(sys.argv) != 3:
         sys.exit("Usage: %s idx txt" % sys.argv[0])
     split_corpora(*sys.argv[1:])
-
