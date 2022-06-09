@@ -1,5 +1,6 @@
 import sys
 import re
+import ast
 import json
 
 pl = dict()
@@ -36,10 +37,15 @@ def dump(obj):
 
     if type(obj) == dict:
         for a, b in obj.items():
+            print(a)
             dump(b)
         return
 
 with open(sys.argv[1]) as fo:
     for line in fo:
-        line = json.loads(line)
-        dump(line)
+        try:
+            line = json.loads(line)
+            dump(line)
+        except:
+            line = ast.literal_eval(line)
+            dump(line)
