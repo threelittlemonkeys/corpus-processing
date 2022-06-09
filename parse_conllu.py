@@ -6,6 +6,7 @@ class Tree():
     def __init__(self, num_tokens):
         self.root = None
         self.node = [Node() for _ in range(num_tokens)]
+        self.text = ""
 
     def parse(self, node):
         for child in node.child:
@@ -24,6 +25,14 @@ class Tree():
                 continue
             self._print(child, depth + 1, ls)
 
+    def print_tree(self):
+        ls = list()
+        self._print(self.root, 0, ls)
+        for depth, node, is_head in ls:
+            pos = node.pos + ("*" if is_head else "")
+            txt = node.word if is_head else node.text
+            print("%s%s( %s )" % ("  " * depth, pos, txt))
+
     def print_line(self):
         ls = list()
         self._print(self.root, 0, ls)
@@ -38,14 +47,6 @@ class Tree():
             prev = depth
         out.extend([")"] * (depth + 1))
         print(" ".join(out))
-
-    def print_tree(self):
-        ls = list()
-        self._print(self.root, 0, ls)
-        for depth, node, is_head in ls:
-            pos = node.pos + ("*" if is_head else "")
-            txt = node.word if is_head else node.text
-            print("%s%s( %s )" % ("  " * depth, pos, txt))
 
 class Node():
 
@@ -74,6 +75,9 @@ def postprocess(tree):
             head = child.head
             node.head = head
             node.child.add(child)
+            print(tree)
+            print(node)
+            print(head)
             head.child |= {node}
             head.child -= {child}
             child.head = node
@@ -127,27 +131,29 @@ if __name__ == "__main__":
     block = list()
 
     for ln, line in enumerate(sys.stdin, 1):
+
         line = line.strip()
 
-        if line == "":
+        if line != "":
+            block.append(line)
+            continue
 
-            sent_id, text, tree = parse_conllu(block)
+        try:
+            result = parse_conllu(block)
+        except:
+            result = None
 
+        if result:
+            sent_id, text, tree = result
             print("sent_id =", sent_id)
             print("text =", text)
             print()
-
             for node in tree.node:
                 print(node)
             print()
-
+            tree.print_tree()
+            print()
             tree.print_line()
             print()
 
-            tree.print_tree()
-            print()
-
-            block.clear()
-            continue
-
-        block.append(line)
+        block.clear()
