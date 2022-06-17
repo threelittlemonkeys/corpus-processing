@@ -51,20 +51,17 @@ for ln, line in enumerate(fa, 1):
     if len(s2) == 0 or (len(t2) + 5) / (len(s2) + 5) > SENT_LEN_RATIO:
         log_error(ln, "TGT_TOO_LONGER")
 
-    if LS_MISMATCH and len(findall_diff(RE_LIST_MARKER, s1, t1)) >= LS_MISMATCH:
+    if LS_MISMATCH and len(findall_diff(RE_LS, s1, t1)) >= LS_MISMATCH:
         log_error(ln, "LIST_MARKER_MISMATCH")
-    if SYM_MISMATCH and len(findall_diff(RE_SYMBOL, s1, t1)) >= SYM_MISMATCH:
+    if SYM_MISMATCH and len(findall_diff(RE_SYM, s1, t1)) >= SYM_MISMATCH:
         log_error(ln, "SYMBOL_MISMATCH")
 
-    if BR_MISMATCH and len(findall_diff(RE_BRACKET, s1, t1)) >= BR_MISMATCH:
+    if BR_MISMATCH and len(findall_diff(RE_BR, s1, t1)) >= BR_MISMATCH:
         log_error(ln, "BRACKET_MISMATCH")
     if PUNC_MISMATCH and len(findall_diff(RE_PUNC, s1, t1)) >= PUNC_MISMATCH:
         log_error(ln, "PUNCTUATION_MARK_MISMATCH")
-    if QUOT_MISMATCH:
-        _s1 = RE_QUOTATION.sub('"', s1)
-        _t1 = RE_QUOTATION.sub('"', t1)
-        if len(findall_diff(RE_QUOTATION, _s1, _t1)) >= QUOT_MISMATCH:
-            log_error(ln, "QUOTATION_MISMATCH")
+    if QUOT_MISMATCH and len(findall_diff(count_quotes, s1, t1)) >= QUOT_MISMATCH:
+        log_error(ln, "QUOTATION_MISMATCH")
 
     pairs = ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT"))
     for txt, lang, side, in pairs:

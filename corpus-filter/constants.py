@@ -14,6 +14,11 @@ _ALPHA = _EN + _ES + _JA + _KO + _RU + _VI + _ZH
 _ALNUM = "0-9" + _ALPHA
 _PUNC = ",.?!，．。？！"
 
+SQ = "'`´‘’′" # single quotation marks
+DQ = "\"˝“”″«»" # double quotation marks
+FQ = "《》「」『』【】" # full-width quotation marks
+QUOT = SQ + DQ + FQ
+
 RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_CJ = re.compile("(?<=[%s%s])(?=[%s%s])" % (_JA, _ZH, _JA, _ZH))
@@ -27,10 +32,9 @@ RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ %s])" % _ALNUM)
 
 RE_PUNC = re.compile("[,.?!，．。？！]")
 RE_PUNC_EOS = re.compile("[,.?!，．。？！\"]+$")
-RE_BRACKET = re.compile("[<>(){}[\]「」『』《》【】]")
-RE_LIST_MARKER = re.compile("^([0-9]\. |[❶-➓・])")
-RE_QUOTATION = re.compile("(?<![a-z])[`'](?!(cause|em))|(?<!(in| o))[`'](?![a-z])|[\"“”«»]")
-RE_SYMBOL = re.compile("[@#$%^&*+=♪\u2190-\u21FF\u25A0-\u26FF\u2700-\u27BF]")
+RE_BR = re.compile("[<>(){}[\]]")
+RE_LS = re.compile("^([0-9]\. |[❶-➓・])")
+RE_SYM = re.compile("[@#$%^&*+=♪\u2190-\u21FF\u25A0-\u26FF\u2700-\u27BF]")
 
 RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{2,}")
@@ -43,6 +47,19 @@ RE_LANG_RU = re.compile("[%s]" % _RU)
 RE_LANG_VI = re.compile("[%s]" % _EN + _VI)
 RE_LANG_CJK = re.compile("[%s]" % (_JA + _KO + _ZH))
 
+RE_TOKEN = re.compile("[%s]+|[^ %s]+" % (_PUNC, _PUNC))
+
 RE_SENTS_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
 RE_SENTS_KO = re.compile("([^.?!]{12}[%s][.?!]){2}" % _KO)
 RE_SENTS_ZH = re.compile("([^.?!]{12}[%s][.?!]){2}" % _ZH)
+
+CNTR_W = {
+    w.replace("'", c) for c in SQ for w in
+    ("ma'am", "o'clock") 
+    + ("'cause", "'em", "'til", "'till", "'un", "'uns")
+}
+
+CNTR_R = {
+    w.replace("'", c) for c in SQ for w in
+    ("'d", "'em", "'ll", "'m", "'re", "'s", "'t", "'ve")
+}

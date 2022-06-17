@@ -12,21 +12,16 @@ QUOT = SQ + DQ + FQ # quotation marks
 
 # contractions
 
-CTR_WORD = {
-    y.replace("'", x) for x in SQ for y in
+CNTR_W = {
+    w.replace("'", c) for c in SQ for w in
     ("ma'am", "o'clock")
+    + ("'cause", "'em", "'til", "'till", "'un", "'uns")
 }
 
-CTR_L = {
-    y.replace("'", x) for x in SQ for y in
-    ("'cause", "'em", "'til", "'till", "'un", "'uns")
-}
-
-CTR_R = [
-    y.replace("'", x) for x in SQ for y in
+CNTR_R = {
+    w.replace("'", c) for c in SQ for w in
     ("'d", "'em", "'ll", "'m", "'re", "'s", "'t", "'ve")
-]
-CTR_R = re.compile("(%s)$" % "|".join(map(re.escape, CTR_R)))
+}
 
 RE_ALNUM = re.compile("[0-9A-Za-z\uAC00-\uD7AF]")
 RE_TOKEN = re.compile("[%s]+|[^ %s]+" % (PUNC, PUNC))

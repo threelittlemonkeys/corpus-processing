@@ -102,7 +102,7 @@ class Tree():
                     break
             sent[i] = "NP( " + sent[i]
             sent[j - 1] += " )"
-            tags[i:j] = ["NP-B"] + ["NP-I"] * (j - i - 1)
+            tags[i:j] = ["B-NP"] + ["I-NP"] * (j - i - 1)
 
         return " ".join(sent), words, tags
 

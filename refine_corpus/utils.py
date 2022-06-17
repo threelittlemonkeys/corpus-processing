@@ -2,43 +2,27 @@ from constants import *
 
 def find_quotes(txt, seo = False):
     quotes = list()
-
-    for w in RE_TOKEN.finditer(txt):
-        w, i, j = w.group().lower(), w.start(), w.end()
-
-        for m in RE_QUOT.finditer(w):
-            m, k = m.group(), m.start()
-
-            # double quote
-
-            if m in DQ:
-                quotes.append((i + k, m))
+    i = 0
+    for w in RE_TOKEN.findall(txt):
+        for j, c in enumerate(w):
+            if w in CNTR_W:
+                break
+            if c not in QUOT:
                 continue
-
-            # single quote
-
-            if 0 < k < len(w) - 1 and w in CTR_WORD:
+            if c not in SQ:
+                quotes[c] += 1
                 continue
-
-            if k == 0 and w in CTR_L:
+            if 0 < j < len(w) - 1 and w[j:] in CNTR_R:
                 continue
-
-            if 0 < k < len(w) - 1 and CTR_R.search(w):
-                continue
-
-            if k == len(w) - 1 and re.search(".{2}(in|s).$", w):
+            if j == len(w) - 1 and re.search(".{2}(in|s).$", w):
                 if not re.search("(^| )[%s]" % SQ, txt[:i]):
                     continue
-                if re.search("[%s]( |$)" % SQ, txt[j:]):
-                    continue
-
-            quotes.append((i + k, m))
-
+            quotes.append((i + j, c))
+        i += len(w) + 1
     if seo: # at sentence ends only
         for x in quotes:
             if RE_ALNUM.search(txt[:x[0]]) and RE_ALNUM.search(txt[x[0] + 1:]):
                 return
-
     return quotes
 
 def remove_matched_strs(txt, ms):

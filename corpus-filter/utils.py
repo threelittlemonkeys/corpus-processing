@@ -3,6 +3,7 @@ import time
 import math
 from constants import *
 from parameters import *
+from collections import defaultdict
 
 ERR_CODES = [
     "SRC_EMPTY",
@@ -69,18 +70,18 @@ def tokenize(lang, txt):
     txt = txt.split(" ")
     return txt
 
-def findall_diff(ro, a, b):
-    def _count(x):
-        x = ro.finditer(x)
-        y = dict()
-        for m in x:
-            m = m.group()
-            if m not in y:
-                y[m] = 0
-            y[m] += 1
+def findall_diff(obj, a, b):
+    def _count(ro, x):
+        y = defaultdict(int)
+        for m in ro.finditer(x):
+            y[m.group()] += 1
         return y
-    a = _count(a)
-    b = _count(b)
+    if type(obj) == re.Pattern:
+        func = lambda x: _count(obj, x)
+    else:
+        func = obj
+    a = func(a)
+    b = func(b)
     c = list()
     for x in set([*a, *b]):
         if x in a and x in b:
@@ -90,3 +91,24 @@ def findall_diff(ro, a, b):
         elif x in b:
             c.extend([x] * b[x])
     return c
+
+def count_quotes(txt):
+    quotes = defaultdict(int)
+    i = 0
+    for w in RE_TOKEN.findall(txt):
+        for j, c in enumerate(w):
+            if w in CNTR_W:
+                break
+            if c not in QUOT:
+                continue
+            if c not in SQ:
+                quotes[c] += 1
+                continue
+            if 0 < j < len(w) - 1 and w[j:] in CNTR_R:
+                continue
+            if j == len(w) - 1 and re.search(".{2}(in|s).$", w):
+                if not re.search("(^| )[%s]" % SQ, txt[:i]):
+                    continue
+            quotes[c] += 1
+        i += len(w) + 1
+    return quotes
