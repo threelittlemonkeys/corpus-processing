@@ -1,5 +1,6 @@
 import sys
 import re
+import random
 
 class Tree():
 
@@ -42,47 +43,68 @@ class Tree():
 
     def print_tree(self):
         for depth, pos, node in self.tree:
+            idx = node.span[0] if node.child and pos[-1] != "*" else node.idx
             text = node.text if node.child and pos[-1] != "*" else node.word
-            print("%s%s( %s )" % ("  " * depth, pos, text))
+            print("%-4d%s%s( %s )" % (idx, "  " * depth, pos, text))
 
     def np_chunk(self):
-        ls = list()
+        cands = dict()
         prev = -1
         for depth, pos, node in self.tree:
             if 0 <= prev < depth:
                 continue
 
             subtree = node.subtree if node.child and pos[-1] != "*" else node.word
-            if not re.match("(ADJ|NOUN)", pos) \
-            or re.search("ADP\*\(", subtree):
+            if not re.match("(ADJ|DET|NUM|NOUN|PRON|PROPN)", pos) \
+            or re.search("(ADP|AUX|VERB)\*?\(", subtree):
                 prev = -1
                 continue
 
             span = [node.idx, node.idx + 1] if pos[-1] == "*" else node.span
-            if ls and span[0] == ls[-1][1] and (
-            node.head and ls[-1][0] <= node.head.idx < ls[-1][1]
-            or any(ls[-1][0] <= e.idx < ls[-1][1] for e in node.child)):
-                ls[-1][1] = span[1]
-            else:
-                ls.append(span)
+            cands[node.idx] = [node, span, True]
             prev = depth
 
-        text = [node.word for node in self.node]
-        words = [node.word for node in self.node]
-        tags = ["O"] * len(self.node)
+        for idx, (node, span, state) in cands.items():
+            if not re.match("(DET|NUM|NOUN|PRON|PROPN)", node.pos):
+                cands[idx][2] = False
+            child = sorted([e.idx for e in node.child], key = lambda x: abs(x - idx))
+            for i in child:
+                if i in cands:
+                    for j in range(2):
+                        if span[j] == cands[i][1][1 - j]:
+                            span[j] = cands[i][1][j]
+                            cands[i][2] = False
+                            break
 
-        for k, span in enumerate(ls):
+        '''
+        for idx, (node, span, state) in cands.items():
+            print(idx, node.pos, span, state)
+        '''
+
+        cands = [cands[e][1] for e in cands if cands[e][2]]
+
+        sent = list()
+        ks = list()
+        for i, node in enumerate(self.node):
+            word = node.word.split(" ")
+            sent.extend(word)
+            ks.append((ks[-1] if ks else 0) + len(word) - 1)
+        cands = [[i + ks[i] if i else 0, j + ks[j - 1]] for i, j in cands]
+
+        words = [word for word in sent]
+        tags = ["O"] * len(sent)
+        for span in cands:
             for i in range(*span):
-                if re.search("[0-9A-Za-z\u0400-\u04FF]", self.node[i].word):
+                if re.search("[0-9A-Za-z\u0400-\u04FF]", sent[i]):
                     break
             for j in range(*span[::-1], -1):
-                if re.search("[0-9A-Za-z\u0400-\u04FF]", self.node[j - 1].word):
+                if re.search("[0-9A-Za-z\u0400-\u04FF]", sent[j - 1]):
                     break
-            text[i] = "NP( " + text[i]
-            text[j - 1] += " )"
-            tags[i:j] = ["B"] + ["I"] * (j - i - 1)
+            sent[i] = "NP( " + sent[i]
+            sent[j - 1] += " )"
+            tags[i:j] = ["NP-B"] + ["NP-I"] * (j - i - 1)
 
-        return " ".join(text), words, tags
+        return " ".join(sent), words, tags
 
 class Node():
 
@@ -164,9 +186,9 @@ def parse_conllu(block):
 if __name__ == "__main__":
 
     block = list()
+    results = list()
 
     for ln, line in enumerate(sys.stdin, 1):
-
         line = line.strip()
 
         if line != "":
@@ -175,27 +197,24 @@ if __name__ == "__main__":
 
         try:
             result = parse_conllu(block)
+            results.append(result)
         except:
-            result = None
-
-        if result:
-            sent_id, text, tree = result
-
-            print("sent_id =", sent_id)
-            print("text =", text)
-            print()
-
-            for node in tree.node:
-                print(node)
-            print()
-
-            tree.print_tree()
-            print()
-
-            text, words, tags = tree.np_chunk()
-            print(text)
-            print(words)
-            print(tags)
-            print()
+            pass
 
         block.clear()
+
+    # random.shuffle(results)
+    for idx, result in enumerate(results, 1):
+        sent_id, text, tree = result
+
+        print("# sent_id =", sent_id)
+        print("# text =", text)
+        print()
+
+        tree.print_tree()
+        print()
+
+        sent, words, tags = tree.np_chunk()
+        print(sent)
+        print(" ".join(["%s/%s" % x for x in zip(words, tags)]))
+        print()
