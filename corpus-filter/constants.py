@@ -22,6 +22,7 @@ QUOT = SQ + DQ + FQ
 RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % (_ALPHA, _ALPHA))
 RE_ALPHA_CJ = re.compile("(?<=[%s%s])(?=[%s%s])" % (_JA, _ZH, _JA, _ZH))
+RE_NUM = re.compile("[1-9]{3,}")
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
 RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 
@@ -34,7 +35,7 @@ RE_PUNC = re.compile("[,.?!，．。？！]")
 RE_PUNC_EOS = re.compile("[,.?!，．。？！\"]+$")
 RE_BR = re.compile("[<>(){}[\]]")
 RE_LS = re.compile("^([0-9]\. |[❶-➓・])")
-RE_SYM = re.compile("[@#$%^&*+=♪\u2190-\u21FF\u25A0-\u26FF\u2700-\u27BF]")
+RE_SYM = re.compile("[#$%&*+=@^|¡¶♪\u2190-\u21FF\u25A0-\u26FF\u2700-\u27BF]")
 
 RE_URL = re.compile("https?://")
 RE_REPETITION = re.compile("(.{3,})\\1{2,}")
@@ -55,7 +56,7 @@ RE_SENTS_ZH = re.compile("([^.?!]{12}[%s][.?!]){2}" % _ZH)
 
 CNTR_W = {
     w.replace("'", c) for c in SQ for w in
-    ("ma'am", "o'clock") 
+    ("ma'am", "o'clock")
     + ("'cause", "'em", "'til", "'till", "'un", "'uns")
 }
 

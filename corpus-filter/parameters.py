@@ -13,3 +13,4 @@ SYM_MISMATCH = 1 # symbols
 BR_MISMATCH = 1 # brackets
 PUNC_MISMATCH = 1 # punctuation marks
 QUOT_MISMATCH = 1 # quotation marks
+NUM_MISMATCH = 1 # numbers

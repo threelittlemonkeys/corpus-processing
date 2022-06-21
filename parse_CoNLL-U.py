@@ -141,7 +141,7 @@ def postprocess(tree):
             child.child -= {node}
 
             for e in list(child.child):
-                if e.head == child and e.idx < node.idx < child.idx:
+                if e.idx < node.idx < child.idx:
                     e.head = node
                     node.child |= {e}
                     child.child -= {e}

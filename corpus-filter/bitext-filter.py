@@ -55,13 +55,14 @@ for ln, line in enumerate(fa, 1):
         log_error(ln, "LIST_MARKER_MISMATCH")
     if SYM_MISMATCH and len(findall_diff(RE_SYM, s1, t1)) >= SYM_MISMATCH:
         log_error(ln, "SYMBOL_MISMATCH")
-
     if BR_MISMATCH and len(findall_diff(RE_BR, s1, t1)) >= BR_MISMATCH:
         log_error(ln, "BRACKET_MISMATCH")
     if PUNC_MISMATCH and len(findall_diff(RE_PUNC, s1, t1)) >= PUNC_MISMATCH:
         log_error(ln, "PUNCTUATION_MARK_MISMATCH")
     if QUOT_MISMATCH and len(findall_diff(count_quotes, s1, t1)) >= QUOT_MISMATCH:
         log_error(ln, "QUOTATION_MISMATCH")
+    if NUM_MISMATCH and len(findall_diff(count_nums, s1, t1)) >= NUM_MISMATCH:
+        log_error(ln, "NUMBER_MISMATCH")
 
     pairs = ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT"))
     for txt, lang, side, in pairs:
