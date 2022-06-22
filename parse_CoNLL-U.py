@@ -6,26 +6,26 @@ class Tree():
 
     def __init__(self, num_tokens):
         self.root = None
-        self.node = [Node() for _ in range(num_tokens)]
         self.tree = list()
+        self.nodes = [Node() for _ in range(num_tokens)]
 
     def parse_node(self, node, depth):
         node.depth = depth
-        for e in node.child:
+        for e in node.children:
             self.parse_node(e, depth + 1)
             node.span.extend(e.span)
         node.span = sorted(node.span)[::len(node.span) - 1]
-        node.text = " ".join(self.node[i].word for i in range(*node.span))
+        node.text = " ".join(self.nodes[i].word for i in range(*node.span))
 
     def parse_tree(self, node):
 
-        if not node.child:
+        if not node.children:
             node.subtree = node.word
             return [[node.depth, node.pos, node]]
 
         ls = [[node.depth, node.pos, node]]
         subtree = list()
-        for e in sorted((node, *node.child), key = lambda x: x.idx):
+        for e in sorted((node, *node.children), key = lambda x: x.idx):
             if e == node:
                 pos = node.pos + "*"
                 ls.append([node.depth + 1, pos, node])
@@ -43,54 +43,50 @@ class Tree():
 
     def print_tree(self):
         for depth, pos, node in self.tree:
-            idx = node.span[0] if node.child and pos[-1] != "*" else node.idx
-            text = node.text if node.child and pos[-1] != "*" else node.word
+            idx = node.span[0] if node.children and pos[-1] != "*" else node.idx
+            text = node.text if node.children and pos[-1] != "*" else node.word
             print("%-4d%s%s( %s )" % (idx, "  " * depth, pos, text))
 
     def np_chunk(self):
         cands = dict()
+
+        # select NP candidates
         prev = -1
         for depth, pos, node in self.tree:
             if 0 <= prev < depth:
                 continue
-
-            subtree = node.subtree if node.child and pos[-1] != "*" else node.word
+            subtree = node.subtree if node.children and pos[-1] != "*" else node.word
             if not re.match("(ADJ|DET|NUM|NOUN|PRON|PROPN)", pos) \
             or re.search("(ADP|AUX|VERB)\*?\(", subtree):
                 prev = -1
                 continue
-
             span = [node.idx, node.idx + 1] if pos[-1] == "*" else node.span
             cands[node.idx] = [node, span, True]
             prev = depth
 
-        for idx, (node, span, state) in cands.items():
-            if not re.match("(DET|NUM|NOUN|PRON|PROPN)", node.pos):
-                cands[idx][2] = False
-            child = sorted([e.idx for e in node.child], key = lambda x: abs(x - idx))
-            for i in child:
-                if i in cands:
-                    for j in range(2):
-                        if span[j] == cands[i][1][1 - j]:
-                            span[j] = cands[i][1][j]
-                            cands[i][2] = False
-                            break
-
-        '''
-        for idx, (node, span, state) in cands.items():
-            print(idx, node.pos, span, state)
-        '''
-
+        # merge NP fragments
+        for idx, cand in cands.items():
+            if not re.match("(DET|NUM|NOUN|PRON|PROPN)", cand[0].pos):
+                cand[2] = False
+            children = [e.idx for e in cand[0].children if e.idx in cands]
+            for i in sorted(children, key = lambda x: abs(x - idx)):
+                for j in range(2):
+                    if cand[1][j] == cands[i][1][1 - j]:
+                        cand[1][j] = cands[i][1][j]
+                        cands[i][2] = False
+                        break
         cands = [cands[e][1] for e in cands if cands[e][2]]
 
-        sent = list()
+        # multi-word tokens
         ks = list()
-        for i, node in enumerate(self.node):
+        sent = list()
+        for i, node in enumerate(self.nodes):
             word = node.word.split(" ")
             sent.extend(word)
             ks.append((ks[-1] if ks else 0) + len(word) - 1)
         cands = [[i + ks[i] if i else 0, j + ks[j - 1]] for i, j in cands]
 
+        # IOB tagging
         words = [word for word in sent]
         tags = ["O"] * len(sent)
         for span in cands:
@@ -116,35 +112,35 @@ class Node():
         self.span = None
         self.text = None
         self.head = None
-        self.child = set()
+        self.children = set()
         self.depth = None
         self.subtree = None
 
     def __repr__(self):
         text = "[%d] %s %s %s" % (self.idx, self.word, self.pos, self.rel)
         text += " [%s]" % (self.head.idx if self.head else None)
-        text += " -> %s" % sorted([e.idx for e in self.child])
+        text += " -> %s" % sorted([e.idx for e in self.children])
         return text
 
 def postprocess(tree):
 
-    for node in tree.node:
+    for node in tree.nodes:
 
         if node.pos == "ADP" and node.head.pos == "NOUN":
             child = node.head
             head = child.head
             node.head = head
-            node.child.add(child)
-            head.child |= {node}
-            head.child -= {child}
+            node.children.add(child)
+            head.children |= {node}
+            head.children -= {child}
             child.head = node
-            child.child -= {node}
+            child.children -= {node}
 
-            for e in list(child.child):
+            for e in list(child.children):
                 if e.idx < node.idx < child.idx:
                     e.head = node
-                    node.child |= {e}
-                    child.child -= {e}
+                    node.children |= {e}
+                    child.children -= {e}
 
 def parse_conllu(block):
 
@@ -157,12 +153,12 @@ def parse_conllu(block):
         sent_id = None
         text = None
 
-    tokens = [row.strip().split("\t") for row in block if row.count("\t") == 9]
-    tree = Tree(len(tokens))
+    rows = [row.strip().split("\t") for row in block if row.count("\t") == 9]
+    tree = Tree(len(rows))
 
-    for idx, (cols, node) in enumerate(zip(tokens, tree.node)):
+    for idx, (row, node) in enumerate(zip(rows, tree.nodes)):
 
-        _, form, lemma, upos, xpos, feats, head, deprel, deps, misc = cols
+        _, form, lemma, upos, xpos, feats, head, deprel, deps, misc = row
 
         node.idx = idx
         node.word = form
@@ -175,8 +171,8 @@ def parse_conllu(block):
             tree.root = node
             continue
 
-        node.head = tree.node[head]
-        node.head.child.add(node)
+        node.head = tree.nodes[head]
+        node.head.children.add(node)
 
     postprocess(tree)
     tree.parse()
@@ -209,6 +205,10 @@ if __name__ == "__main__":
 
         print("# sent_id =", sent_id)
         print("# text =", text)
+        print()
+
+        for node in tree.nodes:
+            print(node)
         print()
 
         tree.print_tree()
