@@ -19,7 +19,7 @@ with open(sys.argv[1]) as fa, open(sys.argv[2]) as fb:
         d = c.compare(a, b)
 
         i = 0
-        diffs = list()
+        diffs = []
         for j, k in enumerate(d):
             if k[:2] == "  ":
                 continue

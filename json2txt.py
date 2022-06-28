@@ -3,7 +3,7 @@ import re
 import ast
 import json
 
-pl = dict()
+pl = {}
 RE_AL = re.compile("[A-Za-z\uAC00-\uD7AF]")
 
 def normalize(line):

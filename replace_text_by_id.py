@@ -4,12 +4,12 @@ import re
 if len(sys.argv) != 2:
     sys.exit("Usage: %s ref < txt" % sys.argv[0])
 
-ref = dict()
+ref = {}
 with open(sys.argv[1]) as fo:
     for line in fo:
         idx, txt = line.split("\t", 1)
         if idx not in ref:
-            ref[idx] = list()
+            ref[idx] = []
         ref[idx].append(txt)
 
 for line in sys.stdin:

@@ -11,9 +11,9 @@ for line in sys.stdin:
     tokens = line.strip().split(" ")
     analyzed = analyzer.analyze(tokens)
 
-    words = list()
-    lemmas = list()
-    tags = list()
+    words = []
+    lemmas = []
+    tags = []
 
     for morph in analyzed:
 

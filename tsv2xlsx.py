@@ -7,7 +7,7 @@ def tsv2xlsx(filename):
     fo = xlsxwriter.Workbook(filename + ".xlsx")
     worksheet = fo.add_worksheet()
     for idx, text in enumerate(fi):
-        _text = list()
+        _text = []
         for x in text.split("\t"):
             x = re.sub("[\x00-\x20]+", " ", x)
             x = x.strip()

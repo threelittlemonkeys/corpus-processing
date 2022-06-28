@@ -1,7 +1,7 @@
 import sys
 import re
 
-pl = dict()
+pl = {}
 for line in sys.stdin:
     for c in line:
         if c not in pl:

@@ -6,8 +6,8 @@ class Tree():
 
     def __init__(self, num_tokens):
         self.root = None
-        self.tree = list()
         self.nodes = [Node() for _ in range(num_tokens)]
+        self.parsed = []
 
     def parse_node(self, node, depth):
         node.depth = depth
@@ -18,13 +18,12 @@ class Tree():
         node.text = " ".join(self.nodes[i].word for i in range(*node.span))
 
     def parse_tree(self, node):
-
         if not node.children:
             node.subtree = node.word
             return [[node.depth, node.pos, node]]
 
         ls = [[node.depth, node.pos, node]]
-        subtree = list()
+        subtree = []
         for e in sorted((node, *node.children), key = lambda x: x.idx):
             if e == node:
                 pos = node.pos + "*"
@@ -39,20 +38,20 @@ class Tree():
 
     def parse(self):
         self.parse_node(self.root, 0)
-        self.tree = self.parse_tree(self.root)
+        self.parsed = self.parse_tree(self.root)
 
-    def print_tree(self):
-        for depth, pos, node in self.tree:
+    def print(self):
+        for depth, pos, node in self.parsed:
             idx = node.span[0] if node.children and pos[-1] != "*" else node.idx
             text = node.text if node.children and pos[-1] != "*" else node.word
             print("%-4d%s%s( %s )" % (idx, "  " * depth, pos, text))
 
     def np_chunk(self):
-        cands = dict()
+        cands = {}
 
         # select NP candidates
         prev = -1
-        for depth, pos, node in self.tree:
+        for depth, pos, node in self.parsed:
             if 0 <= prev < depth:
                 continue
             subtree = node.subtree if node.children and pos[-1] != "*" else node.word
@@ -75,11 +74,11 @@ class Tree():
                         cand[1][j] = cands[i][1][j]
                         cands[i][2] = False
                         break
-        cands = [cands[e][1] for e in cands if cands[e][2]]
+        cands = [cands[i][1] for i in cands if cands[i][2]]
 
         # multi-word tokens
-        ks = list()
-        sent = list()
+        ks = []
+        sent = []
         for i, node in enumerate(self.nodes):
             word = node.word.split(" ")
             sent.extend(word)
@@ -127,6 +126,7 @@ def postprocess(tree):
     for node in tree.nodes:
 
         if node.pos == "ADP" and node.head.pos == "NOUN":
+
             child = node.head
             head = child.head
             node.head = head
@@ -181,8 +181,8 @@ def parse_conllu(block):
 
 if __name__ == "__main__":
 
-    block = list()
-    results = list()
+    block = []
+    results = []
 
     for ln, line in enumerate(sys.stdin, 1):
         line = line.strip()
@@ -211,7 +211,7 @@ if __name__ == "__main__":
             print(node)
         print()
 
-        tree.print_tree()
+        tree.print()
         print()
 
         sent, words, tags = tree.np_chunk()
