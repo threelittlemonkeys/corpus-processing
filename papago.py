@@ -19,7 +19,7 @@ def hmacmd5(key, passphrase):
     md5 = hmac.digest(passphrase.encode("UTF-8"), key.encode("UTF-8"), "MD5")
     return base64.b64encode(md5).decode("UTF-8")
 
-def papago_translate(src_lang, tgt_lang, query):
+def papago(src_lang, tgt_lang, query):
     timestamp = str(int(time.time() * 1000))
     key = hmacmd5(f"{DEVICE_ID}\n{URL}\n{timestamp}", VERSION)
     authorization = f"PPG {DEVICE_ID}:{key}"
@@ -46,6 +46,9 @@ def papago_translate(src_lang, tgt_lang, query):
 
 if __name__ == "__main__":
 
+    if len(sys.argv) != 3:
+        sys.exit("Usage: %s src_lang tgt_lang < text" % sys.argv[0])
+
     num_reqs = 0
     num_lines = 0
     text = ""
@@ -53,23 +56,20 @@ if __name__ == "__main__":
     src_lang = sys.argv[1]
     tgt_lang = sys.argv[2]
 
-    for line in sys.stdin:
-        line = re.sub("\s+", " ", line).strip()
+    def translate(text):
 
-        if len(text) + len(line)  < 4000:
-            if text:
-                text += "\n"
-            text += line
-            continue
+        global num_lines
 
         srcs = text.split("\n")
-        tgts = papago_translate(src_lang, tgt_lang, text).split("\n")
+        tgts = papago(src_lang, tgt_lang, text).split("\n")
 
         for src, tgt in zip(srcs, tgts):
+            tgt = re.sub("\s+", " ", tgt).strip()
             print(src, tgt, sep = "\t")
 
         num_lines += len(srcs)
         interval = random.uniform(5, 9)
+        time.sleep(interval)
 
         print(
             "[%d] %d chars %d/%d lines (%.4f secs)"
@@ -77,6 +77,19 @@ if __name__ == "__main__":
             file = sys.stderr
         )
 
+    for line in sys.stdin:
+        line = re.sub("\s+", " ", line).strip()
+
+        if len(text) + len(line)  < 4000: # TODO
+            if text:
+                text += "\n"
+            text += line
+            continue
+
+        translate(text)
+
         text = ""
         num_reqs += 1
-        time.sleep(interval)
+
+    if text:
+        translate(text)
