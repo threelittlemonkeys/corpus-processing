@@ -122,6 +122,7 @@ print("SYM_MISMATCH =", SYM_MISMATCH, file = fl)
 print("BR_MISMATCH =", BR_MISMATCH, file = fl)
 print("PUNC_MISMATCH =", PUNC_MISMATCH, file = fl)
 print("QUOT_MISMATCH =", QUOT_MISMATCH, file = fl)
+print("NUM_MISMATCH =", NUM_MISMATCH, file = fl)
 
 print(file = fl)
 
