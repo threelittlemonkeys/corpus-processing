@@ -82,7 +82,7 @@ for ln, line in enumerate(fa, 1):
         if lang not in CJK_LANGS and RE_LANG_CJK.search(txt) \
         or lang == "ja" and RE_LANG_KO.search(txt) \
         or lang == "ko" and (RE_LANG_JA.search(txt) or RE_LANG_ZH.search(txt)) \
-        or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA.search(txt)):
+        or lang == "zh" and (RE_LANG_KO.search(txt) or RE_LANG_JA_KANA.search(txt)):
             log_error(ln, "INVALID_LANGUAGE_IN_%s" % side)
 
         if lang == "en" and RE_SENTS_EN.search(txt) \

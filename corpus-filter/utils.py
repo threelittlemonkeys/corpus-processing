@@ -63,8 +63,8 @@ def tokenize(lang, txt):
     txt = RE_ALPHA_L.sub(" ", txt)
     txt = RE_ALPHA_R.sub(" ", txt)
     if lang == "ja":
-        txt = re.sub(RE_ALPHA_KANJI, " ", txt)
-        txt = re.sub(RE_ALPHA_KATAKANA, " ", txt)
+        txt = re.sub(RE_ALPHA_JA_KANJI, " ", txt)
+        txt = re.sub(RE_ALPHA_JA_KATAKANA, " ", txt)
     if lang == "zh":
         txt = re.sub(RE_ALPHA_ZH, " ", txt)
     txt = RE_NUM_L.sub(" ", txt)

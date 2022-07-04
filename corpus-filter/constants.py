@@ -23,8 +23,9 @@ QUOT = SQ + DQ + FQ
 
 RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % ((_ALPHA,) * 2))
 RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % ((_ALPHA,) * 2))
-RE_ALPHA_KANJI = re.compile("(?<=[^ %s])(?=[%s])" % ((_ZH,) * 2))
-RE_ALPHA_KATAKANA = re.compile("(?<=[^ %s])(?=[%s])" % ((_JA_KATAKANA,) * 2))
+
+RE_ALPHA_JA_KANJI = re.compile("(?<=[^ %s])(?=[%s])" % ((_ZH,) * 2))
+RE_ALPHA_JA_KATAKANA = re.compile("(?<=[^ %s])(?=[%s])" % ((_JA_KATAKANA,) * 2))
 RE_ALPHA_ZH = re.compile("(?<=[%s])(?=[%s])" % ((_ZH,) * 2))
 RE_NUM = re.compile("[1-9]{3,}")
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
@@ -46,6 +47,7 @@ RE_REPETITION = re.compile("(.{3,})\\1{2,}")
 
 RE_LANG_EN = re.compile("[%s]" % _EN)
 RE_LANG_JA = re.compile("[%s]" % (_JA + _ZH))
+RE_LANG_JA_KANA = re.compile("[%s]" % _JA)
 RE_LANG_KO = re.compile("[%s]" % _KO)
 RE_LANG_ZH = re.compile("[%s]" % _ZH)
 RE_LANG_RU = re.compile("[%s]" % _RU)
