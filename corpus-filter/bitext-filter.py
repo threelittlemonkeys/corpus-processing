@@ -65,6 +65,7 @@ for ln, line in enumerate(fa, 1):
         log_error(ln, "NUMBER_MISMATCH")
 
     pairs = ((s1, SRC_LANG, "SRC"), (t1, TGT_LANG, "TGT"))
+
     for txt, lang, side, in pairs:
 
         if RE_URL.search(txt):

@@ -87,7 +87,7 @@ def findall_diff(obj, a, b):
     a = func(a)
     b = func(b)
     c = list()
-    for x in set([*a, *b]):
+    for x in (*a, *b):
         if x in a and x in b:
             c.extend([x] * abs(a[x] - b[x]))
         elif x in a:
