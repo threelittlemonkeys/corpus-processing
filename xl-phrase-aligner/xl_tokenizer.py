@@ -1,11 +1,10 @@
 import sys
 import re
 
-class xl_tokenizer():
-
+class xl_tokenizer(): 
     def __init__(self, src_lang, tgt_lang, phrase_maxlen):
 
-        langs = (src_lang, tgt_lang)
+        langs = {src_lang, tgt_lang}
 
         if "ja" in langs:
             # pip install mecab-python3 unidic-lite
@@ -51,14 +50,14 @@ class xl_tokenizer():
         return x.split(" ")
 
     def ja(self, x):
-        morphs = list()
+        morphs = []
         result = [x.split("\t") for x in self.ja_tagger.parse(x).split("\n")]
         morphs = [(x[0], re.sub("-.*", "", x[4])) for x in result if len(x) == 8]
         morphs = [morph for morph, pos in morphs]
         return morphs
 
     def ko(self, x):
-        morphs = list()
+        morphs = []
         result = self.ko_tagger.pos(x)
         for morph, pos in result:
             pos = pos.split("+")
@@ -95,7 +94,6 @@ if __name__ == "__main__":
         sys.exit("Usage: %s lang < text" % sys.argv[0])
 
     lang = sys.argv[1]
-
     tokenizer = xl_tokenizer(lang)
 
     for line in sys.stdin:

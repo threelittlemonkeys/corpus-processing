@@ -44,11 +44,11 @@ class xl_phrase_aligner():
             yrs, yps = zip(*self.tokenizer.phrase_iter(yws))
             ps.extend(xps)
             ps.extend(yps)
-            data.append((xws, xrs, xps, yws, yrs, yps))
+            data.append((x, xws, xrs, xps, y, yws, yrs, yps))
 
         i = 0
         hs = self.model.encode(ps, batch_size = self.batch_size)
-        for xws, xrs, xps, yws, yrs, yps in data:
+        for x, xws, xrs, xps, y, yws, yrs, yps in data:
             xhs = hs[i:i + len(xps)]
             i += len(xps)
             yhs = hs[i:i + len(yps)]
@@ -118,6 +118,9 @@ class xl_phrase_aligner():
 
     def extraction(self, _xws, _yws, pss):
 
+        ops = []
+        cands = []
+
         def compare(a, b, c, d):
             if d <= a or b <= c:
                 return "DISJOINT"
@@ -128,9 +131,6 @@ class xl_phrase_aligner():
             if a <= c < d <= b:
                 return "SUPERPHRASE"
             return False
-
-        ops = []
-        cands = []
 
         for ps, (xr, yr), _ in sorted(pss, reverse = True):
             if ps < self.threshold:
