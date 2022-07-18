@@ -36,8 +36,6 @@ class xl_phrase_aligner():
         data = []
         for line in batch:
             *idx, x, y = line.split("\t")
-            x = x.strip()
-            y = y.strip()
             xws = self.tokenizer.tokenize(x, self.src_lang)
             yws = self.tokenizer.tokenize(y, self.tgt_lang)
             xrs, xps = zip(*self.tokenizer.phrase_iter(xws))
@@ -197,23 +195,29 @@ if __name__ == "__main__":
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 
+    ln = 0
     batch = []
     method = sys.argv[3]
     fo = open(sys.argv[4])
 
-    for ln, line in enumerate(fo, 1):
+    while True:
+        ln += 1
+        line = fo.readline().strip()
 
         if ln % 1000 == 0:
             print("%d lines" % ln, file = sys.stderr)
 
-        if not (batch and line == "\n") and len(batch) < aligner.batch_size:
+        if line:
             batch.append(line)
-            continue
+            if len(batch) < aligner.batch_size:
+                continue
+        elif not batch:
+            break
 
         if method == "sentence":
             sent_scores = aligner.sentence_similarity(batch)
             for line, score in zip(batch, sent_scores):
-                print(line, end = "")
+                print(line)
                 print("sent_score", score, sep = "\t")
                 print()
 
@@ -221,7 +225,7 @@ if __name__ == "__main__":
             algn_scores = aligner.align(batch, method)
             for line, algn_score in zip(batch, algn_scores):
                 src_algn, tgt_algn, algn_score = algn_score
-                print(line, end = "")
+                print(line)
                 print("src_aligned", src_algn, sep = "\t")
                 print("tgt_aligned", tgt_algn, sep = "\t")
                 print("alignment_score", algn_score, sep = "\t")
