@@ -25,10 +25,12 @@ def remove_fc(ro):
         return x
     f = (u - 0xAC00) % 28
     u -= f
-    if I2FC[f] == "ㅄ":
-        u += FC2I["ㅂ"]
+    if I2FC[f] == "ㄶ":
+        u += FC2I["ㄴ"]
     if I2FC[f] == "ㅀ":
         u += FC2I["ㄹ"]
+    if I2FC[f] == "ㅄ":
+        u += FC2I["ㅂ"]
     return x[:-1] + chr(u)
 
 def sub(ro):
