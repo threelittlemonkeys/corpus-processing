@@ -34,7 +34,7 @@ class xl_tokenizer():
         line = self.RE_NAN_L.sub(" ", line)
         line = self.RE_NAN_R.sub(" ", line)
 
-        if lang == "en":
+        if lang in ("en", "es"):
             return self.en(line)
         if lang == "ja":
             return self.ja(line)

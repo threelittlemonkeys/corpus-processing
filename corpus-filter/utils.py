@@ -39,7 +39,7 @@ ERR_CODES = [
     "NUMBER_MISMATCH",
 ]
 
-err_log = list()
+err_log = []
 err_cnt = [
     set(),
     {code: 0 for code in ERR_CODES}
@@ -75,18 +75,21 @@ def tokenize(lang, txt):
     return txt
 
 def findall_diff(obj, a, b):
+
     def _count(ro, x):
         y = defaultdict(int)
         for m in ro.finditer(x):
             y[m.group()] += 1
         return y
+
     if type(obj) == re.Pattern:
         func = lambda x: _count(obj, x)
     else:
         func = obj
+
     a = func(a)
     b = func(b)
-    c = list()
+    c = []
 
     for x in (a, b):
         if "¡" in x and "!" in x:
@@ -94,13 +97,14 @@ def findall_diff(obj, a, b):
         if "¿" in x and "?" in x:
             x["¿"] -= x["?"]
 
-    for x in (*a, *b):
+    for x in {*a, *b}:
         if x in a and x in b:
             c.extend([x] * abs(a[x] - b[x]))
         elif x in a:
             c.extend([x] * a[x])
         elif x in b:
             c.extend([x] * b[x])
+
     return c
 
 def count_quotes(txt):
