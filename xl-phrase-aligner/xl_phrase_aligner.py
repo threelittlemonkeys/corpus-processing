@@ -225,9 +225,9 @@ if __name__ == "__main__":
             for line, algn_score in zip(batch, algn_scores):
                 src_algn, tgt_algn, algn_score = algn_score
                 print(line)
-                print("src_aligned", src_algn, sep = "\t")
-                print("tgt_aligned", tgt_algn, sep = "\t")
-                print("alignment_score", algn_score, sep = "\t")
+                print(f"src_aligned\t{src_algn}")
+                print(f"tgt_aligned\t{tgt_algn}")
+                print(f"alignment_score\t{algn_score:f}")
                 (input if aligner.verbose else print)()
 
         batch.clear()
