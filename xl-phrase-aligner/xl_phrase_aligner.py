@@ -1,4 +1,5 @@
 import sys
+import time
 import numpy as np
 from xl_tokenizer import xl_tokenizer
 from sentence_transformers import SentenceTransformer
@@ -189,7 +190,7 @@ if __name__ == "__main__":
     aligner = xl_phrase_aligner(
         src_lang = sys.argv[1],
         tgt_lang = sys.argv[2],
-        batch_size = 1024,
+        batch_size = 2048,
         phrase_maxlen = 5,
         threshold = 0.7,
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
@@ -197,15 +198,13 @@ if __name__ == "__main__":
 
     ln = 0
     batch = []
+    timer = time.time()
     method = sys.argv[3]
     fo = open(sys.argv[4])
 
     while True:
         ln += 1
         line = fo.readline().strip()
-
-        if ln % 1000 == 0:
-            print("%d lines" % ln, file = sys.stderr)
 
         if line:
             batch.append(line)
@@ -232,5 +231,8 @@ if __name__ == "__main__":
                 (input if aligner.verbose else print)()
 
         batch.clear()
+
+        print("%d lines (%.f seconds)" % (ln, time.time() - timer), file = sys.stderr)
+        timer = time.time()
 
     fo.close()
