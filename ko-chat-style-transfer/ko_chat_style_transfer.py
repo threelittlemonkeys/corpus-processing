@@ -86,7 +86,7 @@ def ko_chat_style_transfer(line):
 
         if len(cands) > 1:
             ys = [y for y, _ in cands]
-            y, rs = random.choice(cands)
+            y, rs = random.choice(cands[1:])
             ls.append((w, y, rs, ys))
             out = out[:i + k] + y + out[j + k:]
             k += len(y) - (j - i)
