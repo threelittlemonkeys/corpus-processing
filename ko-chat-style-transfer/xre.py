@@ -5,6 +5,7 @@ from xre_utils import *
 
 RE_CHARSET = re.compile(r"\[[^^]([^]]|\\])*\]")
 RE_GROUP = re.compile(r"\(([^)]|\\\))*\)")
+RE_BACKREF = re.compile(r"(?!>\\)\\[0-9]+")
 
 class xre_object():
 
@@ -13,12 +14,9 @@ class xre_object():
         self.pt = None
         self.pt_groups = None
         self.repl = None
-        self.txt = None
-        self.txt_groups = None
 
-        self._match = None
         self._idx = None
-        self._arg = None
+        self._args = None
 
 def find_groups(txt):
 
@@ -68,10 +66,14 @@ def find_groups(txt):
     return groups # [[txt[i:j] for i, j in x] for x in groups]
 
 def sub(pt, repl, txt):
+    ro = xre_object()
 
-    if type(pt) == str:
-        pt = re.compile(pt)
-    pt_groups = find_groups(pt.pattern)
+    # pattern
+
+    ro.pt = re.compile(pt) if type(pt) == str else pt
+    ro.pt_groups = find_groups(ro.pt.pattern)
+
+    # replacement
 
     repl = RE_CHARSET.sub(
         lambda x: random.choice(x.group()[1:-1]),
@@ -84,29 +86,24 @@ def sub(pt, repl, txt):
             repl
         )
 
-    xs = []
-    for m in pt.finditer(txt):
-        for i, x in enumerate(m.groups(), 1):
-            if not x:
-                continue
-            if xs and m.span(i)[1] <= xs[-1][1][1]:
-                continue
-            xs.append((x, m.span(i)))
-
-    ro = xre_object()
-    ro.pt = pt
-    ro.pt_groups = pt_groups
     ro.repl = repl
-    ro.txt = txt
-    ro.txt_groups = [x[0] for x in xs]
 
-    def proc(m, func):
-        ro._match = m
-        ro._idx = int(m.group(1)) - 1
-        ro._arg = ro.txt_groups[ro._idx]
-        return func(ro)
+    # substitution
 
-    for pt, func in xre_utils:
-        ro.repl = pt.sub(lambda m: proc(m, func), ro.repl)
+    def sub_x(xm):
+        xs = xm.groups()
+        y = ro.repl
 
-    return ro.pt.sub(ro.repl, ro.txt)
+        def sub_y(ym, func):
+            ro._idx = int(ym.group(1)) - 1
+            ro._args = (xs[ro._idx], *ym.groups()[1:])
+            return func(ro)
+
+        for pt, func in xre_utils:
+            y = pt.sub(lambda m: sub_y(m, func), y)
+
+        y = RE_BACKREF.sub(lambda m: xs[int(m.group()[1:]) - 1], y)
+
+        return y
+
+    return ro.pt.sub(sub_x, txt)

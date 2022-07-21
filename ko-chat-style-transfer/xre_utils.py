@@ -8,8 +8,7 @@ I2FC = [""] + list("ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆ
 FC2I = {f: i for i, f in enumerate(I2FC)}
 
 def modify_fc(ro):
-    x = ro._arg
-    y = ro._match.group(2)
+    x, y = ro._args
     u = ord(x[-1])
     if u < 0xAC00 or u > 0xD7A3:
         return x
@@ -19,7 +18,7 @@ def modify_fc(ro):
     return x[:-1] + chr(u)
 
 def remove_fc(ro):
-    x = ro._arg
+    x, = ro._args
     u = ord(x[-1])
     if u < 0xAC00 or u > 0xD7A3:
         return x
@@ -34,9 +33,9 @@ def remove_fc(ro):
     return x[:-1] + chr(u)
 
 def sub(ro):
-    c = ro._arg
+    c = ro._args[0]
     xs = [ro.pt.pattern[i:j] for i, j in ro.pt_groups[ro._idx]]
-    ys = ro._match.group(2).split("|")
+    ys = ro._args[1].split("|")
     return next(y for x, y in zip(xs, ys) if re.match(x, c))
 
 xre_utils = [

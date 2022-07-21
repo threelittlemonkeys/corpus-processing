@@ -30,7 +30,7 @@ def load_dict(filename, dtype):
         m = re.search("^<([^ >]+)> = (<[^ >]+>(?: \+ <[^ >]+>)+)", line)
         if m:
             k, vs = m.groups()
-            v = "(%s)" % "|".join([syms[v[1:-1]] for v in vs.split(" + ")])
+            v = "(?:%s)" % "|".join([syms[v[1:-1]] for v in vs.split(" + ")])
             syms[k] = v
             continue
 
@@ -41,7 +41,7 @@ def load_dict(filename, dtype):
             continue
 
         try:
-            item = re.sub("<(.+?)>", lambda x: "(%s)" % syms[x.group(1)], line)
+            item = re.sub("<(.+?)>", lambda x: "(?:%s)" % syms[x.group(1)], line)
         except:
             sys.exit("Error: unknown symbol at line %d" % ln)
 
@@ -102,7 +102,7 @@ if __name__ == "__main__":
     verbose = (len(sys.argv) == 3 and sys.argv[2] == "-v")
 
     lex_dict = {}
-    rex_dict = load_dict(PATH + "ko_chat_style_dict.tsv", re)
+    rex_dict = load_dict(PATH + "ko_chat_style_transfer.dict", re)
 
     for line in sys.stdin:
 
