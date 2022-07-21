@@ -7,63 +7,6 @@ import random
 PATH = (os.path.dirname(__file__) or ".") + "/"
 RE_TOKEN = re.compile("[가-힣]+")
 
-def load_dict(filename, dtype):
-    do = {}
-    syms = {}
-    fo = open(filename)
-
-    for ln, line in enumerate(fo, 1):
-
-        # preprocessing
-
-        line = re.sub("#.*", "", line)
-        line = re.sub("\s*\t\s*", "\t", line)
-        line = line.strip()
-
-        if line == "":
-            continue
-        if line == "<EOF>":
-            break
-
-        # symbols
-
-        m = re.search("^<([^ >]+)> = (<[^ >]+>(?: \+ <[^ >]+>)+)", line)
-        if m:
-            k, vs = m.groups()
-            v = "(?:%s)" % "|".join([syms[v[1:-1]] for v in vs.split(" + ")])
-            syms[k] = v
-            continue
-
-        m = re.search("^<([^ >]+)> = (.+)$", line)
-        if m:
-            k, v = m.groups()
-            syms[k] = v
-            continue
-
-        try:
-            item = re.sub("<(.+?)>", lambda x: "(?:%s)" % syms[x.group(1)], line)
-        except:
-            sys.exit("Error: unknown symbol at line %d" % ln)
-
-        # load dictionary items
-
-        try:
-            x, y = item.split("\t")
-        except:
-            sys.exit("Error: invalid format at line %d" % ln)
-
-        if dtype == re:
-            x = re.compile(x)
-
-        if x not in do:
-            do[x] = []
-        elif y in do[x]:
-            sys.exit("Error: item already exists at line %d" % ln)
-        do[x].append((y, line))
-
-    fo.close()
-    return do
-
 def ko_chat_style_transfer(line):
     k = 0
     ls = []
@@ -77,11 +20,11 @@ def ko_chat_style_transfer(line):
             for y, r in lex_dict[w]:
                 cands.append((y, [r]))
 
-        for pt in rex_dict:
+        for pt in xre_dict:
             for x, rs in list(cands):
                 if not pt.search(x):
                     continue
-                for y, r in rex_dict[pt]:
+                for y, r in xre_dict[pt]:
                     cands.append((xre.sub(pt, y, x), rs + [r]))
 
         if len(cands) > 1:
@@ -102,7 +45,7 @@ if __name__ == "__main__":
     verbose = (len(sys.argv) == 3 and sys.argv[2] == "-v")
 
     lex_dict = {}
-    rex_dict = load_dict(PATH + "ko_chat_style_transfer.dict", re)
+    xre_dict = xre.read(PATH + "ko_chat_style_transfer_dict.xre")
 
     for line in sys.stdin:
 

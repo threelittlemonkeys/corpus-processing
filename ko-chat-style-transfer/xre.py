@@ -3,6 +3,9 @@ import re
 import random
 from xre_utils import *
 
+RE_SYM_DEF = re.compile("^<([^ >]+)> = (.+)$")
+RE_SYM_CONCAT = re.compile("^<([^ >]+)> = (<[^ >]+>(?: \+ <[^ >]+>)+)$")
+
 RE_CHARSET = re.compile(r"\[[^^]([^]]|\\])*\]")
 RE_GROUP = re.compile(r"\(([^)]|\\\))*\)")
 RE_BACKREF = re.compile(r"(?!>\\)\\[0-9]+")
@@ -17,6 +20,63 @@ class xre_object():
 
         self._idx = None
         self._args = None
+
+def read(filename):
+    do = {}
+    fo = open(filename)
+    syms = {}
+
+    for ln, line in enumerate(fo, 1):
+
+        # preprocessing
+
+        line = re.sub("#.*", "", line)
+        line = re.sub("  +", " ", line)
+        line = re.sub(" *\t *", "\t", line)
+        line = line.strip()
+
+        if line == "":
+            continue
+        if line == "<EOF>":
+            break
+
+        # symbols
+
+        m = RE_SYM_DEF.search(line)
+        if m:
+            k, v = m.groups()
+            syms[k] = v
+            continue
+
+        m = RE_SYM_CONCAT.search(line)
+        if m:
+            k, vs = m.groups()
+            v = "(?:%s)" % "|".join([syms[v[1:-1]] for v in vs.split(" + ")])
+            syms[k] = v
+            continue
+
+        try:
+            item = re.sub("<(.+?)>", lambda x: "(?:%s)" % syms[x.group(1)], line)
+        except:
+            sys.exit("Error: unknown symbol at line %d" % ln)
+
+        # load dictionary items
+
+        try:
+            x, y = item.split("\t")
+        except:
+            sys.exit("Error: invalid format at line %d" % ln)
+
+        x = re.compile(x)
+
+        if x not in do:
+            do[x] = []
+        elif y in do[x]:
+            sys.exit("Error: item already exists at line %d" % ln)
+        do[x].append((y, line))
+
+    fo.close()
+    return do
 
 def find_groups(txt):
 
@@ -107,3 +167,4 @@ def sub(pt, repl, txt):
         return y
 
     return ro.pt.sub(sub_x, txt)
+
