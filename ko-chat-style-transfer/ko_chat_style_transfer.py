@@ -4,59 +4,52 @@ import re
 import xre
 import random
 
-PATH = (os.path.dirname(__file__) or ".") + "/"
-RE_TOKEN = re.compile("[가-힣]+")
+class ko_chat_style_transfer():
 
-def ko_chat_style_transfer(line):
-    k = 0
-    ls = []
-    out = line
+    def __init__(self, lex_dict, xre_dict, verbose):
+        self.lex_dict = {}
+        self.xre_dict = xre.read(xre_dict)
+        self.verbose = verbose
 
-    for m in RE_TOKEN.finditer(line):
-        w, i, j = m.group(), m.start(), m.end()
-        cands = [(w, [])]
+        self.re_token = re.compile("[가-힣]+")
 
-        if w in lex_dict:
-            for y, r in lex_dict[w]:
-                cands.append((y, [r]))
+    def transfer(self, line):
+        k = 0
+        ls = []
+        out = line
 
-        for pt in xre_dict:
-            for x, rs in list(cands):
-                if not pt.search(x):
-                    continue
-                for y, r in xre_dict[pt]:
-                    cands.append((xre.sub(pt, y, x), rs + [r]))
+        for m in self.re_token.finditer(line):
+            w, i, j = m.group(), m.start(), m.end()
+            cands = [(w, [])]
 
-        if len(cands) > 1:
-            ys = [y for y, _ in cands]
-            y, rs = random.choice(cands[1:])
-            ls.append((w, y, rs, ys))
-            out = out[:i + k] + y + out[j + k:]
-            k += len(y) - (j - i)
+            if w in self.lex_dict:
+                for y, r in self.lex_dict[w]:
+                    cands.append((y, [r]))
 
-    return ls, out
+            for pt in self.xre_dict:
+                for x, rs in list(cands):
+                    if not pt.search(x):
+                        continue
+                    for y, r in self.xre_dict[pt]:
+                        cands.append((xre.sub(pt, y, x), rs + [r]))
 
-if __name__ == "__main__":
+            if len(cands) > 1:
+                ys = [y for y, _ in cands]
+                y, rs = random.choice(cands[1:])
+                ls.append((w, y, rs, ys))
+                out = out[:i + k] + y + out[j + k:]
+                k += len(y) - (j - i)
 
-    if len(sys.argv) not in (2, 3):
-        sys.exit("Usage: %s all|diff|same [-v] < txt" % sys.argv[0])
+        return line, out, ls
 
-    op = sys.argv[1]
-    verbose = (len(sys.argv) == 3 and sys.argv[2] == "-v")
-
-    lex_dict = {}
-    xre_dict = xre.read(PATH + "ko_chat_style_transfer_dict.xre")
-
-    for line in sys.stdin:
-
-        ls, out = ko_chat_style_transfer(line)
+    def print(self, line, out, ls, op):
 
         if op == "all" \
         or op == "diff" and line != out \
         or op == "same" and line == out:
             print(out, end = "")
 
-        if verbose:
+        if self.verbose:
             i = 0
             for w, y, rs, ys in ls:
                 if w == y:
@@ -67,3 +60,20 @@ if __name__ == "__main__":
                     print(f"   [{j}]", *r.split("\t"))
                 print()
                 i += 1
+
+if __name__ == "__main__":
+
+    if len(sys.argv) not in (2, 3):
+        sys.exit("Usage: %s all|diff|same [-v] < txt" % sys.argv[0])
+
+    op = sys.argv[1]
+    path = (os.path.dirname(__file__) or ".") + "/"
+    tst = ko_chat_style_transfer(
+        lex_dict = "",
+        xre_dict = path + "ko_chat_style_transfer_dict.xre",
+        verbose = (len(sys.argv) == 3 and sys.argv[2] == "-v")
+    )
+
+    for line in sys.stdin:
+        tst.print(*tst.transfer(line), op)
+
