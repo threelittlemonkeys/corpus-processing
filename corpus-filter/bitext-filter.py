@@ -70,8 +70,10 @@ for ln, line in enumerate(fa, 1):
 
         if RE_URL.search(txt):
             log_error(ln, "URL_IN_%s" % side)
-        if RE_REPETITION.match(txt):
-            log_error(ln, "%s_REPEATED" % side)
+        if RE_INVALID_CHAR.search(txt):
+            log_error(ln, "INVALID_CHARACTER_IN_%s" % side)
+        if RE_REPETITION.search(txt):
+            log_error(ln, "REPETITION_IN_%s" % side)
 
         if lang == "en" and not RE_LANG_EN.search(txt) \
         or lang == "ja" and not RE_LANG_JA.search(txt) \

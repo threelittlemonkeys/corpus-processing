@@ -47,6 +47,9 @@ class corpus_cleaner():
         # private use area
         line = re.sub("[\uE000-\uF8FF]", " ", line)
 
+        # variation selectors
+        line = re.sub("[\uFE00-\uFE0F]", " ", line)
+
         # byte order marks
         line = re.sub("[\uFEFF\uFFFE]", " ", line)
 

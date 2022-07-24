@@ -22,13 +22,15 @@ DQ = "\"˝“”″«»" # double quotation marks
 FQ = "《》「」『』【】" # full-width quotation marks
 QUOT = SQ + DQ + FQ
 
-RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % ((ALPHA,) * 2))
-RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % ((ALPHA,) * 2))
+RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % ((ALPHA, ) * 2))
+RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % ((ALPHA, ) * 2))
 
-RE_ALPHA_JA_KANJI = re.compile("(?<=[^ %s])(?=[%s])" % ((ZH,) * 2))
-RE_ALPHA_JA_KATAKANA = re.compile("(?<=[^ %s])(?=[%s])" % ((JA_KATAKANA,) * 2))
-RE_ALPHA_ZH = re.compile("(?<=[%s])(?=[%s])" % ((ZH,) * 2))
-RE_NUM = re.compile("[1-9][0-9]{2,}")
+RE_ALPHA_JA_KANJI = re.compile("(?<=[^ %s])(?=[%s])" % ((ZH, ) * 2))
+RE_ALPHA_JA_KATAKANA = re.compile("(?<=[^ %s])(?=[%s])" % ((JA_KATAKANA, ) * 2))
+RE_ALPHA_ZH = re.compile("(?<=[%s])(?=[%s])" % ((ZH, ) * 2))
+
+RE_NUM = re.compile("[0-9]+")
+# RE_NUM = re.compile("([#][0-9]+|[0-9]+[^%s()]{,2}[0-9]+|[0-9]+(?=[^ %s])|[0-9]{2,})" % ((ALNUM, ) * 2))
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
 RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 
@@ -37,6 +39,7 @@ RE_NON_ALNUM = re.compile("[^%s]" % ALNUM)
 RE_NON_ALNUM_L = re.compile("(?<=[^ %s])(?=[^ ])" % ALNUM)
 RE_NON_ALNUM_R = re.compile("(?<=[^ ])(?=[^ %s])" % ALNUM)
 
+RE_INVALID_CHAR = re.compile("[\uFFFC\uFFFD]")
 RE_REPETITION = re.compile("(.{3,})\\1{2,}")
 
 RE_LANG_EN = re.compile("[%s]" % EN)
@@ -48,7 +51,7 @@ RE_LANG_RU = re.compile("[%s]" % RU)
 RE_LANG_VI = re.compile("[%s]" % (EN + VI))
 RE_LANG_CJK = re.compile("[%s]" % (JA + KO + ZH))
 
-RE_TOKEN = re.compile("[%s]+|[^ %s]+" % ((PUNC,) * 2))
+RE_TOKEN = re.compile("[%s]+|[^ %s]+" % ((PUNC, ) * 2))
 
 RE_SENTS_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
 RE_SENTS_KO = re.compile("([^.?!]{12}[%s][.?!]){2}" % KO)
@@ -67,7 +70,7 @@ CNTR_R = {
 
 RE_PUNC = re.compile("[%s]" % PUNC)
 RE_BR = re.compile("[<>(){}[\]]")
-RE_LS = re.compile("^([0-9A-Za-z]\. |[❶-➓・])")
+RE_LS = re.compile("^([0-9A-Za-z]\. |[-・])")
 RE_URL = re.compile("https?://")
 RE_SYM = re.compile("["
     + "#$%&*+=@^|¶♪¦©®°҂"
@@ -77,6 +80,8 @@ RE_SYM = re.compile("["
 	+ "\u2190-\u21FF" # Arrows
 	+ "\u2200-\u22FF" # Mathematical Operators
 	+ "\u2300-\u23FF" # Miscellaneous Technical
+    + "\u2400-\u243F" # Control Pictures
+    + "\u2440-\u245F" # Optical Character Recognition
 	+ "\u2460-\u24FF" # Enclosed Alphanumerics
 	+ "\u2500-\u257F" # Box Drawing
 	+ "\u2580-\u259F" # Block Elements
@@ -93,9 +98,11 @@ RE_SYM = re.compile("["
     + "\u3200-\u32FF" # Enclosed CJK Letters and Months
     + "\u3300-\u33FF" # CJK Compatibility
     + "\u4DC0-\u4DFF" # Yijing Hexagram Symbols
+    + "\uFFE0-\uFFEE" # Halfwidth and Fullwidth Forms
 	+ "\U0001F000-\U0001F02F" # Mahjong Tiles
 	+ "\U0001F030-\U0001F09F" # Domino Tiles
 	+ "\U0001F0A0-\U0001F0FF" # Playing Cards
+    + "\U0001F100-\U0001F1FF" # Enclosed Alphanumeric Supplement
 	+ "\U0001F300-\U0001F5FF" # Miscellaneous Symbols and Pictographs
 	+ "\U0001F600-\U0001F64F" # Emoticons (Emoji)
 	+ "\U0001F650-\U0001F67F" # Ornamental Dingbats
