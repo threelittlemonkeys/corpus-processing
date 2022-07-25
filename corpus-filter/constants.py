@@ -25,12 +25,12 @@ QUOT = SQ + DQ + FQ
 RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % ((ALPHA, ) * 2))
 RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % ((ALPHA, ) * 2))
 
+RE_ALPHA = re.compile("[%s]+" % (EN + ES))
 RE_ALPHA_JA_KANJI = re.compile("(?<=[^ %s])(?=[%s])" % ((ZH, ) * 2))
 RE_ALPHA_JA_KATAKANA = re.compile("(?<=[^ %s])(?=[%s])" % ((JA_KATAKANA, ) * 2))
 RE_ALPHA_ZH = re.compile("(?<=[%s])(?=[%s])" % ((ZH, ) * 2))
 
 RE_NUM = re.compile("[0-9]+")
-# RE_NUM = re.compile("([#][0-9]+|[0-9]+[^%s()]{,2}[0-9]+|[0-9]+(?=[^ %s])|[0-9]{2,})" % ((ALNUM, ) * 2))
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
 RE_NUM_R = re.compile("(?<=[^ 0-9])(?=[0-9])")
 

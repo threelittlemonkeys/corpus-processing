@@ -11,7 +11,9 @@ import fake_headers
 
 URL = "https://papago.naver.com/apis/n2mt/translate"
 VERSION = "v1.6.9_0f9c783dcc"
-DEVICE_ID = "00000000-0000-0000-0000-000000000000"
+
+UUID = "".join(random.choices("abcdefghijklmnopqrstuvwxyz0123456789", k = 32))
+UUID = "%s-%s-%s-%s-%s" % (UUID[:8], UUID[8:12], UUID[12:16], UUID[16:20], UUID[20:32])
 
 _headers = fake_headers.Headers()
 
@@ -21,8 +23,8 @@ def hmacmd5(key, passphrase):
 
 def papago(src_lang, tgt_lang, query):
     timestamp = str(int(time.time() * 1000))
-    key = hmacmd5(f"{DEVICE_ID}\n{URL}\n{timestamp}", VERSION)
-    authorization = f"PPG {DEVICE_ID}:{key}"
+    key = hmacmd5(f"{UUID}\n{URL}\n{timestamp}", VERSION)
+    authorization = f"PPG {UUID}:{key}"
 
     headers = _headers.generate()
     headers.update({"Authorization": authorization, "Timestamp": timestamp})
@@ -80,7 +82,7 @@ if __name__ == "__main__":
     for line in sys.stdin:
         line = re.sub("\s+", " ", line).strip()
 
-        if len(text) + len(line)  < 4000: # TODO
+        if len(text) + len(line)  < 4000:
             if text:
                 text += "\n"
             text += line

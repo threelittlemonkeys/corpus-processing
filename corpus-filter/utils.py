@@ -16,7 +16,9 @@ ERR_CODES = [
     "BRACKET_MISMATCH",
     "PUNCTUATION_MARK_MISMATCH",
     "QUOTATION_MISMATCH",
+    "ALPHABET_MISMATCH",
     "NUMBER_MISMATCH",
+    "ENTITY_MISMATCH",
     "URL_IN_SRC",
     "URL_IN_TGT",
     "INVALID_CHARACTER_IN_SRC",
@@ -37,8 +39,6 @@ ERR_CODES = [
     "TGT_TOO_LONGER",
     "LONG_WORD_IN_SRC",
     "LONG_WORD_IN_TGT",
-    "ENTITY_MISMATCH",
-    "NUMBER_MISMATCH",
 ]
 
 err_log = []
@@ -132,7 +132,7 @@ def count_quotes(txt):
 
 def count_nums(txt):
     nums = defaultdict(int)
-    for w in RE_NUM.findall(txt):
-        w = RE_NON_ALNUM.sub("", w)
-        nums[w] += 1
+    for m in RE_NUM.finditer(txt):
+        num = m.group()
+        nums[num] += 1
     return nums

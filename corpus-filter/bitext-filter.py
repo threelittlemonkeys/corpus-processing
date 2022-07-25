@@ -61,6 +61,9 @@ for ln, line in enumerate(fa, 1):
         log_error(ln, "PUNCTUATION_MARK_MISMATCH")
     if QUOT_MISMATCH and len(findall_diff(count_quotes, s1, t1)) >= QUOT_MISMATCH:
         log_error(ln, "QUOTATION_MISMATCH")
+
+    if ALPHA_MISMATCH and len(findall_diff(RE_ALPHA, s1, t1)) >= ALPHA_MISMATCH:
+        log_error(ln, "ALPHABET_MISMATCH")
     if NUM_MISMATCH and len(findall_diff(count_nums, s1, t1)) >= NUM_MISMATCH:
         log_error(ln, "NUMBER_MISMATCH")
 
@@ -125,7 +128,9 @@ print("SYM_MISMATCH =", SYM_MISMATCH, file = fl)
 print("BR_MISMATCH =", BR_MISMATCH, file = fl)
 print("PUNC_MISMATCH =", PUNC_MISMATCH, file = fl)
 print("QUOT_MISMATCH =", QUOT_MISMATCH, file = fl)
-print("NUM_MISMATCH =", NUM_MISMATCH, file = fl)
+print("ALPHABET_MISMATCH =", ALPHA_MISMATCH, file = fl)
+print("NUMBER_MISMATCH =", NUM_MISMATCH, file = fl)
+print("ENTITY_MISMATCH =", ENT_MISMATCH, file = fl)
 
 print(file = fl)
 
