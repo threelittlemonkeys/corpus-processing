@@ -22,13 +22,13 @@ DQ = "\"˝“”″«»" # double quotation marks
 FQ = "《》「」『』【】" # full-width quotation marks
 QUOT = SQ + DQ + FQ
 
-RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % ((ALPHA, ) * 2))
-RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % ((ALPHA, ) * 2))
+RE_ALPHA_L = re.compile("(?<=[%s])(?=[^ %s])" % ((ALPHA,) * 2))
+RE_ALPHA_R = re.compile("(?<=[^ %s])(?=[%s])" % ((ALPHA,) * 2))
 
 RE_ALPHA = re.compile("[%s]+" % (EN + ES))
-RE_ALPHA_JA_KANJI = re.compile("(?<=[^ %s])(?=[%s])" % ((ZH, ) * 2))
-RE_ALPHA_JA_KATAKANA = re.compile("(?<=[^ %s])(?=[%s])" % ((JA_KATAKANA, ) * 2))
-RE_ALPHA_ZH = re.compile("(?<=[%s])(?=[%s])" % ((ZH, ) * 2))
+RE_ALPHA_JA_KANJI = re.compile("(?<=[^ %s])(?=[%s])" % ((ZH,) * 2))
+RE_ALPHA_JA_KATAKANA = re.compile("(?<=[^ %s])(?=[%s])" % ((JA_KATAKANA,) * 2))
+RE_ALPHA_ZH = re.compile("(?<=[%s])(?=[%s])" % ((ZH,) * 2))
 
 RE_NUM = re.compile("[0-9]+")
 RE_NUM_L = re.compile("(?<=[0-9])(?=[^ 0-9])")
@@ -51,7 +51,7 @@ RE_LANG_RU = re.compile("[%s]" % RU)
 RE_LANG_VI = re.compile("[%s]" % (EN + VI))
 RE_LANG_CJK = re.compile("[%s]" % (JA + KO + ZH))
 
-RE_TOKEN = re.compile("[%s]+|[^ %s]+" % ((PUNC, ) * 2))
+RE_TOKEN = re.compile("[%s]+|[^ %s]+" % ((PUNC,) * 2))
 
 RE_SENTS_EN = re.compile("([^ .?!]+( [^ .?!]+){12}[.?!]){2}")
 RE_SENTS_KO = re.compile("([^.?!]{12}[%s][.?!]){2}" % KO)
