@@ -3,8 +3,6 @@ from ibm_model1 import ibm_model1
 
 def extract_parallel_phrases(src_lang, tgt_lang, filename, num_epochs, threshold):
 
-    print("calculating lexical translation probabilities
-
     model = ibm_model1(
         src_lang = src_lang,
         tgt_lang = tgt_lang,

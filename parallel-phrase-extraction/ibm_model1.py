@@ -71,9 +71,12 @@ class ibm_model1():
             for cand in sorted(cands, reverse = True):
                 print(*cand, sep = "\t", file = fo)
 
+        print("saved model")
         fo.close()
 
     def train(self, direction, num_epochs):
+
+        print(f"training ibm_model1.probs.{direction}")
 
         self.dir = {"forward": 0, "backward": 1}[direction]
         src_vocab = self.vocab[self.dir]
@@ -105,7 +108,6 @@ class ibm_model1():
             self.probs[self.dir] = probs
             self.num_epochs = epoch
 
-            print("dir =", direction, end = ", ")
             print("epoch =", epoch, end = ", ")
             print("LL = %f" % self.log_likelihood(), end = ", ")
             print("PP = %f" % self.perplexity(), end = ", ")
