@@ -80,42 +80,47 @@ def read(filename):
 
 def find_groups(txt):
 
-    k = 1
-    depth = 0
+    d, k = 0, 1
     esc = False
     charset = False
     groups = []
 
     for i, c in enumerate(txt):
+
+        # escape character
         if esc:
             esc = False
         elif c == "\\":
             esc = True
-        elif c == "[":
-            charset = True
+
+        # character set
         elif c == "]":
             if not charset:
                 return False
             charset = False
         elif charset:
             pass
+        elif c == "[":
+            charset = True
+
+        # group
         elif c == "(":
-            depth += 1
-            if depth == k:
+            d += 1
+            if d == k:
                 groups.append([[i + 1]])
         elif c == "|":
-            if depth == 0 != k:
+            if d == 0 != k:
                 groups = [[[0]]]
                 k = 0
-            if depth == k:
+            if d == k:
                 groups[-1][-1].append(i)
             groups[-1].append([i + 1])
         elif c == ")":
-            if depth == 0:
+            if d == 0:
                 return False
-            if depth == k:
+            if d == k:
                 groups[-1][-1].append(i)
-            depth -= 1
+            d -= 1
 
     if k == 0:
         groups = groups[0]
@@ -167,4 +172,3 @@ def sub(pt, repl, txt):
         return y
 
     return ro.pt.sub(sub_x, txt)
-
