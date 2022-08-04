@@ -5,104 +5,76 @@ import time
 
 class ibm_model1():
 
-    def __init__(self):
-        self.src_lang = None
-        self.tgt_lang = None
+    def __init__(self, src_lang = None, tgt_lang = None):
+        self.src_lang = src_lang
+        self.tgt_lang = tgt_lang
         self.data = []
+        self.itw = [[], []]
+        self.wti = [{}, {}]
         self.probs = [{}, {}]
         self.vocab = [{}, {}]
         self.dir = None # 0: forward, 1: backward
-        self.epoch = 0
+        self.epoch = None
 
-    @staticmethod
-    def tokenize(lang, sent):
+    def load_vocab(self, filename):
+        for i, lang in enumerate(("src", "tgt")):
+            with open(filename + ".%s_vocab" % lang) as fo:
+                self.itw[i] = fo.read().strip().split("\n")
+                self.wti[i] = {w: i for i, w in enumerate(self.itw[i])}
+                print("%s_vocab_size =" % lang, len(self.itw[i]))
 
-        alnum = "A-Za-z0-9"
-        if lang == "ja":
-            alnum += "\u3041-\u3096\u30A1-\u30FA\u30FC\u4E00-\u9FFF"
-            kanji = "\u4E00-\u9FFF"
-            katakana = "\u30A1-\u30FA\u30FC"
-            sent = re.sub("(?<=[^ %s])(?=[%s])" % ((kanji,) * 2), " ", sent)
-            sent = re.sub("(?<=[^ %s])(?=[%s])" % ((katakana,) * 2), " ", sent)
-        if lang == "ko":
-            alnum += "\uAC00-\uD7AF"
-        sent = re.sub("(?<=[%s])(?=[^ %s])" % ((alnum,) * 2), " ", sent)
-        sent = re.sub("(?<=[^ %s])(?=[%s])" % ((alnum,) * 2), " ", sent)
-        # sent = re.sub(f"([^ {alnum}])", " \\1 ", sent)
-
-        sent = re.sub("\s{2,}", " ", sent)
-        sent = sent.strip()
-        sent = sent.split(" ")
-
-        return sent
-
-    @staticmethod
-    def update_vocab(vocab, xs, ys):
-        for x in ["", *xs]:
-            if x not in vocab:
-                vocab[x] = set()
-            vocab[x].update(ys)
-
-    def load_data(self, src_lang, tgt_lang, filename):
-
-        self.src_lang = src_lang
-        self.tgt_lang = tgt_lang
+    def load_data(self, filename):
 
         print("loading data")
-        print("src_lang =", src_lang)
-        print("tgt_lang =", tgt_lang)
+        self.load_vocab(filename)
 
-        fo = open(filename)
-        for ln, line in enumerate(fo, 1):
-            try:
-                x, y = line.split("\t")
-            except:
-                print("Error: invalid format at %s line %d" % (filename, ln))
-                print(line, end = "")
-                continue
-            xs = self.tokenize(self.src_lang, x)
-            ys = self.tokenize(self.tgt_lang, y)
+        fo = open(filename + ".csv")
+        for line in fo:
+            x, y = line.strip().split("\t")
+            xs = list(map(int, x.split(" ")))
+            ys = list(map(int, y.split(" ")))
             self.data.append((xs, ys))
-            self.update_vocab(self.vocab[0], xs, ys)
-            self.update_vocab(self.vocab[1], ys, xs)
+            for d in range(2):
+                if d:
+                    xs, ys = ys, xs
+                for x in [0] + xs:
+                    if x not in self.vocab[d]:
+                        self.vocab[d][x] = set()
+                    self.vocab[d][x].update(ys)
         fo.close()
-
-        print("data_size =", ln)
-        print("src_vocab_size =", len(self.vocab[0]))
-        print("tgt_vocab_size =", len(self.vocab[1]))
 
     def data_iter(self):
         for xs, ys in self.data:
             if self.dir:
                 xs, ys = ys, xs
-            yield [""] + xs, ys
+            yield [0] + xs, ys
 
     def load_model(self, filename):
 
+        print("loading model")
+        self.load_vocab(re.sub("\.ibm_model1\.epoch[0-9]+$", "", filename))
+
         fo = open(filename)
-
-        try:
-            ln, line = 1, fo.readline()
-            self.src_lang = re.search("^src_lang = (.+)\n", line).group(1)
-            ln, line = 2, fo.readline()
-            self.tgt_lang = re.search("^tgt_lang = (.+)\n", line).group(1)
-            ln, line = 3, fo.readline()
-            self.epoch = int(re.search("^epoch = (.+)\n", line).group(1))
-            ln, line = 4, fo.readline()
-            for d in range(2):
-                for ln, line in enumerate(fo, ln + 1):
-                    if line == "\n":
-                        break
-                    prob, x, y = re.search("^(.+)\t(.*)\t(.*)\n", line).groups()
-                    if x not in self.probs[d]:
-                        self.probs[d][x] = {}
-                    self.probs[d][x][y] = float(prob)
-                    if x not in self.vocab[d]:
-                        self.vocab[d][x] = set()
-                    self.vocab[d][x].add(y)
-        except:
-            print("Error: invalid format at %s line %d" % (filename, ln))
-
+        ln, line = 1, fo.readline()
+        self.src_lang = re.search("^src_lang = (.+)\n", line).group(1)
+        ln, line = 2, fo.readline()
+        self.tgt_lang = re.search("^tgt_lang = (.+)\n", line).group(1)
+        ln, line = 3, fo.readline()
+        self.epoch = int(re.search("^epoch = (.+)\n", line).group(1))
+        ln, line = 4, fo.readline()
+        for d in range(2):
+            for ln, line in enumerate(fo, ln + 1):
+                if line == "\n":
+                    break
+                prob, x, y = re.search("^(.+)\t(.*)\t(.*)\n", line).groups()
+                x = self.wti[d][x]
+                y = self.wti[1 - d][y]
+                if x not in self.probs[d]:
+                    self.probs[d][x] = {}
+                self.probs[d][x][y] = float(prob)
+                if x not in self.vocab[d]:
+                    self.vocab[d][x] = set()
+                self.vocab[d][x].add(y)
         fo.close()
 
     def save_model(self, filename):
@@ -116,7 +88,7 @@ class ibm_model1():
             cands = []
             for x in self.probs[d]:
                 for y in self.probs[d][x]:
-                    cands.append((self.probs[d][x][y], x, y))
+                    cands.append((self.probs[d][x][y], self.itw[d][x], self.itw[1 - d][y]))
 
             print(file = fo)
             for cand in sorted(cands, reverse = True):
@@ -133,7 +105,7 @@ class ibm_model1():
         src_vocab = self.vocab[self.dir]
         tgt_vocab = self.vocab[1 - self.dir]
 
-        probs = {
+        self.probs[self.dir] = {
             x: {y: 1 / len(tgt_vocab) for y in src_vocab[x]}
             for x in src_vocab
         }
@@ -146,17 +118,16 @@ class ibm_model1():
 
             for xs, ys in self.data_iter():
                 for y in ys:
-                    z = sum(probs[x][y] for x in xs)
+                    z = sum(self.probs[self.dir][x][y] for x in xs)
                     for x in xs:
-                        c = probs[x][y] / z
+                        c = self.probs[self.dir][x][y] / z
                         counts[x][y] += c
                         sum_counts[x] += c
 
-            probs = {
+            self.probs[self.dir] = {
                 x: {y: counts[x][y] / sum_counts[x] for y in src_vocab[x]}
                 for x in src_vocab
             }
-            self.probs[self.dir] = probs
             self.epoch = epoch
 
             print("epoch =", epoch, end = ", ")
@@ -175,10 +146,12 @@ class ibm_model1():
         return sorted(ps, key = lambda x: -x[1])[:k]
 
     def sent_prob(self, xs, ys):
+        '''
         e = 1
         p = math.prod(sum(self.probs[self.dir][x][y] for x in xs) for y in ys)
         p *= e / (len(xs) ** len(ys))
-        # p = math.prod(max(self.probs[self.dir][x][y] for x in xs) for y in ys)
+        '''
+        p = math.prod(max(self.probs[self.dir][x][y] for x in xs) for y in ys)
         return p
 
     def log_likelihood(self):
@@ -194,19 +167,16 @@ class ibm_model1():
 if __name__ == "__main__":
 
     if len(sys.argv) != 5:
-        sys.exit("Usage: %s L1 L2 data num_epochs" % sys.argv[0])
+        sys.exit("Usage: %s src_lang tgt_lang data num_epochs" % sys.argv[0])
 
-    model = ibm_model1()
+    model = ibm_model1(
+        src_lang = sys.argv[1],
+        tgt_lang = sys.argv[2]
+    )
 
     filename = sys.argv[3]
     num_epochs = int(sys.argv[4])
 
-    model.load_data(
-        src_lang = sys.argv[1],
-        tgt_lang = sys.argv[2],
-        filename = filename
-    )
-
+    model.load_data(filename)
     model.train(num_epochs)
-
     model.save_model("%s.ibm_model1.epoch%d" % (filename, num_epochs))

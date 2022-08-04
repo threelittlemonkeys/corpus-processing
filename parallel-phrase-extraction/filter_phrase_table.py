@@ -1,20 +1,21 @@
 import sys
+import re
 from ibm_model1 import ibm_model1
 
 def filter_phrase_table(model, threshold, outfile):
 
     fo = open(outfile, "w")
+    itw = model.itw
+    probs = model.probs
     cands = [[], []]
 
     for x in model.vocab[0]:
         for y in model.vocab[0][x]:
-            if not (x and y):
+            if x <= 1 or y <= 1:
                 continue
-            cand = (model.probs[0][x][y], model.probs[1][y][x], x, y)
-            if cand[0] < threshold or cand[1] < threshold:
-                cands[1].append(cand)
-                continue
-            cands[0].append(cand)
+            cand = (probs[0][x][y], probs[1][y][x], itw[0][x], itw[1][y])
+            k = sum(cand[:2]) / 2 < threshold
+            cands[k].append(cand)
 
     for i in range(2):
         if i:
@@ -26,18 +27,17 @@ def filter_phrase_table(model, threshold, outfile):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) != 4:
-        sys.exit("Usage: %s model data threshold" % sys.argv[0])
+    if len(sys.argv) != 3:
+        sys.exit("Usage: %s model threshold" % sys.argv[0])
 
-    model_filename = sys.argv[1]
-    data_filename = sys.argv[2]
-    threshold = float(sys.argv[3])
+    filename = sys.argv[1]
+    threshold = float(sys.argv[2])
 
     model = ibm_model1()
-    model.load_model(model_filename)
+    model.load_model(filename)
 
     filter_phrase_table(
         model = model,
         threshold = threshold,
-        outfile = f"{data_filename}.ibm_model1.phrase_table"
+        outfile = re.sub("\.epoch[0-9]+$", "", filename) + ".phrase_table"
     )
