@@ -1,9 +1,12 @@
+import os
 import sys
 import time
 import math
 from constants import *
 from parameters import *
 from collections import defaultdict
+
+SCRIPT_PATH = (os.path.dirname(__file__) or ".") + "/"
 
 ERR_CODES = [
     "SRC_EMPTY",
@@ -18,7 +21,7 @@ ERR_CODES = [
     "QUOTATION_MISMATCH",
     "ALPHABET_MISMATCH",
     "NUMBER_MISMATCH",
-    "ENTITY_MISMATCH",
+    "DICT_MISMATCH",
     "URL_IN_SRC",
     "URL_IN_TGT",
     "INVALID_CHARACTER_IN_SRC",
@@ -136,3 +139,14 @@ def count_nums(txt):
         num = m.group()
         nums[num] += 1
     return nums
+
+def load_dict(filename):
+    ents = defaultdict(list)
+    with open(filename) as fo:
+        for line in fo:
+            line = line.strip()
+            if line == "":
+                break
+            x, y = line.split("\t")
+            ents[x].append(y)
+    return ents

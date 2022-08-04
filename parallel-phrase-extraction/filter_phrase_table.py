@@ -1,19 +1,35 @@
 import sys
 import re
+from utils import *
 from ibm_model1 import ibm_model1
+
+def validate(w, lang):
+    if w in ("<NULL>", "<UNK>"):
+        return False
+    if lang == "ja" and not RE_LANG_JA.search(w):
+        return False
+    if lang == "ko" and not RE_LANG_KO.search(w):
+        return False
+    return True
 
 def filter_phrase_table(model, threshold, outfile):
 
     fo = open(outfile, "w")
-    itw = model.itw
-    probs = model.probs
     cands = [[], []]
 
-    for x in model.vocab[0]:
-        for y in model.vocab[0][x]:
-            if x <= 1 or y <= 1:
+    for xi in model.vocab[0]:
+
+        xw = model.itw[0][xi]
+        if not validate(xw, model.src_lang):
+            continue
+
+        for yi in model.vocab[0][xi]:
+
+            yw = model.itw[1][yi]
+            if not validate(yw, model.tgt_lang):
                 continue
-            cand = (probs[0][x][y], probs[1][y][x], itw[0][x], itw[1][y])
+
+            cand = (model.probs[0][xi][yi], model.probs[1][yi][xi], xw, yw)
             k = sum(cand[:2]) / 2 < threshold
             cands[k].append(cand)
 

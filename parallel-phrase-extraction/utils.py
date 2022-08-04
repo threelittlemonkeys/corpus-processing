@@ -17,6 +17,9 @@ RE_ALPHA_JA_KATAKANA_R = re.compile("(?<=[%s])(?=[^ %s])" % ((JA_KATAKANA,) * 2)
 RE_ALNUM_L = re.compile("(?<=[^ %s])(?=[%s])" % ((ALNUM,) * 2))
 RE_ALNUM_R = re.compile("(?<=[%s])(?=[^ %s])" % ((ALNUM,) * 2))
 
+RE_LANG_JA = re.compile("[%s]" % JA)
+RE_LANG_KO = re.compile("[%s]" % KO)
+
 def tokenize(lang, sent):
 
     sent = sent.lower()

@@ -6,6 +6,9 @@ if len(sys.argv) not in (2, 3):
 fa = open(sys.argv[1])
 fb = open(sys.argv[2]) if len(sys.argv) == 3 else None
 
+if DICT_MISMATCH and os.path.isfile(SCRIPT_PATH + DICT_PATH):
+    load_dict(SCRIPT_PATH + DICT_PATH)
+
 timer = time.time()
 filename = sys.argv[-1]
 
@@ -130,7 +133,7 @@ print("PUNC_MISMATCH =", PUNC_MISMATCH, file = fl)
 print("QUOT_MISMATCH =", QUOT_MISMATCH, file = fl)
 print("ALPHABET_MISMATCH =", ALPHA_MISMATCH, file = fl)
 print("NUMBER_MISMATCH =", NUM_MISMATCH, file = fl)
-print("ENTITY_MISMATCH =", ENT_MISMATCH, file = fl)
+print("DICT_MISMATCH =", DICT_MISMATCH, file = fl)
 
 print(file = fl)
 
