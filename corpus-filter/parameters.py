@@ -22,4 +22,7 @@ ALPHA_MISMATCH = 1
 NUM_MISMATCH = 1
 DICT_MISMATCH = 1
 
-DICT_PATH = "dict.%s%s.tsv" % (SRC_LANG, TGT_LANG)
+import os
+
+SCRIPT_PATH = (os.path.dirname(__file__) or ".") + "/"
+ENT_DICT_PATH = SCRIPT_PATH + "ent_dict.%s%s.tsv" % (SRC_LANG, TGT_LANG)

@@ -30,7 +30,7 @@ def filter_phrase_table(model, threshold, outfile):
                 continue
 
             cand = (model.probs[0][xi][yi], model.probs[1][yi][xi], xw, yw)
-            k = cand[0] < threshold and cand[1] < threshold
+            k = sum(cand[:2]) / 2 < threshold
             cands[k].append(cand)
 
     for i in range(2):
