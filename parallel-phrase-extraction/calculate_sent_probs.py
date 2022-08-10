@@ -9,9 +9,16 @@ def calculate_sent_probs(model, infile, outfile):
     fout = open(outfile, "w")
 
     for ln, line in enumerate(fin, 1):
-        x, y = line.split("\t")
-        xs = [model.wti[0][x] for x in tokenize(model.src_lang, x)]
-        ys = [model.wti[1][y] for y in tokenize(model.tgt_lang, y)]
+        *idx, x, y = line.split("\t")
+
+        xs = [
+            model.wti[0][x if x in model.wti[0] else "<UNK>"]
+            for x in tokenize(model.src_lang, x)
+        ]
+        ys = [
+            model.wti[1][y if y in model.wti[1] else "<UNK>"]
+            for y in tokenize(model.tgt_lang, y)
+        ]
 
         model.dir = 0
         f_prob = model.sent_prob(xs, ys)

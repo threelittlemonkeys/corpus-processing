@@ -25,4 +25,4 @@ DICT_MISMATCH = 1
 import os
 
 SCRIPT_PATH = (os.path.dirname(__file__) or ".") + "/"
-ENT_DICT_PATH = SCRIPT_PATH + "ent_dict.%s%s.tsv" % (SRC_LANG, TGT_LANG)
+ENT_DICT_PATH = SCRIPT_PATH + "dict.%s%s.tsv" % (SRC_LANG, TGT_LANG)

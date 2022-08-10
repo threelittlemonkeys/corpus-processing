@@ -97,11 +97,11 @@ class ibm_model1():
         print("saved model")
         fo.close()
 
-    def _train(self, direction, num_epochs):
+    def _train(self, dir, num_epochs):
 
-        print(f"training ibm_model1.probs.{direction}")
+        print(f"training ibm_model1.probs.{dir}")
 
-        self.dir = {"forward": 0, "backward": 1}[direction]
+        self.dir = {"forward": 0, "backward": 1}[dir]
         src_vocab = self.vocab[self.dir]
         tgt_vocab = self.vocab[1 - self.dir]
 
@@ -140,10 +140,10 @@ class ibm_model1():
         model._train("backward", num_epochs)
 
     def topk(self, x, y, k):
-        xs = [x] if x else self.vocab[1 - self.dir][y]
-        ys = [y] if y else self.vocab[self.dir][x]
-        ps = [((x, y), float("%f" % self.probs[self.dir][x][y])) for x in xs for y in ys]
-        return sorted(ps, key = lambda x: -x[1])[:k]
+        xs = [x] if x else self.vocab[1][y]
+        ys = [y] if y else self.vocab[0][x]
+        ps = [((x, y), self.probs[0][x][y], self.probs[1][y][x]) for x in xs for y in ys]
+        return sorted(ps, key = lambda x: -sum(x[1:]))[:k]
 
     def sent_prob(self, xs, ys):
         '''

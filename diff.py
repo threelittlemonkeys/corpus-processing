@@ -1,7 +1,7 @@
 import sys
 import difflib
 
-if 4 < len(sys.argv) < 3 or len(sys.argv) == 4 and sys.argv[3] != "-v":
+if len(sys.argv) not in (3, 4):
     sys.exit("Usage: %s filename1 filename2 [-v]" % sys.argv[0])
 
 verbose = (len(sys.argv) == 4)
