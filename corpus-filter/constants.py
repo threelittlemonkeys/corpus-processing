@@ -98,6 +98,7 @@ RE_SYM = re.compile("["
     + "\u3200-\u32FF" # Enclosed CJK Letters and Months
     + "\u3300-\u33FF" # CJK Compatibility
     + "\u4DC0-\u4DFF" # Yijing Hexagram Symbols
+    # "\uFE00-\uFE0F" # Variation Selectors
     + "\uFFE0-\uFFEE" # Halfwidth and Fullwidth Forms
 	+ "\U0001F000-\U0001F02F" # Mahjong Tiles
 	+ "\U0001F030-\U0001F09F" # Domino Tiles
