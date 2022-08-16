@@ -13,8 +13,10 @@ class ibm_model1():
         self.wti = [{}, {}]
         self.probs = [{}, {}]
         self.vocab = [{}, {}]
+
         self.dir = None # 0: forward, 1: backward
         self.epoch = None
+        self.timer = None
 
     def load_vocab(self, filename):
         for i, lang in enumerate(("src", "tgt")):
@@ -97,11 +99,11 @@ class ibm_model1():
         print("saved model")
         fo.close()
 
-    def _train(self, dir, num_epochs):
+    def _train(self, direction, num_epochs):
 
-        print(f"training ibm_model1.probs.{dir}")
+        print(f"training ibm_model1.probs.{direction}")
 
-        self.dir = {"forward": 0, "backward": 1}[dir]
+        self.dir = {"forward": 0, "backward": 1}[direction]
         src_vocab = self.vocab[self.dir]
         tgt_vocab = self.vocab[1 - self.dir]
 
@@ -112,7 +114,7 @@ class ibm_model1():
 
         for epoch in range(1, num_epochs + 1):
 
-            timer = time.time()
+            self.timer = time.time()
             counts = {x: {y: 0 for y in src_vocab[x]} for x in src_vocab}
             sum_counts = {x: 0 for x in src_vocab}
 
@@ -130,10 +132,7 @@ class ibm_model1():
             }
             self.epoch = epoch
 
-            print("epoch =", epoch, end = ", ")
-            print("LL = %f" % self.log_likelihood(), end = ", ")
-            print("PP = %f" % self.perplexity(), end = ", ")
-            print("time = %fs" % (time.time() - timer))
+            self.evaluate()
 
     def train(self, num_epochs):
         model._train("forward", num_epochs)
@@ -146,23 +145,23 @@ class ibm_model1():
         return sorted(ps, key = lambda x: -sum(x[1:]))[:k]
 
     def sent_prob(self, xs, ys):
-        '''
-        e = 1
         p = math.prod(sum(self.probs[self.dir][x][y] for x in xs) for y in ys)
-        p *= e / (len(xs) ** len(ys))
-        '''
-        p = math.prod(max(self.probs[self.dir][x][y] for x in xs) for y in ys)
-        return p
+        p *= 1 / (len(xs) ** len(ys))
+        return p if p else 1e-6
 
-    def log_likelihood(self):
-        return sum(math.log(self.sent_prob(xs, ys)) for xs, ys in self.data_iter())
+    def evaluate(self):
 
-    def perplexity(self):
-        p, z = 0, 0
+        ll, pp, z = 0, 0, 0
         for xs, ys in self.data_iter():
-            p += math.log(self.sent_prob(xs, ys), 2)
+            ll += math.log(self.sent_prob(xs, ys))
+            pp += math.log(self.sent_prob(xs, ys), 2)
             z += len(ys)
-        return 2 ** -(p / z)
+        pp = 2 ** -(pp / z)
+
+        print("epoch =", self.epoch, end = ", ")
+        print("LL = %f" % ll, end = ", ")
+        print("PP = %f" % pp, end = ", ")
+        print("time = %fs" % (time.time() - self.timer))
 
 if __name__ == "__main__":
 
