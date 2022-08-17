@@ -1,4 +1,5 @@
 import sys
+import re
 from ibm_model1 import ibm_model1
 from utils import tokenize
 
@@ -22,6 +23,7 @@ def calculate_sent_probs(model, infile, outfile):
 
         model.dir = 0
         f_prob = model.sent_prob(xs, ys)
+
         model.dir = 1
         b_prob = model.sent_prob(ys, xs)
 
@@ -42,6 +44,7 @@ if __name__ == "__main__":
     data_filename = sys.argv[2]
 
     model = ibm_model1()
+    model.load_vocab(re.sub("\.ibm_model1\.epoch[0-9]+$", "", model_filename))
     model.load_model(model_filename)
 
     calculate_sent_probs(

@@ -29,7 +29,10 @@ def filter_phrase_table(model, threshold, outfile):
             if not validate(yw, model.tgt_lang):
                 continue
 
-            cand = (model.probs[0][xi][yi], model.probs[1][yi][xi], xw, yw)
+            pxy = model.prob[0].get(xi, {}).get(yi, model.min_prob)
+            pyx = model.prob[1].get(yi, {}).get(xi, model.min_prob)
+            cand = (pxy, pyx, xw, yw)
+
             k = sum(cand[:2]) / 2 < threshold
             cands[k].append(cand)
 
@@ -50,6 +53,7 @@ if __name__ == "__main__":
     threshold = float(sys.argv[2])
 
     model = ibm_model1()
+    model.load_vocab(re.sub("\.ibm_model1\.epoch[0-9]+$", "", filename))
     model.load_model(filename)
 
     filter_phrase_table(
