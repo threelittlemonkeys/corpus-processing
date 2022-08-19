@@ -13,7 +13,7 @@ class ibm_model1():
         self.wti = [{}, {}]
         self.prob = [{}, {}]
         self.vocab = [{}, {}]
-        self.min_prob = 1e-4
+        self.min_prob = 1e-6
 
         self.dir = None # 0: forward, 1: backward
         self.epoch = None

@@ -21,7 +21,7 @@ def hmacmd5(key, passphrase):
     md5 = hmac.digest(passphrase.encode("UTF-8"), key.encode("UTF-8"), "MD5")
     return base64.b64encode(md5).decode("UTF-8")
 
-def papago(src_lang, tgt_lang, query):
+def n2mt(src_lang, tgt_lang, query):
     timestamp = str(int(time.time() * 1000))
     key = hmacmd5(f"{UUID}\n{URL}\n{timestamp}", VERSION)
     authorization = f"PPG {UUID}:{key}"
@@ -63,7 +63,7 @@ if __name__ == "__main__":
         global num_lines
 
         srcs = text.split("\n")
-        tgts = papago(src_lang, tgt_lang, text).split("\n")
+        tgts = n2mt(src_lang, tgt_lang, text).split("\n")
 
         for src, tgt in zip(srcs, tgts):
             tgt = re.sub("\s+", " ", tgt).strip()

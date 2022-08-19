@@ -4,8 +4,8 @@ import re
 flags = set(sys.argv[1:])
 
 stats = {
-    "NUM_TOKENS_EQUAL": 0,
-    "NUM_TOKENS_INEQUAL" : 0,
+    "ALIGNED": 0,
+    "MISALIGNED" : 0,
     "MULTIPLE_TRANSLATIONS_IN_SRC_TO_TGT": 0,
     "MULTIPLE_TRANSLATIONS_IN_TGT_TO_SRC": 0
 }
@@ -15,22 +15,22 @@ y2x = {}
 sents = {}
 
 for ln, line in enumerate(sys.stdin, 1):
-    x, y = [re.sub("\s+", " ", line).strip() for line in line.split("\t")]
+    x, y = [re.sub("\s+", " ", e).strip() for e in line.split("\t")]
     xws = [w.strip() for w in re.split("[ ・]", x)]
     yws = [w.strip() for w in re.split("[ ・]", y)]
 
     if len(xws) != len(yws):
-        cat = "NUM_TOKENS_INEQUAL"
+        cat = "ALIGNED"
         stats[cat] += 1
         if cat in flags:
-            print(cat, (x, y))
+            print(cat, (ln, x, y))
         continue
 
     if len(xws) == len(yws):
-        cat = "NUM_TOKENS_EQUAL"
+        cat = "MISALIGNED"
         stats[cat] += 1
         if cat in flags:
-            print(cat, (x, y))
+            print(cat, (ln, x, y))
 
     for xw, yw in zip(xws, yws):
 
@@ -72,7 +72,8 @@ for yw, xws in y2x.items():
         stats[cat] += 1
 
 print("NUM_LINES =", ln)
-print("NUM_TOKENS =", len(x2y))
+print("NUM_SRC_TOKENS =", len(x2y))
+print("NUM_TGT_TOKENS =", len(y2x))
 
 for cat, count in stats.items():
     print(cat, "=", count)
