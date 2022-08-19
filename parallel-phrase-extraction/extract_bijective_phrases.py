@@ -19,18 +19,18 @@ for ln, line in enumerate(sys.stdin, 1):
     xws = [w.strip() for w in re.split("[ ・]", x)]
     yws = [w.strip() for w in re.split("[ ・]", y)]
 
-    if len(xws) != len(yws):
+    if len(xws) == len(yws):
         cat = "ALIGNED"
         stats[cat] += 1
         if cat in flags:
             print(cat, (ln, x, y))
-        continue
 
-    if len(xws) == len(yws):
+    if len(xws) != len(yws):
         cat = "MISALIGNED"
         stats[cat] += 1
         if cat in flags:
             print(cat, (ln, x, y))
+        continue
 
     for xw, yw in zip(xws, yws):
 
