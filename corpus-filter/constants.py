@@ -70,7 +70,7 @@ CNTR_R = {
 
 RE_PUNC = re.compile("[%s]" % PUNC)
 RE_BR = re.compile("[<>(){}[\]]")
-RE_LS = re.compile("^([0-9A-Za-z]\. |[-・])")
+RE_LS = re.compile("^([0-9]\. |[-・])")
 RE_URL = re.compile("https?://")
 RE_SYM = re.compile("["
     + "#$%&*+=@^|¶♪¦©®°҂"

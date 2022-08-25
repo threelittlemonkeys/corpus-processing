@@ -15,7 +15,12 @@ y2x = {}
 sents = {}
 
 for ln, line in enumerate(sys.stdin, 1):
-    x, y = [re.sub("\s+", " ", e).strip() for e in line.split("\t")]
+
+    try:
+        x, y = [re.sub("\s+", " ", e).strip() for e in line.split("\t")]
+    except:
+        sys.exit(f"Error: invalid line at line {ln}")
+
     xws = [w.strip() for w in re.split("[ ・]", x)]
     yws = [w.strip() for w in re.split("[ ・]", y)]
 

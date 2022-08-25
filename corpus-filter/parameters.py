@@ -12,17 +12,17 @@ else:
 
 # mismatch parameters: minimum mismatches to be filtered out (0 if disabled)
 
-LS_MISMATCH = 1
-SYM_MISMATCH = 1
-BR_MISMATCH = 1
-PUNC_MISMATCH = 1
-QUOT_MISMATCH = 1
+LS_MISMATCH = 1 # 1
+SYM_MISMATCH = 3 # 3
+BR_MISMATCH = 3 # 3
+PUNC_MISMATCH = 5 # 5
+QUOT_MISMATCH = 5 # 5
 
-ALPHA_MISMATCH = 1
-NUM_MISMATCH = 1
-DICT_MISMATCH = 1
+ALPHA_MISMATCH = 0 # 0
+NUM_MISMATCH = 3 # 3
+DICT_MISMATCH = 0 # 0
 
 import os
 
 SCRIPT_PATH = (os.path.dirname(__file__) or ".") + "/"
-ENT_DICT_PATH = SCRIPT_PATH + "dict.%s%s.tsv" % (SRC_LANG, TGT_LANG)
+DICT_PATH = SCRIPT_PATH + "dict.%s%s.tsv" % (SRC_LANG, TGT_LANG)

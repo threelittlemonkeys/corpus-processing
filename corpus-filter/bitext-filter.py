@@ -8,7 +8,9 @@ print_parameters(sys.stderr)
 timer = time.time()
 logger = logger()
 filename = sys.argv[1]
-ent_dict = load_dict(ENT_DICT_PATH)
+
+if DICT_MISMATCH:
+    ent_dict = load_dict(DICT_PATH)
 
 fo_in = open(filename + ".flt.in", "w")
 fo_out = open(filename + ".flt.out", "w")
@@ -70,7 +72,7 @@ for ln, line in enumerate(fo_clean, 1):
     if NUM_MISMATCH and len(findall_diff(count_nums, x1, y1)) >= NUM_MISMATCH:
         logger.log(ln, "NUMBER_MISMATCH")
     if DICT_MISMATCH and len(match_dict(ent_dict, x1, y1)[1]) >= DICT_MISMATCH:
-        logger.log(ln, "DICT_MISMATCH")
+        logger.log(ln, "DICTIONARY_MISMATCH")
 
     pairs = ((x1, SRC_LANG, "SRC"), (y1, TGT_LANG, "TGT"))
 

@@ -21,7 +21,7 @@ class logger():
         "QUOTATION_MISMATCH",
         "ALPHABET_MISMATCH",
         "NUMBER_MISMATCH",
-        "DICT_MISMATCH",
+        "DICTIONARY_MISMATCH",
         "URL_IN_SRC",
         "URL_IN_TGT",
         "INVALID_CHARACTER_IN_SRC",
