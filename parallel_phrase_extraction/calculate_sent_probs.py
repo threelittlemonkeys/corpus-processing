@@ -1,7 +1,8 @@
 import sys
 import re
+sys.path.append("../xl_tokenizer")
+from tokenizer import tokenize
 from ibm_model1 import ibm_model1
-from utils import tokenize
 
 def calculate_sent_probs(model, infile, outfile):
 

@@ -1,7 +1,7 @@
 import sys
 import re
-
-from ... import xl-tokenizer
+sys.path.append("../xl_tokenizer")
+from tokenizer import tokenize
 
 def update_vocab(xs, ys):
     for d in range(2):

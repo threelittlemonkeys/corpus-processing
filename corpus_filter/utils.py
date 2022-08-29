@@ -70,30 +70,6 @@ def print_parameters(stream):
     print("NUMBER_MISMATCH =", NUM_MISMATCH, file = stream)
     print("DICT_MISMATCH =", DICT_MISMATCH, file = stream)
 
-def normalize(txt, lc = True, alnum = False):
-    if lc:
-        txt = txt.lower()
-    if alnum:
-       txt = RE_NON_ALNUM.sub(" ", txt)
-    txt = re.sub("\s+", " ", txt)
-    txt = txt.strip()
-    return txt
-
-def tokenize(lang, txt):
-    txt = RE_ALPHA_L.sub(" ", txt)
-    txt = RE_ALPHA_R.sub(" ", txt)
-    if lang == "ja":
-        txt = re.sub(RE_ALPHA_JA_KANJI, " ", txt)
-        txt = re.sub(RE_ALPHA_JA_KATAKANA, " ", txt)
-    if lang == "zh":
-        txt = re.sub(RE_ALPHA_ZH, " ", txt)
-    txt = RE_NUM_L.sub(" ", txt)
-    txt = RE_NUM_R.sub(" ", txt)
-    txt = RE_NON_ALNUM_L.sub(" ", txt)
-    txt = RE_NON_ALNUM_R.sub(" ", txt)
-    txt = txt.split(" ")
-    return txt
-
 def findall_diff(obj, a, b):
 
     def _count(ro, x):
