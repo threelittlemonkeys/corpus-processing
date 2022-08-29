@@ -1,6 +1,7 @@
 import sys
 import re
-from utils import tokenize
+
+from ... import xl-tokenizer
 
 def update_vocab(xs, ys):
     for d in range(2):

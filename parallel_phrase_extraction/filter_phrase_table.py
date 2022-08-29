@@ -6,9 +6,9 @@ from ibm_model1 import ibm_model1
 def validate(w, lang):
     if w in ("<NULL>", "<UNK>"):
         return False
-    if lang == "ja" and not RE_LANG_JA.search(w):
+    if lang == "ja" and not re.search("[\u3040-\u309F\u4E00-\u9FFF]", w):
         return False
-    if lang == "ko" and not RE_LANG_KO.search(w):
+    if lang == "ko" and not re.search("[\uAC00-\uD7AF]", w):
         return False
     return True
 

@@ -1,5 +1,5 @@
-SRC_LANG = "ja"
-TGT_LANG = "ko"
+SRC_LANG = "ko"
+TGT_LANG = "zh"
 
 MAX_SENT_LEN = 100 # long: 100, short : 15
 MIN_SENT_LEN = 1
