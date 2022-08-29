@@ -1,8 +1,9 @@
 import os
 import sys
 import re
-import xre
 import random
+sys.path.append("../xre")
+import xre
 
 class ko_chat_style_transfer():
 
