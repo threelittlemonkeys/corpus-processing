@@ -36,6 +36,9 @@ RE_JA_KANJI_L = re.compile("(?<=[^ %sおご])(?=[%s])" % ((JA_KANJI,) * 2))
 RE_JA_KATAKANA_L = RE_L(JA_KATAKANA)
 RE_JA_KATAKANA_R = RE_R(JA_KATAKANA)
 
+RE_KO_L = RE_L(KO)
+RE_KO_R = RE_R(KO)
+
 RE_ZH_B = RE_B(ZH)
 RE_ZH_L = RE_L(ZH)
 RE_ZH_R = RE_R(ZH)

@@ -87,6 +87,10 @@ def tokenize_ja(x, tagger):
 def tokenize_ko(x, tagger):
 
     if not tagger:
+
+        x = RE_KO_L.sub(" ", x)
+        x = RE_KO_R.sub(" ", x)
+
         return x.split(" ")
 
     morphs = []
