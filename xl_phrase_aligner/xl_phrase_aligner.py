@@ -1,12 +1,9 @@
 import sys
 import time
-import numpy as np
-from xl_tokenizer import xl_tokenizer
+sys.path.append("../xl_tokenizer")
+from utils import *
+from tokenizer import tokenize
 from sentence_transformers import SentenceTransformer
-
-def cos_similarity(x, y):
-    z = np.linalg.norm(x) * np.linalg.norm(y)
-    return np.dot(x, y) / (z if z else 1)
 
 class xl_phrase_aligner():
 
@@ -23,7 +20,6 @@ class xl_phrase_aligner():
         print("threshold =", self.threshold, file = sys.stderr)
 
         self.model = self.load_model()
-        self.tokenizer = xl_tokenizer(src_lang, tgt_lang, phrase_maxlen)
 
     def load_model(self):
         # Language-agnostic BERT Sentence Embedding (LaBSE)
@@ -37,10 +33,10 @@ class xl_phrase_aligner():
         data = []
         for line in batch:
             *idx, x, y = line.split("\t")
-            xws = self.tokenizer.tokenize(x, self.src_lang)
-            yws = self.tokenizer.tokenize(y, self.tgt_lang)
-            xrs, xps = zip(*self.tokenizer.phrase_iter(xws))
-            yrs, yps = zip(*self.tokenizer.phrase_iter(yws))
+            xws = tokenize(self.src_lang, x, use_tagger = True)
+            yws = tokenize(self.tgt_lang, y, use_tagger = True)
+            xrs, xps = zip(*phrase_iter(xws, self.phrase_maxlen))
+            yrs, yps = zip(*phrase_iter(yws, self.phrase_maxlen))
             ps.extend(xps)
             ps.extend(yps)
             data.append((x, xws, xrs, xps, y, yws, yrs, yps))

@@ -1,7 +1,7 @@
 import sys
 import re
 
-EN = "a-z"
+EN = "A-Za-z"
 JA_HIRAGANA = "\u3041-\u3096\u3099-\u309C"
 JA_KATAKANA = "\u30A1-\u30FA\u30FC"
 JA_KANJI = "\u4E00-\u9FFF"
@@ -11,7 +11,12 @@ ZH = "\u4E00-\u9FFF"
 
 NUM = "0-9"
 
-ALPHA = EN + JA + KO + ZH
+ALPHA = EN
+ALPHA += "\xC0-\xFF" # Latin-1 Supplement
+ALPHA += "\u0100-\u017F" # Latin Extended-A
+ALPHA += "\u0180-\u024F" # Latin Extended-B
+ALPHA += "\u1E00-\u1EFF" # Latin Extended Additional
+ALPHA += JA + KO + ZH
 ALNUM = ALPHA + NUM
 
 RE_B = lambda x: re.compile("(?<=[%s])(?=[%s])" % (x, x))
