@@ -24,14 +24,14 @@ with open(filename) as fo:
             break
 
         cols = []
-        for x in names:
-            y = data[x] if x in data else ""
+        for k in names:
+            v = data[k] if k in data else ""
 
-            if type(y) == str:
-                y = re.sub("\s+", " ", y).strip()
+            if type(v) == str:
+                v = re.sub("\s+", " ", v).strip()
 
             if type(y) == list:
-                y = [re.sub("\s+", " ", y).strip() for y in y]
+                v = [re.sub("\s+", " ", x).strip() for x in v]
 
-            cols.append(y)
+            cols.append(v)
         print(*cols, sep = "\t")
