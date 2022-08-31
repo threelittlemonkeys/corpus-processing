@@ -10,19 +10,28 @@ names = sys.argv[2:]
 
 with open(filename) as fo:
     for line in fo:
+
         try:
             data = json.loads(line)
         except:
             continue
+
         if type(data) != dict:
             continue
+
         if not names:
             print(list(data.keys()))
             break
+
         cols = []
         for x in names:
             y = data[x] if x in data else ""
-            y = re.sub("\s+", " ", y)
-            y = y.strip()
+
+            if type(y) == str:
+                y = re.sub("\s+", " ", y).strip()
+
+            if type(y) == list:
+                y = [re.sub("\s+", " ", y).strip() for y in y]
+
             cols.append(y)
         print(*cols, sep = "\t")
