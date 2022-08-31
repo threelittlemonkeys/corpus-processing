@@ -30,7 +30,7 @@ with open(filename) as fo:
             if type(v) == str:
                 v = re.sub("\s+", " ", v).strip()
 
-            if type(y) == list:
+            if type(v) == list:
                 v = [re.sub("\s+", " ", x).strip() for x in v]
 
             cols.append(v)
