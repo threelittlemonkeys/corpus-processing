@@ -8,29 +8,25 @@ def normalize(line):
     line = line.strip()
     return line
 
-def dump(obj):
+def dump(obj, key = ""):
 
     if type(obj) in (int, float):
-        print(obj)
-        return
+        print(key, obj, sep = "\t")
 
     if type(obj) == str:
         for txt in obj.split("\n"):
             txt = normalize(txt)
             if txt == "":
                 continue
-            print(txt)
-        return
+            print(key, txt, sep = "\t")
 
     if type(obj) == list:
         for e in obj:
-            dump(e)
-        return
+            dump(e, key)
 
     if type(obj) == dict:
         for k, v in obj.items():
-            dump(v)
-        return
+            dump(v, (key + "." if key else "") + k)
 
 with open(sys.argv[1]) as fo:
     for line in fo:

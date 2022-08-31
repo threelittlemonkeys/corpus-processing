@@ -9,6 +9,7 @@ filename = sys.argv[1]
 names = sys.argv[2:]
 
 with open(filename) as fo:
+
     for line in fo:
 
         try:
@@ -29,9 +30,6 @@ with open(filename) as fo:
 
             if type(v) == str:
                 v = re.sub("\s+", " ", v).strip()
-
-            if type(v) == list:
-                v = [re.sub("\s+", " ", x).strip() for x in v]
 
             cols.append(v)
         print(*cols, sep = "\t")
