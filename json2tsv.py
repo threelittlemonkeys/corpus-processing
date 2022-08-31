@@ -17,7 +17,7 @@ with open(filename) as fo:
         if type(data) != dict:
             continue
         if not names:
-            print(list(data.keys())
+            print(list(data.keys()))
             break
         cols = []
         for x in names:
