@@ -21,11 +21,8 @@ with open(filename) as fo:
             break
         cols = []
         for x in names:
-            y = ""
-            if x in data:
-                y = data[x]
-            if y:
-                y = y.strip()
-                y = re.sub("\s+", " ", y)
+            y = data[x] if x in data else ""
+            y = re.sub("\s+", " ", y)
+            y = y.strip()
             cols.append(y)
         print(*cols, sep = "\t")
