@@ -84,7 +84,7 @@ if __name__ == "__main__":
         )
 
     for line in sys.stdin:
-        *idx, src = [re.sub("\s+", " ", x).strip() for x in line.split("\t")][:2]
+        *idx, src = [re.sub("\s+", " ", x).strip() for x in line.split("\t")]
 
         if len(text) + len(src)  < 4000:
             if text:
