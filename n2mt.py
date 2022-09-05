@@ -68,7 +68,7 @@ if __name__ == "__main__":
 
         for src, tgt in zip(srcs, tgts):
             tgt = re.sub("\s+", " ", tgt).strip()
-            result = [src] if option = "both" else []
+            result = [src] if option == "both" else []
             result += [tgt]
             print(*result, sep = "\t")
 
