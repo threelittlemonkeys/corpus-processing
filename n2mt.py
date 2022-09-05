@@ -49,32 +49,33 @@ def n2mt(src_lang, tgt_lang, query):
 if __name__ == "__main__":
 
     if len(sys.argv) != 4:
-        sys.exit("Usage: %s src_lang tgt_lang both|tgt < text" % sys.argv[0])
+        sys.exit("Usage: %s src_lang tgt_lang all|tgt < text" % sys.argv[0])
 
     num_reqs = 0
     num_lines = 0
+
+    idxs = []
     text = ""
 
     src_lang = sys.argv[1]
     tgt_lang = sys.argv[2]
     option = sys.argv[3]
 
-    def translate(text):
+    def translate(idxs, text):
 
         global num_lines
+
+        interval = random.uniform(5, 9)
+        time.sleep(interval)
 
         srcs = text.split("\n")
         tgts = n2mt(src_lang, tgt_lang, text).split("\n")
 
-        for src, tgt in zip(srcs, tgts):
+        for idx, src, tgt in zip(idxs, srcs, tgts):
             tgt = re.sub("\s+", " ", tgt).strip()
-            result = [src] if option == "both" else []
-            result += [tgt]
-            print(*result, sep = "\t")
+            print(*([*idx, src] if option == "all" else []), tgt, sep = "\t")
 
         num_lines += len(srcs)
-        interval = random.uniform(5, 9)
-        time.sleep(interval)
 
         print(
             "[%d] %d chars %d/%d lines (%.4f secs)"
@@ -83,18 +84,20 @@ if __name__ == "__main__":
         )
 
     for line in sys.stdin:
-        line = re.sub("\s+", " ", line).strip()
+        *idx, src = [re.sub("\s+", " ", x).strip() for x in line.split("\t")][:2]
 
-        if len(text) + len(line)  < 4000:
+        if len(text) + len(src)  < 4000:
             if text:
                 text += "\n"
-            text += line
+            idxs += idx if idx else [[]]
+            text += src
             continue
 
-        translate(text)
+        translate(idxs, text)
 
+        idxs = []
         text = ""
         num_reqs += 1
 
     if text:
-        translate(text)
+        translate(idxs, text)
