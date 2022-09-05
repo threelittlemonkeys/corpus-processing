@@ -48,8 +48,8 @@ def n2mt(src_lang, tgt_lang, query):
 
 if __name__ == "__main__":
 
-    if len(sys.argv) != 3:
-        sys.exit("Usage: %s src_lang tgt_lang < text" % sys.argv[0])
+    if len(sys.argv) != 4:
+        sys.exit("Usage: %s src_lang tgt_lang both|tgt < text" % sys.argv[0])
 
     num_reqs = 0
     num_lines = 0
@@ -57,6 +57,7 @@ if __name__ == "__main__":
 
     src_lang = sys.argv[1]
     tgt_lang = sys.argv[2]
+    option = sys.argv[3]
 
     def translate(text):
 
@@ -67,7 +68,9 @@ if __name__ == "__main__":
 
         for src, tgt in zip(srcs, tgts):
             tgt = re.sub("\s+", " ", tgt).strip()
-            print(src, tgt, sep = "\t")
+            result = [src] if option = "both" else []
+            result += [tgt]
+            print(*result, sep = "\t")
 
         num_lines += len(srcs)
         interval = random.uniform(5, 9)
