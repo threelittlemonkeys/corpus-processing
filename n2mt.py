@@ -86,17 +86,17 @@ if __name__ == "__main__":
     for line in sys.stdin:
         *idx, src = [re.sub("\s+", " ", x).strip() for x in line.split("\t")]
 
+        if not src:
+            continue
+
         if len(text) + len(src)  < 4000:
-            if text:
-                text += "\n"
-            idxs += idx if idx else [[]]
-            text += src
+            idxs.append(idx)
+            text += "\n" + src
             continue
 
         translate(idxs, text)
-
-        idxs = []
-        text = ""
+        idxs = [idx]
+        text = src
         num_reqs += 1
 
     if text:
