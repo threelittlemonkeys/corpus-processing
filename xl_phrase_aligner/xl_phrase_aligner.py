@@ -186,7 +186,7 @@ if __name__ == "__main__":
     aligner = xl_phrase_aligner(
         src_lang = sys.argv[1],
         tgt_lang = sys.argv[2],
-        batch_size = 2048,
+        batch_size = 1024,
         phrase_maxlen = 5,
         threshold = 0.7,
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
@@ -212,9 +212,7 @@ if __name__ == "__main__":
         if method == "sentence":
             sent_scores = aligner.sentence_similarity(batch)
             for line, score in zip(batch, sent_scores):
-                print(line)
-                print("sent_score", score, sep = "\t")
-                print()
+                print(score, line, sep = " \t")
 
         if method in ("bijection", "extraction"):
             algn_scores = aligner.align(batch, method)
