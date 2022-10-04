@@ -9,7 +9,7 @@ def normalize(x):
 
 def compare_bitext(action, key, flt, filename):
 
-    pl = {}
+    pl = set()
     fo = open(filename)
     for ln, line in enumerate(fo, 1):
         *_, src, tgt = line.split("\t")
@@ -17,8 +17,8 @@ def compare_bitext(action, key, flt, filename):
         if key == "norm":
             src = normalize(src)
             tgt = normalize(tgt)
-        pl[src] = True
-        pl[tgt] = True
+        pl.add(src)
+        pl.add(tgt)
         if ln % 100000 == 0:
             print("%d lines in reference" % ln, file = sys.stderr)
     fo.close()
@@ -45,7 +45,7 @@ def compare_bitext(action, key, flt, filename):
         flag = False
 
         if action == "dup":
-            if flt == "src" and src not in pl:
+            if flt == "src" and src in pl:
                 flag = True
             if flt == "tgt" and tgt in pl:
                 flag = True
