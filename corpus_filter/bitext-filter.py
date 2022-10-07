@@ -1,6 +1,5 @@
 from utils import *
-sys.path.append("../xl_tokenizer")
-from tokenizer import normalize, tokenize
+from xl_tokenizer.tokenizer import normalize, tokenize
 
 if len(sys.argv) not in (2, 3):
     sys.exit("Usage: %s clean_bitext (raw_bitext)" % sys.argv[0])

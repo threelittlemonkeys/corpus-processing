@@ -1,6 +1,6 @@
 import os
 
-SRC_LANG = "en"
+SRC_LANG = "ja"
 TGT_LANG = "ko"
 
 MAX_SENT_LEN = 100 # long: 100, short : 15

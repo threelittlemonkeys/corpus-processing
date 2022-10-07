@@ -57,7 +57,7 @@ def tokenize(lang, txt, lc = True, alnum_only = False, use_tagger = False):
 def tokenize_en(txt, tagger):
 
     if not tagger:
-        return x.split(" ")
+        return txt.split(" ")
 
     txt = re.sub("(?<=[a-z]{2})n ' t\\b", "n't", txt)
     txt = re.sub("(?<=[a-z]) ' (?=(d|ll|m|s|re|ve)\\b)", " '", txt)
