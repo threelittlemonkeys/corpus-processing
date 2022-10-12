@@ -66,7 +66,7 @@ for ln, line in enumerate(fo_clean, 1):
     if PUNC_MISMATCH and len(findall_diff(RE_PUNC, x1, y1)) >= PUNC_MISMATCH:
         logger.log(ln, "PUNCTUATION_MARK_MISMATCH")
     if QUOT_MISMATCH and len(findall_diff(count_quotes, x1, y1)) >= QUOT_MISMATCH:
-        logger.log(ln, "QUOTATION_MISMATCH")
+        logger.log(ln, "QUOTATION_MARK_MISMATCH")
 
     if ALPHA_MISMATCH and len(findall_diff(RE_ALPHA, x1, y1)) >= ALPHA_MISMATCH:
         logger.log(ln, "ALPHABET_MISMATCH")
