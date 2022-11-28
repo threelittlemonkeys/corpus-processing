@@ -71,7 +71,7 @@ if __name__ == "__main__":
     path = (os.path.dirname(__file__) or ".") + "/"
     tst = ko_chat_style_transfer(
         lex_dict = "",
-        xre_dict = path + "ko_chat_style_transfer_dict.xre",
+        xre_dict = path + "ko_chat_style_transfer.xre",
         verbose = (len(sys.argv) == 3 and sys.argv[2] == "-v")
     )
 
