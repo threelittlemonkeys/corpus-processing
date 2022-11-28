@@ -31,5 +31,5 @@ for line in sys.stdin:
 
     count += 1
 
-print("%d references" % len(ref))
-print("%d lines replaced" % count)
+print("%d references" % len(ref), file = sys.stderr)
+print("%d lines replaced" % count, file = sys.stderr)
