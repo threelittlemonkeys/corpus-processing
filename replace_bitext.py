@@ -28,9 +28,11 @@ with open(sys.argv[2]) as fi:
             print(line, end = "", file = fo)
             continue
         for (src1, tgt1) in ref[k]:
+            print(line, end = "")
+            print(*idx, src1, tgt1, sep = "\t")
             print(*idx, src1, tgt1, sep = "\t", file = fo)
         count += 1
 fo.close()
 
-print("%d references" % len(ref), file = sys.stderr)
-print("%d lines replaced" % count, file = sys.stderr)
+print("%d references" % len(ref))
+print("%d lines replaced" % count)
