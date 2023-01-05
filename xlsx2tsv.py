@@ -2,6 +2,9 @@ import re
 import sys
 import xlrd
 
+xlrd.xlsx.ensure_elementtree_imported(False, None)
+xlrd.xlsx.Element_has_iter = True
+
 def xls2tsv(filename, option = None, sheet_idx = 0):
     workbook = xlrd.open_workbook(filename)
     sheet_idx = int(sheet_idx)
