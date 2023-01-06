@@ -1,7 +1,7 @@
 import sys
 import time
-sys.path.append("../xl_tokenizer")
 from utils import *
+sys.path.append("../xl_tokenizer")
 from tokenizer import tokenize
 from sentence_transformers import SentenceTransformer
 
