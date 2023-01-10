@@ -1,6 +1,6 @@
 from utils import *
 sys.path.append("../xl_tokenizer")
-from tokenizer import normalize, tokenize
+from xl_tokenizer import xl_tokenizer
 
 if len(sys.argv) not in (2, 3):
     sys.exit("Usage: %s clean_bitext (raw_bitext)" % sys.argv[0])
@@ -10,6 +10,7 @@ print_parameters(sys.stderr)
 timer = time.time()
 logger = logger()
 filename = sys.argv[1]
+tokenizer = xl_tokenizer()
 
 if DICT_MISMATCH:
     ent_dict = load_dict(DICT_PATH)
@@ -26,10 +27,10 @@ for ln, line in enumerate(fo_clean, 1):
 
     x0 = x0.strip()
     y0 = y0.strip()
-    x1 = normalize(x0)
-    y1 = normalize(y0)
-    x2 = tokenize(SRC_LANG, x1)
-    y2 = tokenize(TGT_LANG, y1)
+    x1 = tokenizer.normalize(x0)
+    y1 = tokenizer.normalize(y0)
+    x2 = tokenizer.tokenize(SRC_LANG, x1)
+    y2 = tokenizer.tokenize(TGT_LANG, y1)
     logger.errors.clear()
 
     if x1 == "":

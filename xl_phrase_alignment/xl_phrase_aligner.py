@@ -2,12 +2,13 @@ import sys
 import time
 from utils import *
 sys.path.append("../xl_tokenizer")
-from tokenizer import tokenize
+from xl_tokenizer import xl_tokenizer
 from sentence_transformers import SentenceTransformer
 
 class xl_phrase_aligner():
 
     def __init__(self, src_lang, tgt_lang, batch_size, phrase_maxlen, threshold, verbose):
+
         self.src_lang = src_lang
         self.tgt_lang = tgt_lang
         self.batch_size = batch_size
@@ -15,13 +16,17 @@ class xl_phrase_aligner():
         self.threshold = threshold
         self.verbose = verbose
 
-        print("batch_size =", self.batch_size, file = sys.stderr)
-        print("phrase_maxlen =", self.phrase_maxlen, file = sys.stderr)
-        print("threshold =", self.threshold, file = sys.stderr)
+        print(f"batch_size = {self.batch_size}", file = sys.stderr)
+        print(f"phrase_maxlen = {self.phrase_maxlen}", file = sys.stderr)
+        print(f"threshold = {self.threshold}", file = sys.stderr)
 
         self.model = self.load_model()
+        self.tokenizer = xl_tokenizer()
+        self.tokenizer.import_tagger(src_lang)
+        self.tokenizer.import_tagger(tgt_lang)
 
     def load_model(self):
+
         # Language-agnostic BERT Sentence Embedding (LaBSE)
         print("loading LaBSE", file = sys.stderr)
         model = SentenceTransformer("LaBSE")
@@ -29,12 +34,13 @@ class xl_phrase_aligner():
         return model
 
     def preprocess(self, batch):
+
         ps = []
         data = []
         for line in batch:
-            *idx, x, y = line.split("\t")
-            xws = tokenize(self.src_lang, x, use_tagger = True)
-            yws = tokenize(self.tgt_lang, y, use_tagger = True)
+            x, y = line.split("\t")
+            xws = self.tokenizer.tokenize(self.src_lang, x, use_tagger = True)
+            yws = self.tokenizer.tokenize(self.tgt_lang, y, use_tagger = True)
             xrs, xps = zip(*phrase_iter(xws, self.phrase_maxlen))
             yrs, yps = zip(*phrase_iter(yws, self.phrase_maxlen))
             ps.extend(xps)
@@ -50,18 +56,19 @@ class xl_phrase_aligner():
             i += len(yps)
 
             if self.verbose:
-                print("src", x, sep = "\t")
-                print("tgt", y, sep = "\t")
-                print("src_tokens", xws, sep = "\t")
-                print("tgt_tokens", yws, sep = "\t")
+                print(f"src\t{x}")
+                print(f"tgt\t{y}")
+                print(f"src_tokens\t{xws}")
+                print(f"tgt_tokens\t{yws}")
                 print()
 
             yield xws, xrs, xps, xhs, yws, yrs, yps, yhs
 
     def sentence_similarity(self, batch):
+
         lines = []
         for line in batch:
-            *idx, x, y = line.split("\t")
+            x, y = line.split("\t")
             lines.extend([x, y])
         hs = self.model.encode(lines, batch_size = self.batch_size)
 
@@ -69,6 +76,7 @@ class xl_phrase_aligner():
             yield cos_similarity(*hs[i: i + 2])
 
     def phrase_similarity(self, xws, xrs, xps, xhs, yws, yrs, yps, yhs):
+
         pss = []
         for xr, xp, xh in zip(xrs, xps, xhs):
             _pss = []
@@ -86,6 +94,7 @@ class xl_phrase_aligner():
         return xws, yws, pss
 
     def bijection(self, _xws, _yws, pss): # linear bijective alignment
+
         cands = []
         for w in pss:
             if len(cands) == w[1][0][0]:
