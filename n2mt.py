@@ -9,6 +9,11 @@ import base64
 import random
 import fake_headers
 
+requests.packages.urllib3.disable_warnings()
+
+if len(sys.argv) != 3:
+    sys.exit("Usage: %s src_lang tgt_lang < text" % sys.argv[0])
+
 URL = "https://papago.naver.com/apis/n2mt/translate"
 VERSION = "v1.7.2_9d7a38d925"
 
@@ -21,6 +26,12 @@ LANGS = {
 
 UUID = "".join(random.choices("abcdefghijklmnopqrstuvwxyz0123456789", k = 32))
 UUID = "%s-%s-%s-%s-%s" % (UUID[:8], UUID[8:12], UUID[12:16], UUID[16:20], UUID[20:32])
+
+src_lang = sys.argv[1]
+tgt_lang = sys.argv[2]
+
+assert src_lang in LANGS
+assert tgt_lang in LANGS
 
 _headers = fake_headers.Headers()
 
@@ -54,64 +65,52 @@ def n2mt(src_lang, tgt_lang, query):
         print(res)
         exit()
 
-if __name__ == "__main__":
+def translate(text):
 
-    if len(sys.argv) != 4:
-        sys.exit("Usage: %s src_lang tgt_lang all|tgt < text" % sys.argv[0])
+    global num_reqs
+    global num_lines
+    global sum_intervals
 
-    idxs = []
-    text = ""
+    interval = random.uniform(5, 9)
+    time.sleep(interval)
 
-    num_reqs = 0
-    num_lines = 0
+    srcs = text.split("\n")
+    tgts = n2mt(src_lang, tgt_lang, text).split("\n")
 
-    src_lang = sys.argv[1]
-    tgt_lang = sys.argv[2]
-    option = sys.argv[3]
+    for src, tgt in zip(srcs, tgts):
+        tgt = re.sub("\s+", " ", tgt).strip()
+        print(src, tgt, sep = "\t")
 
-    assert src_lang in LANGS
-    assert tgt_lang in LANGS
+    num_reqs += 1
+    num_lines += len(srcs)
+    sum_intervals += interval
 
-    def translate(idxs, text):
+    print(
+        "[%d] %d chars %d/%d lines (%.4f/%.4f secs)"
+        % (num_reqs, len(text), len(srcs), num_lines, interval, sum_intervals),
+        file = sys.stderr
+    )
 
-        global num_reqs
-        global num_lines
+text = ""
+num_reqs = 0
+num_lines = 0
+sum_intervals = 0
 
-        interval = random.uniform(5, 9)
-        time.sleep(interval)
+for line in sys.stdin:
 
-        srcs = text.split("\n")
-        tgts = n2mt(src_lang, tgt_lang, text).split("\n")
+    line = re.sub("\s+", " ", line).strip()
 
-        for idx, src, tgt in zip(idxs, srcs, tgts):
-            tgt = re.sub("\s+", " ", tgt).strip()
-            print(*([*idx, src] if option == "all" else []), tgt, sep = "\t")
+    if not line:
+        continue
 
-        num_reqs += 1
-        num_lines += len(srcs)
+    if len(text) + len(line)  < 4000:
+        if text:
+            text += "\n"
+        text += line
+        continue
 
-        print(
-            "[%d] %d chars %d/%d lines (%.4f secs)"
-            % (num_reqs, len(text), len(srcs), num_lines, interval),
-            file = sys.stderr
-        )
+    translate(text)
+    text = line
 
-    for line in sys.stdin:
-        *idx, src = [re.sub("\s+", " ", x).strip() for x in line.split("\t")]
-
-        if not src:
-            continue
-
-        if len(text) + len(src)  < 4000:
-            idxs.append(idx)
-            if text:
-                text += "\n"
-            text += src
-            continue
-
-        translate(idxs, text)
-        idxs = [idx]
-        text = src
-
-    if text:
-        translate(idxs, text)
+if text:
+    translate(text)

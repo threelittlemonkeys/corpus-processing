@@ -33,10 +33,11 @@ options.add_argument("--disable-dev-shm-usage")
 
 driver = webdriver.Chrome(service = Service(ChromeDriverManager().install()), options = options)
 
-def gmt(text):
+def translate(text):
 
     global num_reqs
     global num_lines
+    global sum_intervals
 
     q = urllib.parse.quote(text)
     driver.get(f"https://translate.google.com/?sl={sl}&tl={tl}&text={q}&op=translate")
@@ -50,20 +51,23 @@ def gmt(text):
     tgts = out.split("\n")
 
     for src, tgt in zip(srcs, tgts):
+        tgt = re.sub("\s+", " ", tgt).strip()
         print(src, tgt, sep = "\t")
 
     num_reqs += 1
     num_lines += len(srcs)
+    sum_intervals += interval
 
     print(
-        "[%d] %d chars %d/%d lines (%.4f secs)"
-        % (num_reqs, len(text), len(srcs), num_lines, interval),
+        "[%d] %d chars %d/%d lines (%.4f/%.4f secs)"
+        % (num_reqs, len(text), len(srcs), num_lines, interval, sum_intervals),
         file = sys.stderr
     )
 
 text = ""
 num_reqs = 0
 num_lines = 0
+sum_intervals = 0
 
 for line in sys.stdin:
 
@@ -78,8 +82,8 @@ for line in sys.stdin:
         text += line
         continue
 
-    gmt(text)
+    translate(text)
     text = line
 
 if text:
-    gmt(text)
+    translate(text)
