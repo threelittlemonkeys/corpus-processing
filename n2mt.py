@@ -79,7 +79,7 @@ def translate(text):
 
     for src, tgt in zip(srcs, tgts):
         tgt = re.sub("\s+", " ", tgt).strip()
-        print(src, tgt, sep = "\t")
+        print(tgt)
 
     num_reqs += 1
     num_lines += len(srcs)
