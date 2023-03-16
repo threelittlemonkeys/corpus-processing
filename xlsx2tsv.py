@@ -1,34 +1,31 @@
-import re
 import sys
-import xlrd
-
-xlrd.xlsx.ensure_elementtree_imported(False, None)
-xlrd.xlsx.Element_has_iter = True
+import re
+import openpyxl
 
 def xls2tsv(filename, option = None, sheet_idx = 0):
-    workbook = xlrd.open_workbook(filename)
+
+    workbook = openpyxl.load_workbook(filename)
     sheet_idx = int(sheet_idx)
 
     if not option:
-        print("\n".join(workbook.sheet_names()))
+        print("\n".join(workbook.sheetnames))
         return
 
     if option == "dump":
-        for sheet_idx in range(workbook.nsheets):
-            sheet = workbook.sheet_by_index(sheet_idx)
-            fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.name), "w")
-            print_sheet(fo, sheet)
+        for sheet_idx, sheet in enumerate(workbook._sheets):
+            fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.title), "w")
+            print_sheet(sheet, fo)
             fo.close()
 
     if option == "sheet":
-        sheet = workbook.sheet_by_index(sheet_idx)
-        fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.name), "w")
+        sheet = workbook._sheets[sheet_idx]
+        fo = open("%s.sheet_%d.%s.tsv" % (filename, sheet_idx, sheet.title), "w")
         print_sheet(sheet, fo)
         fo.close()
 
-def print_sheet(fo, sheet):
-    for i in range(sheet.nrows):
-        row = [str(sheet.cell_value(i, j)).strip().replace("\n", "\\n") for j in range(sheet.ncols)]
+def print_sheet(sheet, fo):
+    for row in sheet.values:
+        row = [str(col).strip().replace("\n", "\\n") for col in row]
         fo.write("%s\n" % "\t".join(row))
 
 if __name__ == "__main__":
