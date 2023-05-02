@@ -34,7 +34,10 @@ class sentence_tokenizer():
         if j == len(line) - 1:
             return True
 
-        if not re.match("[.?!] ", line[j:j + 2]):
+        if not (
+            re.match("[.?!] ", line[j:j + 2]) or
+            re.match("[.?!][)'\"] ", line[j - 1:j + 2])
+        ):
             return False
 
         if not line[i:j].count(" "):
@@ -49,7 +52,6 @@ class sentence_tokenizer():
     def tokenize(self, line):
 
         line = re.sub("\s+", " ", line).strip()
-        line = re.sub("(?<=\.) (?=\.)", "", line)
 
         if not line:
             return []
@@ -73,4 +75,9 @@ if __name__ == "__main__":
     sentence_tokenizer = sentence_tokenizer()
 
     for line in sys.stdin:
-        print(sentence_tokenizer.tokenize(line))
+
+        sents = sentence_tokenizer.tokenize(line)
+
+        if sents:
+            print("\n".join(sentence_tokenizer.tokenize(line)))
+            print()

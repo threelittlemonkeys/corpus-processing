@@ -103,7 +103,7 @@ for line in sys.stdin:
     if not line:
         continue
 
-    if len(text) + len(line)  < 4000:
+    if len(text) + len(line) < 4000:
         if text:
             text += "\n"
         text += line
