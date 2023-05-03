@@ -3,6 +3,35 @@ import sys
 import re
 from sentence_tokenizer import sentence_tokenizer
 
+PRINT_FILTER = "out"
+assert PRINT_FILTER in ("in", "out")
+
+def validate(line):
+
+    if re.search("^[a-z]", line):
+        return None, False
+
+    if re.search("[^ A-Za-z0-9,.?!:;_$%&—()/'\"\n-]", line):
+        return None, False
+
+    line = re.sub("(?<=\.) (?=\.)", "", line)
+    line = re.sub(" (?=[,.?!:;])", "", line)
+    line = re.sub("(\.\"?)[0-9]+( |$)", "\\1\\2", line)
+
+    sents = sentence_tokenizer.tokenize(line)
+    wps = [sent.count(" ") + 1 for sent in sents] # words per sentence
+
+    if len(sents) < 3:
+        return sents, False
+
+    if sum(wps) / len(sents) < 12:
+        return sents, False
+
+    if any("a" <= sent[0] <= "Z" for sent in sents):
+        return sents, False
+
+    return sents, True
+
 if __name__ == "__main__":
 
     pid = -1
@@ -19,27 +48,15 @@ if __name__ == "__main__":
             continue
 
         pid += 1
+        sents, flag = validate(line)
 
-        if re.search("^[a-z]", line):
+        if PRINT_FILTER == "out":
+            if sents and not flag:
+                print("\n".join(sents))
+                print()
             continue
 
-        if re.search("[^ A-Za-z0-9,.?!:;_$%&—()/'\"\n-]", line):
-            continue
-
-        line = re.sub("(?<=\.) (?=\.)", "", line)
-        line = re.sub(" (?=[,.?!:;])", "", line)
-        line = re.sub("(\.\"?)[0-9]+( |$)", "\\1\\2", line)
-
-        sents = sentence_tokenizer.tokenize(line)
-        wps = [sent.count(" ") + 1 for sent in sents] # words per sentence
-
-        if len(sents) < 3:
-            continue
-
-        if sum(wps) / len(sents) < 12:
-            continue
-
-        if any("a" <= sent[0] <= "Z" for sent in sents):
+        if not flag:
             continue
 
         if pid != prev + 1 != 0:
