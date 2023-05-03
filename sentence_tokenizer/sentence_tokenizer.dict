@@ -1,5 +1,4 @@
-0 ^[^ ]\.
-0 (?i)\b[a-z]{1,3}\. [0-9]+
+0 (?i)\b([a-z]{1,3}|Chap|Sect)\. [0-9]+
 0 (?i)\b(a\.k\.a\.|cf\.|e\.g\.|esp\.|i\.e\.)
 0 (?i)\b(Dr|Mr|Mrs|Ms|Prof|St)\.
 0 \b([A-Z][A-Za-z]{0,2}\. )+[A-Z][A-Za-z]+

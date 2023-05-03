@@ -3,7 +3,7 @@ import sys
 import re
 from sentence_tokenizer import sentence_tokenizer
 
-PRINT_FILTER = "out"
+PRINT_FILTER = "in"
 assert PRINT_FILTER in ("in", "out")
 
 def validate(line):
@@ -11,7 +11,7 @@ def validate(line):
     if re.search("^[a-z]", line):
         return None, False
 
-    if re.search("[^ A-Za-z0-9,.?!:;_$%&—()/'\"\n-]", line):
+    if re.search("[^ A-Za-z0-9,.?!:;$%&—()/'\"\n-]", line):
         return None, False
 
     line = re.sub("(?<=\.) (?=\.)", "", line)
@@ -21,13 +21,15 @@ def validate(line):
     sents = sentence_tokenizer.tokenize(line)
     wps = [sent.count(" ") + 1 for sent in sents] # words per sentence
 
-    if len(sents) < 3:
+    '''
+    if len(sents) == 1:
+        return sents, False
+    '''
+
+    if sum(wps) / len(wps) < 8:
         return sents, False
 
-    if sum(wps) / len(sents) < 12:
-        return sents, False
-
-    if any("a" <= sent[0] <= "Z" for sent in sents):
+    if any("a" <= sent[0] <= "z" for sent in sents):
         return sents, False
 
     return sents, True
@@ -59,8 +61,10 @@ if __name__ == "__main__":
         if not flag:
             continue
 
-        if pid != prev + 1 != 0:
-            if len(paragraph) > 1 or len(paragraph[0]) >= 5:
+        spp = [len(_sents) for _sents in paragraph] # sentences per paragraph
+
+        if pid > prev + 1 != 0:
+            if len(spp) > 1 and sum(spp) / len(spp) >= 2 or spp[0] >= 10:
                 for _sents in paragraph:
                     for _sent in _sents:
                         print(_sent)

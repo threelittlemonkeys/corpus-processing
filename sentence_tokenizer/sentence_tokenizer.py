@@ -40,8 +40,10 @@ class sentence_tokenizer():
         ):
             return False
 
+        '''
         if not line[i:j].count(" "):
             return False
+        '''
 
         for span, v in spans:
             if span[0] <= j < span[1]:
