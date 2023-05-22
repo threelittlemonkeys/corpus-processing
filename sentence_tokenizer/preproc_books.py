@@ -59,7 +59,7 @@ if __name__ == "__main__":
             spp = [len(sents) for sents in paragraph] # sentences per paragraph
             flag = False
 
-            if len(spp) > 1 and sum(spp) / len(spp) > 2 or spp[0] >= 10:
+            if len(spp) > 1 and sum(spp) / len(spp) > 2 or spp[0] >= 8:
                 if FILTER == "in":
                     flag = True
             elif FILTER == "out":
