@@ -62,7 +62,7 @@ def n2mt(src_lang, tgt_lang, query):
     try:
         return res.json()["translatedText"]
     except:
-        print(res)
+        print(res, file = sys.stderr)
         exit()
 
 def translate(text):
@@ -79,7 +79,7 @@ def translate(text):
 
     for src, tgt in zip(srcs, tgts):
         tgt = re.sub("\s+", " ", tgt).strip()
-        print(tgt)
+        print(tgt, flush = True)
 
     num_reqs += 1
     num_lines += len(srcs)
