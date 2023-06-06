@@ -25,7 +25,13 @@ def xls2tsv(filename, option = None, sheet_idx = 0):
 
 def print_sheet(sheet, fo):
     for row in sheet.values:
-        row = [str(col if col != None else "").strip().replace("\n", "\\n") for col in row]
+        row = [
+            str(col if col != None else "")
+                .strip()
+                .replace("\t", "\\t")
+                .replace("\n", "\\n")
+            for col in row
+        ]
         fo.write("%s\n" % "\t".join(row))
 
 if __name__ == "__main__":
