@@ -12,7 +12,7 @@ class trie():
         self.root = trie_node()
         self.optimized = False
         self.ignore_case = False
-        self.ignore_space = True
+        self.ignore_space = False
         self.verbose = True
 
     def __repr__(self):
@@ -126,4 +126,4 @@ if __name__ == "__main__":
     trie["she"] = 4
 
     print(trie)
-    print(trie.search("sh is"))
+    print(trie.search("shis"))
