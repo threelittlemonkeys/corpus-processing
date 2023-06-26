@@ -9,11 +9,15 @@ def ulen(x): # unicode string length
 
     return sum(1 + (asw(c) in "FW") for c in x)
 
-def find_tables(html):
+def find_tables(html, strip = False):
+
+    pt = "<table>.*?</table>"
+    if strip:
+        pt = f" *{pt} *"
 
     tables = [
         (m.start(), m.group())
-        for m in re.finditer("<table>.*?</table>", html)
+        for m in re.finditer(pt, html)
     ]
 
     return tables
