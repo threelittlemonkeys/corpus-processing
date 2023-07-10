@@ -19,7 +19,7 @@ def validate(line):
     if re.search("^[a-z]", line):
         return sents, False
 
-    if re.search("[^ A-Za-z0-9,.?!:;#$%&£—()/'\"\n-]", line):
+    if re.search("[^A-Za-z0-9é,.?!:;#$%&£—()/'\"\n -]", line):
         return sents, False
 
     if sum(wps) / len(wps) < 8:
