@@ -15,7 +15,7 @@ if len(sys.argv) != 3:
     sys.exit("Usage: %s src_lang tgt_lang < text" % sys.argv[0])
 
 URL = "https://papago.naver.com/apis/n2mt/translate"
-VERSION = "v1.7.5_9b3c4db4fc" # main.[a-z0-9]+.chunk.js
+VERSION = "v1.7.8_b7368816cb" # main.[a-z0-9]+.chunk.js
 
 LANGS = {
     "en", "ja", "ko", "zh-CN", "zh-TW",
