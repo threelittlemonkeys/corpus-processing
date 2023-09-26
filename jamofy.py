@@ -61,7 +61,6 @@ def j2s(x) : # compose Hangeul jamo to syllables
                 s = []
             o.append(c)
 
-    print(o)
     o = "".join([s if type(s) == str else chr(0xAC00
         + _I2i[s[0]] * 21 * 28
         + _M2i[s[1]] * 28
