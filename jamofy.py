@@ -30,6 +30,5 @@ if __name__ == "__main__":
     '''
 
     for line in sys.stdin:
-        line = re.sub("\s", "", line)
-        line = " ".join(line)
+        line = line.strip()
         print(jamofy(line))
