@@ -1,34 +1,91 @@
 import sys
 import re
 
-def jamofy(s): # decompose Hangeul syllables into jamo
+_i2I = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ" # initial consonants
+_i2M = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ" # medial vowels
+_i2F = " ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ" # final consonants
+
+_I2i = {c: i for i, c in enumerate(_i2I)}
+_M2i = {c: i for i, c in enumerate(_i2M)}
+_F2i = {c: i for i, c in enumerate(_i2F[1:], 1)}
+
+def s2j(x): # decompose Hangeul syllables into jamo
+
     o = ""
-    ic = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ" # initial consonants
-    mv = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ" # medial vowels
-    fc = " ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ" # final consonants
-    for c in s:
+
+    for c in x:
+
         u = ord(c)
         if u < 0xAC00 or u > 0xD7A3: # if not Hangeul syllable
             o += c
             continue
+
         u -= 0xAC00
         f = u % 28 # final consonant
         m = u // 28 % 21 # medial vowel
         i = u // 28 // 21 # initial consonant
-        o += ic[i]
-        o += mv[m]
+
+        o += _i2I[i]
+        o += _i2M[m]
         if f:
-            o += fc[f]
+            o += _i2F[f]
+
+    return o
+
+def j2s(x) : # compose Hangeul jamo to syllables
+
+    x += "\n"
+    o, s = [], []
+
+    for i, c in enumerate(x):
+
+        if len(s) == 0 and c in _I2i:
+            s.append(c)
+        elif len(s) == 1 and c in _M2i:
+            s.append(c)
+        elif len(s) == 2 and c in _F2i:
+            j = i + 1
+            if j < len(x) and x[j] in _M2i:
+                o.append(s)
+                s = [c]
+            else:
+                o.append(s + [c])
+                s = []
+        else:
+            if s:
+                o.append(s)
+                s = []
+            o.append(c)
+
+    o = "".join([s if type(s) == str else chr(0xAC00
+        + _I2i[s[0]] * 21 * 28
+        + _M2i[s[1]] * 28
+        + (_F2i[s[2]] if len(s) == 3 else 0))
+        for s in o[:-1]
+    ])
+
     return o
 
 if __name__ == "__main__":
 
     '''
-    text = "정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날"
-    print(text)
-    print(jamofy(text))
+    a = "정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날"
+    b = s2j(a)
+    c = j2s(b)
+
+    print(a)
+    print(b)
+    print(c)
     '''
+
+    if len(sys.argv) != 2:
+        sys.exit("Usage: %s s2j|j2s < filename")
+
+    method = sys.argv[1]
 
     for line in sys.stdin:
         line = line.strip()
-        print(jamofy(line))
+        if method == "s2j":
+            print(s2j(line))
+        if method == "j2s":
+            print(j2s(line))
