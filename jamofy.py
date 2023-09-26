@@ -41,8 +41,12 @@ def j2s(x) : # compose Hangeul jamo to syllables
 
         if len(s) == 0 and c in _I2i:
             s.append(c)
-        elif len(s) == 1 and c in _M2i:
-            s.append(c)
+        elif len(s) == 1:
+            if c in _M2i:
+                s.append(c)
+            else:
+                o.append(s[0]) # o.append(s + ["ㅡ"])
+                s = [c]
         elif len(s) == 2 and c in _F2i:
             j = i + 1
             if j < len(x) and x[j] in _M2i:
@@ -57,6 +61,7 @@ def j2s(x) : # compose Hangeul jamo to syllables
                 s = []
             o.append(c)
 
+    print(o)
     o = "".join([s if type(s) == str else chr(0xAC00
         + _I2i[s[0]] * 21 * 28
         + _M2i[s[1]] * 28
