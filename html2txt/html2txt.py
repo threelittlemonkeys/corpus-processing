@@ -15,4 +15,7 @@ def html2txt(filename):
 
 if __name__ == "__main__":
 
+    if len(sys.argv) != 2:
+        sys.exit("Usage: %s filename" % sys.argv[0])
+
     html2txt(sys.argv[1])
