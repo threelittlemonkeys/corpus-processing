@@ -1,19 +1,9 @@
-import sys
 import re
-from unicodedata import east_asian_width as asw
+from utils import *
 
-def ulen(x): # unicode string length
-
-    if type(x) != str:
-        return 0
-
-    return sum(1 + (asw(c) in "FW") for c in x)
-
-def find_tables(html, strip = False):
+def find_tables(html):
 
     pt = "<table>.*?</table>"
-    if strip:
-        pt = f" *{pt} *"
 
     tables = [
         (m.start(), m.group())
@@ -96,7 +86,7 @@ def parse_table(html):
 
     return (rows, spans, col_lens)
 
-def plot(html, end = "\n"):
+def print_table(html, end = "\n"):
 
     rows, spans, col_lens = parse_table(html)
     border = "-" * (sum(col_lens) + (len(col_lens) - 1) * 3 + 4)
@@ -156,14 +146,3 @@ def plot(html, end = "\n"):
     out = end.join(out)
 
     return out
-
-if __name__ == "__main__":
-
-    with open(sys.argv[1]) as fo:
-
-        html = fo.read()
-
-        for pos, table in find_tables(html):
-            out = plot(table)
-            print(out)
-            print()
