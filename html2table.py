@@ -96,7 +96,7 @@ def parse_table(html):
 
     return (rows, spans, col_lens)
 
-def plot(html):
+def plot(html, end = "\n"):
 
     rows, spans, col_lens = parse_table(html)
     border = "-" * (sum(col_lens) + (len(col_lens) - 1) * 3 + 4)
@@ -153,7 +153,7 @@ def plot(html):
                     out[-1] += f"{sep} {col} "
                 out[-1] += "|"
                 row_idx += 1
-    out = "\n".join(out)
+    out = end.join(out)
 
     return out
 

@@ -147,9 +147,9 @@ class xl_tokenizer():
 
     def tokenize_zh(self, x, use_tagger):
 
-        x = RE_ZH_B.sub(" ", x)
-        x = RE_ZH_L.sub(" ", x)
-        x = RE_ZH_R.sub(" ", x)
+        x = self._HAN_B.sub(" ", x)
+        x = self._HAN_L.sub(" ", x)
+        x = self._HAN_R.sub(" ", x)
 
         return x.split(" ")
 

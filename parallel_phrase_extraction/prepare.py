@@ -1,7 +1,7 @@
 import sys
 import re
 sys.path.append("../xl_tokenizer")
-from tokenizer import tokenize
+from xl_tokenizer import xl_tokenizer
 
 def update_vocab(xs, ys):
     for d in range(2):
@@ -42,8 +42,8 @@ def load_data(src_lang, tgt_lang, filename, min_freq):
             print("Error: invalid format at line %d" % ln)
             print(line, end = "")
             continue
-        xs = tokenize(src_lang, x)
-        ys = tokenize(tgt_lang, y)
+        xs = tokenizer.tokenize(src_lang, x)
+        ys = tokenizer.tokenize(tgt_lang, y)
         data.append((xs, ys))
         for d in range(2):
             for w in (xs, ys)[d]:
@@ -94,6 +94,8 @@ if __name__ == "__main__":
 
     if len(sys.argv) != 5:
         sys.exit("Usage: %s src_lang tgt_lang data min_freq" % sys.argv[0])
+
+    tokenizer = xl_tokenizer()
 
     data, vocab = load_data(*sys.argv[1:4], int(sys.argv[4]))
     save_data(data, vocab, sys.argv[3])
