@@ -1,18 +1,7 @@
 import re
 from utils import *
 
-def find_tables(html):
-
-    pt = "<table[^>]*>.*?</table[^>]*>"
-
-    tables = [
-        (m.start(), m.group())
-        for m in re.finditer(pt, html)
-    ]
-
-    return tables
-
-def parse_table(html):
+def parse_table_old(html):
 
     rows = []
     spans = [{}, {}]
@@ -91,6 +80,11 @@ def parse_table(html):
     ]
 
     return (rows, spans, col_lens)
+
+def parse_table(html):
+
+    rows = []
+    spans = [{}, {}]
 
 def print_table(html, end = "\n"):
 

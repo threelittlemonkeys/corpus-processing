@@ -1,5 +1,6 @@
 import re
 import json
+from table_parser import *
 from utils import *
 
 _PT_TAG = r"</?([^!'\"> ]+)((?:[^'\"/>]+|'(?:[^']|\\')*'|\"(?:[^\"]|\\\")*\")*)/?>"
@@ -14,6 +15,7 @@ class html_node():
         self.attr = {}
         self.text = ""
         self.parent = None
+        self.sibling = None
         self.children = []
 
     def __repr__(self):
@@ -24,9 +26,50 @@ class html_node():
             "text": self.text
         }, ensure_ascii = False)
 
+    def nextup(self, node = None):
+
+        if not node:
+            node = self
+
+        if node.sibling:
+            return node.sibling
+
+        return self.nextup(node.parent)
+
+    def nextdown(self, node = None):
+
+        if not node:
+            node = self
+
+        if node.children:
+            return node.children[0]
+
+        while node:
+            if node.sibling:
+                return node.sibling
+            node = node.parent
+
+        return node
+
+    def iter(self, node = None, depth = 0):
+
+        if not node:
+            node = self
+
+        yield (node, depth)
+
+        for child in node.children:
+            yield from self.iter(child, depth + 1)
+
+    def print(self, indent = 4):
+
+        for node, depth in self.iter():
+            print(" " * (depth * indent), node, sep = "")
+
 def parse_html(html):
 
     tree = html_node()
+    tree.tag = "root"
     pos = 0
     ptr = tree
 
@@ -48,10 +91,14 @@ def parse_html(html):
         # text node
 
         if pos != node.span[0]:
+
             _node = html_node()
             _node.span = [pos, node.span[0]]
             _node.text = normalize_html(html[pos:node.span[0]])
             _node.parent = ptr
+
+            if ptr.children:
+                ptr.children[-1].sibling = _node
             ptr.children.append(_node)
 
         # post-processing
@@ -60,6 +107,8 @@ def parse_html(html):
 
         if tag[:2] != "</": # opening tag
 
+            if ptr.children:
+                ptr.children[-1].sibling = node
             ptr.children.append(node)
 
             if tag[-2:] != "/>":
@@ -68,18 +117,23 @@ def parse_html(html):
         else: # closing tag
 
             assert ptr.tag == node.tag
+            ptr.span[1] = pos
             ptr = ptr.parent
 
     return tree
 
-def print_tree(node, pos = 0, indent = 4):
-
-    print(" " * pos, node, sep = "")
-
-    for child in node.children:
-        print_tree(child, pos = pos + indent)
-
 def html_to_text(html):
 
-    tree = parse_html(html)
-    print_tree(tree)
+    node = parse_html(html)
+
+    while node:
+
+        if node.tag == "table":
+
+            print("--->", node)
+            node = node.nextup()
+
+        else:
+
+            print(node)
+            node = node.nextdown()
