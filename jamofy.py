@@ -1,15 +1,16 @@
 import sys
 import re
+from syllabify import *
 
-_i2I = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ" # initial consonants
-_i2M = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ" # medial vowels
-_i2F = " ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ" # final consonants
+_IDX_TO_HIC = "ㄱㄲㄴㄷㄸㄹㅁㅂㅃㅅㅆㅇㅈㅉㅊㅋㅌㅍㅎ" # Hangeul initial consonants
+_IDX_TO_HMV = "ㅏㅐㅑㅒㅓㅔㅕㅖㅗㅘㅙㅚㅛㅜㅝㅞㅟㅠㅡㅢㅣ" # Hangeul medial vowels
+_IDX_TO_HFC = " ㄱㄲㄳㄴㄵㄶㄷㄹㄺㄻㄼㄽㄾㄿㅀㅁㅂㅄㅅㅆㅇㅈㅊㅋㅌㅍㅎ" # Hangeul final consonants
 
-_I2i = {c: i for i, c in enumerate(_i2I)}
-_M2i = {c: i for i, c in enumerate(_i2M)}
-_F2i = {c: i for i, c in enumerate(_i2F[1:], 1)}
+_HIC_TO_IDX = {c: i for i, c in enumerate(_IDX_TO_HIC)}
+_HMV_TO_IDX = {c: i for i, c in enumerate(_IDX_TO_HMV)}
+_HFC_TO_IDX = {c: i for i, c in enumerate(_IDX_TO_HFC[1:], 1)}
 
-def s2j(x): # decompose Hangeul syllables into jamo
+def hsyl_to_jamo(x): # decompose Hangeul syllables into jamo
 
     o = ""
 
@@ -25,62 +26,60 @@ def s2j(x): # decompose Hangeul syllables into jamo
         m = u // 28 % 21 # medial vowel
         i = u // 28 // 21 # initial consonant
 
-        o += _i2I[i]
-        o += _i2M[m]
+        o += _IDX_TO_HIC[i]
+        o += _IDX_TO_HMV[m]
         if f:
-            o += _i2F[f]
+            o += _IDX_TO_HFC[f]
 
     return o
 
-def j2s(x) : # compose Hangeul jamo to syllables
+def jamo_to_hsyl(x) : # compose Hangeul jamo to syllables
 
     x += "\n"
-    o, s = [], []
+    y, s = [], []
 
     for i, c in enumerate(x):
 
-        if len(s) == 0 and c in _I2i:
+        if len(s) == 0 and c in _HIC_TO_IDX:
             s.append(c)
         elif len(s) == 1:
-            if c in _M2i:
+            if c in _HMV_TO_IDX:
                 s.append(c)
             else:
-                o.append(s[0]) # o.append(s + ["ㅡ"])
+                y.append(s[0])
                 s = [c]
-        elif len(s) == 2 and c in _F2i:
+        elif len(s) == 2 and c in _HFC_TO_IDX:
             j = i + 1
-            if j < len(x) and x[j] in _M2i:
-                o.append(s)
+            if j < len(x) and x[j] in _HMV_TO_IDX:
+                y.append(s)
                 s = [c]
             else:
-                o.append(s + [c])
+                y.append(s + [c])
                 s = []
         else:
             if s:
-                o.append(s)
+                y.append(s)
                 s = []
-            o.append(c)
+            y.append(c)
 
-    o = "".join([s if type(s) == str else chr(0xAC00
-        + _I2i[s[0]] * 21 * 28
-        + _M2i[s[1]] * 28
-        + (_F2i[s[2]] if len(s) == 3 else 0))
-        for s in o[:-1]
+    y = "".join([s if type(s) == str else chr(0xAC00
+        + _HIC_TO_IDX[s[0]] * 21 * 28
+        + _HMV_TO_IDX[s[1]] * 28
+        + (_HFC_TO_IDX[s[2]] if len(s) == 3 else 0))
+        for s in y[:-1]
     ])
 
-    return o
+    return y
 
 if __name__ == "__main__":
 
-    '''
     a = "정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날"
-    b = s2j(a)
-    c = j2s(b)
-
+    b = hsyl_to_jamo(a)
+    c = jamo_to_hsyl(b)
+ 
     print(a)
     print(b)
     print(c)
-    '''
 
     if len(sys.argv) != 2:
         sys.exit("Usage: %s s2j|j2s < filename")
@@ -88,8 +87,10 @@ if __name__ == "__main__":
     method = sys.argv[1]
 
     for line in sys.stdin:
+
         line = line.strip()
+
         if method == "s2j":
-            print(s2j(line))
+            print(hsyl_to_jamo(line))
         if method == "j2s":
-            print(j2s(line))
+            print(jamo_to_hsyl(line))

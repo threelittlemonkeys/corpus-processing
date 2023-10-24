@@ -3,7 +3,7 @@ from utils import *
 
 def find_tables(html):
 
-    pt = "<table>.*?</table>"
+    pt = "<table[^>]*>.*?</table[^>]*>"
 
     tables = [
         (m.start(), m.group())
@@ -24,7 +24,12 @@ def parse_table(html):
         row = rows[row_idx]
         col_idx = 0
 
-        for m in re.finditer("<td(.*?)>(.*?)</td>", row_txt):
+        ms = sorted([
+            *re.finditer("<td(.*?)>(.*?)</td>", row_txt),
+            *re.finditer("<th(.*?)>(.*?)</th>", row_txt)
+        ], key = lambda x:x.start())
+
+        for m in ms:
 
             attr = m.group(1).strip()
             cols = m.group(2).strip()
@@ -47,11 +52,12 @@ def parse_table(html):
 
             for m in re.finditer("([^= ]+)=([^= ]+)", attr):
 
-                name = m.group(1)
-                value = m.group(2)
+                name, value = m.groups()
 
-                if re.match("['\"]?[0-9]+['\"]$", value):
-                    value = int(value[1:-1])
+                if not re.match("['\"]?[0-9]+['\"]$", value):
+                    continue
+                value = int(re.sub("^['\"]|['\"]$", "", value))
+
                 if name == "rowspan":
                     rowspan += value - 1
                 if name == "colspan":
