@@ -16,14 +16,18 @@ class xl_phrase_aligner():
         self.threshold = threshold
         self.verbose = verbose
 
-        print(f"batch_size = {self.batch_size}", file = sys.stderr)
-        print(f"phrase_maxlen = {self.phrase_maxlen}", file = sys.stderr)
-        print(f"threshold = {self.threshold}", file = sys.stderr)
-
         self.model = self.load_model()
         self.tokenizer = xl_tokenizer()
         self.tokenizer.import_tagger(src_lang)
         self.tokenizer.import_tagger(tgt_lang)
+
+        print(f"src_lang = {src_lang}", file = sys.stderr)
+        print(f"tgt_lang = {tgt_lang}", file = sys.stderr)
+        print(f"batch_size = {batch_size}", file = sys.stderr)
+        print(f"phrase_maxlen = {phrase_maxlen}", file = sys.stderr)
+        print(f"threshold = {self.threshold}", file = sys.stderr)
+        print(f"tokenizer[{src_lang}] =", self.tokenizer.taggers.get(src_lang), file = sys.stderr)
+        print(f"tokenizer[{tgt_lang}] =", self.tokenizer.taggers.get(tgt_lang), file = sys.stderr)
 
     def load_model(self):
 
