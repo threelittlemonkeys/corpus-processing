@@ -74,7 +74,7 @@ class xl_tokenizer():
         x = self._NUM_L.sub(" ", x)
         x = self._NUM_R.sub(" ", x)
 
-        if use_tagger and lang not in self.taggers:
+        if lang not in self.taggers:
             use_tagger = False
 
         if lang == "en":
