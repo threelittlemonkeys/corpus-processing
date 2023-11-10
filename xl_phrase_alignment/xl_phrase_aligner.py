@@ -34,6 +34,7 @@ class xl_phrase_aligner():
         # Language-agnostic BERT Sentence Embedding (LaBSE)
         print("loading LaBSE", file = sys.stderr)
         model = SentenceTransformer("LaBSE")
+        # model = SentenceTransformer("/home/ubuntu/work/models/LaBSE")
         print("loaded LaBSE", file = sys.stderr)
         return model
 
