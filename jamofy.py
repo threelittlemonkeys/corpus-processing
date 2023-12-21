@@ -76,7 +76,7 @@ if __name__ == "__main__":
     a = "정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날"
     b = hsyl_to_jamo(a)
     c = jamo_to_hsyl(b)
- 
+
     print(a)
     print(b)
     print(c)
