@@ -10,7 +10,7 @@ _HIC_TO_IDX = {c: i for i, c in enumerate(_IDX_TO_HIC)}
 _HMV_TO_IDX = {c: i for i, c in enumerate(_IDX_TO_HMV)}
 _HFC_TO_IDX = {c: i for i, c in enumerate(_IDX_TO_HFC[1:], 1)}
 
-def hsyl_to_jamo(x): # decompose Hangeul syllables into jamo
+def syl_to_jamo(x): # decompose Hangeul syllables into jamo
 
     o = ""
 
@@ -33,7 +33,7 @@ def hsyl_to_jamo(x): # decompose Hangeul syllables into jamo
 
     return o
 
-def jamo_to_hsyl(x) : # compose Hangeul jamo to syllables
+def jamo_to_syl(x) : # compose Hangeul jamo to syllables
 
     x += "\n"
     y, s = [], []
@@ -73,13 +73,15 @@ def jamo_to_hsyl(x) : # compose Hangeul jamo to syllables
 
 if __name__ == "__main__":
 
+    '''
     a = "정 참판 양반댁 규수 큰 교자 타고 혼례 치른 날"
-    b = hsyl_to_jamo(a)
-    c = jamo_to_hsyl(b)
+    b = syl_to_jamo(a)
+    c = jamo_to_syl(b)
 
     print(a)
     print(b)
     print(c)
+    '''
 
     if len(sys.argv) != 2:
         sys.exit("Usage: %s s2j|j2s < filename")
@@ -91,6 +93,6 @@ if __name__ == "__main__":
         line = line.strip()
 
         if method == "s2j":
-            print(hsyl_to_jamo(line))
+            print(syl_to_jamo(line))
         if method == "j2s":
-            print(jamo_to_hsyl(line))
+            print(jamo_to_syl(line))

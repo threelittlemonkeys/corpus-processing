@@ -10,23 +10,28 @@ _ENKO = {**{a: b for a, b in zip(
     "ㅏㅂㄷㅔㅍㅎㅣㅋㄹㅁㄴㅗㅍㄹㅅㅌㅜㅂㅈㅐㄷㅇㅓㄱㅅ"
 )}}
 
-def syllabify(x):
+def normalize(x):
 
+    x = re.sub("[ˈˌ]", "", x)
     x = re.sub("[aàáɑάαὰ]", "a", x)
     x = re.sub("[eèéɛέ]", "e", x)
     x = re.sub("[oòóɔ]", "o", x)
     x = re.sub("[əʌΛ]", "ə", x)
-    x = re.sub("[ìíɪ]", "i", x)
+    x = re.sub("[iìíɪ]", "i", x)
     x = re.sub("[uùúʊ]", "u", x)
     x = re.sub("[æǽӕ]", "æ", x)
-    x = re.sub("ɝ", "ər", x)
-    x = re.sub("ɫ", "l", x)
+    x = re.sub("[lɫ]", "l", x)
     x = re.sub("[rɹ]", "r", x)
+    x = re.sub("ɝ", "ər", x)
     x = re.sub("ʤ", "dʒ", x)
     x = re.sub("ʧ", "tʃ", x)
-    x = re.sub("[ˈˌ]", "", x)
 
-    y, s = [], []
+    return x
+
+def syllabify(x):
+
+    x = normalize(x)
+    s, y = [], []
 
     for i, p in enumerate(x):
 
@@ -35,21 +40,40 @@ def syllabify(x):
 
         if p in _EN_C:
 
+            if s and s[-1] + p in ("dʒ", "tʃ"):
+                s[-1] += p
+                continue
+
             if len(s) == 1 and p == "j":
                 s[0] += p
                 continue
 
-            if len(s) in (1, 3) and s[-1] + p in ("dʒ", "tʃ"):
-                s[-1] += p
-                continue
-
-            if len(s) == 2 and p == "r" and j < len(x) and x[j] in _EN_C:
-                continue
-
-            if len(s) in (1, 3) \
-            or len(s) == 2 and (p not in "bklmnprŋ" or j < len(x) and x[j] in _EN_V + "jr"):
+            if len(s) in (1, 3):
                 y.append(s)
                 s = []
+
+            if len(s) == 2:
+
+                k = False
+
+                if p not in "bklmnprŋ":
+                    k = True
+
+                if j < len(x) and x[j] in _EN_V + "jlr":
+                    k = True
+
+                if k:
+                    y.append(s)
+                    s = []
+
+            '''
+            if len(s) == 2:
+
+                if p not in "bklmnprŋ" \
+                or j < len(x) and x[j] in _EN_V + "jlr":
+                    y.append(s)
+                    s = []
+            '''
 
             s.append(p)
 
@@ -75,9 +99,9 @@ def combine_with_y(x):
 
 def combine_with_w(x):
 
-    return {a:b for a, b in zip("aeioæə", "ㅘㅞㅣㅝㅙㅝ")}.get(x, x)
+    return {a:b for a, b in zip("aeioæə", "ㅘㅞㅟㅝㅙㅝ")}.get(x, x)
 
-def ipa_to_hsyl(en) : # IPA to Hangeul syllables
+def ipa_to_han(en) : # IPA to Hangeul syllables
 
     en = syllabify(en)
     print(en)
@@ -96,7 +120,7 @@ def ipa_to_hsyl(en) : # IPA to Hangeul syllables
             else:
                 s.append("ㅡ")
 
-        if len(s) >= 1:
+        if len(s) > 1:
 
             if s[0] == "":
                 s[0] = "ㅇ"
@@ -114,21 +138,24 @@ def ipa_to_hsyl(en) : # IPA to Hangeul syllables
             if s[0] == "tʃ":
                 s[0] = "ㅊ"
 
-        s = [_ENKO.get(p, p) for p in s]
-
         if len(s) == 2:
+
             if j < len(en) and en[j][0] == "l":
                 s.append("ㄹ")
 
         if len(s) == 3:
-            if s[2] == "ㅋ":
-                s[2] = "ㄱ"
-            if s[2] == "ㅍ":
-                s[2] = "ㅂ"
 
+            if s[2] == "k":
+                s[2] = "ㄱ"
+            if s[2] == "p":
+                s[2] = "ㅂ"
+            if s[2] == "t":
+                s[2] = "ㅅ"
+
+        s = [_ENKO.get(p, p) for p in s]
         en[i] = "".join(s)
 
-    ko = "".join(jamofy.jamo_to_hsyl(s) for s in en)
+    ko = "".join(jamofy.jamo_to_syl(s) for s in en)
 
     return ko
 
@@ -145,4 +172,4 @@ if __name__ == "__main__":
         a, b = line.split("\t")
 
         if method == "enko":
-            print(a, b, ipa_to_hsyl(b), sep = "\t")
+            print(a, b, ipa_to_han(b), sep = "\t")
