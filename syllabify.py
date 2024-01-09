@@ -2,15 +2,56 @@ import sys
 import re
 import jamofy
 
-_EN_C = "bdfhjklmnprstvwzðŋɡʃʒθ" # consonants
+_V1 = "[aeiouæə]"
+_V2 = "[aoə][iu]|ei|[eiu]ə"
+
+_C1 = "dʒ|tʃ|[bdfghjklmnprstvwzðŋɹʃʒθ]"
+_C2 = "[bgkp]l|[bdfgktp]r|[dgptk]w|[bdfghklmnpstvzʒθ]j|s[kmnpt]"
+_C3 = "s[ft]r|s[jkmt]j|s[kp][lr]|skw"
+
+_EN_C = "bdfghjklmnprstvwzðŋɡʃʒθ" # consonants
 _EN_V = "aeiouæə" # vowels
 
 _ENKO = {**{a: b for a, b in zip(
-    "abdefhiklmnoprstuvzæðŋəɡθ",
-    "ㅏㅂㄷㅔㅍㅎㅣㅋㄹㅁㄴㅗㅍㄹㅅㅌㅜㅂㅈㅐㄷㅇㅓㄱㅅ"
+    "bdfghjklmnprstvwzðŋɡʃʒθ",
+    "ㅏㅂㄷㅔㅍㄱㅎㅣㅋㄹㅁㄴㅗㅍㄹㅅㅌㅜㅂㅈㅐㄷㅇㅓㄱㅅ"
 )}}
 
 def normalize(x):
+
+    x = re.sub("\s+", " ", x).strip()
+
+    x = re.sub("[aàáɑɒάαὰ]", "a", x)
+    x = re.sub("[eèéɛέὲ]", "e", x)
+    x = re.sub("[iìíɪ]", "i", x)
+    x = re.sub("[oòóɔɔ̀]", "o", x)
+    x = re.sub("[uùúʊ]", "u", x)
+    x = re.sub("[gɡ]", "g", x)
+    x = re.sub("[lɫ]", "l", x)
+    x = re.sub("[rɹ]", "r", x)
+    x = re.sub("[æǽӕ]", "æ", x)
+    x = re.sub("[əɜʌΛ]", "ə", x)
+    x = re.sub("ɝ", "ər", x)
+    x = re.sub("ʤ", "dʒ", x)
+    x = re.sub("ʧ", "tʃ", x)
+    x = re.sub("[ːː]", "", x)
+
+    return x
+
+def syllabify_ipa(x):
+
+    x = " " + normalize(x) + " "
+    x = re.sub(f" ?({_V2}|{_V1})", r" _\1", x)
+    x = re.sub(f" ?({_C3}|{_C2}|{_C1})", r" \1", x)
+    x = re.sub(f" ?({_C3}|{_C2}|{_C1}) _({_V2}|{_V1})", r" \1_\2", x)
+    x = re.sub(" ?[ˈˌ] ?", " ", x)
+    # [dgpt]w s[fθ]
+    x = x.strip()
+    x = x.split(" ")
+
+    return x
+
+def syllabify_enko(x):
 
     x = re.sub("[ˈˌ]", "", x)
     x = re.sub("[aàáɑάαὰ]", "a", x)
@@ -20,23 +61,24 @@ def normalize(x):
     x = re.sub("[iìíɪ]", "i", x)
     x = re.sub("[uùúʊ]", "u", x)
     x = re.sub("[æǽӕ]", "æ", x)
+    x = re.sub("[gɡ]", "g", x)
     x = re.sub("[lɫ]", "l", x)
     x = re.sub("[rɹ]", "r", x)
     x = re.sub("ɝ", "ər", x)
     x = re.sub("ʤ", "dʒ", x)
     x = re.sub("ʧ", "tʃ", x)
+    x += "$"
 
-    return x
-
-def syllabify(x):
-
-    x = normalize(x)
     s, y = [], []
 
     for i, p in enumerate(x):
 
         j = i + 1
         # print(y, s, "<-", p)
+
+        if p == "$":
+            y.append(s)
+            break
 
         if p in _EN_C:
 
@@ -66,15 +108,6 @@ def syllabify(x):
                     y.append(s)
                     s = []
 
-            '''
-            if len(s) == 2:
-
-                if p not in "bklmnprŋ" \
-                or j < len(x) and x[j] in _EN_V + "jlr":
-                    y.append(s)
-                    s = []
-            '''
-
             s.append(p)
 
         if p in _EN_V:
@@ -88,9 +121,6 @@ def syllabify(x):
 
             s.append(p)
 
-    if s:
-        y.append(s)
-
     return y
 
 def combine_with_y(x):
@@ -103,7 +133,7 @@ def combine_with_w(x):
 
 def ipa_to_han(en) : # IPA to Hangeul syllables
 
-    en = syllabify(en)
+    en = syllabify_enko(en)
     print(en)
 
     for i, s in enumerate(en):
@@ -125,7 +155,7 @@ def ipa_to_han(en) : # IPA to Hangeul syllables
             if s[0] == "":
                 s[0] = "ㅇ"
             if s[0][-1:] == "j":
-                s[0] = s[0][:-1]
+                s[0] = "ㅇ" if s[0] == "j" else s[0][:-1]
                 s[1] = combine_with_y(s[1])
             if s[0] == "w":
                 s[0] = "ㅇ"
@@ -162,7 +192,7 @@ def ipa_to_han(en) : # IPA to Hangeul syllables
 if __name__ == "__main__":
 
     if len(sys.argv) != 2:
-        sys.exit("Usage: %s enko < filename")
+        sys.exit("Usage: %s en|enko < filename")
 
     method = sys.argv[1]
 
@@ -170,6 +200,10 @@ if __name__ == "__main__":
 
         line = line.strip()
         a, b = line.split("\t")
+
+        if method == "en":
+            # print(*syllabify_ipa(b), sep = "\n")
+            print(a, b, syllabify_ipa(b), sep = "\t")
 
         if method == "enko":
             print(a, b, ipa_to_han(b), sep = "\t")
