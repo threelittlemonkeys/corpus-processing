@@ -61,15 +61,19 @@ if __name__ == "__main__":
     sbert = sbert()
 
     xs = [
-        "This framework generates embeddings for each input sentence",
-        "Sentences are passed as a list of string.",
-        "The quick brown fox jumps over the lazy dog.",
-        "slow yellow pigs leap above cats."
+        "John goes to school.",
+        "John went to school.",
+        "Tom goes to school.",
+        "Mary goes to school.",
+        "John comes to school.",
+        "Peter goes to school.",
+        "To school John goes.",
+        "To school goes John.",
+        "John is going to school.",
+        "John is coming to school.",
     ]
 
     ys = sbert.encode(xs)
 
-    print(sbert.cosine_similarity(ys[2], ys[0]))
-    print(sbert.cosine_similarity(ys[2], ys[1]))
-    print(sbert.cosine_similarity(ys[2], ys[2]))
-    print(sbert.cosine_similarity(ys[2], ys[3]))
+    for i in range(len(ys)):
+        print(xs[i], sbert.cosine_similarity(ys[0], ys[i]))
