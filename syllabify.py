@@ -2,12 +2,8 @@ import sys
 import re
 import jamofy
 
-_V1 = "[aeiouæə]"
-_V2 = "[aoə][iu]|ei|[eiu]ə"
-
-_C1 = "dʒ|tʃ|[bdfghjklmnprstvwzðŋɹʃʒθ]"
-_C2 = "[bgkp]l|[bdfgktp]r|[dgptk]w|[bdfghklmnpstvzʒθ]j|s[kmnpt]"
-_C3 = "s[ft]r|s[jkmt]j|s[kp][lr]|skw"
+# sonority hierarchy
+# vowels > glides > liquids > nasals > fricatives > affricates > plosives
 
 _EN_C = "bdfghjklmnprstvwzðŋɡʃʒθ" # consonants
 _EN_V = "aeiouæə" # vowels
@@ -36,38 +32,68 @@ def normalize(x):
     x = re.sub("ʧ", "tʃ", x)
     x = re.sub("[ːː]", "", x)
 
+    x = re.sub("[^abcdefghijklmnopqrstuvwxyzæðŋəɹʃʒθˈˌ]", "", x)
+
     return x
 
 def syllabify_ipa(x):
 
-    x = " " + normalize(x) + " "
-    x = re.sub(f" ?({_V2}|{_V1})", r" _\1", x)
-    x = re.sub(f" ?({_C3}|{_C2}|{_C1})", r" \1", x)
-    x = re.sub(f" ?({_C3}|{_C2}|{_C1}) _({_V2}|{_V1})", r" \1_\2", x)
+    # onsets
+    C1 = "dʒ|tʃ|[bdfghjklmnprstvwzðŋɹʃʒθ]"
+    C2 = "[bfgkp]l|[bdfgktp]r|[dgptk]w|[bdfghklmnpstvzʒθ]j|s[kmnpt]"
+    C3 = "s[kmpt]j|s[kp][lr]|s[ft]r|skw"
+
+    # vowels
+    V1 = "[aeiouæə]" # monophthongs
+    V2 = "[aoə][iu]|ei|[eiu]ə" # diphthongs
+    V3 = "([aeo]i|[aoə]u)ə" # triphthongs
+
+    # phoneme segmentation
+    x = normalize(x)
+    x = re.sub(f" ?({V3}|{V2}|{V1})", r" _\1_", x)
+
+    # onset maximalization
+    x = re.sub(f" ?({C3}|{C2}|{C1}) _", r" \1_", x)
+
+    # coda concatenation
+    f = lambda m: m.group(1) + "_" + m.group(2).replace(' ', '')
+    x = re.sub("(_[^ ˈˌ]+)(( [^ _]+)+)(?=[ ˈˌ])", f, x)
+
+    # post-processing
     x = re.sub(" ?[ˈˌ] ?", " ", x)
-    # [dgpt]w s[fθ]
+    x = x.strip()
+    x = x.split(" ")
+
+    return x
+
+def syllabify_en(x):
+
+    # onsets
+    C1 = "[bcdgkprstw]h|([bcdfghjklmnpqrstvwxyz])\\2?"
+    C2 = "[bcfgkp]l|[bcdfgktp]r|[cdgptk]w|s[ckmnpqt]"
+    C3 = "s[ckp][lr]|s[ft]r|skw"
+
+    # vowels
+    V = "[aeiou]+|[aeou]y|y(?![aeou])"
+
+    # phoneme segmentation
+    x = normalize(x)
+    x = re.sub(f" ?({V})", r" _\1_", x)
+
+    # onset maximalization
+    x = re.sub(f" ?({C3}|{C2}|{C1}) _", r" \1_", x)
+
+    # coda concatenation
+    f = lambda m: m.group(1) + "_" + m.group(2).replace(' ', '')
+    x = re.sub("(_[^ ˈˌ]+)(( [^ _]+)+)(?=[ˈˌ ])", f, x)
+
+    # post-processing
     x = x.strip()
     x = x.split(" ")
 
     return x
 
 def syllabify_enko(x):
-
-    x = re.sub("[ˈˌ]", "", x)
-    x = re.sub("[aàáɑάαὰ]", "a", x)
-    x = re.sub("[eèéɛέ]", "e", x)
-    x = re.sub("[oòóɔ]", "o", x)
-    x = re.sub("[əʌΛ]", "ə", x)
-    x = re.sub("[iìíɪ]", "i", x)
-    x = re.sub("[uùúʊ]", "u", x)
-    x = re.sub("[æǽӕ]", "æ", x)
-    x = re.sub("[gɡ]", "g", x)
-    x = re.sub("[lɫ]", "l", x)
-    x = re.sub("[rɹ]", "r", x)
-    x = re.sub("ɝ", "ər", x)
-    x = re.sub("ʤ", "dʒ", x)
-    x = re.sub("ʧ", "tʃ", x)
-    x += "$"
 
     s, y = [], []
 
@@ -202,8 +228,12 @@ if __name__ == "__main__":
         a, b = line.split("\t")
 
         if method == "en":
-            # print(*syllabify_ipa(b), sep = "\n")
-            print(a, b, syllabify_ipa(b), sep = "\t")
+            # print(*syllabify(b), sep = "\n")
+            _a = syllabify_en(a)
+            _b = syllabify_ipa(b)
+            if len(_a) != len(_b):
+                continue
+            print(a, b, _a, _b, sep = "\t")
 
         if method == "enko":
             print(a, b, ipa_to_han(b), sep = "\t")
