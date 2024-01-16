@@ -63,14 +63,12 @@ if __name__ == "__main__":
     xs = [
         "John goes to school.",
         "John went to school.",
-        "Tom goes to school.",
+        "John came to school.",
         "Mary goes to school.",
-        "John comes to school.",
-        "Peter goes to school.",
         "To school John goes.",
         "To school goes John.",
+        "John will go to school.",
         "John is going to school.",
-        "John is coming to school.",
     ]
 
     ys = sbert.encode(xs)
