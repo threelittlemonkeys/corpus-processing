@@ -4,20 +4,20 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, verbose = False): # Leve
 
     # initialize distance matrix
 
-    Za = len(a) + 1
-    Zb = len(b) + 1
+    za = len(a) + 1
+    zb = len(b) + 1
 
-    m = [[0 for _ in range(Zb)] for _ in range(Za)]
+    m = [[0 for _ in range(zb)] for _ in range(za)]
 
-    for i in range(Za):
+    for i in range(za):
         m[i][0] = i
-    for j in range(Zb):
+    for j in range(zb):
         m[0][j] = j
 
     # compute Damerau-Levenshtein distances
 
-    for i in range(1, Za):
-        for j in range(1, Zb):
+    for i in range(1, za):
+        for j in range(1, zb):
 
             m[i][j] = min(
                 m[i - 1][j] + Wd, # deletion
