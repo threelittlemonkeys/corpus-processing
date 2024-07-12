@@ -1,6 +1,6 @@
 import sys
 
-def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, verbose = False): # Levenshtein distance
+def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, backtrace = False, verbose = False):
 
     # initialize distance matrix
 
@@ -8,6 +8,7 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, verbose = False): # Leve
     zb = len(b) + 1
 
     m = [[0 for _ in range(zb)] for _ in range(za)]
+    bt = []
 
     for i in range(za):
         m[i][0] = i
@@ -20,25 +21,30 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, verbose = False): # Leve
         for j in range(1, zb):
 
             m[i][j] = min(
-                m[i - 1][j] + Wd, # deletion
-                m[i][j - 1] + Wi, # insertion
-                m[i - 1][j - 1] + (a[i - 1] != b[j - 1]) * Ws # substitution
+                m[i - 1][j] + Wd, # delete
+                m[i][j - 1] + Wi, # insert
+                m[i - 1][j - 1] + (a[i - 1] != b[j - 1]) * Ws # substitute
             )
 
             if not (i and j and Wt):
                 continue
 
-            if a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transposition
+            if a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transpose
                 m[i][j] = min(m[i][j], m[i - 2][j - 2] + Wt)
 
+    if backtrace:
+        bt = backtrace_edit_distance(a, b, m)
+
     if verbose:
-        backtrace_edit_distance(a, b, m)
+        print("edit_distance_matrix =")
+        print_edit_distance_matrix(a, b, m)
+        print("edit_distance_back_trace =")
+        for e in bt:
+            print(e)
 
-    return m[-1][-1]
+    return m[-1][-1], bt
 
-def backtrace_edit_distance(a, b, m):
-
-    # edit distance matrix
+def print_edit_distance_matrix(a, b, m):
 
     print("  ".join([" ", " "] + list(b)))
 
@@ -46,12 +52,12 @@ def backtrace_edit_distance(a, b, m):
         c = a[i - 1] if i else " "
         print(f"{c} " + " ".join(f"{j:2d}" for j in m[i]))
 
-    # backtrace
+def backtrace_edit_distance(a, b, m):
 
     x, y = len(a), len(b)
     bt = []
     ed = ((1, 1), (1, 0), (0, 1))
-    op = ("substitution", "deletion", "insertion", "transposition")
+    op = ("substitute", "delete", "insert", "transpose")
 
     while x > 0 or y > 0:
 
@@ -62,7 +68,7 @@ def backtrace_edit_distance(a, b, m):
         ])
 
         if d == m[x][y]:
-            o = op[-1] if a[x - 1] != b[y - 1] else "same"
+            o = op[-1] if a[x - 1] != b[y - 1] else None
         else:
             o = op[i if not bt or op[-1] != bt[-1][-1] else -1]
 
@@ -70,16 +76,12 @@ def backtrace_edit_distance(a, b, m):
         x -= ed[i][0]
         y -= ed[i][1]
 
-    for e in reversed(bt):
-        print(e)
+    return bt[::-1]
 
 if __name__ == "__main__":
 
     a = "money"
-    b = "donkey"
+    b = "donkeys"
 
-    a = "abc"
-    b = "bac"
-
-    ed = edit_distance(a, b, verbose = True)
-    print(ed)
+    ed, _ = edit_distance(a, b, backtrace = True, verbose = True)
+    print("edit_distance =", ed)
