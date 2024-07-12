@@ -25,7 +25,10 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, verbose = False): # Leve
                 m[i - 1][j - 1] + (a[i - 1] != b[j - 1]) * Ws # substitution
             )
 
-            if i > 1 and j > 1 and a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transposition
+            if not (i and j and Wt):
+                continue
+
+            if a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transposition
                 m[i][j] = min(m[i][j], m[i - 2][j - 2] + Wt)
 
     if verbose:
@@ -37,7 +40,7 @@ def backtrace_edit_distance(a, b, m):
 
     # edit distance matrix
 
-    print("  ".join("  " + b))
+    print("  ".join([" ", " "] + list(b)))
 
     for i in range(len(a) + 1):
         c = a[i - 1] if i else " "
@@ -48,12 +51,22 @@ def backtrace_edit_distance(a, b, m):
     x, y = len(a), len(b)
     bt = []
     ed = ((1, 1), (1, 0), (0, 1))
-    op = ("sub", "del", "ins")
+    op = ("substitution", "deletion", "insertion", "transposition")
 
     while x > 0 or y > 0:
-        d, i = min([(m[x - a][y - b], i) for i, (a, b) in enumerate(ed) if x >= a and y >= b])
-        o = ("same" if a[x - 1] == b[y - 1] else "trans") if d == m[x][y] else op[i]
-        bt.append((x, y, d, o))
+
+        d, i = min([
+            (m[x - a][y - b], i)
+            for i, (a, b) in enumerate(ed)
+            if x >= a and y >= b
+        ])
+
+        if d == m[x][y]:
+            o = op[-1] if a[x - 1] != b[y - 1] else "same"
+        else:
+            o = op[i if not bt or op[-1] != bt[-1][-1] else -1]
+
+        bt.append([x, y, m[x][y], o])
         x -= ed[i][0]
         y -= ed[i][1]
 
@@ -64,6 +77,9 @@ if __name__ == "__main__":
 
     a = "money"
     b = "donkey"
+
+    a = "abc"
+    b = "bac"
 
     ed = edit_distance(a, b, verbose = True)
     print(ed)
