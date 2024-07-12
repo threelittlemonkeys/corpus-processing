@@ -36,11 +36,15 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, backtrace = False, verbo
         bt = backtrace_edit_distance(a, b, m)
 
     if verbose:
+
         print("edit_distance_matrix =")
         print_edit_distance_matrix(a, b, m)
+        print()
+
         print("edit_distance_back_trace =")
         for e in bt:
             print(e)
+        print()
 
     return m[-1][-1], bt
 
