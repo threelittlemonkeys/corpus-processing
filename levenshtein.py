@@ -26,10 +26,8 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, backtrace = False, verbo
                 m[i - 1][j - 1] + (a[i - 1] != b[j - 1]) * Ws # substitute
             )
 
-            if not (i and j and Wt):
-                continue
-
-            if a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transpose
+            if i > 1 and j > 1 \
+            and a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transpose
                 m[i][j] = min(m[i][j], m[i - 2][j - 2] + Wt)
 
     if backtrace:
