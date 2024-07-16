@@ -6,7 +6,6 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, backtrace = False, verbo
 
     za = len(a) + 1
     zb = len(b) + 1
-
     m = [[0 for _ in range(zb)] for _ in range(za)]
     bt = []
 
@@ -31,6 +30,7 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, backtrace = False, verbo
                 m[i][j] = min(m[i][j], m[i - 2][j - 2] + Wt)
 
     if backtrace:
+
         bt = backtrace_edit_distance(a, b, m)
 
     if verbose:
