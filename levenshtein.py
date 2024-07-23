@@ -1,6 +1,6 @@
 import sys
 
-def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, backtrace = False, verbose = False):
+def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, thesaurus = {}, backtrace = False, verbose = False):
 
     # initialize distance matrix
 
@@ -20,31 +20,45 @@ def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, backtrace = False, verbo
         for j in range(1, zb):
 
             m[i][j] = min(
-                m[i - 1][j] + Wd, # delete
-                m[i][j - 1] + Wi, # insert
-                m[i - 1][j - 1] + (a[i - 1] != b[j - 1]) * Ws # substitute
+                m[i - 1][j] + Wd, # deletion
+                m[i][j - 1] + Wi, # insertion
+                m[i - 1][j - 1] + (not in_thesaurus(a[i - 1], b[j - 1], thesaurus)) * Ws # substitution
             )
 
+            # transposition
+
             if i > 1 and j > 1 and Wt \
-            and a[i - 1] == b[j - 2] and a[i - 2] == b[j - 1]: # transpose
+            and in_thesaurus(a[i - 1], b[j - 2], thesaurus) \
+            and in_thesaurus(a[i - 2], b[j - 1], thesaurus):
                 m[i][j] = min(m[i][j], m[i - 2][j - 2] + Wt)
 
     if backtrace:
 
-        bt = backtrace_edit_distance(a, b, m)
+        bt = backtrace_edit_distance(a, b, m, thesaurus)
 
     if verbose:
 
         print("edit_distance_matrix =")
         print_edit_distance_matrix(a, b, m)
+        # print_edit_distance_matrix_colored(a, b, m, bt)
         print()
 
-        print("edit_distance_back_trace =")
+        print("edit_distance_backtrace =")
         for e in bt:
             print(e)
         print()
 
     return m[-1][-1], bt
+
+def in_thesaurus(a, b, thesaurus):
+
+    if a in thesaurus and b in thesaurus[a]:
+        return True
+
+    if b in thesaurus and a in thesaurus[b]:
+        return True
+
+    return a == b
 
 def print_edit_distance_matrix(a, b, m):
 
@@ -52,9 +66,25 @@ def print_edit_distance_matrix(a, b, m):
 
     for i in range(len(a) + 1):
         c = a[i - 1] if i else " "
-        print(f"{c} " + " ".join(f"{j:2d}" for j in m[i]))
+        print(" ".join([c, *[f"{j:2d}" for j in m[i]]]))
 
-def backtrace_edit_distance(a, b, m):
+def print_edit_distance_matrix_colored(a, b, m, bt):
+
+    _m = []
+    yl = lambda x: f"\033[38;5;226m{x}\033[0m"
+
+    for i in range(len(a) + 1):
+        c = a[i - 1] if i else " "
+        _m.append([c, *[f"{j:2d}" for j in m[i]]])
+
+    _m[0][1] = yl(_m[0][1])
+    for i, j, *_, in bt: # highlight color
+        _m[i][j + 1] = yl(_m[i][j + 1])
+
+    print("  ".join([" ", " "] + list(b)))
+    print("\n".join(" ".join(xs) for xs in _m))
+
+def backtrace_edit_distance(a, b, m, thesaurus):
 
     x, y = len(a), len(b)
     bt = []
@@ -70,7 +100,7 @@ def backtrace_edit_distance(a, b, m):
         ])
 
         if d == m[x][y]:
-            o = op[-1] if a[x - 1] != b[y - 1] else None
+            o = None if in_thesaurus(a[x - 1], b[y - 1], thesaurus) else op[-1]
         else:
             o = op[i if not bt or op[-1] != bt[-1][-1] else -1]
 
