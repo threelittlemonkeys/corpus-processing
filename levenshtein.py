@@ -1,6 +1,6 @@
 import sys
 
-def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 1, thesaurus = {}, backtrace = False, verbose = False):
+def edit_distance(a, b, Wd = 1, Wi = 1, Ws = 1, Wt = 0, thesaurus = {}, backtrace = False, verbose = False):
 
     # initialize distance matrix
 
