@@ -68,11 +68,11 @@ def backtrace_edit_distance(a, b, m, thesaurus):
 
     while x > 0 or y > 0:
 
-        d, i = min([
+        d, i = min(
             (m[x - a][y - b], i)
             for i, (a, b) in enumerate(ed)
             if x >= a and y >= b
-        ])
+        )
 
         if d == m[x][y]:
             o = "same" if in_thesaurus(a[x - 1], b[y - 1], thesaurus) else op[-1]
