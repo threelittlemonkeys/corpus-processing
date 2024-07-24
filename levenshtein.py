@@ -75,11 +75,11 @@ def backtrace_edit_distance(a, b, m, thesaurus):
         ])
 
         if d == m[x][y]:
-            o = None if in_thesaurus(a[x - 1], b[y - 1], thesaurus) else op[-1]
+            o = "same" if in_thesaurus(a[x - 1], b[y - 1], thesaurus) else op[-1]
         else:
-            o = op[i if not bt or op[-1] != bt[-1][-1] else -1]
+            o = op[-1 if bt and op[-1] == bt[-1][-1] else i]
 
-        bt.append([x, y, m[x][y], o])
+        bt.append([x, y, m[x][y], (a[x - 1], b[y - 1]), o])
         x -= ed[i][0]
         y -= ed[i][1]
 
@@ -106,8 +106,8 @@ def print_edit_distance_matrix(a, b, m, bt = None):
 
 if __name__ == "__main__":
 
-    a = "money"
-    b = "donkeys"
+    a = "ab_money"
+    b = "ba_donkeys"
 
-    ed, _ = edit_distance(a, b, backtrace = True, verbose = True)
+    ed, _ = edit_distance(a, b, Wt = 1, backtrace = True, verbose = True)
     print("edit_distance =", ed)
