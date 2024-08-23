@@ -1,8 +1,7 @@
 import sys
+import re
 import time
 from utils import *
-sys.path.append("../xl_tokenizer")
-from xl_tokenizer import xl_tokenizer
 from sentence_transformers import SentenceTransformer
 
 class xl_phrase_aligner():
@@ -16,17 +15,11 @@ class xl_phrase_aligner():
         self.threshold = threshold
         self.verbose = verbose
 
-        self.tokenizer = xl_tokenizer()
-        self.tokenizer.import_tagger(src_lang)
-        self.tokenizer.import_tagger(tgt_lang)
-
         print(f"src_lang = {src_lang}", file = sys.stderr)
         print(f"tgt_lang = {tgt_lang}", file = sys.stderr)
         print(f"batch_size = {batch_size}", file = sys.stderr)
         print(f"phrase_maxlen = {phrase_maxlen}", file = sys.stderr)
         print(f"threshold = {self.threshold}", file = sys.stderr)
-        print(f"tokenizer[{src_lang}] =", self.tokenizer.taggers.get(src_lang), file = sys.stderr)
-        print(f"tokenizer[{tgt_lang}] =", self.tokenizer.taggers.get(tgt_lang), file = sys.stderr)
 
         self.model = self.load_model()
 
@@ -34,9 +27,15 @@ class xl_phrase_aligner():
 
         # Language-agnostic BERT Sentence Embedding (LaBSE)
         print("loading LaBSE", file = sys.stderr)
-        model = SentenceTransformer("LaBSE")
-        # model = SentenceTransformer("/home/ubuntu/work/models/LaBSE")
+        model = SentenceTransformer("sentence-transformers/LaBSE")
         print("loaded LaBSE", file = sys.stderr)
+
+        # if requests.exceptions.SSLError occurs:
+        # /lib/python/site-packages/huggingface_hub/utils/_http.py
+        # class UniqueRequestIdAdapter(HTTPAdapter):
+        # def send(self, request: PreparedRequest, *args, **kwargs) -> Response:
+        # kwargs["verify"] = False
+
         return model
 
     def preprocess(self, batch):
@@ -45,8 +44,8 @@ class xl_phrase_aligner():
         data = []
         for line in batch:
             x, y = line.split("\t")
-            xws = self.tokenizer.tokenize(self.src_lang, x, use_tagger = True)
-            yws = self.tokenizer.tokenize(self.tgt_lang, y, use_tagger = True)
+            xws = re.sub("\\s+", " ", x).strip()
+            yws = re.sub("\\s+", " ", y).strip()
             xrs, xps = zip(*phrase_iter(xws, self.phrase_maxlen))
             yrs, yps = zip(*phrase_iter(yws, self.phrase_maxlen))
             ps.extend(xps)
