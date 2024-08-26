@@ -62,6 +62,7 @@ class phrase_aligner():
         hs = self.model.encode(ps, batch_size = self.batch_size)
 
         for x, xws, xrs, xps, y, yws, yrs, yps in data:
+
             xhs = hs[i:i + len(xps)]
             i += len(xps)
             yhs = hs[i:i + len(yps)]
@@ -90,11 +91,15 @@ class phrase_aligner():
     def phrase_similarity(self, xws, xrs, xps, xhs, yws, yrs, yps, yhs):
 
         xys = []
+
         for xr, xp, xh in zip(xrs, xps, xhs):
+
             _xys = []
+
             for yr, yp, yh in zip(yrs, yps, yhs):
                 sim = cos_similarity(xh, yh)
                 _xys.append([sim, (xr, yr), (xp, yp)])
+
             if _xys:
                 xys.append(max(_xys))
 
@@ -110,10 +115,9 @@ class phrase_aligner():
         cands = [[] for _ in _xws]
 
         for xy in xys:
-            sim, xyr, xyp = xy
-            if sim < self.threshold:
+            if xy[0] < self.threshold:
                 continue
-            cands[xyr[0][0]].append(xy)
+            cands[xy[1][0][0]].append(xy)
 
         cands = [max(xys) for xys in cands if xys]
 
@@ -122,12 +126,15 @@ class phrase_aligner():
         sentence_score = 0
 
         for sim, (xr, yr), _ in cands:
+
             if xr[0] < lens[0] or yr[0] < lens[1]: # phrase collision
                 continue
+
             tag = f"({len(phrase_scores)}: "
             lens = [xr[1], yr[1]]
             phrase_scores.append(sim)
             sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
+
             for ws, (i, j) in zip((xws, yws), (xr, yr)):
                 ws[i] = tag + ws[i]
                 ws[j - 1] += " )"
@@ -161,20 +168,25 @@ class phrase_aligner():
             deletions = []
 
             for cand in cands:
-                if not cand[3]:
+
+                _sim, _xr, _yr, _state = cand
+
+                if not _state:
                     continue
-                _sim, _xr, _yr, _ = cand
-                _x = _compare(*xr, *_xr)
-                _y = _compare(*yr, *_yr)
-                _xy = {_x, _y}
-                if _x == _y == "DISJOINT":
+
+                _a = _compare(*xr, *_xr)
+                _b = _compare(*yr, *_yr)
+                _ab = {_a, _b}
+
+                if _a == _b == "DISJOINT":
                     continue
-                if _xy == {"SUBPHRASE", "SUPERPHRASE"}:
+                if _ab == {"SUBPHRASE", "SUPERPHRASE"}:
                     additions.append(cand)
                     continue
-                if _xy.issubset({"IDENTICAL", "SUPERPHRASE"}):
+                if _ab.issubset({"IDENTICAL", "SUPERPHRASE"}):
                     deletions.append(cand)
                     continue
+
                 ops.append(f"{sim:.4f} ({xr}, {yr}) < {_sim:.4f} ({_xr}, {_yr})")
                 break
             else:
