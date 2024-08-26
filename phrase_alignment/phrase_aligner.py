@@ -247,11 +247,13 @@ if __name__ == "__main__":
         data_size += len(batch)
 
         if method == "sentence":
+
             sentence_scores = aligner.sentence_similarity(batch)
-            for line, score in zip(batch, sentence_scores):
-                print(score, line, sep = " \t")
+            for line, sentence_score in zip(batch, sentence_scores):
+                print(sentence_score, line, sep = " \t")
 
         if method in ("bijection", "extraction"):
+
             alignments = aligner.align(batch, method)
             for line, alignment in zip(batch, alignments):
                 src_aligned, tgt_aligned, phrase_scores, sentence_score = alignment
