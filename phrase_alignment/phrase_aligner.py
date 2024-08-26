@@ -4,7 +4,11 @@ import time
 from utils import *
 from sentence_transformers import SentenceTransformer
 
-class xl_phrase_aligner():
+# suppress InsecureRequestWarning
+import requests
+requests.packages.urllib3.disable_warnings()
+
+class phrase_aligner():
 
     def __init__(self, src_lang, tgt_lang, batch_size, phrase_maxlen, threshold, verbose):
 
@@ -31,10 +35,10 @@ class xl_phrase_aligner():
         print("loaded LaBSE", file = sys.stderr)
 
         # if requests.exceptions.SSLError occurs:
-        # /lib/python/site-packages/huggingface_hub/utils/_http.py
-        # class UniqueRequestIdAdapter(HTTPAdapter):
-        # def send(self, request: PreparedRequest, *args, **kwargs) -> Response:
-        # kwargs["verify"] = False
+        # add kwargs["verify"] = False
+        # in def send(self, request: PreparedRequest, *args, **kwargs) -> Response:
+        # in class UniqueRequestIdAdapter(HTTPAdapter):
+        # in /lib/python/site-packages/huggingface_hub/utils/_http.py
 
         return model
 
@@ -42,10 +46,12 @@ class xl_phrase_aligner():
 
         ps = []
         data = []
+
         for line in batch:
+
             x, y = line.split("\t")
-            xws = re.sub("\\s+", " ", x).strip()
-            yws = re.sub("\\s+", " ", y).strip()
+            xws = re.sub("\\s+", " ", x).strip().split(" ")
+            yws = re.sub("\\s+", " ", y).strip().split(" ")
             xrs, xps = zip(*phrase_iter(xws, self.phrase_maxlen))
             yrs, yps = zip(*phrase_iter(yws, self.phrase_maxlen))
             ps.extend(xps)
@@ -54,6 +60,7 @@ class xl_phrase_aligner():
 
         i = 0
         hs = self.model.encode(ps, batch_size = self.batch_size)
+
         for x, xws, xrs, xps, y, yws, yrs, yps in data:
             xhs = hs[i:i + len(xps)]
             i += len(xps)
@@ -61,8 +68,8 @@ class xl_phrase_aligner():
             i += len(yps)
 
             if self.verbose:
-                print(f"src\t{x}")
-                print(f"tgt\t{y}")
+                print(f"src_text\t{x}")
+                print(f"tgt_text\t{y}")
                 print(f"src_tokens\t{xws}")
                 print(f"tgt_tokens\t{yws}")
                 print()
@@ -82,55 +89,59 @@ class xl_phrase_aligner():
 
     def phrase_similarity(self, xws, xrs, xps, xhs, yws, yrs, yps, yhs):
 
-        pss = []
+        xys = []
         for xr, xp, xh in zip(xrs, xps, xhs):
-            _pss = []
+            _xys = []
             for yr, yp, yh in zip(yrs, yps, yhs):
-                ps = cos_similarity(xh, yh)
-                _pss.append([ps, (xr, yr), (xp, yp)])
-            if _pss:
-                pss.append(max(_pss))
+                sim = cos_similarity(xh, yh)
+                _xys.append([sim, (xr, yr), (xp, yp)])
+            if _xys:
+                xys.append(max(_xys))
 
         if self.verbose:
-            for ps, (xr, yr), (xp, yp) in pss:
-                print(f"{ps:.4f} ({xr}, '{xp}'), ({yr}, '{yp}')")
+            for sim, (xr, yr), (xp, yp) in xys:
+                print(f"{sim:.4f} {(xr, xp)} {(yr, yp)}")
             print()
 
-        return xws, yws, pss
+        return xws, yws, xys
 
-    def bijection(self, _xws, _yws, pss): # linear bijective alignment
+    def bijection(self, _xws, _yws, xys): # linear bijective alignment
 
-        cands = []
-        for w in pss:
-            if len(cands) == w[1][0][0]:
-                cands.append([])
-            if w[0] < self.threshold:
+        cands = [[] for _ in _xws]
+
+        for xy in xys:
+            sim, xyr, xyp = xy
+            if sim < self.threshold:
                 continue
-            cands[-1].append(w)
-        cands = [max(ws) for ws in cands if ws]
+            cands[xyr[0][0]].append(xy)
 
-        score = 0
-        phrases = []
-        xws, yws = [*_xws], [*_yws]
-        for ps, (xr, yr), _ in cands:
-            if phrases and (xr[0] < phrases[-1][0][1] or yr[0] < phrases[-1][1][1]):
+        cands = [max(xys) for xys in cands if xys]
+
+        xws, yws, lens = [*_xws], [*_yws], [0, 0]
+        phrase_scores = []
+        sentence_score = 0
+
+        for sim, (xr, yr), _ in cands:
+            if xr[0] < lens[0] or yr[0] < lens[1]: # phrase collision
                 continue
-            tag = "%d:%.4f( " % (len(phrases), ps)
-            score += (xr[1] - xr[0]) + (yr[1] - yr[0])
-            phrases.append((xr, yr))
+            tag = f"({len(phrase_scores)}: "
+            lens = [xr[1], yr[1]]
+            phrase_scores.append(sim)
+            sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
             for ws, (i, j) in zip((xws, yws), (xr, yr)):
                 ws[i] = tag + ws[i]
                 ws[j - 1] += " )"
-        score /= len(_xws) + len(_yws)
 
-        return " ".join(xws), " ".join(yws), score
+        sentence_score /= len(_xws) + len(_yws)
 
-    def extraction(self, _xws, _yws, pss):
+        return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
+
+    def extraction(self, _xws, _yws, xys): # non-linear alignment
 
         ops = []
         cands = []
 
-        def compare(a, b, c, d):
+        def _compare(a, b, c, d):
             if d <= a or b <= c:
                 return "DISJOINT"
             if c == a < b == d:
@@ -141,51 +152,59 @@ class xl_phrase_aligner():
                 return "SUPERPHRASE"
             return False
 
-        for ps, (xr, yr), _ in sorted(pss, reverse = True):
-            if ps < self.threshold:
+        for sim, (xr, yr), _ in sorted(xys, reverse = True):
+
+            if sim < self.threshold:
                 break
-            adds = []
-            dels = []
+
+            additions = []
+            deletions = []
+
             for cand in cands:
                 if not cand[3]:
                     continue
-                _ps, _xr, _yr, _ = cand
-                _x = compare(*xr, *_xr)
-                _y = compare(*yr, *_yr)
+                _sim, _xr, _yr, _ = cand
+                _x = _compare(*xr, *_xr)
+                _y = _compare(*yr, *_yr)
                 _xy = {_x, _y}
                 if _x == _y == "DISJOINT":
                     continue
                 if _xy == {"SUBPHRASE", "SUPERPHRASE"}:
-                    adds.append(cand)
+                    additions.append(cand)
                     continue
                 if _xy.issubset({"IDENTICAL", "SUPERPHRASE"}):
-                    dels.append(cand)
+                    deletions.append(cand)
                     continue
-                ops.append(f"{ps:.4f} ({xr}, {yr}) < {_ps:.4f} ({_xr}, {_yr})")
+                ops.append(f"{sim:.4f} ({xr}, {yr}) < {_sim:.4f} ({_xr}, {_yr})")
                 break
             else:
-                for cand in adds:
-                    _ps, _xr, _yr, _ = cand
-                    ops.append(f"{ps:.4f} ({xr}, {yr}) > {_ps:.4f} ({_xr}, {_yr})")
+                for cand in additions:
+                    _sim, _xr, _yr, _ = cand
+                    ops.append(f"{sim:.4f} ({xr}, {yr}) > {_sim:.4f} ({_xr}, {_yr})")
                     xr = (min(xr[0], _xr[0]), max(xr[1], _xr[1]))
                     yr = (min(yr[0], _yr[0]), max(yr[1], _yr[1]))
                     cand[3] = False
-                for cand in dels:
+                for cand in deletions:
                     cand[3] = False
-                cands.append([ps, xr, yr, True])
-        cands = [e[:-1] for e in cands if e[-1]]
+                cands.append([sim, xr, yr, True])
 
-        score = 0
+        cands = [cand[:-1] for cand in cands if cand[-1]]
+
         xws, yws = [*_xws], [*_yws]
-        for idx, (ps, xr, yr) in enumerate(sorted(cands, key = lambda x: x[1])):
-            tag = "%d:%.4f( " % (idx, ps)
-            score += (xr[1] - xr[0]) + (yr[1] - yr[0])
+        phrase_scores = []
+        sentence_score = 0
+
+        for idx, (sim, xr, yr) in enumerate(sorted(cands, key = lambda x: x[1])):
+            tag = f"({idx}: "
+            phrase_scores.append(sim)
+            sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
             for ws, (i, j) in zip((xws, yws), (xr, yr)):
                 ws[i] = tag + ws[i]
                 ws[j - 1] += " )"
-        score /= len(_xws) + len(_yws)
 
-        return " ".join(xws), " ".join(yws), score
+        sentence_score /= len(_xws) + len(_yws)
+
+        return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
 
     def align(self, batch, method):
         data_iter = self.preprocess(batch)
@@ -195,52 +214,40 @@ class xl_phrase_aligner():
 if __name__ == "__main__":
 
     if len(sys.argv) not in (5, 6):
-        sys.exit("Usage: %s src_lang tgt_lang sentence|bijection|extraction bitext [-v]" % sys.argv[0])
+        sys.exit("Usage: %s src_lang tgt_lang sentence|bijection|extraction tokenized_bitext [-v]" % sys.argv[0])
 
-    aligner = xl_phrase_aligner(
-        src_lang = sys.argv[1],
-        tgt_lang = sys.argv[2],
+    src_lang, tgt_lang, method, filename = sys.argv[1:5]
+
+    aligner = phrase_aligner(
+        src_lang = src_lang,
+        tgt_lang = tgt_lang,
         batch_size = 1024,
         phrase_maxlen = 5,
         threshold = 0.7,
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 
-    ln = 0
-    batch = []
+    data_size = 0
     timer = time.time()
-    method = sys.argv[3]
-    fo = open(sys.argv[4])
 
-    while True:
-        ln += 1
-        line = fo.readline().strip()
+    for batch in batch_iter(filename, aligner.batch_size):
 
-        if line:
-            batch.append(line)
-            if len(batch) < aligner.batch_size:
-                continue
-        elif not batch:
-            break
+        data_size += len(batch)
 
         if method == "sentence":
-            sent_scores = aligner.sentence_similarity(batch)
-            for line, score in zip(batch, sent_scores):
+            sentence_scores = aligner.sentence_similarity(batch)
+            for line, score in zip(batch, sentence_scores):
                 print(score, line, sep = " \t")
 
         if method in ("bijection", "extraction"):
-            algn_scores = aligner.align(batch, method)
-            for line, algn_score in zip(batch, algn_scores):
-                src_algn, tgt_algn, algn_score = algn_score
-                print(line)
-                print(f"src_aligned\t{src_algn}")
-                print(f"tgt_aligned\t{tgt_algn}")
-                print(f"alignment_score\t{algn_score:f}")
+            alignments = aligner.align(batch, method)
+            for line, alignment in zip(batch, alignments):
+                src_aligned, tgt_aligned, phrase_scores, sentence_score = alignment
+                print(f"src_aligned\t{src_aligned}")
+                print(f"tgt_aligned\t{tgt_aligned}")
+                print("phrase_scores", phrase_scores, sep = "\t")
+                print("sentence_score", sentence_score, sep = "\t")
                 (input if aligner.verbose else print)()
 
-        batch.clear()
-
-        print("%d lines (%.f seconds)" % (ln, time.time() - timer), file = sys.stderr)
-        timer = time.time()
-
-    fo.close()
+    print("%d lines (%.f seconds)" % (data_size, time.time() - timer), file = sys.stderr)
+    timer = time.time()
