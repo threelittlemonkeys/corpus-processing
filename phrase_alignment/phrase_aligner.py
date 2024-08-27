@@ -143,29 +143,31 @@ class phrase_aligner():
 
         return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
 
+    @staticmethod
+    def _compare(x1, x2, y1, y2):
+
+        if y2 <= x1 or x2 <= y1:
+            return "DISJOINT"
+        if y1 == x1 < x2 == y2:
+            return "IDENTICAL"
+        if y1 <= x1 < x2 <= y2:
+            return "SUBSET"
+        if x1 <= y1 < y2 <= x2:
+            return "SUPERSET"
+
+        return "OVERLAP"
+
     def extraction(self, _xws, _yws, xys): # non-linear alignment
 
-        ops = []
         cands = []
-
-        def _compare(a, b, c, d):
-            if d <= a or b <= c:
-                return "DISJOINT"
-            if c == a < b == d:
-                return "IDENTICAL"
-            if c <= a < b <= d:
-                return "SUBPHRASE"
-            if a <= c < d <= b:
-                return "SUPERPHRASE"
-            return False
 
         for sim, (xr, yr), _ in sorted(xys, reverse = True):
 
             if sim < self.threshold:
                 break
 
-            additions = []
-            deletions = []
+            updates = []
+            removes = []
 
             for cand in cands:
 
@@ -174,30 +176,32 @@ class phrase_aligner():
                 if not _state:
                     continue
 
-                _a = _compare(*xr, *_xr)
-                _b = _compare(*yr, *_yr)
-                _ab = {_a, _b}
+                v = {self._compare(*xr, *_xr), self._compare(*yr, *_yr)}
 
-                if _a == _b == "DISJOINT":
+                if v == {"DISJOINT"}:
                     continue
-                if _ab == {"SUBPHRASE", "SUPERPHRASE"}:
-                    additions.append(cand)
+                if v == {"SUBSET", "SUPERSET"}:
+                    updates.append(cand)
                     continue
-                if _ab.issubset({"IDENTICAL", "SUPERPHRASE"}):
-                    deletions.append(cand)
+                if not v - {"IDENTICAL", "SUPERSET"}:
+                    removes.append(cand)
                     continue
 
-                ops.append(f"{sim:.4f} ({xr}, {yr}) < {_sim:.4f} ({_xr}, {_yr})")
+                # phrase collision
+                # OVERLAP or ((DISJOINT or IDENTICAL) and SUBSET)
                 break
+
             else:
-                for cand in additions:
-                    _sim, _xr, _yr, _ = cand
-                    ops.append(f"{sim:.4f} ({xr}, {yr}) > {_sim:.4f} ({_xr}, {_yr})")
+
+                for cand in updates:
+                    _xr, _yr = cand[1:3]
                     xr = (min(xr[0], _xr[0]), max(xr[1], _xr[1]))
                     yr = (min(yr[0], _yr[0]), max(yr[1], _yr[1]))
                     cand[3] = False
-                for cand in deletions:
+
+                for cand in removes:
                     cand[3] = False
+
                 cands.append([sim, xr, yr, True])
 
         cands = [cand[:-1] for cand in cands if cand[-1]]
@@ -219,9 +223,12 @@ class phrase_aligner():
         return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
 
     def align(self, batch, method):
+
         data_iter = self.preprocess(batch)
+
         for data in data_iter:
-            yield getattr(self, method)(*self.phrase_similarity(*data))
+            xws, yws, xys = self.phrase_similarity(*data)
+            yield getattr(self, method)(xws, yws, xys)
 
 if __name__ == "__main__":
 
