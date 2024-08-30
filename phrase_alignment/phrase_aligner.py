@@ -77,69 +77,69 @@ class phrase_aligner():
 
             yield xws, xrs, xps, xhs, yws, yrs, yps, yhs
 
-    def sentence_similarity(self, batch):
+    def sentence_score(self, batch):
 
         lines = []
+
         for line in batch:
             x, y = line.split("\t")
             lines.extend([x, y])
+
         hs = self.model.encode(lines, batch_size = self.batch_size)
 
         for i in range(0, len(hs), 2):
             yield cos_similarity(*hs[i: i + 2])
 
-    def phrase_similarity(self, xws, xrs, xps, xhs, yws, yrs, yps, yhs):
+    def score(self, xws, xrs, xps, xhs, yws, yrs, yps, yhs):
 
         xys = []
 
         for xr, xp, xh in zip(xrs, xps, xhs):
 
-            _xys = []
+            xy = max([
+                (cos_similarity(xh, yh), (xr, yr), (xp, yp))
+                for yr, yp, yh in zip(yrs, yps, yhs)
+            ])
 
-            for yr, yp, yh in zip(yrs, yps, yhs):
-                sim = cos_similarity(xh, yh)
-                _xys.append([sim, (xr, yr), (xp, yp)])
-
-            if _xys:
-                xys.append(max(_xys))
+            if xy[0] >= self.threshold:
+                xys.append(xy)
 
         if self.verbose:
-            for sim, (xr, yr), (xp, yp) in xys:
-                print(f"{sim:.4f} {(xr, xp)} {(yr, yp)}")
+            for score, (xr, yr), (xp, yp) in xys:
+                print(f"{score:.4f} {(xr, xp)} {(yr, yp)}")
             print()
 
         return xws, yws, xys
 
-    def bijection(self, _xws, _yws, xys): # linear bijective alignment
+    def bijection(self, xws, yws, xys): # linear bijective alignment
 
-        cands = [[] for _ in _xws]
+        cands = [[] for _ in xws]
 
         for xy in xys:
-            if xy[0] < self.threshold:
-                continue
-            cands[xy[1][0][0]].append(xy)
+            score, (xr, yr), _  = xy
+            cands[xr[0]].append(xy)
 
         cands = [max(xys) for xys in cands if xys]
 
-        xws, yws, lens = [*_xws], [*_yws], [0, 0]
+        xws, yws, lens = [*xws], [*yws], [0, 0]
         phrase_scores = []
         sentence_score = 0
 
-        for sim, (xr, yr), _ in cands:
+        for score, (xr, yr), _ in cands:
 
             if xr[0] < lens[0] or yr[0] < lens[1]: # phrase collision
                 continue
 
             tag = f"({len(phrase_scores)}: "
             lens = [xr[1], yr[1]]
-            phrase_scores.append(sim)
+            phrase_scores.append(score)
             sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
 
             for ws, (i, j) in zip((xws, yws), (xr, yr)):
                 ws[i] = tag + ws[i]
                 ws[j - 1] += " )"
 
-        sentence_score /= len(_xws) + len(_yws)
+        sentence_score /= len(xws) + len(yws)
 
         return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
 
@@ -157,21 +157,18 @@ class phrase_aligner():
 
         return "OVERLAP"
 
-    def extraction(self, _xws, _yws, xys): # non-linear alignment
+    def extraction(self, xws, yws, xys): # non-linear alignment
 
         cands = []
 
-        for sim, (xr, yr), _ in sorted(xys, reverse = True):
-
-            if sim < self.threshold:
-                break
+        for score, (xr, yr), _ in sorted(xys)[::-1]:
 
             updates = []
             removes = []
 
             for cand in cands:
 
-                _sim, _xr, _yr, _state = cand
+                _score, _xr, _yr, _state = cand
 
                 if not _state:
                     continue
@@ -180,9 +177,11 @@ class phrase_aligner():
 
                 if v == {"DISJOINT"}:
                     continue
+
                 if v == {"SUBSET", "SUPERSET"}:
                     updates.append(cand)
                     continue
+
                 if not v - {"IDENTICAL", "SUPERSET"}:
                     removes.append(cand)
                     continue
@@ -202,23 +201,23 @@ class phrase_aligner():
                 for cand in removes:
                     cand[3] = False
 
-                cands.append([sim, xr, yr, True])
+                cands.append([score, xr, yr, True])
 
         cands = [cand[:-1] for cand in cands if cand[-1]]
 
-        xws, yws = [*_xws], [*_yws]
+        xws, yws = [*xws], [*yws]
         phrase_scores = []
         sentence_score = 0
 
-        for idx, (sim, xr, yr) in enumerate(sorted(cands, key = lambda x: x[1])):
+        for idx, (score, xr, yr) in enumerate(sorted(cands, key = lambda x: x[1])):
             tag = f"({idx}: "
-            phrase_scores.append(sim)
+            phrase_scores.append(score)
             sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
             for ws, (i, j) in zip((xws, yws), (xr, yr)):
                 ws[i] = tag + ws[i]
                 ws[j - 1] += " )"
 
-        sentence_score /= len(_xws) + len(_yws)
+        sentence_score /= len(xws) + len(yws)
 
         return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
 
@@ -227,7 +226,7 @@ class phrase_aligner():
         data_iter = self.preprocess(batch)
 
         for data in data_iter:
-            xws, yws, xys = self.phrase_similarity(*data)
+            xws, yws, xys = self.score(*data)
             yield getattr(self, method)(xws, yws, xys)
 
 if __name__ == "__main__":
@@ -241,7 +240,7 @@ if __name__ == "__main__":
         src_lang = src_lang,
         tgt_lang = tgt_lang,
         batch_size = 1024,
-        phrase_maxlen = 5,
+        phrase_maxlen = 3,
         threshold = 0.7,
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
@@ -255,7 +254,7 @@ if __name__ == "__main__":
 
         if method == "sentence":
 
-            sentence_scores = aligner.sentence_similarity(batch)
+            sentence_scores = aligner.sentence_score(batch)
             for line, sentence_score in zip(batch, sentence_scores):
                 print(sentence_score, line, sep = " \t")
 
