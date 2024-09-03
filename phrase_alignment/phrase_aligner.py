@@ -77,7 +77,7 @@ class phrase_aligner():
 
             yield xws, xrs, xps, xhs, yws, yrs, yps, yhs
 
-    def sentence_score(self, batch):
+    def sentence_similarity(self, batch):
 
         lines = []
 
@@ -202,6 +202,7 @@ class phrase_aligner():
                     cand[3] = False
 
                 cands.append([score, xr, yr, True])
+                print(cands[-1], _)
 
         cands = [cand[:-1] for cand in cands if cand[-1]]
 
@@ -240,7 +241,7 @@ if __name__ == "__main__":
         src_lang = src_lang,
         tgt_lang = tgt_lang,
         batch_size = 1024,
-        phrase_maxlen = 3,
+        phrase_maxlen = 5,
         threshold = 0.7,
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
@@ -254,13 +255,14 @@ if __name__ == "__main__":
 
         if method == "sentence":
 
-            sentence_scores = aligner.sentence_score(batch)
+            sentence_scores = aligner.sentence_similarity(batch)
             for line, sentence_score in zip(batch, sentence_scores):
                 print(sentence_score, line, sep = " \t")
 
         if method in ("bijection", "extraction"):
 
             alignments = aligner.align(batch, method)
+
             for line, alignment in zip(batch, alignments):
                 src_aligned, tgt_aligned, phrase_scores, sentence_score = alignment
                 print(f"src_aligned\t{src_aligned}")
