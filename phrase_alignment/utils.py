@@ -1,10 +1,27 @@
 import numpy as np
+import seaborn as sns
+import matplotlib.pyplot as plt
 
-def cos_similarity(x, y):
+# apt-get install fonts-nanum*
+# fc-cache -fv
+# python3 -c "import matplotlib; print(matplotlib.__path__)"
+# cp /usr/share/fonts/truetype/nanum/Nanum* path/mpl-data/fonts/ttf/
+# mpl.get_cachedir()
+# rm fontlist.json
 
-    z = np.linalg.norm(x) * np.linalg.norm(y)
+plt.rcParams["font.family"] = "NanumGothic"
+plt.rcParams["font.size"] = 8
+plt.rcParams["axes.unicode_minus"] = False
+plt.tick_params(top = True, labeltop = True, bottom = False, labelbottom = False)
 
-    return np.dot(x, y) / (z if z else 1)
+def cosine_similarity(x, y):
+
+    return np.dot(x, y) / np.linalg.norm(x) * np.linalg.norm(y)
+
+def softmax(x):
+
+    x = np.exp(x - x.max())
+    return x / x.sum(axis = 1).reshape(x.shape[0], 1)
 
 def batch_iter(filename, batch_size):
 
@@ -37,3 +54,17 @@ def validate_phrase(phrase):
         return False
 
     return True
+
+def heatmap(xws, yws, xys):
+
+    m = [[[] for _ in yws] for _ in xws]
+
+    for score, (xr, yr), (xp, yp) in xys:
+        for i in range(xr[0], xr[1]):
+            for j in range(yr[0], yr[1]):
+                m[i][j].append(score)
+
+    m = softmax(np.array([[np.mean(y) for y in x] for x in m]))
+
+    sns.heatmap(m, xticklabels = yws, yticklabels = xws, cmap = "Reds", cbar = False)
+    plt.show()

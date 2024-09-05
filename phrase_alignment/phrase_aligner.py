@@ -88,24 +88,22 @@ class phrase_aligner():
         hs = self.model.encode(lines, batch_size = self.batch_size)
 
         for i in range(0, len(hs), 2):
-            yield cos_similarity(*hs[i: i + 2])
+            yield cosine_similarity(*hs[i: i + 2])
 
     def score(self, xws, xrs, xps, xhs, yws, yrs, yps, yhs):
 
         xys = []
 
         for xr, xp, xh in zip(xrs, xps, xhs):
-
-            xy = max([
-                (cos_similarity(xh, yh), (xr, yr), (xp, yp))
-                for yr, yp, yh in zip(yrs, yps, yhs)
-            ])
-
-            if xy[0] >= self.threshold:
+            for yr, yp, yh in zip(yrs, yps, yhs):
+                xy = (cosine_similarity(xh, yh), (xr, yr), (xp, yp))
                 xys.append(xy)
 
         if self.verbose:
+
             for score, (xr, yr), (xp, yp) in xys:
+                if score < self.threshold:
+                    continue
                 print(f"{score:.4f} {(xr, xp)} {(yr, yp)}")
             print()
 
@@ -113,35 +111,28 @@ class phrase_aligner():
 
     def bijection(self, xws, yws, xys): # linear bijective alignment
 
-        cands = [[] for _ in xws]
+        phrases = [[] for _ in xws]
 
         for xy in xys:
             score, (xr, yr), _  = xy
-            cands[xr[0]].append(xy)
+            phrases[xr[0]].append([score, xr, yr])
 
-        cands = [max(xys) for xys in cands if xys]
+        phrases = [max(xys) for xys in phrases if xys]
+        lens = [0, 0]
 
-        xws, yws, lens = [*xws], [*yws], [0, 0]
-        phrase_scores = []
-        sentence_score = 0
+        for cand in phrases:
 
-        for score, (xr, yr), _ in cands:
+            score, xr, yr = cand
 
             if xr[0] < lens[0] or yr[0] < lens[1]: # phrase collision
-                continue
+                cand.append(False)
+            else:
+                cand.append(True)
+                lens = [xr[1], yr[1]]
 
-            tag = f"({len(phrase_scores)}: "
-            lens = [xr[1], yr[1]]
-            phrase_scores.append(score)
-            sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
+        phrases = [cand[:-1] for cand in phrases if cand[-1]]
 
-            for ws, (i, j) in zip((xws, yws), (xr, yr)):
-                ws[i] = tag + ws[i]
-                ws[j - 1] += " )"
-
-        sentence_score /= len(xws) + len(yws)
-
-        return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
+        return phrases
 
     @staticmethod
     def _compare(x1, x2, y1, y2):
@@ -159,14 +150,14 @@ class phrase_aligner():
 
     def extraction(self, xws, yws, xys): # non-linear alignment
 
-        cands = []
+        phrases = []
 
         for score, (xr, yr), _ in sorted(xys)[::-1]:
 
             updates = []
             removes = []
 
-            for cand in cands:
+            for cand in phrases:
 
                 _score, _xr, _yr, _state = cand
 
@@ -190,7 +181,7 @@ class phrase_aligner():
                 # OVERLAP or ((DISJOINT or IDENTICAL) and SUBSET)
                 break
 
-            else:
+            else: # if phrase collision not found
 
                 for cand in updates:
                     _xr, _yr = cand[1:3]
@@ -201,34 +192,49 @@ class phrase_aligner():
                 for cand in removes:
                     cand[3] = False
 
-                cands.append([score, xr, yr, True])
-                print(cands[-1], _)
+                phrases.append([score, xr, yr, True])
 
-        cands = [cand[:-1] for cand in cands if cand[-1]]
+        phrases = sorted(
+            [cand[:-1] for cand in phrases if cand[-1]],
+            key = lambda x: x[1]
+        )
 
-        xws, yws = [*xws], [*yws]
-        phrase_scores = []
-        sentence_score = 0
-
-        for idx, (score, xr, yr) in enumerate(sorted(cands, key = lambda x: x[1])):
-            tag = f"({idx}: "
-            phrase_scores.append(score)
-            sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
-            for ws, (i, j) in zip((xws, yws), (xr, yr)):
-                ws[i] = tag + ws[i]
-                ws[j - 1] += " )"
-
-        sentence_score /= len(xws) + len(yws)
-
-        return " ".join(xws), " ".join(yws), phrase_scores, sentence_score
+        return phrases
 
     def align(self, batch, method):
 
-        data_iter = self.preprocess(batch)
+        for data in self.preprocess(batch):
 
-        for data in data_iter:
             xws, yws, xys = self.score(*data)
-            yield getattr(self, method)(xws, yws, xys)
+            phrases = getattr(self, method)(xws, yws, xys)
+
+            _xws = [*xws]
+            _yws = [*yws]
+            phrase_scores = []
+            sentence_score = 0
+
+            for idx, (score, xr, yr) in enumerate(phrases):
+
+                tag = f"({idx}: "
+                phrase_scores.append(score)
+                sentence_score += (xr[1] - xr[0]) + (yr[1] - yr[0])
+
+                for ws, (i, j) in zip((_xws, _yws), (xr, yr)):
+                    ws[i] = tag + ws[i]
+                    ws[j - 1] += " )"
+
+            sentence_score /= len(xws) + len(yws)
+
+            print(f"src_aligned\t{" ".join(_xws)}")
+            print(f"tgt_aligned\t{" ".join(_yws)}")
+            print("phrase_scores", phrase_scores, sep = "\t")
+            print("sentence_score", sentence_score, sep = "\t")
+
+            if self.verbose:
+                heatmap(xws, yws, xys)
+                input()
+            else:
+                print()
 
 if __name__ == "__main__":
 
@@ -261,15 +267,7 @@ if __name__ == "__main__":
 
         if method in ("bijection", "extraction"):
 
-            alignments = aligner.align(batch, method)
-
-            for line, alignment in zip(batch, alignments):
-                src_aligned, tgt_aligned, phrase_scores, sentence_score = alignment
-                print(f"src_aligned\t{src_aligned}")
-                print(f"tgt_aligned\t{tgt_aligned}")
-                print("phrase_scores", phrase_scores, sep = "\t")
-                print("sentence_score", sentence_score, sep = "\t")
-                (input if aligner.verbose else print)()
+            aligner.align(batch, method)
 
     print("%d lines (%.f seconds)" % (data_size, time.time() - timer), file = sys.stderr)
     timer = time.time()
