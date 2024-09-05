@@ -12,16 +12,22 @@ import matplotlib.pyplot as plt
 plt.rcParams["font.family"] = "NanumGothic"
 plt.rcParams["font.size"] = 8
 plt.rcParams["axes.unicode_minus"] = False
-plt.tick_params(top = True, labeltop = True, bottom = False, labelbottom = False)
 
 def cosine_similarity(x, y):
 
     return np.dot(x, y) / np.linalg.norm(x) * np.linalg.norm(y)
 
-def softmax(x):
+def normalize(x, method = None):
 
-    x = np.exp(x - x.max())
-    return x / x.sum(axis = 1).reshape(x.shape[0], 1)
+    if method == "min-max":
+        x -= x.min(axis = 1, keepdims = True)
+
+    if method == "softmax":
+        x = np.exp(x - x.max(axis = 1, keepdims = True))
+
+    z = x.sum(axis = 1, keepdims = True)
+
+    return np.divide(x, z, out = np.zeros_like(x), where = (z != 0))
 
 def batch_iter(filename, batch_size):
 
@@ -64,7 +70,15 @@ def heatmap(xws, yws, xys):
             for j in range(yr[0], yr[1]):
                 m[i][j].append(score)
 
-    m = softmax(np.array([[np.mean(y) for y in x] for x in m]))
+    m = np.array([[np.mean(y) for y in x] for x in m])
+    m = normalize(m, method = "softmax")
 
-    sns.heatmap(m, xticklabels = yws, yticklabels = xws, cmap = "Reds", cbar = False)
+    sns.heatmap(
+        data = m,
+        cmap = "Reds",
+        cbar = False,
+        xticklabels = yws,
+        yticklabels = xws
+    )
+
     plt.show()

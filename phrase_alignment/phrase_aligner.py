@@ -97,13 +97,13 @@ class phrase_aligner():
         for xr, xp, xh in zip(xrs, xps, xhs):
             for yr, yp, yh in zip(yrs, yps, yhs):
                 xy = (cosine_similarity(xh, yh), (xr, yr), (xp, yp))
+                if xy[0] < self.threshold:
+                    pass # continue
                 xys.append(xy)
 
         if self.verbose:
 
             for score, (xr, yr), (xp, yp) in xys:
-                if score < self.threshold:
-                    continue
                 print(f"{score:.4f} {(xr, xp)} {(yr, yp)}")
             print()
 
@@ -262,6 +262,7 @@ if __name__ == "__main__":
         if method == "sentence":
 
             sentence_scores = aligner.sentence_similarity(batch)
+
             for line, sentence_score in zip(batch, sentence_scores):
                 print(sentence_score, line, sep = " \t")
 
