@@ -42,7 +42,7 @@ class phrase_aligner():
 
         return model
 
-    def preprocess(self, batch):
+    def data_iter(self, batch):
 
         ps = []
         data = []
@@ -69,6 +69,7 @@ class phrase_aligner():
             i += len(yps)
 
             if self.verbose:
+                print()
                 print(f"src_text\t{x}")
                 print(f"tgt_text\t{y}")
                 print(f"src_tokens\t{xws}")
@@ -79,13 +80,13 @@ class phrase_aligner():
 
     def sentence_similarity(self, batch):
 
-        lines = []
+        sents = []
 
         for line in batch:
             x, y = line.split("\t")
-            lines.extend([x, y])
+            sents.extend([x, y])
 
-        hs = self.model.encode(lines, batch_size = self.batch_size)
+        hs = self.model.encode(sents, batch_size = self.batch_size)
 
         for i in range(0, len(hs), 2):
             yield cosine_similarity(*hs[i: i + 2])
@@ -93,21 +94,26 @@ class phrase_aligner():
     def score(self, xws, xrs, xps, xhs, yws, yrs, yps, yhs):
 
         xys = []
+        Wa = np.zeros((len(xws), len(yws)))
 
         for xr, xp, xh in zip(xrs, xps, xhs):
             for yr, yp, yh in zip(yrs, yps, yhs):
                 xy = (cosine_similarity(xh, yh), (xr, yr), (xp, yp))
                 if xy[0] < self.threshold:
-                    pass # continue
+                    continue
                 xys.append(xy)
+                Wa[xr[0]:xr[1], yr[0]:yr[1]] += xy[0]
 
-        if self.verbose:
-
+        if False and self.verbose:
             for score, (xr, yr), (xp, yp) in xys:
                 print(f"{score:.4f} {(xr, xp)} {(yr, yp)}")
             print()
 
-        return xws, yws, xys
+        Wa_xy = normalize(Wa, axis = 1, methods = ("min-max", "softmax"))
+        Wa_yx = normalize(Wa, axis = 0, methods = ("min-max", "softmax"))
+        Wa = Wa_xy * Wa_yx
+
+        return xws, yws, xys, Wa
 
     def bijection(self, xws, yws, xys): # linear bijective alignment
 
@@ -150,14 +156,14 @@ class phrase_aligner():
 
     def extraction(self, xws, yws, xys): # non-linear alignment
 
-        phrases = []
+        _xys = []
 
         for score, (xr, yr), _ in sorted(xys)[::-1]:
 
             updates = []
             removes = []
 
-            for cand in phrases:
+            for cand in _xys:
 
                 _score, _xr, _yr, _state = cand
 
@@ -192,28 +198,30 @@ class phrase_aligner():
                 for cand in removes:
                     cand[3] = False
 
-                phrases.append([score, xr, yr, True])
+                _xys.append([score, xr, yr, True])
 
-        phrases = sorted(
-            [cand[:-1] for cand in phrases if cand[-1]],
+        _xys = sorted(
+            [cand[:-1] for cand in _xys if cand[-1]],
             key = lambda x: x[1]
         )
 
-        return phrases
+        return _xys
 
     def align(self, batch, method):
 
-        for data in self.preprocess(batch):
+        for data in self.data_iter(batch):
 
-            xws, yws, xys = self.score(*data)
-            phrases = getattr(self, method)(xws, yws, xys)
+            xws, yws, xys, Wa = self.score(*data)
+            xys = getattr(self, method)(xws, yws, xys)
+            phrase_scores = []
+            sentence_score = 0
 
             _xws = [*xws]
             _yws = [*yws]
             phrase_scores = []
             sentence_score = 0
 
-            for idx, (score, xr, yr) in enumerate(phrases):
+            for idx, (score, xr, yr) in enumerate(xys):
 
                 tag = f"({idx}: "
                 phrase_scores.append(score)
@@ -225,16 +233,15 @@ class phrase_aligner():
 
             sentence_score /= len(xws) + len(yws)
 
-            print(f"src_aligned\t{" ".join(_xws)}")
-            print(f"tgt_aligned\t{" ".join(_yws)}")
-            print("phrase_scores", phrase_scores, sep = "\t")
-            print("sentence_score", sentence_score, sep = "\t")
-
             if self.verbose:
-                heatmap(xws, yws, xys)
+                print(f"src_aligned\t{" ".join(_xws)}")
+                print(f"tgt_aligned\t{" ".join(_yws)}")
+                print("phrase_scores", phrase_scores, sep = "\t")
+                print("sentence_score", sentence_score, sep = "\t")
+                heatmap(Wa, xws, yws)
                 input()
-            else:
-                print()
+
+            yield xws, yws, phrase_scores, sentence_score, Wa
 
 if __name__ == "__main__":
 
@@ -247,8 +254,8 @@ if __name__ == "__main__":
         src_lang = src_lang,
         tgt_lang = tgt_lang,
         batch_size = 1024,
-        phrase_maxlen = 5,
-        threshold = 0.7,
+        phrase_maxlen = 3,
+        threshold = 0.5,
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 
@@ -263,12 +270,16 @@ if __name__ == "__main__":
 
             sentence_scores = aligner.sentence_similarity(batch)
 
-            for line, sentence_score in zip(batch, sentence_scores):
-                print(sentence_score, line, sep = " \t")
+            for line, sentence_similarity in zip(batch, sentence_scores):
+                print(sentence_similarity, line, sep = "\t")
 
         if method in ("bijection", "extraction"):
 
-            aligner.align(batch, method)
+            aligned = aligner.align(batch, method)
+
+            for line, result in zip(batch, aligned):
+                xws, yws, phrase_scores, sentence_score, Wa = result
+                print(sentence_score, line, sep = "\t")
 
     print("%d lines (%.f seconds)" % (data_size, time.time() - timer), file = sys.stderr)
     timer = time.time()

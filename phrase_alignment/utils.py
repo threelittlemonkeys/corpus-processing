@@ -1,3 +1,4 @@
+import re
 import numpy as np
 import seaborn as sns
 import matplotlib.pyplot as plt
@@ -17,15 +18,15 @@ def cosine_similarity(x, y):
 
     return np.dot(x, y) / np.linalg.norm(x) * np.linalg.norm(y)
 
-def normalize(x, method = None):
+def normalize(x, axis, methods):
 
-    if method == "min-max":
-        x -= x.min(axis = 1, keepdims = True)
+    if "min-max" in methods:
+        x -= x.min(axis = axis, keepdims = True)
 
-    if method == "softmax":
-        x = np.exp(x - x.max(axis = 1, keepdims = True))
+    if "softmax" in methods:
+        x = np.exp(x - x.max(axis = axis, keepdims = True))
 
-    z = x.sum(axis = 1, keepdims = True)
+    z = x.sum(axis = axis, keepdims = True)
 
     return np.divide(x, z, out = np.zeros_like(x), where = (z != 0))
 
@@ -56,22 +57,15 @@ def phrase_iter(tokens, phrase_maxlen):
 
 def validate_phrase(phrase):
 
-    if len(phrase) > 1 and phrase[-1] in (",", ".", "?", "!", "the"):
+    if len(phrase) == 1:
+        return True
+
+    if phrase[-1] in {",", ".", "?", "!", "the"}:
         return False
 
     return True
 
-def heatmap(xws, yws, xys):
-
-    m = [[[] for _ in yws] for _ in xws]
-
-    for score, (xr, yr), (xp, yp) in xys:
-        for i in range(xr[0], xr[1]):
-            for j in range(yr[0], yr[1]):
-                m[i][j].append(score)
-
-    m = np.array([[np.mean(y) for y in x] for x in m])
-    m = normalize(m, method = "softmax")
+def heatmap(m, xws, yws):
 
     sns.heatmap(
         data = m,
