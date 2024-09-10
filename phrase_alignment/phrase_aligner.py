@@ -10,20 +10,22 @@ requests.packages.urllib3.disable_warnings()
 
 class phrase_aligner():
 
-    def __init__(self, src_lang, tgt_lang, batch_size, phrase_maxlen, threshold, verbose):
+    def __init__(self, src_lang, tgt_lang, batch_size, window_size, thresholds, verbose):
 
         self.src_lang = src_lang
         self.tgt_lang = tgt_lang
         self.batch_size = batch_size
-        self.phrase_maxlen = phrase_maxlen
-        self.threshold = threshold
+        self.window_size = window_size
+        self.alignment_score_threshold = thresholds[0]
+        self.phrase_score_threshold = thresholds[1]
         self.verbose = verbose
 
         print(f"src_lang = {src_lang}", file = sys.stderr)
         print(f"tgt_lang = {tgt_lang}", file = sys.stderr)
         print(f"batch_size = {batch_size}", file = sys.stderr)
-        print(f"phrase_maxlen = {phrase_maxlen}", file = sys.stderr)
-        print(f"threshold = {self.threshold}", file = sys.stderr)
+        print(f"window_size = {window_size}", file = sys.stderr)
+        print(f"alignment_score_threshold = {self.alignment_score_threshold}", file = sys.stderr)
+        print(f"phrase_score_threshold = {self.phrase_score_threshold}", file = sys.stderr)
 
         self.model = self.load_model()
 
@@ -52,8 +54,8 @@ class phrase_aligner():
             x, y = line.split("\t")
             xws = re.sub("\\s+", " ", x).strip().split(" ")
             yws = re.sub("\\s+", " ", y).strip().split(" ")
-            xrs, xps = zip(*phrase_iter(xws, self.phrase_maxlen))
-            yrs, yps = zip(*phrase_iter(yws, self.phrase_maxlen))
+            xrs, xps = zip(*phrase_iter(xws, self.window_size))
+            yrs, yps = zip(*phrase_iter(yws, self.window_size))
             ps.extend(xps)
             ps.extend(yps)
             data.append((x, xws, xrs, xps, y, yws, yrs, yps))
@@ -69,12 +71,10 @@ class phrase_aligner():
             i += len(yps)
 
             if self.verbose:
-                print()
-                print(f"src_text\t{x}")
+                print(f"\nsrc_text\t{x}")
                 print(f"tgt_text\t{y}")
                 print(f"src_tokens\t{xws}")
-                print(f"tgt_tokens\t{yws}")
-                print()
+                print(f"tgt_tokens\t{yws}\n")
 
             yield xws, xrs, xps, xhs, yws, yrs, yps, yhs
 
@@ -99,19 +99,57 @@ class phrase_aligner():
         for xr, xp, xh in zip(xrs, xps, xhs):
             for yr, yp, yh in zip(yrs, yps, yhs):
                 xy = (cosine_similarity(xh, yh), (xr, yr), (xp, yp))
-                if xy[0] < self.threshold:
+                if xy[0] < self.phrase_score_threshold:
                     continue
                 xys.append(xy)
                 Wa[xr[0]:xr[1], yr[0]:yr[1]] += xy[0]
 
-        if False and self.verbose:
-            for score, (xr, yr), (xp, yp) in xys:
-                print(f"{score:.4f} {(xr, xp)} {(yr, yp)}")
+        Wa_xy = normalize(Wa, axis = 1, method = "softmax")
+        Wa_yx = normalize(Wa, axis = 0, method = "softmax")
+        Wa = Wa_xy * Wa_yx
+
+        if self.verbose:
+
+            print("alignment_map =")
+            print([[round(y, 4) for y in ys] for ys in Wa])
             print()
 
-        Wa_xy = normalize(Wa, axis = 1, methods = ("min-max", "softmax"))
-        Wa_yx = normalize(Wa, axis = 0, methods = ("min-max", "softmax"))
-        Wa = Wa_xy * Wa_yx
+            print("alignment_scores =")
+            for i in range(Wa.shape[0]):
+                for j in range(Wa.shape[1]):
+                    if Wa[i][j] < self.alignment_score_threshold:
+                        continue
+                    print(f"{Wa[i][j]:.4f} {(i, j)} {(xws[i], yws[j])}")
+            print()
+
+        for k in range(len(xys)):
+            phrase_score, (xr, yr), (xp, yp) = xys[k][:3]
+            alignment_score = 0
+            for i in range(xr[0], xr[1]):
+                for j in range(yr[0], yr[1]):
+                    a = Wa[i][j]
+                    if a < alignment_score:
+                        continue
+                    if a < self.alignment_score_threshold:
+                        continue
+                    alignment_score = a
+                    break
+                else:
+                    continue
+                break
+            alignment_score = (alignment_score > 0)
+            xys[k] = ((alignment_score, phrase_score), *xys[k][1:3])
+
+        if self.verbose:
+            print("phrase_scores =")
+            for xy in xys:
+                (alignment_score, phrase_score), (xr, yr), (xp, yp) = xy
+                if alignment_score < self.alignment_score_threshold:
+                    continue
+                if phrase_score < self.phrase_score_threshold:
+                    continue
+                print(f"{phrase_score:.4f} {(xr, xp)} {(yr, yp)}")
+            print()
 
         return xws, yws, xys, Wa
 
@@ -120,7 +158,7 @@ class phrase_aligner():
         phrases = [[] for _ in xws]
 
         for xy in xys:
-            score, (xr, yr), _  = xy
+            score, (xr, yr) = xy
             phrases[xr[0]].append([score, xr, yr])
 
         phrases = [max(xys) for xys in phrases if xys]
@@ -158,7 +196,7 @@ class phrase_aligner():
 
         _xys = []
 
-        for score, (xr, yr), _ in sorted(xys)[::-1]:
+        for scores, (xr, yr), (xp, yp) in sorted(xys)[::-1]:
 
             updates = []
             removes = []
@@ -198,11 +236,12 @@ class phrase_aligner():
                 for cand in removes:
                     cand[3] = False
 
-                _xys.append([score, xr, yr, True])
+                _xys.append([scores[1], xr, yr, True])
+                print(f"-> {scores[1]:.4f} {(xr, xp)} {(yr, yp)}")
 
         _xys = sorted(
             [cand[:-1] for cand in _xys if cand[-1]],
-            key = lambda x: x[1]
+            key = lambda xy: xy[1]
         )
 
         return _xys
@@ -241,7 +280,7 @@ class phrase_aligner():
                 heatmap(Wa, xws, yws)
                 input()
 
-            yield xws, yws, phrase_scores, sentence_score, Wa
+            yield xws, yws, phrase_scores, sentence_score
 
 if __name__ == "__main__":
 
@@ -254,8 +293,8 @@ if __name__ == "__main__":
         src_lang = src_lang,
         tgt_lang = tgt_lang,
         batch_size = 1024,
-        phrase_maxlen = 3,
-        threshold = 0.5,
+        window_size = 3,
+        thresholds = (0.01, 0.7),
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 
@@ -278,7 +317,7 @@ if __name__ == "__main__":
             aligned = aligner.align(batch, method)
 
             for line, result in zip(batch, aligned):
-                xws, yws, phrase_scores, sentence_score, Wa = result
+                xws, yws, phrase_scores, sentence_score = result
                 print(sentence_score, line, sep = "\t")
 
     print("%d lines (%.f seconds)" % (data_size, time.time() - timer), file = sys.stderr)

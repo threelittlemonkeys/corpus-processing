@@ -18,12 +18,12 @@ def cosine_similarity(x, y):
 
     return np.dot(x, y) / np.linalg.norm(x) * np.linalg.norm(y)
 
-def normalize(x, axis, methods):
+def normalize(x, axis, method):
 
-    if "min-max" in methods:
+    if method == "min-max":
         x -= x.min(axis = axis, keepdims = True)
 
-    if "softmax" in methods:
+    if method == "softmax":
         x = np.exp(x - x.max(axis = axis, keepdims = True))
 
     z = x.sum(axis = axis, keepdims = True)
@@ -72,7 +72,8 @@ def heatmap(m, xws, yws):
         cmap = "Reds",
         cbar = False,
         xticklabels = yws,
-        yticklabels = xws
+        yticklabels = xws,
+        annot = True
     )
 
     plt.show()
