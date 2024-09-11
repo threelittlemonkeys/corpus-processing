@@ -191,13 +191,13 @@ def text_heatmap(m, xws, yws, threshold):
     hl = "+" + "-" * (ywl + len(xws) * 2 + 4) + "+" # horizontal line
     nd = " " * ywl # indent
 
-    xws = [[c + " " * (2 - usl(c)) for c in w + " " * (xwl - len(w))] for w in xws]
+    xws = [[" " * (2 - usl(c)) + c for c in w + " " * (xwl - len(w))] for w in xws]
     yws = [" " * (ywl - usl(w)) + w for w in yws]
 
     print(hl)
     print("\n".join(" ".join(
         ["|", w, i, *["." if y < threshold else "*" for y in ys], "|"]
-        ) for (ys, i, w) in zip(m, yi, yws)
+        ) for (w, i, ys) in zip(yws, yi, m)
     ))
     print(" ".join(["|", nd, " ", *xi, "|"]))
     print("\n".join(" ".join(["|", nd, "", "".join(cs), "|"]) for cs in zip(*xws)))
