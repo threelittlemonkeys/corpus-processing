@@ -185,12 +185,14 @@ def text_heatmap(m, xws, yws, threshold):
     xi = [str(i)[-1] for i in range(len(xws))]
     yi = [str(i)[-1] for i in range(len(yws))]
 
-    wl = max(usl(w) for w in yws)
-    hl = "+" + "-" * (wl + len(xws) * 2 + 4) + "+" # horizontal line
-    nd = " " * wl # indent
+    xwl = max(map(len, xws))
+    ywl = max(map(usl, yws))
 
-    xws = [[c + " " * (2 - usl(c)) for c in f"{w:<5.5}"] for w in xws]
-    yws = [" " * (wl - usl(w)) + w for w in yws]
+    hl = "+" + "-" * (ywl + len(xws) * 2 + 4) + "+" # horizontal line
+    nd = " " * ywl # indent
+
+    xws = [[c + " " * (2 - usl(c)) for c in w + " " * (xwl - len(w))] for w in xws]
+    yws = [" " * (ywl - usl(w)) + w for w in yws]
 
     print(hl)
     print("\n".join(" ".join(

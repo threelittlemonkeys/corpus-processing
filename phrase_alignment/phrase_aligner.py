@@ -146,7 +146,7 @@ if __name__ == "__main__":
         tgt_lang = tgt_lang,
         batch_size = 1024,
         window_size = 3,
-        thresholds = (0.7, 0.01),
+        thresholds = (0.7, 0.05),
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 
