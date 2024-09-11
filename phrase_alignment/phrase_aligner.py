@@ -126,11 +126,11 @@ class phrase_aligner():
                     continue
                 print(f"{a:.4f} {(i, j)} {(xws[i], yws[j])}")
 
-            print("\nheatmap =")
-            text_heatmap(Wa, yws, xws, self.alignment_score_threshold)
+            print("\nalignment_map =")
+            txt_alignment_map(Wa, yws, xws, self.alignment_score_threshold)
             print()
 
-            # heatmap((Wa_xy, xws, yws), (Wa_yx, xws, yws), (Wa, xws, yws))
+            # img_alignment_map((Wa_xy, Wa_yx, Wa), xws, yws, self.alignment_score_threshold)
 
         return alignment_score
 

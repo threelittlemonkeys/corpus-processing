@@ -160,13 +160,13 @@ def extraction(xws, yws, xys): # non-linear alignment
 
     return _xys
 
-def heatmap(*ms):
+def img_alignment_map(ms, xws, yws, threshold):
 
     _, axs = plt.subplots(ncols = len(ms))
 
-    for ax, (m, xws, yws) in zip(axs, ms):
+    for ax, m in zip(axs, ms):
 
-        m = [[0 if x < 0.01 else x for x in y] for y in m]
+        m = [[0 if x < threshold else x for x in y] for y in m]
 
         sns.heatmap(
             data = m,
@@ -180,7 +180,7 @@ def heatmap(*ms):
 
     plt.show()
 
-def text_heatmap(m, xws, yws, threshold):
+def txt_alignment_map(m, xws, yws, threshold):
 
     xi = [str(i)[-1] for i in range(len(xws))]
     yi = [str(i)[-1] for i in range(len(yws))]
