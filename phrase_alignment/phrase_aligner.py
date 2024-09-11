@@ -54,8 +54,8 @@ class phrase_aligner():
             x, y = line.split("\t")
             xws = re.sub("\\s+", " ", x).strip().split(" ")
             yws = re.sub("\\s+", " ", y).strip().split(" ")
-            xrs, xps = zip(*phrase_ngrams(xws, self.window_size))
-            yrs, yps = zip(*phrase_ngrams(yws, self.window_size))
+            xrs, xps = zip(*ngrams(xws, self.window_size))
+            yrs, yps = zip(*ngrams(yws, self.window_size))
             ps.extend(xps)
             ps.extend(yps)
             data.append(((x, xws, xrs, xps), (y, yws, yrs, yps)))
@@ -126,10 +126,11 @@ class phrase_aligner():
                     continue
                 print(f"{a:.4f} {(i, j)} {(xws[i], yws[j])}")
 
-            # heatmap((Wa_xy, xws, yws), (Wa_yx, xws, yws), (Wa, xws, yws))
             print("\nheatmap =")
             text_heatmap(Wa, yws, xws, self.alignment_score_threshold)
             print()
+
+            # heatmap((Wa_xy, xws, yws), (Wa_yx, xws, yws), (Wa, xws, yws))
 
         return alignment_score
 
@@ -145,7 +146,7 @@ if __name__ == "__main__":
         tgt_lang = tgt_lang,
         batch_size = 1024,
         window_size = 3,
-        thresholds = (0.5, 0.01),
+        thresholds = (0.7, 0.01),
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 

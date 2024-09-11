@@ -15,6 +15,10 @@ plt.rcParams["font.family"] = "NanumGothic"
 plt.rcParams["font.size"] = 8
 plt.rcParams["axes.unicode_minus"] = False
 
+def usl(x): # unicode string length
+
+    return sum(2 if eaw(c) == "W" else 1 for c in x)
+
 def cosine_similarity(x, y):
 
     return np.dot(x, y) / np.linalg.norm(x) * np.linalg.norm(y)
@@ -59,23 +63,11 @@ class dataloader():
 
         fo.close()
 
-def phrase_ngrams(tokens, phrase_maxlen):
+def ngrams(tokens, maxlen):
 
     for i in range(len(tokens)):
-        for j in range(i + 1, min(len(tokens), i + phrase_maxlen) + 1):
-            phrase = tokens[i:j]
-            if validate_phrase(phrase):
-                yield (i, j), " ".join(phrase)
-
-def validate_phrase(phrase):
-
-    if len(phrase) == 1:
-        return True
-
-    if phrase[-1] in {",", ".", "?", "!", "the"}:
-        return False
-
-    return True
+        for j in range(i + 1, min(len(tokens), i + maxlen) + 1):
+            yield (i, j), " ".join(tokens[i:j])
 
 def bijection(xws, yws, xys): # linear bijective alignment
 
@@ -173,6 +165,9 @@ def heatmap(*ms):
     _, axs = plt.subplots(ncols = len(ms))
 
     for ax, (m, xws, yws) in zip(axs, ms):
+
+        m = [[0 if x < 0.01 else x for x in y] for y in m]
+
         sns.heatmap(
             data = m,
             cmap = "Reds",
@@ -180,7 +175,7 @@ def heatmap(*ms):
             ax = ax,
             xticklabels = yws,
             yticklabels = xws,
-            annot = False
+            annot = True
         )
 
     plt.show()
@@ -190,17 +185,18 @@ def text_heatmap(m, xws, yws, threshold):
     xi = [str(i)[-1] for i in range(len(xws))]
     yi = [str(i)[-1] for i in range(len(yws))]
 
-    hl = "+" + "-" * (len(xws) * 2 + 9) + "+" # horizontal line
-    nd = " " * 7 # indent
+    wl = max(usl(w) for w in yws)
+    hl = "+" + "-" * (wl + len(xws) * 2 + 4) + "+" # horizontal line
+    nd = " " * wl # indent
 
-    xws = [[c + ("" if eaw(c) == "W" else " ") for c in f"{w:<5.5}"] for w in xws]
-    yws = [f"{w:>5.5}" for w in yws]
+    xws = [[c + " " * (2 - usl(c)) for c in f"{w:<5.5}"] for w in xws]
+    yws = [" " * (wl - usl(w)) + w for w in yws]
 
     print(hl)
     print("\n".join(" ".join(
-        ["|", w, i, *[" " if y < threshold else "*" for y in ys], "|"]
+        ["|", w, i, *["." if y < threshold else "*" for y in ys], "|"]
         ) for (ys, i, w) in zip(m, yi, yws)
     ))
-    print(" ".join(["|", nd, *xi, "|"]))
-    print("\n".join(" ".join(["|", nd[:-1], "".join(cs), "|"]) for cs in zip(*xws)))
+    print(" ".join(["|", nd, " ", *xi, "|"]))
+    print("\n".join(" ".join(["|", nd, "", "".join(cs), "|"]) for cs in zip(*xws)))
     print(hl)
