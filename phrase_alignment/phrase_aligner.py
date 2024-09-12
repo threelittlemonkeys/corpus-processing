@@ -24,8 +24,8 @@ class phrase_aligner():
         print(f"tgt_lang = {tgt_lang}", file = sys.stderr)
         print(f"batch_size = {batch_size}", file = sys.stderr)
         print(f"window_size = {window_size}", file = sys.stderr)
-        print(f"alignment_score_threshold = {self.alignment_score_threshold}", file = sys.stderr)
         print(f"phrase_score_threshold = {self.phrase_score_threshold}", file = sys.stderr)
+        print(f"alignment_score_threshold = {self.alignment_score_threshold}", file = sys.stderr)
 
         self.model = self.load_model()
 
