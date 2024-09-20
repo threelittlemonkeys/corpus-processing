@@ -105,8 +105,8 @@ class phrase_aligner():
                 Wp.append(u)
                 Wa[xr[0]:xr[1], yr[0]:yr[1]] += phrase_score
 
-        Wa_xy = normalize(Wa, axis = 1, method = "softmax")
-        Wa_yx = normalize(Wa, axis = 0, method = "softmax")
+        Wa_xy = normalize(Wa, axis = 1, method = "min-max")
+        Wa_yx = normalize(Wa, axis = 0, method = "min-max")
         Wa = Wa_xy * Wa_yx # alignment scores
 
         alignment_argmax =  Wa.argmax(axis = 1)
@@ -119,6 +119,11 @@ class phrase_aligner():
             # print(f"Wa_yx = {Wa_yx.round(4).tolist()}")
             # print(f"Wa = {Wa.round(4).tolist()}\n")
 
+            print("phrase_scores =")
+            for phrase_score, (xr, yr), (xp, yp) in Wp:
+                print(f"{phrase_score:.4f} {(xr, yr)} {(xp, yp)}")
+            print()
+
             print("alignment_scores =")
             for i, j in enumerate(alignment_argmax):
                 a = Wa[i][j]
@@ -130,9 +135,9 @@ class phrase_aligner():
             txt_alignment_map(Wa, yws, xws, self.alignment_score_threshold)
             print()
 
-            # img_alignment_map((Wa_xy, Wa_yx, Wa), xws, yws, self.alignment_score_threshold)
+            img_alignment_map_args = ((Wa_xy, Wa_yx, Wa), xws, yws, self.alignment_score_threshold)
 
-        return alignment_score
+        return alignment_score, img_alignment_map_args
 
 if __name__ == "__main__":
 
@@ -146,7 +151,7 @@ if __name__ == "__main__":
         tgt_lang = tgt_lang,
         batch_size = 1024,
         window_size = 3,
-        thresholds = (0.7, 0.01),
+        thresholds = (0.5, 0.01),
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 
@@ -162,10 +167,11 @@ if __name__ == "__main__":
         if method == "phrase":
 
             for line, data in zip(batch, aligner.preproc(batch)):
-                alignment_score = aligner.align(*data)
+                alignment_score, img_alignment_map_args = aligner.align(*data)
                 print(alignment_score, line, sep = "\t")
 
                 if aligner.verbose:
+                    img_alignment_map(*img_alignment_map_args)
                     input()
 
         if method == "sentence":
