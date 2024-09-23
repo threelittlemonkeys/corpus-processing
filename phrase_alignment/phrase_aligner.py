@@ -8,6 +8,9 @@ from sentence_transformers import SentenceTransformer
 import requests
 requests.packages.urllib3.disable_warnings()
 
+import warnings
+warnings.simplefilter(action = "ignore", category = FutureWarning)
+
 class phrase_aligner():
 
     def __init__(self, src_lang, tgt_lang, batch_size, window_size, thresholds, verbose):
@@ -47,13 +50,14 @@ class phrase_aligner():
     def preproc(self, batch):
 
         ps = []
+        pad = [""] * (self.window_size - 1)
         data = []
 
         for line in batch:
 
             x, y = line.split("\t")
-            xws = re.sub("\\s+", " ", x).strip().split(" ")
-            yws = re.sub("\\s+", " ", y).strip().split(" ")
+            xws = pad + re.sub("\\s+", " ", x).strip().split(" ") + pad
+            yws = pad + re.sub("\\s+", " ", y).strip().split(" ") + pad
             xrs, xps = zip(*ngrams(xws, self.window_size))
             yrs, yps = zip(*ngrams(yws, self.window_size))
             ps.extend(xps)
@@ -105,13 +109,22 @@ class phrase_aligner():
                 Wp.append(u)
                 Wa[xr[0]:xr[1], yr[0]:yr[1]] += phrase_score
 
-        Wa_xy = normalize(Wa, axis = 1, method = "min-max")
-        Wa_yx = normalize(Wa, axis = 0, method = "min-max")
+        k = self.window_size - 1
+        Wa = Wa[k:-k, k:-k]
+        xws = xws[k:-k]
+        yws = yws[k:-k]
+        xyl = (len(xws) + len(yws)) / 2
+
+        Wa_xy = normalize(Wa, axis = 1, method = "softmax")
+        Wa_yx = normalize(Wa, axis = 0, method = "softmax")
         Wa = Wa_xy * Wa_yx # alignment scores
 
-        alignment_argmax =  Wa.argmax(axis = 1)
-        alignment_scores = Wa[range(Wa.shape[0]), alignment_argmax]
-        alignment_score = (alignment_scores > self.alignment_score_threshold).mean()
+        Wa_xy_argmax = {*zip(range(Wa.shape[0]), Wa.argmax(axis = 1))}
+        Wa_yx_argmax = {*zip(Wa.argmax(axis = 0), range(Wa.shape[1]))}
+
+        alignment_argmax = Wa_xy_argmax & Wa_yx_argmax
+        alignment_scores = Wa[*zip(*alignment_argmax)]
+        alignment_score = sum(alignment_scores > self.alignment_score_threshold) / xyl
 
         if self.verbose:
 
@@ -121,21 +134,21 @@ class phrase_aligner():
 
             print("phrase_scores =")
             for phrase_score, (xr, yr), (xp, yp) in Wp:
-                print(f"{phrase_score:.4f} {(xr, yr)} {(xp, yp)}")
+                if (xp and yp and xp[0] != " " and yp[0] != " "):
+                    print(f"{phrase_score:.4f} {(xr, yr)} {(xp, yp)}")
             print()
 
             print("alignment_scores =")
-            for i, j in enumerate(alignment_argmax):
+            for i, j in sorted(alignment_argmax):
                 a = Wa[i][j]
-                if a < self.alignment_score_threshold:
-                    continue
+                if a < self.alignment_score_threshold: continue
                 print(f"{a:.4f} {(i, j)} {(xws[i], yws[j])}")
 
             print("\nalignment_map =")
             txt_alignment_map(Wa, yws, xws, self.alignment_score_threshold)
             print()
 
-            img_alignment_map_args = ((Wa_xy, Wa_yx, Wa), xws, yws, self.alignment_score_threshold)
+            img_alignment_map_args = ((Wa_xy, Wa_yx, Wa), xws, yws)
 
         return alignment_score, img_alignment_map_args
 
@@ -151,7 +164,7 @@ if __name__ == "__main__":
         tgt_lang = tgt_lang,
         batch_size = 1024,
         window_size = 3,
-        thresholds = (0.5, 0.01),
+        thresholds = (0.7, 0.01),
         verbose = (len(sys.argv) == 6 and sys.argv[5] == "-v")
     )
 
@@ -171,7 +184,7 @@ if __name__ == "__main__":
                 print(alignment_score, line, sep = "\t")
 
                 if aligner.verbose:
-                    img_alignment_map(*img_alignment_map_args)
+                    # img_alignment_map(*img_alignment_map_args)
                     input()
 
         if method == "sentence":

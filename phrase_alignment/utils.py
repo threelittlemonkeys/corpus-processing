@@ -160,9 +160,12 @@ def extraction(xws, yws, xys): # non-linear alignment
 
     return _xys
 
-def img_alignment_map(ms, xws, yws, threshold):
+def img_alignment_map(ms, xws, yws, threshold = 0.01):
 
     _, axs = plt.subplots(ncols = len(ms))
+
+    if len(ms) == 1:
+        axs = [axs]
 
     for ax, m in zip(axs, ms):
 
@@ -180,7 +183,7 @@ def img_alignment_map(ms, xws, yws, threshold):
 
     plt.show()
 
-def txt_alignment_map(m, xws, yws, threshold):
+def txt_alignment_map(m, xws, yws, threshold = 0.01):
 
     xi = [str(i)[-1] for i in range(len(xws))]
     yi = [str(i)[-1] for i in range(len(yws))]
