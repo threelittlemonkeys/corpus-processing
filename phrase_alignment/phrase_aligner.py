@@ -4,12 +4,12 @@ import time
 from utils import *
 from sentence_transformers import SentenceTransformer
 
+import warnings
+warnings.simplefilter(action = "ignore", category = FutureWarning)
+
 # suppress InsecureRequestWarning
 import requests
 requests.packages.urllib3.disable_warnings()
-
-import warnings
-warnings.simplefilter(action = "ignore", category = FutureWarning)
 
 class phrase_aligner():
 
@@ -113,7 +113,6 @@ class phrase_aligner():
         Wa = Wa[k:-k, k:-k]
         xws = xws[k:-k]
         yws = yws[k:-k]
-        xyl = (len(xws) + len(yws)) / 2
 
         Wa_xy = normalize(Wa, axis = 1, method = "softmax")
         Wa_yx = normalize(Wa, axis = 0, method = "softmax")
@@ -124,7 +123,13 @@ class phrase_aligner():
 
         alignment_argmax = Wa_xy_argmax & Wa_yx_argmax
         alignment_scores = Wa[*zip(*alignment_argmax)]
-        alignment_score = sum(alignment_scores > self.alignment_score_threshold) / xyl
+        alignment_score = sum(len(set(vs))
+            for vs in [*zip(*[(i, j)
+            for (i, j), v in zip(alignment_argmax, alignment_scores)
+            if v > self.alignment_score_threshold
+        ])]) / (len(xws) + len(yws))
+
+        img_alignment_map_args = ((Wa_xy, Wa_yx, Wa), xws, yws)
 
         if self.verbose:
 
@@ -140,15 +145,11 @@ class phrase_aligner():
 
             print("alignment_scores =")
             for i, j in sorted(alignment_argmax):
-                a = Wa[i][j]
-                if a < self.alignment_score_threshold: continue
-                print(f"{a:.4f} {(i, j)} {(xws[i], yws[j])}")
+                print(f"{Wa[i][j]:.4f} {(i, j)} {(xws[i], yws[j])}")
 
             print("\nalignment_map =")
             txt_alignment_map(Wa, yws, xws, self.alignment_score_threshold)
             print()
-
-            img_alignment_map_args = ((Wa_xy, Wa_yx, Wa), xws, yws)
 
         return alignment_score, img_alignment_map_args
 
