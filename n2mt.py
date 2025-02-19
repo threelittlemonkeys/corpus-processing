@@ -11,11 +11,8 @@ import fake_headers
 
 requests.packages.urllib3.disable_warnings()
 
-if len(sys.argv) != 3:
-    sys.exit("Usage: %s src_lang tgt_lang < text" % sys.argv[0])
-
 URL = "https://papago.naver.com/apis/n2mt/translate"
-VERSION = "v1.7.8_b7368816cb" # main.[a-z0-9]+.chunk.js
+VERSION = "v1.8.9_a5c5d7faee" # main.[a-z0-9]+.chunk.js
 
 LANGS = {
     "en", "ja", "ko", "zh-CN", "zh-TW",
@@ -27,19 +24,22 @@ LANGS = {
 UUID = "".join(random.choices("abcdefghijklmnopqrstuvwxyz0123456789", k = 32))
 UUID = "%s-%s-%s-%s-%s" % (UUID[:8], UUID[8:12], UUID[12:16], UUID[16:20], UUID[20:32])
 
-src_lang = sys.argv[1]
-tgt_lang = sys.argv[2]
-
-assert src_lang in LANGS
-assert tgt_lang in LANGS
+logger = {
+    "num_reqs": 0,
+    "num_srcs": 0,
+    "num_tgts": 0,
+    "total_time": 0
+}
 
 _headers = fake_headers.Headers()
 
 def hmacmd5(key, passphrase):
+
     md5 = hmac.digest(passphrase.encode("UTF-8"), key.encode("UTF-8"), "MD5")
     return base64.b64encode(md5).decode("UTF-8")
 
 def n2mt(src_lang, tgt_lang, query):
+
     timestamp = str(int(time.time() * 1000))
     key = hmacmd5(f"{UUID}\n{URL}\n{timestamp}", VERSION)
     authorization = f"PPG {UUID}:{key}"
@@ -65,7 +65,7 @@ def n2mt(src_lang, tgt_lang, query):
         print(res, file = sys.stderr)
         exit()
 
-def translate(text):
+def translate(src_lang, tgt_lang, xs):
 
     global num_reqs
     global num_lines
@@ -74,43 +74,57 @@ def translate(text):
     interval = random.uniform(5, 9)
     time.sleep(interval)
 
-    srcs = text.split("\n")
-    tgts = n2mt(src_lang, tgt_lang, text).split("\n")
+    ys = [
+        re.sub("\\s+", " ", y).strip()
+        for y in n2mt(src_lang, tgt_lang, "\n".join(xs)).strip().split("\n")
+    ]
 
-    for src, tgt in zip(srcs, tgts):
-        tgt = re.sub("\s+", " ", tgt).strip()
-        print(tgt, flush = True)
+    logger["num_reqs"] += 1
+    logger["num_srcs"] += len(xs)
+    logger["num_tgts"] += len(ys)
+    logger["total_time"] += interval
 
-    num_reqs += 1
-    num_lines += len(srcs)
-    sum_intervals += interval
+    print("[%d] %d chars %d/%d lines -> %d chars %d/%d lines (%.4f/%.4f secs)" % (
+        logger["num_reqs"],
+        sum(map(len, xs)), len(xs), logger["num_srcs"],
+        sum(map(len, ys)), len(ys), logger["num_tgts"],
+        interval,
+        logger["total_time"]
+    ), file = sys.stderr)
 
-    print(
-        "[%d] %d chars %d/%d lines (%.4f/%.4f secs)"
-        % (num_reqs, len(text), len(srcs), num_lines, interval, sum_intervals),
-        file = sys.stderr
-    )
+    return ys
 
-text = ""
-num_reqs = 0
-num_lines = 0
-sum_intervals = 0
+if __name__ == "__main__":
 
-for line in sys.stdin:
+    if len(sys.argv) != 4:
+        sys.exit("Usage: %s src_lang tgt_lang filename" % sys.argv[0])
 
-    line = re.sub("\s+", " ", line).strip()
+    src_lang, tgt_lang, filename = sys.argv[1:]
+    text_size = 1000
 
-    if not line:
-        continue
+    assert src_lang in LANGS
+    assert tgt_lang in LANGS
 
-    if len(text) + len(line) < 4000:
-        if text:
-            text += "\n"
-        text += line
-        continue
+    fin = open(filename, "r")
+    fout = open(filename + ".n2mt", "w")
 
-    translate(text)
-    text = line
+    xs = [
+        re.sub("\\s+", " ", x).strip()
+        for x in fin.read().strip().split("\n")
+    ][::-1]
 
-if text:
-    translate(text)
+    z, _xs = 0, []
+
+    while xs or _xs:
+
+        if xs and z < text_size:
+            _xs.append(xs.pop())
+            z += len(_xs[-1])
+            continue
+
+        ys = translate(src_lang, tgt_lang, _xs)
+        print("\n".join(ys), file = fout, flush = True)
+        z, _xs = 0, []
+
+    fin.close()
+    fout.close()
